@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="52" id="KGk-i7-Jjw" customClass="AddHeaderCell" customModule="regimmy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTf-dr-caI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lXT-mA-V6c">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Новую" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWM-2b-sV4">
+                                    <rect key="frame" x="16" y="12" width="71" height="27"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="27" id="IR2-cf-2PJ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="22"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="pWM-2b-sV4" firstAttribute="top" secondItem="lXT-mA-V6c" secondAttribute="top" constant="12" id="NKf-3H-XpR"/>
+                                <constraint firstItem="pWM-2b-sV4" firstAttribute="leading" secondItem="lXT-mA-V6c" secondAttribute="leading" constant="16" id="ddN-xi-b4V"/>
+                                <constraint firstAttribute="bottom" secondItem="pWM-2b-sV4" secondAttribute="bottom" constant="12.5" id="g56-07-Tjw"/>
+                            </constraints>
+                        </view>
+                        <blurEffect style="light"/>
+                    </visualEffectView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="iTf-dr-caI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2xc-8g-T2D"/>
+                    <constraint firstAttribute="trailing" secondItem="iTf-dr-caI" secondAttribute="trailing" id="7Kh-VU-u1F"/>
+                    <constraint firstAttribute="bottom" secondItem="iTf-dr-caI" secondAttribute="bottom" id="AD8-0t-D00"/>
+                    <constraint firstItem="iTf-dr-caI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="noR-Xt-TTS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="captionLabel" destination="pWM-2b-sV4" id="sEy-am-Lj9"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="58"/>
+        </tableViewCell>
+    </objects>
+</document>

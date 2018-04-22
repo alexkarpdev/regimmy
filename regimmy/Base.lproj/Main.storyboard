@@ -1,0 +1,1224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Afr-ca-fDL">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="nkB-oC-1ce">
+            <objects>
+                <tabBarController id="Afr-ca-fDL" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7Xr-cy-UUw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ObP-ph-MMf" kind="relationship" relationship="viewControllers" id="95S-24-9vD"/>
+                        <segue destination="nR0-jr-k0n" kind="relationship" relationship="viewControllers" id="Zg5-qs-DF6"/>
+                        <segue destination="NMG-Xf-Y0K" kind="relationship" relationship="viewControllers" id="iD0-th-IOn"/>
+                        <segue destination="vKW-Gd-OlX" kind="relationship" relationship="viewControllers" id="UYH-QW-dXd"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="47O-Lm-QBA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-946" y="796"/>
+        </scene>
+        <!--Дневник-->
+        <scene sceneID="UWg-Xv-Kop">
+            <objects>
+                <tableViewController id="cu3-um-1W4" customClass="DiaryTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AeG-X3-XpQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="cu3-um-1W4" id="yW4-OS-Kgy"/>
+                            <outlet property="delegate" destination="cu3-um-1W4" id="qZj-Md-cn9"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Дневник" id="qJh-gw-oUx">
+                        <barButtonItem key="leftBarButtonItem" title="Add" image="calendar" id="k6z-Al-vfT"/>
+                        <barButtonItem key="rightBarButtonItem" image="addEvent" id="UBB-e6-3Wk"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="leftButton" destination="k6z-Al-vfT" id="zWf-wL-YO8"/>
+                        <outlet property="rightButton" destination="UBB-e6-3Wk" id="gm1-g4-Uir"/>
+                        <segue destination="3Dz-ep-8c1" kind="presentation" identifier="AddSegue" id="An1-9s-TAF"/>
+                        <segue destination="eEP-u4-apV" kind="presentation" identifier="ShowEventSegue" id="05B-t9-mM7"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BPI-yb-MKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1396" y="-761.46926536731644"/>
+        </scene>
+        <!--Добавить-->
+        <scene sceneID="AXn-EQ-mMd">
+            <objects>
+                <tableViewController id="07u-2v-zU1" customClass="AddEventTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DaK-Qw-yF2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="kx4-ho-I4b">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kx4-ho-I4b" id="MUO-2w-dmJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="07u-2v-zU1" id="OPq-Y7-F2b"/>
+                            <outlet property="delegate" destination="07u-2v-zU1" id="F5c-ej-icQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Добавить" id="Rkm-YS-uuZ">
+                        <barButtonItem key="leftBarButtonItem" title="Отмена" id="g4D-at-7zy">
+                            <connections>
+                                <action selector="cancelAction:" destination="07u-2v-zU1" id="fPs-u8-fqi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="q0i-mJ-J5X" kind="show" identifier="AddTemplateSegue" id="haO-vN-WXd"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M9B-Uk-BsY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3143" y="-845"/>
+        </scene>
+        <!--Тренировку-->
+        <scene sceneID="ZC8-bq-fbD">
+            <objects>
+                <tableViewController id="q0i-mJ-J5X" customClass="AddTemplateTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pph-58-77O">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="NxS-rW-lMU">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NxS-rW-lMU" id="Gc4-Ua-op2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="q0i-mJ-J5X" id="l1U-Qh-MHU"/>
+                            <outlet property="delegate" destination="q0i-mJ-J5X" id="ZRR-oo-a2c"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Тренировку" id="kQi-Qt-fBT"/>
+                    <connections>
+                        <segue destination="eEP-u4-apV" kind="show" identifier="EditEventSegue" id="IH6-Qo-sfo"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5dg-69-fwe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4007" y="-845"/>
+        </scene>
+        <!--Новую-->
+        <scene sceneID="VLM-Gl-3Yt">
+            <objects>
+                <tableViewController id="hBn-k6-oaI" customClass="EditEventTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cUE-XP-x1f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SzL-Gw-j2Q">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SzL-Gw-j2Q" id="exL-VR-jA2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hBn-k6-oaI" id="zH3-ST-MRR"/>
+                            <outlet property="delegate" destination="hBn-k6-oaI" id="9Eb-Dh-fJM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Новую" largeTitleDisplayMode="never" id="JWj-Y6-2Vk">
+                        <barButtonItem key="leftBarButtonItem" title="Отмена" id="fAS-Wa-XYR">
+                            <connections>
+                                <action selector="cancelAction:" destination="hBn-k6-oaI" id="oXF-Nv-MSA"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="Du9-dZ-Ri3"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="V9Z-zH-gUJ" kind="show" identifier="IngredientsListSegue" id="U49-QO-aCc"/>
+                        <segue destination="aLt-qS-58u" kind="show" identifier="MeasureChooseSegue" id="l56-KZ-95J"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lbg-0L-3mX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5942" y="-824"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1k3-iq-SRV">
+            <objects>
+                <viewController id="Xo9-hU-dpt" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W6X-SW-sEQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ht5-ds-he7"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lvG-mK-mS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1396" y="-1454"/>
+        </scene>
+        <!--Графики-->
+        <scene sceneID="R0Y-M7-kRd">
+            <objects>
+                <tableViewController id="ttw-8j-CcP" customClass="GraphTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="G99-OP-ZYW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2Er-ZS-eaP">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Er-ZS-eaP" id="Dqf-W1-AR6">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ttw-8j-CcP" id="2dO-ee-O5h"/>
+                            <outlet property="delegate" destination="ttw-8j-CcP" id="Vea-Q5-Sni"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Графики" id="Twv-d6-4mU">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="graphsets" id="MLf-kW-BDE"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9sn-UY-cvI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1396" y="-62"/>
+        </scene>
+        <!--Measure Choose View Controller-->
+        <scene sceneID="LmL-Pt-BXM">
+            <objects>
+                <viewController id="aLt-qS-58u" customClass="MeasureChooseViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4FH-LS-wNK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mesureBody" translatesAutoresizingMaskIntoConstraints="NO" id="uGH-4g-xdr">
+                                <rect key="frame" x="115.5" y="122.5" width="168" height="422"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="168" id="D5q-1C-SEq"/>
+                                    <constraint firstAttribute="height" constant="422" id="TmF-RN-vg4"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="phototake" translatesAutoresizingMaskIntoConstraints="NO" id="ztH-PX-lWZ">
+                                <rect key="frame" x="75" y="560.5" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="weight" translatesAutoresizingMaskIntoConstraints="NO" id="ofq-hz-XXe">
+                                <rect key="frame" x="146" y="560.5" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="height" translatesAutoresizingMaskIntoConstraints="NO" id="RRv-jy-pnp">
+                                <rect key="frame" x="217" y="560.5" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bodyfat" translatesAutoresizingMaskIntoConstraints="NO" id="DRw-t7-Urc">
+                                <rect key="frame" x="288" y="560.5" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TD-Pd-8fH" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="128" y="171" width="47" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                <state key="normal" title="Шея" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="neck"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXY-4q-73S" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="74" y="240" width="50" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                <state key="normal" title="Рука" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="arm"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7t-qT-Pvt" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="45" y="272" width="76" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                <state key="normal" title="П/плечье" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="forearm"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXL-ys-eGv" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="41" y="310" width="76" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                <state key="normal" title="Запястье" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="wrist"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiv-6J-1mU" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="240" y="223" width="56" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                <state key="normal" title="Грудь" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="chest"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZ2-hW-eJT" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="234" y="276" width="57" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.60000002379999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                <state key="normal" title="Талия" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="weist"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arD-nI-zob" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="244" y="319" width="42" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.60000002379999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                <state key="normal" title="Таз" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="hips"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0K-r9-O4u" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="252" y="361" width="59" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                <state key="normal" title="Бедро" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="thigh"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O34-Lh-sZV" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="258" y="448" width="54" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                <state key="normal" title="Икры" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="calf"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYf-Mh-pcP" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="258" y="491" width="77" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                <state key="normal" title="Лодыжка" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="ankle"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9L-hq-IgI" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="77" y="199" width="59" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                <state key="normal" title="Плечи" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="shoulders"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0o7-tq-di3" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="49" y="565" width="56" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="4" minY="26" maxX="-16" maxY="0.0"/>
+                                <state key="normal" title="Фото" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="photo"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWQ-0f-16i" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="120" y="564" width="56" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="9" minY="26" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Вес" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="weight"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJR-6v-5FI" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="191" y="564" width="56" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="6" minY="26" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Рост" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="height"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsF-Za-SJE" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="262" y="565" width="56" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="6" minY="26" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Жир" image="Add">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="fat"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uGH-4g-xdr" firstAttribute="centerY" secondItem="4FH-LS-wNK" secondAttribute="centerY" id="l1U-c8-ryJ"/>
+                            <constraint firstItem="uGH-4g-xdr" firstAttribute="centerX" secondItem="4FH-LS-wNK" secondAttribute="centerX" constant="12" id="ouP-xM-Zu7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TlI-CZ-zhF"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ch7-k1-uwA"/>
+                    <connections>
+                        <outlet property="mainImageView" destination="uGH-4g-xdr" id="sX0-U2-FAF"/>
+                        <outletCollection property="measureButtons" destination="8TD-Pd-8fH" collectionClass="NSMutableArray" id="69e-sS-2Oy"/>
+                        <outletCollection property="measureButtons" destination="GXY-4q-73S" collectionClass="NSMutableArray" id="GVC-he-lvd"/>
+                        <outletCollection property="measureButtons" destination="c7t-qT-Pvt" collectionClass="NSMutableArray" id="NVb-hm-e1k"/>
+                        <outletCollection property="measureButtons" destination="kXL-ys-eGv" collectionClass="NSMutableArray" id="Dvf-wU-K2l"/>
+                        <outletCollection property="measureButtons" destination="kiv-6J-1mU" collectionClass="NSMutableArray" id="5v3-AC-i4p"/>
+                        <outletCollection property="measureButtons" destination="zZ2-hW-eJT" collectionClass="NSMutableArray" id="Nhw-SL-GpK"/>
+                        <outletCollection property="measureButtons" destination="arD-nI-zob" collectionClass="NSMutableArray" id="H4x-6x-ud3"/>
+                        <outletCollection property="measureButtons" destination="h0K-r9-O4u" collectionClass="NSMutableArray" id="H4g-je-nTl"/>
+                        <outletCollection property="measureButtons" destination="O34-Lh-sZV" collectionClass="NSMutableArray" id="WID-fe-USE"/>
+                        <outletCollection property="measureButtons" destination="GYf-Mh-pcP" collectionClass="NSMutableArray" id="jHX-eR-XCG"/>
+                        <outletCollection property="measureButtons" destination="L9L-hq-IgI" collectionClass="NSMutableArray" id="FUE-Fq-Yjg"/>
+                        <outletCollection property="measureButtons" destination="0o7-tq-di3" collectionClass="NSMutableArray" id="rkN-Oc-s9c"/>
+                        <outletCollection property="measureButtons" destination="vWQ-0f-16i" collectionClass="NSMutableArray" id="cmx-0v-YfN"/>
+                        <outletCollection property="measureButtons" destination="uJR-6v-5FI" collectionClass="NSMutableArray" id="P6T-YG-vkU"/>
+                        <outletCollection property="measureButtons" destination="WsF-Za-SJE" collectionClass="NSMutableArray" id="rHt-Wn-k9J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ucE-0N-h4R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9482.3999999999996" y="-1550.3748125937032"/>
+        </scene>
+        <!--Sets List Table View Controller-->
+        <scene sceneID="HTD-8d-bQ4">
+            <objects>
+                <tableViewController id="m8Q-pL-nbv" customClass="SetsListTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bEm-Pf-k3B">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="sfP-aP-1oF">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sfP-aP-1oF" id="Bwt-1M-RZi">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="m8Q-pL-nbv" id="YFe-4S-2HU"/>
+                            <outlet property="delegate" destination="m8Q-pL-nbv" id="vY8-pn-tOM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="cSI-YT-AjQ">
+                        <barButtonItem key="rightBarButtonItem" title="Готово" id="nSs-mH-SAx"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lOw-sx-OCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8556" y="-824"/>
+        </scene>
+        <!--Muscle Choose View Controller-->
+        <scene sceneID="zcc-sL-JcV">
+            <objects>
+                <viewController id="2Rn-uX-Wze" customClass="MuscleChooseViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0T3-GY-PQQ">
+                        <rect key="frame" x="0.0" y="0.0" width="703" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4U-FJ-3tk">
+                                <rect key="frame" x="0.0" y="111" width="703" height="536"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MOT-0j-rMv">
+                                        <rect key="frame" x="0.0" y="0.0" width="703" height="536"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="muscle-main" translatesAutoresizingMaskIntoConstraints="NO" id="Fem-er-6SP">
+                                                <rect key="frame" x="161.5" y="0.0" width="380" height="536"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="380" id="3GD-A2-TN8"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="muscle-trapezius" translatesAutoresizingMaskIntoConstraints="NO" id="X1E-Oc-pKu">
+                                                <rect key="frame" x="161.5" y="0.0" width="380" height="536"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F59-Cp-bJY" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="555" y="86" width="104" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Зад. дельты" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="post-deltoid"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXK-6i-3c3" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="555" y="116" width="88" height="24"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Трапеция" image="checked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="trapezius"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMA-QA-OZd" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="555" y="150" width="80" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Круглые" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="teres-major"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuB-GS-nNq" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="555" y="182" width="81" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Трицепс" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="triceps"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkD-RM-434" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="555" y="214" width="114" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Широчайшие" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="lat-dorsi"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFM-Do-4OQ" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="555" y="246" width="108" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Поясничные" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="lumbar"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAu-yZ-BPo" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="555" y="278" width="132" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Мал. ягодичные" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="glutes-med"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agk-jd-rjH" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="555" y="310" width="129" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Бол. ягодичные" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="glutes-max"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYe-bg-YIa" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="555" y="342" width="118" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Бицепс бедра" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="biceps-fem"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yKL-rY-cFM" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="54" width="52" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Шея" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="neck"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUk-3H-sTn" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="86" width="97" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Ср. дельты" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="mid-deltoid"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEr-yr-eS8" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="116" width="106" height="24"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Пер. дельты" image="checked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="ant-deltoid"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mao-LE-x0S" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="150" width="61" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Грудь" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="chest"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEL-Dr-IkP" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="182" width="105" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Бронхиалис" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="brachialis"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufw-WX-ldq" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="214" width="73" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Бицепс" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="biceps"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3d-3F-XNO" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="246" width="106" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Предплечье" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="forearms"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkO-gE-dSe" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="278" width="88" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Зубчатые" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="serratus"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HbF-dG-h4u" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="310" width="66" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Косые" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="ext-oblique"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auf-tL-Qu3" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="342" width="66" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Пресс" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="abs"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGP-ae-my9" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="374" width="101" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Отводящие" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="tensor"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwT-hK-Asb" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="406" width="106" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Квадрицепс" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="quadriceps"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iP-T5-SQP" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="438" width="110" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Приводящие" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="adductor"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBW-tK-yrA" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                                <rect key="frame" x="555" y="372" width="59" height="22"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
+                                                <state key="normal" title="Икры" image="unchecked">
+                                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="calves"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="OFM-Do-4OQ" firstAttribute="leading" secondItem="F59-Cp-bJY" secondAttribute="leading" id="0Ap-vh-4Lc"/>
+                                            <constraint firstItem="iAu-yZ-BPo" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="21" id="0d0-WU-5na"/>
+                                            <constraint firstItem="iAu-yZ-BPo" firstAttribute="leading" secondItem="F59-Cp-bJY" secondAttribute="leading" id="3jj-qW-i0F"/>
+                                            <constraint firstItem="Agk-jd-rjH" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="53" id="3xm-jk-jHq"/>
+                                            <constraint firstItem="X1E-Oc-pKu" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" id="5rQ-d0-emu"/>
+                                            <constraint firstItem="UuB-GS-nNq" firstAttribute="leading" secondItem="F59-Cp-bJY" secondAttribute="leading" id="77n-sK-Tla"/>
+                                            <constraint firstItem="Ufw-WX-ldq" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-43" id="7HW-8h-gAX"/>
+                                            <constraint firstItem="8iP-T5-SQP" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="181" id="8Dr-OR-Jmd"/>
+                                            <constraint firstItem="o3d-3F-XNO" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-11" id="95B-8Z-Pdx"/>
+                                            <constraint firstItem="8iP-T5-SQP" firstAttribute="leading" secondItem="yKL-rY-cFM" secondAttribute="leading" id="A2p-iR-sJz"/>
+                                            <constraint firstItem="dwT-hK-Asb" firstAttribute="leading" secondItem="yKL-rY-cFM" secondAttribute="leading" id="AM0-kD-qWk"/>
+                                            <constraint firstItem="iAu-yZ-BPo" firstAttribute="leading" secondItem="Fem-er-6SP" secondAttribute="trailing" constant="13.5" id="CxX-Vn-0RE"/>
+                                            <constraint firstItem="HbF-dG-h4u" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="53" id="DWL-Xz-gq7"/>
+                                            <constraint firstItem="bUk-3H-sTn" firstAttribute="leading" secondItem="yKL-rY-cFM" secondAttribute="leading" id="De4-GQ-g2M"/>
+                                            <constraint firstItem="F59-Cp-bJY" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-171" id="E3M-pw-evD"/>
+                                            <constraint firstItem="X1E-Oc-pKu" firstAttribute="centerX" secondItem="MOT-0j-rMv" secondAttribute="centerX" id="GbI-4P-5Sj"/>
+                                            <constraint firstAttribute="bottom" secondItem="Fem-er-6SP" secondAttribute="bottom" id="GcC-Ff-hdC"/>
+                                            <constraint firstItem="OMA-QA-OZd" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-107" id="Hag-PV-VKJ"/>
+                                            <constraint firstAttribute="width" constant="703" id="Jhv-HJ-2xs"/>
+                                            <constraint firstItem="GXK-6i-3c3" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-140" id="L5j-CG-Ksp"/>
+                                            <constraint firstAttribute="height" constant="536" id="L7H-Tb-SVd"/>
+                                            <constraint firstItem="nkD-RM-434" firstAttribute="leading" secondItem="F59-Cp-bJY" secondAttribute="leading" id="MEP-ZY-CAT"/>
+                                            <constraint firstItem="Fem-er-6SP" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" id="Mf2-zE-gqj"/>
+                                            <constraint firstItem="GXK-6i-3c3" firstAttribute="leading" secondItem="F59-Cp-bJY" secondAttribute="leading" id="O1F-0Y-pLm"/>
+                                            <constraint firstItem="dwT-hK-Asb" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="149" id="QIc-Qo-Bv0"/>
+                                            <constraint firstItem="QYe-bg-YIa" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="85" id="RMd-Dv-Lhr"/>
+                                            <constraint firstItem="yKL-rY-cFM" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-203" id="SZ0-4J-9M9"/>
+                                            <constraint firstItem="OMA-QA-OZd" firstAttribute="leading" secondItem="F59-Cp-bJY" secondAttribute="leading" id="VOE-eK-3Iz"/>
+                                            <constraint firstItem="8iP-T5-SQP" firstAttribute="leading" secondItem="MOT-0j-rMv" secondAttribute="leading" constant="24" id="VtR-EB-OfY"/>
+                                            <constraint firstItem="Fem-er-6SP" firstAttribute="centerX" secondItem="MOT-0j-rMv" secondAttribute="centerX" id="Y1K-LL-WdC"/>
+                                            <constraint firstItem="Agk-jd-rjH" firstAttribute="leading" secondItem="F59-Cp-bJY" secondAttribute="leading" id="YpN-2k-Hy3"/>
+                                            <constraint firstItem="X1E-Oc-pKu" firstAttribute="width" secondItem="Fem-er-6SP" secondAttribute="width" id="ZFd-OJ-zJv"/>
+                                            <constraint firstItem="nkD-RM-434" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-43" id="awM-V0-JRX"/>
+                                            <constraint firstItem="auf-tL-Qu3" firstAttribute="leading" secondItem="yKL-rY-cFM" secondAttribute="leading" id="bOp-FG-l69"/>
+                                            <constraint firstItem="auf-tL-Qu3" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="85" id="bXt-gS-IME"/>
+                                            <constraint firstItem="bkO-gE-dSe" firstAttribute="leading" secondItem="yKL-rY-cFM" secondAttribute="leading" id="brN-Wl-1qo"/>
+                                            <constraint firstItem="mEL-Dr-IkP" firstAttribute="leading" secondItem="yKL-rY-cFM" secondAttribute="leading" id="by4-D6-Ax8"/>
+                                            <constraint firstItem="gEr-yr-eS8" firstAttribute="leading" secondItem="yKL-rY-cFM" secondAttribute="leading" id="c4L-P5-VQ6"/>
+                                            <constraint firstItem="QYe-bg-YIa" firstAttribute="leading" secondItem="F59-Cp-bJY" secondAttribute="leading" id="cSM-EM-3as"/>
+                                            <constraint firstItem="X1E-Oc-pKu" firstAttribute="height" secondItem="Fem-er-6SP" secondAttribute="height" id="d1v-Xf-iAt"/>
+                                            <constraint firstItem="Mao-LE-x0S" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-107" id="dh2-yh-99A"/>
+                                            <constraint firstItem="pBW-tK-yrA" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="115" id="eGJ-sc-SgA"/>
+                                            <constraint firstItem="pBW-tK-yrA" firstAttribute="leading" secondItem="F59-Cp-bJY" secondAttribute="leading" id="hXt-02-Fkb"/>
+                                            <constraint firstItem="gEr-yr-eS8" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-140" id="j5e-Jz-cxt"/>
+                                            <constraint firstItem="HbF-dG-h4u" firstAttribute="leading" secondItem="yKL-rY-cFM" secondAttribute="leading" id="jFE-cq-xEl"/>
+                                            <constraint firstItem="bkO-gE-dSe" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="21" id="kkt-ih-hT5"/>
+                                            <constraint firstItem="aGP-ae-my9" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="117" id="kqD-ev-zcJ"/>
+                                            <constraint firstItem="aGP-ae-my9" firstAttribute="leading" secondItem="yKL-rY-cFM" secondAttribute="leading" id="mAf-Y4-AWt"/>
+                                            <constraint firstItem="mEL-Dr-IkP" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-75" id="mKn-Yt-I56"/>
+                                            <constraint firstItem="o3d-3F-XNO" firstAttribute="leading" secondItem="yKL-rY-cFM" secondAttribute="leading" id="oeg-5h-oOx"/>
+                                            <constraint firstItem="OFM-Do-4OQ" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-11" id="qJk-np-fa7"/>
+                                            <constraint firstItem="Mao-LE-x0S" firstAttribute="leading" secondItem="yKL-rY-cFM" secondAttribute="leading" id="qvt-cF-29S"/>
+                                            <constraint firstItem="bUk-3H-sTn" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-171" id="uAI-hj-uc9"/>
+                                            <constraint firstItem="Fem-er-6SP" firstAttribute="top" secondItem="MOT-0j-rMv" secondAttribute="top" id="uhe-il-ade"/>
+                                            <constraint firstItem="Ufw-WX-ldq" firstAttribute="leading" secondItem="yKL-rY-cFM" secondAttribute="leading" id="zG5-3i-gPj"/>
+                                            <constraint firstItem="UuB-GS-nNq" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-75" id="zrH-x2-yT7"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="MOT-0j-rMv" firstAttribute="top" secondItem="Z4U-FJ-3tk" secondAttribute="top" id="4w0-y9-fEn"/>
+                                    <constraint firstAttribute="trailing" secondItem="MOT-0j-rMv" secondAttribute="trailing" id="B1y-9C-w4R"/>
+                                    <constraint firstItem="MOT-0j-rMv" firstAttribute="leading" secondItem="Z4U-FJ-3tk" secondAttribute="leading" id="Eou-Oi-Adw"/>
+                                    <constraint firstAttribute="bottom" secondItem="MOT-0j-rMv" secondAttribute="bottom" id="cTp-Ri-CT1"/>
+                                </constraints>
+                            </scrollView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="J7j-tq-qT1">
+                                <rect key="frame" x="233.5" y="75" width="236" height="29"/>
+                                <segments>
+                                    <segment title="Передний"/>
+                                    <segment title="Общий"/>
+                                    <segment title="Задний"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedValueChanged:" destination="2Rn-uX-Wze" eventType="valueChanged" id="rVT-W1-Ysf"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вид:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cj9-pD-Xr9">
+                                <rect key="frame" x="193.5" y="81" width="32" height="17"/>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="J7j-tq-qT1" firstAttribute="centerX" secondItem="0T3-GY-PQQ" secondAttribute="centerX" id="3j5-Ja-dYh"/>
+                            <constraint firstItem="J7j-tq-qT1" firstAttribute="top" secondItem="utH-2I-bAh" secondAttribute="top" constant="11" id="BfX-3S-TAM"/>
+                            <constraint firstItem="J7j-tq-qT1" firstAttribute="leading" secondItem="Cj9-pD-Xr9" secondAttribute="trailing" constant="8" id="Ll0-Bc-e7R"/>
+                            <constraint firstItem="utH-2I-bAh" firstAttribute="trailing" secondItem="Z4U-FJ-3tk" secondAttribute="trailing" id="Yco-SZ-hlt"/>
+                            <constraint firstItem="Z4U-FJ-3tk" firstAttribute="top" secondItem="J7j-tq-qT1" secondAttribute="bottom" constant="8" id="glB-TV-53r"/>
+                            <constraint firstItem="Cj9-pD-Xr9" firstAttribute="centerY" secondItem="J7j-tq-qT1" secondAttribute="centerY" id="lCZ-kT-NEI"/>
+                            <constraint firstItem="Z4U-FJ-3tk" firstAttribute="leading" secondItem="utH-2I-bAh" secondAttribute="leading" id="ppB-o3-dJr"/>
+                            <constraint firstItem="utH-2I-bAh" firstAttribute="bottom" secondItem="Z4U-FJ-3tk" secondAttribute="bottom" constant="20" id="rNG-Cl-XBe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="utH-2I-bAh"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hnb-RQ-UGZ"/>
+                    <size key="freeformSize" width="703" height="667"/>
+                    <connections>
+                        <outlet property="muscleMainImageView" destination="Fem-er-6SP" id="a9n-0E-k0Q"/>
+                        <outlet property="musclePartsImageView" destination="X1E-Oc-pKu" id="ltE-6D-HIn"/>
+                        <outlet property="scrollView" destination="Z4U-FJ-3tk" id="fWv-Ca-WS1"/>
+                        <outlet property="segmentedControl" destination="J7j-tq-qT1" id="e37-r3-APE"/>
+                        <outletCollection property="muscleButtons" destination="F59-Cp-bJY" collectionClass="NSMutableArray" id="YBo-lk-UfG"/>
+                        <outletCollection property="muscleButtons" destination="GXK-6i-3c3" collectionClass="NSMutableArray" id="zuI-Us-7jO"/>
+                        <outletCollection property="muscleButtons" destination="OMA-QA-OZd" collectionClass="NSMutableArray" id="szs-Ee-nKX"/>
+                        <outletCollection property="muscleButtons" destination="UuB-GS-nNq" collectionClass="NSMutableArray" id="aUF-FU-PeU"/>
+                        <outletCollection property="muscleButtons" destination="nkD-RM-434" collectionClass="NSMutableArray" id="gdT-JP-HBD"/>
+                        <outletCollection property="muscleButtons" destination="OFM-Do-4OQ" collectionClass="NSMutableArray" id="Hjo-yk-xaH"/>
+                        <outletCollection property="muscleButtons" destination="iAu-yZ-BPo" collectionClass="NSMutableArray" id="1up-C1-dtl"/>
+                        <outletCollection property="muscleButtons" destination="Agk-jd-rjH" collectionClass="NSMutableArray" id="e82-1X-F49"/>
+                        <outletCollection property="muscleButtons" destination="QYe-bg-YIa" collectionClass="NSMutableArray" id="Iix-CH-udU"/>
+                        <outletCollection property="muscleButtons" destination="pBW-tK-yrA" collectionClass="NSMutableArray" id="DLj-X2-8uj"/>
+                        <outletCollection property="muscleButtons" destination="yKL-rY-cFM" collectionClass="NSMutableArray" id="Y88-UN-K1c"/>
+                        <outletCollection property="muscleButtons" destination="bUk-3H-sTn" collectionClass="NSMutableArray" id="Y5M-fs-oQv"/>
+                        <outletCollection property="muscleButtons" destination="gEr-yr-eS8" collectionClass="NSMutableArray" id="lMM-m0-qdb"/>
+                        <outletCollection property="muscleButtons" destination="Mao-LE-x0S" collectionClass="NSMutableArray" id="xnE-yX-gR7"/>
+                        <outletCollection property="muscleButtons" destination="mEL-Dr-IkP" collectionClass="NSMutableArray" id="rHp-RU-aHQ"/>
+                        <outletCollection property="muscleButtons" destination="Ufw-WX-ldq" collectionClass="NSMutableArray" id="eB5-gT-N2G"/>
+                        <outletCollection property="muscleButtons" destination="o3d-3F-XNO" collectionClass="NSMutableArray" id="a5x-pm-qvy"/>
+                        <outletCollection property="muscleButtons" destination="bkO-gE-dSe" collectionClass="NSMutableArray" id="cd0-Hj-Of0"/>
+                        <outletCollection property="muscleButtons" destination="HbF-dG-h4u" collectionClass="NSMutableArray" id="PMO-fx-auQ"/>
+                        <outletCollection property="muscleButtons" destination="auf-tL-Qu3" collectionClass="NSMutableArray" id="aEz-bw-ygn"/>
+                        <outletCollection property="muscleButtons" destination="aGP-ae-my9" collectionClass="NSMutableArray" id="cNA-86-lms"/>
+                        <outletCollection property="muscleButtons" destination="dwT-hK-Asb" collectionClass="NSMutableArray" id="VxG-N9-LDd"/>
+                        <outletCollection property="muscleButtons" destination="8iP-T5-SQP" collectionClass="NSMutableArray" id="Qjh-rL-3OJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bDU-dY-Ztu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10402.4" y="-827.13643178410803"/>
+        </scene>
+        <!--Дневник-->
+        <scene sceneID="OlP-26-4TA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ObP-ph-MMf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Дневник" id="uvi-PO-eK7"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hCD-Ua-UyO">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cu3-um-1W4" kind="relationship" relationship="rootViewController" id="PzT-cd-1CP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HSn-mq-5C0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="617" y="-761"/>
+        </scene>
+        <!--Графики-->
+        <scene sceneID="B9A-bX-P9N">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nR0-jr-k0n" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Графики" id="Wpr-wB-p8V"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ouw-kd-4NJ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ttw-8j-CcP" kind="relationship" relationship="rootViewController" id="YG5-6e-xQR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HCj-ck-kIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="617" y="-62"/>
+        </scene>
+        <!--Редактор-->
+        <scene sceneID="b6g-eN-537">
+            <objects>
+                <tableViewController id="KS6-DX-VE8" customClass="EditorMainTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5vM-e3-0pR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Fzl-qc-9aE">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fzl-qc-9aE" id="kML-qk-OPM">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="KS6-DX-VE8" id="kGx-oe-KUl"/>
+                            <outlet property="delegate" destination="KS6-DX-VE8" id="56y-bh-rhC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Редактор" id="10R-Wn-bwr"/>
+                    <connections>
+                        <segue destination="vMY-k3-wTD" kind="show" identifier="IngredientsListSegue" id="dyg-EQ-HTj"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2fb-N8-f1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1396" y="641"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="ZKv-wG-Rb1">
+            <objects>
+                <tableViewController id="XHN-O7-kVk" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8ek-L4-Q1l">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="NwJ-fq-Ygq">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NwJ-fq-Ygq" id="zBt-0B-rpk">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XHN-O7-kVk" id="JMi-t9-sBm"/>
+                            <outlet property="delegate" destination="XHN-O7-kVk" id="PFX-Jb-X2i"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Ebs-wc-nME"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ue6-hM-2xV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1396" y="1329"/>
+        </scene>
+        <!--Редактор-->
+        <scene sceneID="IAC-hp-fiJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NMG-Xf-Y0K" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Редактор" id="Pnh-WN-LOf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JIp-MH-Ttj">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KS6-DX-VE8" kind="relationship" relationship="rootViewController" id="4XB-LV-eAT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EYr-Zb-1eN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="617.60000000000002" y="641.37931034482767"/>
+        </scene>
+        <!--Настройки-->
+        <scene sceneID="JrU-jf-ckt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vKW-Gd-OlX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Настройки" id="cgR-zI-B6B"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HZs-wE-CtS">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XHN-O7-kVk" kind="relationship" relationship="rootViewController" id="Fxm-7S-G5p"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zf1-Wc-L0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="620.79999999999995" y="1329.5352323838083"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="A7u-yP-tc0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Dz-ep-8c1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="5Sx-yZ-pWx">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="07u-2v-zU1" kind="relationship" relationship="rootViewController" id="h6R-54-rP0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lIA-25-GtL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2295" y="-845"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ggz-Ob-KJz">
+            <objects>
+                <navigationController storyboardIdentifier="EditEventNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eEP-u4-apV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NUl-q2-t7o">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hBn-k6-oaI" kind="relationship" relationship="rootViewController" id="lUp-pB-HzD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UXc-St-2xP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4996" y="-761"/>
+        </scene>
+        <!--Упражнения-->
+        <scene sceneID="yw3-wd-KBV">
+            <objects>
+                <tableViewController id="vMY-k3-wTD" customClass="IngredientsListTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="suT-WI-ZMR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tmO-8o-Zs6">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tmO-8o-Zs6" id="ciU-kH-mtU">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vMY-k3-wTD" id="2ly-Nf-wcn"/>
+                            <outlet property="delegate" destination="vMY-k3-wTD" id="izq-Vw-gIC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Упражнения" prompt="Выберите упражнение" id="Vz3-K6-fZl">
+                        <barButtonItem key="leftBarButtonItem" title="Отмена" id="jSM-vx-r2s">
+                            <connections>
+                                <action selector="cancelAction:" destination="vMY-k3-wTD" id="bda-00-0a1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Изменить" id="W21-gY-4wO"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="leftButtonItem" destination="jSM-vx-r2s" id="dOG-Vp-e8c"/>
+                        <outlet property="rightButtonItem" destination="W21-gY-4wO" id="jds-rC-wcK"/>
+                        <segue destination="m8Q-pL-nbv" kind="show" identifier="SetsListSegue" id="4qV-bT-Ttz"/>
+                        <segue destination="HBA-7N-wfa" kind="presentation" identifier="AddEditSubEventSegue" id="1UP-9z-1qJ"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6eC-xz-fqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6782" y="641"/>
+        </scene>
+        <!--Editor Edit Subevent Table View Controller-->
+        <scene sceneID="7YU-IM-AVT">
+            <objects>
+                <tableViewController id="LN7-Ud-zu6" customClass="EditorEditSubeventTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YKj-7A-kun">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3Oz-Mj-Lvl">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Oz-Mj-Lvl" id="Bsh-PC-4Pg">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="LN7-Ud-zu6" id="3gF-6g-7fA"/>
+                            <outlet property="delegate" destination="LN7-Ud-zu6" id="7Yc-1y-oxr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="K9e-uy-iDU">
+                        <barButtonItem key="leftBarButtonItem" title="Отмена" id="gdp-7j-gz0">
+                            <connections>
+                                <action selector="cancelAction:" destination="LN7-Ud-zu6" id="Zg7-aR-bwH"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Готово" id="tyE-eQ-PuN"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="leftButtonItem" destination="gdp-7j-gz0" id="7eQ-t3-XLQ"/>
+                        <outlet property="rightButtonItem" destination="tyE-eQ-PuN" id="Als-iZ-zEK"/>
+                        <segue destination="2Rn-uX-Wze" kind="show" identifier="MuscleChooseSegue" id="4Kp-gF-yAK"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YQU-ab-1sK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8804" y="640.92953523238384"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yDZ-Ky-ggx">
+            <objects>
+                <navigationController storyboardIdentifier="IngredientsListNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V9Z-zH-gUJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yLV-b1-YDN">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vMY-k3-wTD" kind="relationship" relationship="rootViewController" id="Zaj-sX-PlJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NxD-UI-N70" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6781.6000000000004" y="-824.43778110944538"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fds-jf-iXy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HBA-7N-wfa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9gV-lj-KcI">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LN7-Ud-zu6" kind="relationship" relationship="rootViewController" id="wDV-SU-Dh5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ktd-oi-pgn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7864.8000000000002" y="640.92953523238384"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Add" width="22" height="24"/>
+        <image name="addEvent" width="28" height="28"/>
+        <image name="bodyfat" width="30" height="30"/>
+        <image name="calendar" width="28" height="29"/>
+        <image name="checked" width="22" height="24"/>
+        <image name="graphsets" width="21" height="19"/>
+        <image name="height" width="20" height="30"/>
+        <image name="mesureBody" width="171" height="427"/>
+        <image name="muscle-main" width="414" height="552"/>
+        <image name="muscle-trapezius" width="414" height="552"/>
+        <image name="phototake" width="18" height="30"/>
+        <image name="unchecked" width="22" height="22"/>
+        <image name="weight" width="30" height="30"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Zaj-sX-PlJ"/>
+        <segue reference="05B-t9-mM7"/>
+    </inferredMetricsTieBreakers>
+</document>

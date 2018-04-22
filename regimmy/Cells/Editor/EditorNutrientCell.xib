@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="EditorNutrientCell" customModule="regimmy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Белки" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9C-Rj-aeU">
+                        <rect key="frame" x="16" y="11.5" width="50" height="20.5"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                        <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="грамм" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Khk-a0-ttD">
+                        <rect key="frame" x="259.5" y="13.5" width="44.5" height="17"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                        <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="0" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FFH-k6-ylm">
+                        <rect key="frame" x="78" y="8" width="169.5" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="hS6-4j-RnP"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="22"/>
+                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="FFH-k6-ylm" secondAttribute="bottom" constant="9" id="4dj-7P-fTR"/>
+                    <constraint firstItem="Z9C-Rj-aeU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="6Me-Go-k2A"/>
+                    <constraint firstItem="Khk-a0-ttD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Gic-u3-E8Q"/>
+                    <constraint firstItem="Khk-a0-ttD" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="LsS-vg-nKO"/>
+                    <constraint firstItem="FFH-k6-ylm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7.5" id="OVR-J7-nyl"/>
+                    <constraint firstItem="FFH-k6-ylm" firstAttribute="leading" secondItem="Z9C-Rj-aeU" secondAttribute="trailing" constant="12" id="VV3-63-f4d"/>
+                    <constraint firstItem="Z9C-Rj-aeU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cFd-wI-wCq"/>
+                    <constraint firstItem="FFH-k6-ylm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="paM-nP-BQg"/>
+                    <constraint firstItem="Khk-a0-ttD" firstAttribute="leading" secondItem="FFH-k6-ylm" secondAttribute="trailing" constant="12" id="tPF-dq-u0g"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="nutrientNameLabel" destination="Z9C-Rj-aeU" id="fRH-hf-79Z"/>
+                <outlet property="nutrientUnitLabel" destination="Khk-a0-ttD" id="TgK-WC-WPm"/>
+                <outlet property="valueField" destination="FFH-k6-ylm" id="Anf-gC-8mD"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
