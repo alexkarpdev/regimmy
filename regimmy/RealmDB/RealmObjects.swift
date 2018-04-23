@@ -85,6 +85,17 @@ class RDrug: Object {
     
     @objc dynamic var servSize = 0.0
     @objc dynamic var servUnit = ""
+    
+    func copy() -> RDrugE {
+        let drugE = RDrugE()
+        
+        drugE.name = self.name
+        drugE.info = self.info
+        drugE.servSize = self.servSize
+        drugE.servUnit = self.servUnit
+        
+        return drugE
+    }
 }
 
 class RDrugE: RDrug {
@@ -106,6 +117,21 @@ class RExercise: Object {
     @objc dynamic var loadType = ""
     @objc dynamic var repsUnit = ""
     @objc dynamic var loadUnit = ""
+    
+    func copy() -> RExerciseE {
+        let exerciseE = RExerciseE()
+        
+        exerciseE.name = self.name
+        exerciseE.info = self.info
+        exerciseE.muscle = self.muscle
+        exerciseE.type = self.type
+        exerciseE.repsType = self.repsType
+        exerciseE.loadType = self.loadType
+        exerciseE.repsUnit = self.repsUnit
+        exerciseE.loadUnit = self.loadUnit
+        
+        return exerciseE
+    }
 }
 
 class RExerciseSet: Object {
