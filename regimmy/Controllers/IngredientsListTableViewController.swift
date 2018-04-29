@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import RealmSwift
 
 class IngredientsListTableViewController: UITableViewController {
     
     var selectedEventType: EventType!
     var selectedSubEventType: SubEventType!
     
-    
+    var selectedObjects: [Object]?
+    var objects: [Object]?
     
     let repeatList = ["Нет", "Каждый день", "Каждую неделю", "Каждые 2 недели", "Каждый месяц", "Каждый год"]
     let notifyList = ["Нет", "В момент события", "За 5 минут", "За 15 минут", "За 30 минут", "За 1 час", "За 2 часа", "За 1 день", "За 2 дня", "За 2 неделю"]
@@ -50,7 +52,7 @@ class IngredientsListTableViewController: UITableViewController {
         }
         
         
-        tableView.register(UINib(nibName: CalendarIngredientCell.identifier, bundle: nil), forCellReuseIdentifier: CalendarIngredientCell.identifier)
+        tableView.register(UINib(nibName: EditorIngredientCell.identifier, bundle: nil), forCellReuseIdentifier: EditorIngredientCell.identifier)
         tableView.register(UINib(nibName: CalendarMeasureCell.identifier, bundle: nil), forCellReuseIdentifier: CalendarMeasureCell.identifier)
         tableView.register(UINib(nibName: CalendarIngredientCell.identifier, bundle: nil), forCellReuseIdentifier: CalendarIngredientCell.identifier)
         tableView.register(UINib(nibName: CalendarExerciseCell.identifier, bundle: nil), forCellReuseIdentifier: CalendarExerciseCell.identifier)
@@ -126,7 +128,7 @@ class IngredientsListTableViewController: UITableViewController {
         
         switch selectedEventType! {
         case .eating:
-            cell = tableView.dequeueReusableCell(withIdentifier: CalendarIngredientCell.identifier, for: indexPath) as! CalendarIngredientCell
+            cell = tableView.dequeueReusableCell(withIdentifier: EditorIngredientCell.identifier, for: indexPath) as! EditorIngredientCell
         case .train:
             cell = tableView.dequeueReusableCell(withIdentifier: CalendarExerciseCell.identifier, for: indexPath) as! CalendarExerciseCell
         case .measure:

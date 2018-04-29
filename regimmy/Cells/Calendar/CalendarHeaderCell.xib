@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-        </array>
         <array key="SF-Pro-Text-Bold.otf">
             <string>SFProText-Bold</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
         </array>
     </customFonts>
     <objects>
@@ -27,30 +29,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUESDAY, JUNE 6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jX-YR-Hod">
-                        <rect key="frame" x="16" y="11" width="141.5" height="16"/>
+                        <rect key="frame" x="16" y="11" width="146" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="9WE-a8-beX"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                         <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="W7e-BO-aDC">
-                        <rect key="frame" x="16" y="39" width="28" height="28"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="28" id="MoP-Hz-PRf"/>
-                            <constraint firstAttribute="height" constant="28" id="NfZ-Om-Afu"/>
-                        </constraints>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addEvent" translatesAutoresizingMaskIntoConstraints="NO" id="7qj-uT-kwz">
-                        <rect key="frame" x="276" y="39" width="28" height="28"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="28" id="1fv-0e-hGo"/>
-                            <constraint firstAttribute="width" constant="28" id="WL1-ws-913"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CW-u8-6bT">
-                        <rect key="frame" x="52" y="32" width="102.5" height="41"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CW-u8-6bT">
+                        <rect key="frame" x="52" y="32" width="216" height="41"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="41" id="l5c-kc-ZEM"/>
                         </constraints>
@@ -58,20 +46,44 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgP-5e-BgH">
+                        <rect key="frame" x="276" y="39" width="28" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="b6O-v9-K1q"/>
+                            <constraint firstAttribute="width" constant="28" id="flK-qF-xCx"/>
+                        </constraints>
+                        <state key="normal" image="addEvent"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtb-uB-0iP">
+                        <rect key="frame" x="16" y="38" width="28" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="28" id="LnH-HX-CXg"/>
+                            <constraint firstAttribute="height" constant="29" id="fjk-MD-CDW"/>
+                        </constraints>
+                        <state key="normal" image="calendar"/>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="7qj-uT-kwz" firstAttribute="centerY" secondItem="W7e-BO-aDC" secondAttribute="centerY" id="3Yz-Ea-U4P"/>
                     <constraint firstItem="0CW-u8-6bT" firstAttribute="top" secondItem="2jX-YR-Hod" secondAttribute="bottom" constant="5" id="4fd-PR-ikg"/>
+                    <constraint firstItem="wtb-uB-0iP" firstAttribute="top" secondItem="2jX-YR-Hod" secondAttribute="bottom" constant="11" id="7Tu-4d-HHg"/>
                     <constraint firstItem="2jX-YR-Hod" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="QdC-hE-VUF"/>
                     <constraint firstItem="2jX-YR-Hod" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="RgY-PU-i2b"/>
-                    <constraint firstItem="W7e-BO-aDC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="T8Q-pQ-obl"/>
-                    <constraint firstItem="0CW-u8-6bT" firstAttribute="leading" secondItem="W7e-BO-aDC" secondAttribute="trailing" constant="8" id="VYm-sr-mEL"/>
-                    <constraint firstAttribute="trailing" secondItem="7qj-uT-kwz" secondAttribute="trailing" constant="16" id="fXG-vE-hUo"/>
+                    <constraint firstItem="tgP-5e-BgH" firstAttribute="leading" secondItem="0CW-u8-6bT" secondAttribute="trailing" constant="8" id="Ssl-Rf-gIB"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="tgP-5e-BgH" secondAttribute="bottom" constant="7" id="ZaQ-fC-3Ey"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="wtb-uB-0iP" secondAttribute="bottom" constant="7" id="cbJ-Vv-uVs"/>
+                    <constraint firstItem="wtb-uB-0iP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="cba-N1-r3x"/>
+                    <constraint firstItem="tgP-5e-BgH" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="kaj-eO-Why"/>
                     <constraint firstAttribute="bottom" secondItem="0CW-u8-6bT" secondAttribute="bottom" constant="11.5" id="m4Q-JG-Puv"/>
-                    <constraint firstItem="W7e-BO-aDC" firstAttribute="top" secondItem="2jX-YR-Hod" secondAttribute="bottom" constant="12" id="pOC-BK-sDo"/>
+                    <constraint firstItem="0CW-u8-6bT" firstAttribute="leading" secondItem="wtb-uB-0iP" secondAttribute="trailing" constant="8" id="oLb-b4-FwX"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addEventButton" destination="tgP-5e-BgH" id="71w-E1-hIW"/>
+                <outlet property="calendarButton" destination="wtb-uB-0iP" id="OtK-55-0TN"/>
+                <outlet property="todayLabel" destination="0CW-u8-6bT" id="8SE-Bn-U1U"/>
+                <outlet property="topDateLabel" destination="2jX-YR-Hod" id="eKH-dl-yji"/>
+            </connections>
             <point key="canvasLocation" x="34" y="74.5"/>
         </tableViewCell>
     </objects>

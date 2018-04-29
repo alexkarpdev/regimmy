@@ -14,7 +14,15 @@ class DiaryTableViewController: UITableViewController {
     
     @IBOutlet var leftButton: UIBarButtonItem! //calendar
     @IBOutlet var rightButton: UIBarButtonItem! //add
+    
+    @IBOutlet var topDateLabel: UILabel!
+    @IBOutlet var todayLabel: UILabel!
+    //@IBOutlet var calendarButton: UIButton!
+    //@IBOutlet var addEventButton: UIButton!
+    
     var isItemsShowen = false
+    
+    var selectedDate = Date()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +33,14 @@ class DiaryTableViewController: UITableViewController {
         setUpItemButtons()
         
        
-        let headerView = (Bundle.main.loadNibNamed(CalendarHeaderCell.identifier, owner: self, options: nil)![0] as? UIView)
+        let headerView = (Bundle.main.loadNibNamed(CalendarHeaderCell.identifier, owner: self, options: nil)![0] as? CalendarHeaderCell)
+        
+        topDateLabel = headerView?.topDateLabel
+        todayLabel = headerView?.todayLabel
+        
+        headerView?.calendarButton.addTarget(self, action: #selector(calendarAction(_:)), for: .touchUpInside)
+        headerView?.addEventButton.addTarget(self, action: #selector(addAction(_:)), for: .touchUpInside)
+        
         let seporatorView = UIView(frame: CGRect(x: 0, y: headerView!.frame.size.height - 1, width: self.view.frame.size.width, height: 0.5))
         seporatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         headerView!.addSubview(seporatorView)
@@ -50,6 +65,7 @@ class DiaryTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         generateEvents()
+        updateDateOn(selectedDate: selectedDate)
     }
     
     @IBAction func addAction(_ sender: Any) {
@@ -58,6 +74,7 @@ class DiaryTableViewController: UITableViewController {
     }
     
     @IBAction func calendarAction(_ sender: Any) {
+        performSegue(withIdentifier: "ShowCalendarSegue", sender: self)
         debugPrint("calendarAction")
     }
     
@@ -106,7 +123,7 @@ class DiaryTableViewController: UITableViewController {
             isItemsShowen = true
             navigationController?.navigationBar.topItem?.rightBarButtonItem = rightButton
             navigationController?.navigationBar.topItem?.leftBarButtonItem = leftButton
-            navigationController?.navigationBar.topItem?.title = RootEvent(date: Date(), name: "", type: .drugs).dateString
+            navigationController?.navigationBar.topItem?.title = todayLabel.text
         }else if dif < 0 && isItemsShowen {
             isItemsShowen = false
             navigationController?.navigationBar.topItem?.rightBarButtonItem = nil
@@ -122,8 +139,61 @@ class DiaryTableViewController: UITableViewController {
         let types: [EventType] = [.eating, .train, .measure, .eating, .drugs, .eating]
         
         for i in 0..<names.count {
-            let event = RootEvent(date: Date(), name: names[i], type: types[i])
+            let event = RootEvent(date: selectedDate, name: names[i], type: types[i])
             events.append(event)
+        }
+        
+        
+    }
+    
+    func updateDateOn(selectedDate: Date){
+        self.selectedDate = selectedDate
+        generateEvents()
+        tableView.reloadData()
+        //topDateLabel.text = selectedDate.description(with: Locale(identifier: "ru-RU"))
+        prepareDate()
+    }
+    
+    func prepareDate(){
+        let calendar = Calendar.current
+        
+        let df = DateFormatter()
+        df.dateFormat = "EEEE,dd MMMM"
+        df.locale = Locale(identifier: "ru-RU")
+        
+        var top = ""
+        var today = ""
+        
+        /*
+        let year = calendar.component(.year, from: selectedDate)
+        let month = calendar.component(.month, from: selectedDate)
+        let day = calendar.component(.day, from: selectedDate)
+        let weekday = calendar.component(.weekday, from: selectedDate)
+        */
+        
+        var comps = df.string(from: selectedDate).split(separator: ",")
+        
+        top = String(comps[0]).capitalizingFirstLetter() + ", " + comps[1]
+        
+        if calendar.isDateInYesterday(selectedDate) {
+            today = "Вчера"
+        }else if calendar.isDateInToday(selectedDate) {
+            today = "Сегодня"
+        }else if calendar.isDateInTomorrow(selectedDate) {
+            today = "Завтра"
+        }else {
+            df.dateFormat = "dd MMMM"
+            today = df.string(from: selectedDate)
+            
+            df.dateFormat = "EEEE, yyyy"
+            top = df.string(from: selectedDate).capitalizingFirstLetter()
+        }
+        
+        topDateLabel.text = top
+        todayLabel.text = today
+        
+        if isItemsShowen {
+            navigationController?.navigationBar.topItem?.title = todayLabel.text
         }
         
         
@@ -225,14 +295,41 @@ class DiaryTableViewController: UITableViewController {
     }
     */
 
-    /*
+    func hideTabBar() {
+        var frame = self.tabBarController?.tabBar.frame
+        frame!.origin.y = self.view.frame.size.height// + (frame?.size.height)!
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.tabBarController?.tabBar.frame = frame!
+        }, completion: nil)
+    }
+    
+    func showTabBar() {
+        var frame = self.tabBarController?.tabBar.frame
+        frame!.origin.y = self.view.frame.size.height - (frame?.size.height)!
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.tabBarController?.tabBar.frame = frame!
+        }, completion: nil)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+       
+        if segue.identifier == "ShowCalendarSegue" {
+            hideTabBar()
+            (segue.destination as! CalendarViewController).selectedDate = selectedDate
+            (segue.destination as! CalendarViewController).isPickerHidden = false
+            (segue.destination as! CalendarViewController).completion = { [unowned self](selectedDate: Date) in
+                
+                self.showTabBar()
+                self.updateDateOn(selectedDate: selectedDate)
+                print(selectedDate)
+            }
+        }
     }
-    */
+    
 
 }
+
+

@@ -22,7 +22,7 @@ class EditEventTableViewController: UITableViewController {
         
         tableView.register(UINib(nibName: AddHeaderCell.identifier, bundle: nil), forCellReuseIdentifier: AddHeaderCell.identifier)
         
-        tableView.register(UINib(nibName: AddEatingCell.identifier, bundle: nil), forCellReuseIdentifier: AddEatingCell.identifier)//ingr
+        tableView.register(UINib(nibName: AddIngredientCell.identifier, bundle: nil), forCellReuseIdentifier: AddIngredientCell.identifier)//ingr
         tableView.register(UINib(nibName: CalendarExerciseCell.identifier, bundle: nil), forCellReuseIdentifier: CalendarExerciseCell.identifier)//ex
         tableView.register(UINib(nibName: CalendarMeasureCell.identifier, bundle: nil), forCellReuseIdentifier: CalendarMeasureCell.identifier)//mes/drug
         
@@ -79,7 +79,7 @@ class EditEventTableViewController: UITableViewController {
                     cell = tableView.dequeueReusableCell(withIdentifier: AddHeaderCell.identifier, for: indexPath) as! AddHeaderCell
                     cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addNewExercise)))
                 }else{
-                    cell = tableView.dequeueReusableCell(withIdentifier: AddEatingCell.identifier, for: indexPath) as! AddEatingCell
+                    cell = tableView.dequeueReusableCell(withIdentifier: AddIngredientCell.identifier, for: indexPath) as! AddIngredientCell
                 }
             case .train:
                 if indexPath.row == 0 {

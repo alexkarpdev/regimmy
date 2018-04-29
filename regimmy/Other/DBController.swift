@@ -5,7 +5,7 @@
 //  Created by Natalia Sonina on 21.04.2018.
 //  Copyright © 2018 Natalia Sonina. All rights reserved.
 //
-
+/*
 import Foundation
 import RealmSwift
 
@@ -60,4 +60,5 @@ class Person: Object {
 }
 
 // Use them like regular Swift objects
+ */
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,8 +18,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        DBController()
+        
+        if !RealmDBController.shared.isIngredientsExist {
+            loadDefaultIngredientFromFileToRealm()
+        }
+        
         return true
+    }
+    
+    func loadDefaultIngredientFromFileToRealm(){
+        
+        let path = Bundle.main.path(forResource: "Ingredients", ofType: "plist")
+        let ingredientsAr: [[String]] = NSArray(contentsOfFile: path!) as! [[String]]
+        
+        for ingredient in ingredientsAr {
+            let ri = RIngredient()
+            ri.name = ingredient[0]
+            ri.prot = Double(ingredient[1])!
+            ri.fat = Double(ingredient[2])!
+            ri.carbo = Double(ingredient[3])!
+            ri.cal = Double(ingredient[4])!
+            
+            RealmDBController.shared.save(object: ri)
+        }
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

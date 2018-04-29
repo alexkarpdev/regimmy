@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="84" id="KGk-i7-Jjw" customClass="EditorIngredientCell" customModule="regimmy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="322" height="84"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="322" height="83.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whx-GH-vQN">
+                        <rect key="frame" x="68" y="57" width="27" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="0DI-br-aiX"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                        <color key="textColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kur-fL-KJf">
+                        <rect key="frame" x="16" y="57" width="27" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="37N-ai-RNx"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                        <color key="textColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Жиры" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Td-Iq-sJ1">
+                        <rect key="frame" x="68" y="40" width="40" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="1b9-1L-vm6"/>
+                            <constraint firstAttribute="width" constant="40" id="bZw-c0-Ucf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                        <color key="textColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99.9K" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMj-9p-Qa2">
+                        <rect key="frame" x="120" y="57" width="39.5" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="adF-lg-QBw"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                        <color key="textColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Энерг." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiY-5d-sx0">
+                        <rect key="frame" x="172" y="40" width="40" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="SYA-XN-HMk"/>
+                            <constraint firstAttribute="height" constant="15" id="u00-nP-ZU7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                        <color key="textColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="г" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YC9-wY-jvi">
+                        <rect key="frame" x="159.5" y="60" width="5" height="12"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
+                        <color key="textColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="г" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRs-K5-LPi">
+                        <rect key="frame" x="95" y="60" width="5" height="12"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
+                        <color key="textColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdw-JS-93i">
+                        <rect key="frame" x="172" y="57" width="27" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="9Kb-nX-wzj"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                        <color key="textColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Углев." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAt-9g-8qc">
+                        <rect key="frame" x="120" y="40" width="40" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="CwL-og-ucK"/>
+                            <constraint firstAttribute="height" constant="15" id="avq-0t-xs7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                        <color key="textColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Белки" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAN-Kn-hUE">
+                        <rect key="frame" x="16" y="40" width="40" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="9bd-KH-2A2"/>
+                            <constraint firstAttribute="height" constant="15" id="BpY-sh-cH2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                        <color key="textColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Приём пищи" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73Z-T6-N2t">
+                        <rect key="frame" x="16" y="11" width="108.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="kkU-Zq-6xD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="г" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uf6-ad-kfh">
+                        <rect key="frame" x="43" y="60" width="5" height="12"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
+                        <color key="textColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="к" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkL-0D-JyR">
+                        <rect key="frame" x="199" y="60" width="5.5" height="12"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
+                        <color key="textColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="BiY-5d-sx0" firstAttribute="leading" secondItem="iAt-9g-8qc" secondAttribute="trailing" constant="12" id="4Te-da-yDK"/>
+                    <constraint firstItem="oRs-K5-LPi" firstAttribute="centerY" secondItem="Whx-GH-vQN" secondAttribute="centerY" id="7mo-Ue-1Z1"/>
+                    <constraint firstItem="uf6-ad-kfh" firstAttribute="centerY" secondItem="kur-fL-KJf" secondAttribute="centerY" id="8bl-Y1-e7J"/>
+                    <constraint firstItem="dkL-0D-JyR" firstAttribute="leading" secondItem="qdw-JS-93i" secondAttribute="trailing" id="99j-Zs-Ed2"/>
+                    <constraint firstItem="iAt-9g-8qc" firstAttribute="centerY" secondItem="UAN-Kn-hUE" secondAttribute="centerY" id="BtP-J6-OLv"/>
+                    <constraint firstItem="73Z-T6-N2t" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="CCl-HF-VK1"/>
+                    <constraint firstItem="oRs-K5-LPi" firstAttribute="leading" secondItem="Whx-GH-vQN" secondAttribute="trailing" id="Cgj-2C-zYg"/>
+                    <constraint firstItem="Whx-GH-vQN" firstAttribute="leading" secondItem="4Td-Iq-sJ1" secondAttribute="leading" id="GVA-r4-xlK"/>
+                    <constraint firstItem="cMj-9p-Qa2" firstAttribute="leading" secondItem="iAt-9g-8qc" secondAttribute="leading" id="GsP-OE-eBS"/>
+                    <constraint firstItem="4Td-Iq-sJ1" firstAttribute="centerY" secondItem="UAN-Kn-hUE" secondAttribute="centerY" id="HdH-Qx-n9k"/>
+                    <constraint firstItem="UAN-Kn-hUE" firstAttribute="leading" secondItem="73Z-T6-N2t" secondAttribute="leading" id="HrH-f4-aYV"/>
+                    <constraint firstAttribute="bottom" secondItem="kur-fL-KJf" secondAttribute="bottom" constant="8.5" id="LKF-a9-eIu"/>
+                    <constraint firstItem="BiY-5d-sx0" firstAttribute="centerY" secondItem="UAN-Kn-hUE" secondAttribute="centerY" id="RM3-Xm-iyL"/>
+                    <constraint firstItem="YC9-wY-jvi" firstAttribute="leading" secondItem="cMj-9p-Qa2" secondAttribute="trailing" id="UAY-PO-Rex"/>
+                    <constraint firstItem="qdw-JS-93i" firstAttribute="leading" secondItem="BiY-5d-sx0" secondAttribute="leading" id="Wki-WP-qXg"/>
+                    <constraint firstItem="iAt-9g-8qc" firstAttribute="leading" secondItem="4Td-Iq-sJ1" secondAttribute="trailing" constant="12" id="XL2-c7-nq4"/>
+                    <constraint firstItem="uf6-ad-kfh" firstAttribute="leading" secondItem="kur-fL-KJf" secondAttribute="trailing" id="ZoI-SY-HHK"/>
+                    <constraint firstItem="qdw-JS-93i" firstAttribute="top" secondItem="BiY-5d-sx0" secondAttribute="bottom" constant="2" id="a6A-xF-yK6"/>
+                    <constraint firstItem="kur-fL-KJf" firstAttribute="leading" secondItem="UAN-Kn-hUE" secondAttribute="leading" id="aUD-df-2oF"/>
+                    <constraint firstItem="YC9-wY-jvi" firstAttribute="centerY" secondItem="cMj-9p-Qa2" secondAttribute="centerY" id="bQy-qR-81U"/>
+                    <constraint firstItem="4Td-Iq-sJ1" firstAttribute="leading" secondItem="UAN-Kn-hUE" secondAttribute="trailing" constant="12" id="fHu-ki-S7S"/>
+                    <constraint firstItem="cMj-9p-Qa2" firstAttribute="top" secondItem="iAt-9g-8qc" secondAttribute="bottom" constant="2" id="hyN-ou-HQo"/>
+                    <constraint firstItem="73Z-T6-N2t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="kXD-ZW-F7G"/>
+                    <constraint firstItem="dkL-0D-JyR" firstAttribute="centerY" secondItem="qdw-JS-93i" secondAttribute="centerY" id="mGC-QM-0nL"/>
+                    <constraint firstItem="Whx-GH-vQN" firstAttribute="top" secondItem="4Td-Iq-sJ1" secondAttribute="bottom" constant="2" id="r80-GU-Q7s"/>
+                    <constraint firstItem="UAN-Kn-hUE" firstAttribute="top" secondItem="73Z-T6-N2t" secondAttribute="bottom" constant="8" id="vaz-KO-cf3"/>
+                    <constraint firstItem="kur-fL-KJf" firstAttribute="top" secondItem="UAN-Kn-hUE" secondAttribute="bottom" constant="2" id="zYq-qI-Rdr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="calLabel" destination="qdw-JS-93i" id="6ag-dj-9Wz"/>
+                <outlet property="carbLabel" destination="cMj-9p-Qa2" id="soV-2u-NaN"/>
+                <outlet property="fatLabel" destination="Whx-GH-vQN" id="dq9-zj-R6b"/>
+                <outlet property="ingredientNameLabel" destination="73Z-T6-N2t" id="QWy-1e-FgB"/>
+                <outlet property="protLabel" destination="kur-fL-KJf" id="W2n-S1-mKZ"/>
+            </connections>
+            <point key="canvasLocation" x="35" y="74"/>
+        </tableViewCell>
+    </objects>
+</document>

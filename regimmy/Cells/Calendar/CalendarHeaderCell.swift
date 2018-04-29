@@ -12,6 +12,12 @@ class CalendarHeaderCell: UITableViewCell {
     
     static let identifier = "CalendarHeaderCell"
 
+    @IBOutlet weak var topDateLabel: UILabel!
+    @IBOutlet weak var todayLabel: UILabel!
+    @IBOutlet weak var calendarButton: UIButton!
+    @IBOutlet weak var addEventButton: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
