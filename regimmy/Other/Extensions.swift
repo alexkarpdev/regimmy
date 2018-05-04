@@ -25,3 +25,23 @@ extension Double {
         return (self * divisor).rounded() / divisor
     }
 }
+
+extension UIViewController {
+    func hideTabBar() {
+        if var frame = self.tabBarController?.tabBar.frame {
+            frame.origin.y = self.view.frame.size.height// + (frame?.size.height)!
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                self.tabBarController?.tabBar.frame = frame
+            }, completion: nil)
+        }
+    }
+    
+    func showTabBar() {
+        if var frame = self.tabBarController?.tabBar.frame {
+            frame.origin.y = self.view.frame.size.height - (frame.size.height)
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                self.tabBarController?.tabBar.frame = frame
+            }, completion: nil)
+        }
+    }
+}

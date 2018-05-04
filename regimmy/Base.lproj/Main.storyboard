@@ -47,6 +47,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexBackgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexTrackingBackgroundColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                         <connections>
                             <outlet property="dataSource" destination="cu3-um-1W4" id="yW4-OS-Kgy"/>
                             <outlet property="delegate" destination="cu3-um-1W4" id="qZj-Md-cn9"/>
@@ -60,8 +62,8 @@
                         <outlet property="leftButton" destination="k6z-Al-vfT" id="zWf-wL-YO8"/>
                         <outlet property="rightButton" destination="UBB-e6-3Wk" id="gm1-g4-Uir"/>
                         <segue destination="3Dz-ep-8c1" kind="presentation" identifier="AddSegue" id="An1-9s-TAF"/>
-                        <segue destination="eEP-u4-apV" kind="presentation" identifier="ShowEventSegue" id="05B-t9-mM7"/>
                         <segue destination="Xo9-hU-dpt" kind="presentation" identifier="ShowCalendarSegue" modalPresentationStyle="overCurrentContext" id="K8Z-TC-NnJ"/>
+                        <segue destination="hBn-k6-oaI" kind="show" identifier="ShowEventSegue" id="MOX-3E-5N8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BPI-yb-MKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -71,7 +73,7 @@
         <!--Добавить-->
         <scene sceneID="AXn-EQ-mMd">
             <objects>
-                <tableViewController id="07u-2v-zU1" customClass="AddEventTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="07u-2v-zU1" customClass="EventTypesListTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DaK-Qw-yF2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,7 +111,7 @@
         <!--Тренировку-->
         <scene sceneID="ZC8-bq-fbD">
             <objects>
-                <tableViewController id="q0i-mJ-J5X" customClass="AddTemplateTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="q0i-mJ-J5X" customClass="EventTemplatesListTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pph-58-77O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,7 +131,13 @@
                             <outlet property="delegate" destination="q0i-mJ-J5X" id="ZRR-oo-a2c"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Тренировку" id="kQi-Qt-fBT"/>
+                    <navigationItem key="navigationItem" title="Тренировку" id="kQi-Qt-fBT">
+                        <barButtonItem key="rightBarButtonItem" title="Отмена" id="MPl-7w-c8S">
+                            <connections>
+                                <action selector="cancelAction:" destination="q0i-mJ-J5X" id="e53-ZU-NQG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="eEP-u4-apV" kind="show" identifier="EditEventSegue" id="IH6-Qo-sfo"/>
                     </connections>
@@ -141,7 +149,7 @@
         <!--Новую-->
         <scene sceneID="VLM-Gl-3Yt">
             <objects>
-                <tableViewController id="hBn-k6-oaI" customClass="EditEventTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="hBn-k6-oaI" customClass="EventDetailTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cUE-XP-x1f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -167,9 +175,11 @@
                                 <action selector="cancelAction:" destination="hBn-k6-oaI" id="oXF-Nv-MSA"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="Du9-dZ-Ri3"/>
+                        <barButtonItem key="rightBarButtonItem" title="Изменить" id="Du9-dZ-Ri3"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="leftButtonItem" destination="fAS-Wa-XYR" id="jI4-vC-ihg"/>
+                        <outlet property="rightButtonItem" destination="Du9-dZ-Ri3" id="kw6-3Z-YmG"/>
                         <segue destination="V9Z-zH-gUJ" kind="show" identifier="IngredientsListSegue" id="U49-QO-aCc"/>
                         <segue destination="aLt-qS-58u" kind="show" identifier="MeasureChooseSegue" id="l56-KZ-95J"/>
                     </connections>
@@ -568,23 +578,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="703" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4U-FJ-3tk">
-                                <rect key="frame" x="0.0" y="111" width="703" height="536"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4U-FJ-3tk">
+                                <rect key="frame" x="0.0" y="119" width="703" height="540"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MOT-0j-rMv">
-                                        <rect key="frame" x="0.0" y="0.0" width="703" height="536"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="734" height="552"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="muscle-main" translatesAutoresizingMaskIntoConstraints="NO" id="Fem-er-6SP">
-                                                <rect key="frame" x="161.5" y="0.0" width="380" height="536"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="muscle-main" translatesAutoresizingMaskIntoConstraints="NO" id="Fem-er-6SP">
+                                                <rect key="frame" x="160" y="0.0" width="414" height="552"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="380" id="3GD-A2-TN8"/>
+                                                    <constraint firstAttribute="width" secondItem="Fem-er-6SP" secondAttribute="height" multiplier="3:4" id="VIF-zk-I2Z"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="muscle-trapezius" translatesAutoresizingMaskIntoConstraints="NO" id="X1E-Oc-pKu">
-                                                <rect key="frame" x="161.5" y="0.0" width="380" height="536"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="muscle-trapezius" translatesAutoresizingMaskIntoConstraints="NO" id="X1E-Oc-pKu">
+                                                <rect key="frame" x="160.5" y="0.0" width="414" height="552"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F59-Cp-bJY" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="555" y="86" width="104" height="22"/>
+                                                <rect key="frame" x="587.5" y="94" width="104" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Зад. дельты" image="unchecked">
@@ -595,7 +605,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXK-6i-3c3" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="555" y="116" width="88" height="24"/>
+                                                <rect key="frame" x="587.5" y="124" width="88" height="24"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Трапеция" image="checked">
@@ -606,7 +616,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMA-QA-OZd" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="555" y="150" width="80" height="22"/>
+                                                <rect key="frame" x="587.5" y="158" width="80" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Круглые" image="unchecked">
@@ -617,7 +627,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuB-GS-nNq" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="555" y="182" width="81" height="22"/>
+                                                <rect key="frame" x="587.5" y="190" width="81" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Трицепс" image="unchecked">
@@ -628,7 +638,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkD-RM-434" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="555" y="214" width="114" height="22"/>
+                                                <rect key="frame" x="587.5" y="222" width="114" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Широчайшие" image="unchecked">
@@ -639,7 +649,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFM-Do-4OQ" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="555" y="246" width="108" height="22"/>
+                                                <rect key="frame" x="587.5" y="254" width="108" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Поясничные" image="unchecked">
@@ -650,7 +660,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAu-yZ-BPo" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="555" y="278" width="132" height="22"/>
+                                                <rect key="frame" x="587.5" y="286" width="132" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Мал. ягодичные" image="unchecked">
@@ -661,7 +671,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agk-jd-rjH" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="555" y="310" width="129" height="22"/>
+                                                <rect key="frame" x="587.5" y="318" width="129" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Бол. ягодичные" image="unchecked">
@@ -672,7 +682,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYe-bg-YIa" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="555" y="342" width="118" height="22"/>
+                                                <rect key="frame" x="587.5" y="350" width="118" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Бицепс бедра" image="unchecked">
@@ -683,7 +693,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yKL-rY-cFM" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="54" width="52" height="22"/>
+                                                <rect key="frame" x="24" y="62" width="52" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Шея" image="unchecked">
@@ -694,7 +704,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUk-3H-sTn" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="86" width="97" height="22"/>
+                                                <rect key="frame" x="24" y="94" width="97" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Ср. дельты" image="unchecked">
@@ -705,7 +715,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEr-yr-eS8" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="116" width="106" height="24"/>
+                                                <rect key="frame" x="24" y="124" width="106" height="24"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Пер. дельты" image="checked">
@@ -716,7 +726,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mao-LE-x0S" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="150" width="61" height="22"/>
+                                                <rect key="frame" x="24" y="158" width="61" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Грудь" image="unchecked">
@@ -727,7 +737,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEL-Dr-IkP" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="182" width="105" height="22"/>
+                                                <rect key="frame" x="24" y="190" width="105" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Бронхиалис" image="unchecked">
@@ -738,7 +748,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufw-WX-ldq" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="214" width="73" height="22"/>
+                                                <rect key="frame" x="24" y="222" width="73" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Бицепс" image="unchecked">
@@ -749,7 +759,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3d-3F-XNO" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="246" width="106" height="22"/>
+                                                <rect key="frame" x="24" y="254" width="106" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Предплечье" image="unchecked">
@@ -760,7 +770,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkO-gE-dSe" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="278" width="88" height="22"/>
+                                                <rect key="frame" x="24" y="286" width="88" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Зубчатые" image="unchecked">
@@ -771,7 +781,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HbF-dG-h4u" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="310" width="66" height="22"/>
+                                                <rect key="frame" x="24" y="318" width="66" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Косые" image="unchecked">
@@ -782,7 +792,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auf-tL-Qu3" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="342" width="66" height="22"/>
+                                                <rect key="frame" x="24" y="350" width="66" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Пресс" image="unchecked">
@@ -793,7 +803,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGP-ae-my9" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="374" width="101" height="22"/>
+                                                <rect key="frame" x="24" y="382" width="101" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Отводящие" image="unchecked">
@@ -804,7 +814,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwT-hK-Asb" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="406" width="106" height="22"/>
+                                                <rect key="frame" x="24" y="414" width="106" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Квадрицепс" image="unchecked">
@@ -815,7 +825,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iP-T5-SQP" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="438" width="110" height="22"/>
+                                                <rect key="frame" x="24" y="446" width="110" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Приводящие" image="unchecked">
@@ -826,7 +836,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBW-tK-yrA" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="555" y="372" width="59" height="22"/>
+                                                <rect key="frame" x="587.5" y="380" width="59" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                                 <state key="normal" title="Икры" image="unchecked">
@@ -856,9 +866,7 @@
                                             <constraint firstItem="X1E-Oc-pKu" firstAttribute="centerX" secondItem="MOT-0j-rMv" secondAttribute="centerX" id="GbI-4P-5Sj"/>
                                             <constraint firstAttribute="bottom" secondItem="Fem-er-6SP" secondAttribute="bottom" id="GcC-Ff-hdC"/>
                                             <constraint firstItem="OMA-QA-OZd" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-107" id="Hag-PV-VKJ"/>
-                                            <constraint firstAttribute="width" constant="703" id="Jhv-HJ-2xs"/>
                                             <constraint firstItem="GXK-6i-3c3" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-140" id="L5j-CG-Ksp"/>
-                                            <constraint firstAttribute="height" constant="536" id="L7H-Tb-SVd"/>
                                             <constraint firstItem="nkD-RM-434" firstAttribute="leading" secondItem="F59-Cp-bJY" secondAttribute="leading" id="MEP-ZY-CAT"/>
                                             <constraint firstItem="Fem-er-6SP" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" id="Mf2-zE-gqj"/>
                                             <constraint firstItem="GXK-6i-3c3" firstAttribute="leading" secondItem="F59-Cp-bJY" secondAttribute="leading" id="O1F-0Y-pLm"/>
@@ -879,10 +887,12 @@
                                             <constraint firstItem="QYe-bg-YIa" firstAttribute="leading" secondItem="F59-Cp-bJY" secondAttribute="leading" id="cSM-EM-3as"/>
                                             <constraint firstItem="X1E-Oc-pKu" firstAttribute="height" secondItem="Fem-er-6SP" secondAttribute="height" id="d1v-Xf-iAt"/>
                                             <constraint firstItem="Mao-LE-x0S" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-107" id="dh2-yh-99A"/>
+                                            <constraint firstAttribute="height" constant="552" id="drs-Ba-T7W"/>
                                             <constraint firstItem="pBW-tK-yrA" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="115" id="eGJ-sc-SgA"/>
                                             <constraint firstItem="pBW-tK-yrA" firstAttribute="leading" secondItem="F59-Cp-bJY" secondAttribute="leading" id="hXt-02-Fkb"/>
                                             <constraint firstItem="gEr-yr-eS8" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="-140" id="j5e-Jz-cxt"/>
                                             <constraint firstItem="HbF-dG-h4u" firstAttribute="leading" secondItem="yKL-rY-cFM" secondAttribute="leading" id="jFE-cq-xEl"/>
+                                            <constraint firstAttribute="width" constant="734" id="js7-8A-nNI"/>
                                             <constraint firstItem="bkO-gE-dSe" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="21" id="kkt-ih-hT5"/>
                                             <constraint firstItem="aGP-ae-my9" firstAttribute="centerY" secondItem="MOT-0j-rMv" secondAttribute="centerY" constant="117" id="kqD-ev-zcJ"/>
                                             <constraint firstItem="aGP-ae-my9" firstAttribute="leading" secondItem="yKL-rY-cFM" secondAttribute="leading" id="mAf-Y4-AWt"/>
@@ -905,7 +915,7 @@
                                 </constraints>
                             </scrollView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="J7j-tq-qT1">
-                                <rect key="frame" x="233.5" y="75" width="236" height="29"/>
+                                <rect key="frame" x="249.5" y="75" width="236" height="29"/>
                                 <segments>
                                     <segment title="Передний"/>
                                     <segment title="Общий"/>
@@ -916,7 +926,7 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вид:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cj9-pD-Xr9">
-                                <rect key="frame" x="193.5" y="81" width="32" height="17"/>
+                                <rect key="frame" x="209.5" y="81" width="32" height="17"/>
                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -924,20 +934,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="J7j-tq-qT1" firstAttribute="centerX" secondItem="0T3-GY-PQQ" secondAttribute="centerX" id="3j5-Ja-dYh"/>
+                            <constraint firstItem="J7j-tq-qT1" firstAttribute="centerX" secondItem="0T3-GY-PQQ" secondAttribute="centerX" constant="16" id="3j5-Ja-dYh"/>
                             <constraint firstItem="J7j-tq-qT1" firstAttribute="top" secondItem="utH-2I-bAh" secondAttribute="top" constant="11" id="BfX-3S-TAM"/>
                             <constraint firstItem="J7j-tq-qT1" firstAttribute="leading" secondItem="Cj9-pD-Xr9" secondAttribute="trailing" constant="8" id="Ll0-Bc-e7R"/>
                             <constraint firstItem="utH-2I-bAh" firstAttribute="trailing" secondItem="Z4U-FJ-3tk" secondAttribute="trailing" id="Yco-SZ-hlt"/>
-                            <constraint firstItem="Z4U-FJ-3tk" firstAttribute="top" secondItem="J7j-tq-qT1" secondAttribute="bottom" constant="8" id="glB-TV-53r"/>
+                            <constraint firstItem="Z4U-FJ-3tk" firstAttribute="top" secondItem="J7j-tq-qT1" secondAttribute="bottom" constant="16" id="glB-TV-53r"/>
                             <constraint firstItem="Cj9-pD-Xr9" firstAttribute="centerY" secondItem="J7j-tq-qT1" secondAttribute="centerY" id="lCZ-kT-NEI"/>
                             <constraint firstItem="Z4U-FJ-3tk" firstAttribute="leading" secondItem="utH-2I-bAh" secondAttribute="leading" id="ppB-o3-dJr"/>
-                            <constraint firstItem="utH-2I-bAh" firstAttribute="bottom" secondItem="Z4U-FJ-3tk" secondAttribute="bottom" constant="20" id="rNG-Cl-XBe"/>
+                            <constraint firstItem="utH-2I-bAh" firstAttribute="bottom" secondItem="Z4U-FJ-3tk" secondAttribute="bottom" constant="8" id="rNG-Cl-XBe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="utH-2I-bAh"/>
                     </view>
                     <navigationItem key="navigationItem" id="hnb-RQ-UGZ"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="703" height="667"/>
                     <connections>
+                        <outlet property="csView" destination="MOT-0j-rMv" id="pjm-Oy-G4N"/>
+                        <outlet property="csViewHeight" destination="drs-Ba-T7W" id="zw5-oV-i6h"/>
+                        <outlet property="csViewWidth" destination="js7-8A-nNI" id="5uS-Oz-7jN"/>
                         <outlet property="muscleMainImageView" destination="Fem-er-6SP" id="a9n-0E-k0Q"/>
                         <outlet property="musclePartsImageView" destination="X1E-Oc-pKu" id="ltE-6D-HIn"/>
                         <outlet property="scrollView" destination="Z4U-FJ-3tk" id="fWv-Ca-WS1"/>
@@ -1012,7 +1026,7 @@
         <!--Редактор-->
         <scene sceneID="b6g-eN-537">
             <objects>
-                <tableViewController id="KS6-DX-VE8" customClass="EditorMainTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="KS6-DX-VE8" customClass="EditorTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5vM-e3-0pR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1124,7 +1138,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lIA-25-GtL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2295" y="-845"/>
+            <point key="canvasLocation" x="2284" y="-1141"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ggz-Ob-KJz">
@@ -1142,12 +1156,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXc-St-2xP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4996" y="-761"/>
+            <point key="canvasLocation" x="4996" y="-827"/>
         </scene>
         <!--Упражнения-->
         <scene sceneID="yw3-wd-KBV">
             <objects>
-                <tableViewController id="vMY-k3-wTD" customClass="IngredientsListTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="vMY-k3-wTD" customClass="SubEventsListTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="suT-WI-ZMR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1168,7 +1182,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Упражнения" prompt="Выберите упражнение" id="Vz3-K6-fZl">
-                        <barButtonItem key="leftBarButtonItem" title="Отмена" id="jSM-vx-r2s">
+                        <barButtonItem key="leftBarButtonItem" title="Готово" id="jSM-vx-r2s">
                             <connections>
                                 <action selector="cancelAction:" destination="vMY-k3-wTD" id="bda-00-0a1"/>
                             </connections>
@@ -1179,17 +1193,18 @@
                         <outlet property="leftButtonItem" destination="jSM-vx-r2s" id="dOG-Vp-e8c"/>
                         <outlet property="rightButtonItem" destination="W21-gY-4wO" id="jds-rC-wcK"/>
                         <segue destination="m8Q-pL-nbv" kind="show" identifier="SetsListSegue" id="4qV-bT-Ttz"/>
-                        <segue destination="HBA-7N-wfa" kind="presentation" identifier="AddEditSubEventSegue" id="1UP-9z-1qJ"/>
+                        <segue destination="HBA-7N-wfa" kind="presentation" identifier="AddSubEventSegue" id="1UP-9z-1qJ"/>
+                        <segue destination="LN7-Ud-zu6" kind="show" identifier="ShowSubEventDetailSegue" id="Qq6-5D-HZv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6eC-xz-fqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6782" y="641"/>
         </scene>
-        <!--Editor Edit Subevent Table View Controller-->
+        <!--Editor Sub Event Detail Table View Controller-->
         <scene sceneID="7YU-IM-AVT">
             <objects>
-                <tableViewController id="LN7-Ud-zu6" customClass="EditorEditSubeventTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="LN7-Ud-zu6" customClass="EditorSubEventDetailTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YKj-7A-kun">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1225,7 +1240,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQU-ab-1sK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8804" y="640.92953523238384"/>
+            <point key="canvasLocation" x="8812" y="641"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yDZ-Ky-ggx">
@@ -1261,7 +1276,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktd-oi-pgn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7864.8000000000002" y="640.92953523238384"/>
+            <point key="canvasLocation" x="7801" y="1023"/>
         </scene>
     </scenes>
     <resources>
@@ -1280,7 +1295,8 @@
         <image name="weight" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zaj-sX-PlJ"/>
-        <segue reference="05B-t9-mM7"/>
+        <segue reference="Qq6-5D-HZv"/>
+        <segue reference="dyg-EQ-HTj"/>
+        <segue reference="MOX-3E-5N8"/>
     </inferredMetricsTieBreakers>
 </document>

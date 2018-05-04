@@ -8,9 +8,14 @@
 
 import UIKit
 
-class EditEventTableViewController: UITableViewController {
+class EventDetailTableViewController: UITableViewController {
     
+    @IBOutlet var leftButtonItem: UIBarButtonItem!
+    @IBOutlet var rightButtonItem: UIBarButtonItem!
+    
+    var navc: UINavigationController?
     var selectedEventType: EventType!
+    var isEditingMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +38,42 @@ class EditEventTableViewController: UITableViewController {
         
         tableView.tableFooterView = UIView()
         
-        tableView.isEditing = true
+        if (navigationController?.viewControllers.first === self) {
+            setEditingMode(isEdit: true)
+            navigationItem.leftBarButtonItem?.action = #selector(dismissAction(_:))
+            navigationItem.leftBarButtonItem?.target = self
+        }else{
+            setEditingMode(isEdit: false)
+        }
+        
+        
         
     }
     
+    func setEditingMode(isEdit: Bool){
+        isEditingMode = isEdit
+        tableView.setEditing(isEdit, animated: true)
+        setButtonItemsForEditor()
+        
+        isEdit ? hideTabBar() : showTabBar()
+    }
     
+    func setButtonItemsForEditor(){
+            //tabBarController?.tabBar.isHidden = tableView.isEditing
+            if tableView.isEditing == true {
+                hideTabBar()
+                rightButtonItem.action = #selector(saveAction)
+                rightButtonItem.target = self
+                rightButtonItem.title = "Сохранить"
+                navigationItem.leftBarButtonItem = leftButtonItem
+            }else{
+                showTabBar()
+                navigationItem.leftBarButtonItem = nil
+                rightButtonItem.action = #selector(openForEditAction)
+                rightButtonItem.target = self
+                rightButtonItem.title = "Изменить"
+            }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -80,6 +116,7 @@ class EditEventTableViewController: UITableViewController {
                     cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addNewExercise)))
                 }else{
                     cell = tableView.dequeueReusableCell(withIdentifier: AddIngredientCell.identifier, for: indexPath) as! AddIngredientCell
+                    (cell as! AddIngredientCell).numberLabel.text = String(indexPath.row)
                 }
             case .train:
                 if indexPath.row == 0 {
@@ -202,15 +239,38 @@ class EditEventTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "IngredientsListSegue" {
-            let vc = (segue.destination as! UINavigationController).viewControllers.first as! IngredientsListTableViewController
+            let vc = (segue.destination as! UINavigationController).viewControllers.first as! SubEventsListTableViewController
             vc.selectedEventType = selectedEventType
             vc.navigationItem.title = "Выберите"
             vc.navigationItem.rightBarButtonItem = nil
         }
     }
     
-    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+    @IBAction func dismissAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func openForEditAction() {
+        setEditingMode(isEdit: true)
+        //performSegue(withIdentifier: "IngredientsEditSegue", sender: self)
+    }
+    
+    @objc func saveAction() {
+        setEditingMode(isEdit: false)
+        if navigationController?.viewControllers.first !== self {
+            //navigationController?.popViewController(animated: true)
+        }else{
+            dismiss(animated: true){ [weak self] in
+                self?.navc?.dismiss(animated: true, completion: nil)
+            }
+            
+        }
+        //performSegue(withIdentifier: "AddEditSubEventSegue", sender: self)
+    }
+    
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+        setEditingMode(isEdit: false)
+        //dismiss(animated: true, completion: nil)
     }
     
 }

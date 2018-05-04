@@ -9,13 +9,15 @@
 import UIKit
 import RealmSwift
 
-class IngredientsListTableViewController: UITableViewController {
+class SubEventsListTableViewController: UITableViewController {
     
     var selectedEventType: EventType!
     var selectedSubEventType: SubEventType!
     
-    var selectedObjects: [Object]?
-    var objects: [Object]?
+    var isEditorMode = true
+    
+    var selectedObjects = [Object]()
+    var objects = [Object]()
     
     let repeatList = ["Нет", "Каждый день", "Каждую неделю", "Каждые 2 недели", "Каждый месяц", "Каждый год"]
     let notifyList = ["Нет", "В момент события", "За 5 минут", "За 15 минут", "За 30 минут", "За 1 час", "За 2 часа", "За 1 день", "За 2 дня", "За 2 неделю"]
@@ -40,13 +42,17 @@ class IngredientsListTableViewController: UITableViewController {
             switch sel {
             case .exercise:
                 selectedEventType = .train
+                objects = RealmDBController.shared.load() as [RExercise]
             case .ingredient:
                 selectedEventType = .eating
+                objects = RealmDBController.shared.load() as [RIngredient]
             case .drug:
                 selectedEventType = .drugs
+                objects = RealmDBController.shared.load() as [RDrug]
             default:
                 break
             }
+            
         }else{
             
         }
@@ -66,21 +72,6 @@ class IngredientsListTableViewController: UITableViewController {
     //func setButtonsFor
     func setButtonItemsForEditor(){
         if navigationController?.viewControllers.first !== self {
-            func hideTabBar() {
-                var frame = self.tabBarController?.tabBar.frame
-                frame!.origin.y = self.view.frame.size.height// + (frame?.size.height)!
-                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                    self.tabBarController?.tabBar.frame = frame!
-                }, completion: nil)
-            }
-            
-            func showTabBar() {
-                var frame = self.tabBarController?.tabBar.frame
-                frame!.origin.y = self.view.frame.size.height - (frame?.size.height)!
-                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                    self.tabBarController?.tabBar.frame = frame!
-                }, completion: nil)
-            }
             
             //tabBarController?.tabBar.isHidden = tableView.isEditing
             if tableView.isEditing == true {
@@ -99,6 +90,7 @@ class IngredientsListTableViewController: UITableViewController {
         }else{
             navigationItem.leftBarButtonItem?.action = #selector(dismissAction(_:))
             navigationItem.leftBarButtonItem?.target = self
+            navigationItem.leftBarButtonItem?.title = "Готово"
             
         }
     }
@@ -117,7 +109,7 @@ class IngredientsListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return objects.count
     }
 
     
@@ -126,15 +118,24 @@ class IngredientsListTableViewController: UITableViewController {
         
         //let selectedEventType: EventType = .train
         
+        
         switch selectedEventType! {
         case .eating:
             cell = tableView.dequeueReusableCell(withIdentifier: EditorIngredientCell.identifier, for: indexPath) as! EditorIngredientCell
+            let object = objects[indexPath.row] as! RIngredient
+            (cell as! EditorIngredientCell).configure(name: object.name, prot: object.prot, fat: object.fat, carb: object.carbo, cal: object.cal)
         case .train:
             cell = tableView.dequeueReusableCell(withIdentifier: CalendarExerciseCell.identifier, for: indexPath) as! CalendarExerciseCell
         case .measure:
             cell = tableView.dequeueReusableCell(withIdentifier: CalendarMeasureCell.identifier, for: indexPath) as! CalendarMeasureCell
         case .drugs:
             cell = tableView.dequeueReusableCell(withIdentifier: CalendarMeasureCell.identifier, for: indexPath) as! CalendarMeasureCell
+        }
+        
+        if isEditorMode {
+            cell.accessoryType = .disclosureIndicator
+        }else{
+            //checkMARK
         }
         
         return cell
@@ -194,17 +195,14 @@ class IngredientsListTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "IngredientsEditSegue" {
-            let vc = (segue.destination as! UINavigationController).viewControllers.first as! IngredientsListTableViewController
-            vc.selectedEventType = selectedEventType
-            vc.navigationItem.title = "Редактировать"
-            vc.tableView.isEditing = true
-            vc.rightButtonItem.title = "Добавить"
-            vc.leftButtonItem.title = "Готово"
-            vc.navigationItem.prompt = nil
+        
+        if segue.identifier == "AddSubEventSegue" {
+            let vc = (segue.destination as! UINavigationController).viewControllers.first as! EditorSubEventDetailTableViewController
+            vc.selectedSubEventType = selectedSubEventType
         }
-        if segue.identifier == "AddEditSubEventSegue" {
-            let vc = (segue.destination as! UINavigationController).viewControllers.first as! EditorEditSubeventTableViewController
+        
+        if segue.identifier == "ShowSubEventDetailSegue" {
+            let vc = (segue.destination as! UINavigationController).viewControllers.first as! EditorSubEventDetailTableViewController
             vc.selectedSubEventType = selectedSubEventType
         }
     }
@@ -224,7 +222,7 @@ class IngredientsListTableViewController: UITableViewController {
     }
     
      @objc func addAction() {
-        performSegue(withIdentifier: "AddEditSubEventSegue", sender: self)
+        performSegue(withIdentifier: "AddSubEventSegue", sender: self)
     }
     
     

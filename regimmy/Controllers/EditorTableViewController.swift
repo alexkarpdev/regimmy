@@ -1,41 +1,29 @@
 //
-//  AddEventTableViewController.swift
+//  EditorMainTableViewController.swift
 //  regimmy
 //
-//  Created by Natalia Sonina on 29.03.2018.
+//  Created by Natalia Sonina on 03.04.2018.
 //  Copyright © 2018 Natalia Sonina. All rights reserved.
 //
 
 import UIKit
 
-class AddEventTableViewController: UITableViewController {
+class EditorTableViewController: UITableViewController {
 
-    
-    let types: [EventType] = [.eating, .train, .measure, .drugs]
-    
-    var selectedEventType: EventType!
+    let types: [SubEventType] = [.exercise, .ingredient, .drug]
+    var selectedSubEventType: SubEventType!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         tableView.register(UINib(nibName: AddEventCell.identifier, bundle: nil), forCellReuseIdentifier: AddEventCell.identifier)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
         self.tableView.tableFooterView = UIView()
     }
 
-    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,6 +32,7 @@ class AddEventTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -52,7 +41,6 @@ class AddEventTableViewController: UITableViewController {
         return types.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AddEventCell.identifier) as! AddEventCell
         cell.configure(with: types[indexPath.row])
@@ -61,8 +49,8 @@ class AddEventTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedEventType = types[indexPath.row]
-        performSegue(withIdentifier: "AddTemplateSegue", sender: self)
+        selectedSubEventType = types[indexPath.row]
+        performSegue(withIdentifier: "IngredientsListSegue", sender: self)
     }
 
     /*
@@ -105,10 +93,11 @@ class AddEventTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddTemplateSegue" {
-            let vc = segue.destination as! AddTemplateTableViewController
-            vc.selectedEventType = selectedEventType
-            vc.navigationItem.title = selectedEventType.name
+        if segue.identifier == "IngredientsListSegue" {
+            let vc = segue.destination as! SubEventsListTableViewController
+            vc.selectedSubEventType = selectedSubEventType
+            vc.navigationItem.title = selectedSubEventType.name
+            vc.navigationItem.prompt = nil
         }
     }
     

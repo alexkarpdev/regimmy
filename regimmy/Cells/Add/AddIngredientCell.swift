@@ -24,6 +24,13 @@ class AddIngredientCell: UITableViewCell {
     
     func configure(name: String, prot: Double, fat: Double, carb: Double, cal: Double, mass: Double = 100, number: Double = 0){
         
+        self.ingredientNameLabel.text = name
+        self.protLabel.text = String(prot)
+        self.fatLabel.text = String(fat)
+        self.carbLabel.text = String(carb)
+        self.calLabel.text = String(cal)
+        self.massLabel.text = String(mass)
+        self.numberLabel.text = String(number)
         
     }
     

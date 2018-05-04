@@ -23,7 +23,7 @@ class EditorNutrientCell: UITableViewCell {
         nutrientUnitLabel.textColor = color
         
         nutrientNameLabel.text = name
-        nutrientUnitLabel.text = unit
+        nutrientUnitLabel.text = unit == "ккал." ? "  ккал." : unit
         if let val = value{
             valueField.text = "\(val)"
         }

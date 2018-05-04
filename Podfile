@@ -9,4 +9,7 @@ target 'regimmy' do
 
   pod 'Charts'
   pod 'ChartsRealm'
+  pod 'NSDate+TimeAgo'
+
+  #pod 'FSCalendar', :git => 'https://github.com/WenchaoD/FSCalendar.git'
 end

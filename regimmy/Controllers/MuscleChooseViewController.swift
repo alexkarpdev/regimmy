@@ -16,6 +16,9 @@ class MuscleChooseViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet var muscleButtons: [UIButton]!
     
+    @IBOutlet weak var csViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var csViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var csView: UIView!
     @IBOutlet weak var musclePartsImageView: UIImageView!
     @IBOutlet weak var muscleMainImageView: UIImageView!
     override func viewDidLoad() {
@@ -23,6 +26,13 @@ class MuscleChooseViewController: UIViewController, UIScrollViewDelegate {
         
         scrollView.delegate = self
         scrollView.isScrollEnabled = false
+        
+        
+        csViewHeight.constant = self.view.frame.size.height - 140
+        csViewWidth.constant = self.view.frame.size.width * 2
+        
+        csView.layoutIfNeeded()
+        csView.layoutSubviews()
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeOnScrollAction))
         swipeRight.direction = .right

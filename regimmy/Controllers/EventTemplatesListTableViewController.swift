@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTemplateTableViewController: UITableViewController {
+class EventTemplatesListTableViewController: UITableViewController {
     
     var selectedEventType: EventType!
     
@@ -143,12 +143,16 @@ class AddTemplateTableViewController: UITableViewController {
     
     // MARK: - Navigation
 
+    @IBAction func cancelAction(_ sender: Any) {
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditEventSegue" {
-            let vc = (segue.destination as! UINavigationController).viewControllers.first as! EditEventTableViewController
+            let vc = (segue.destination as! UINavigationController).viewControllers.first as! EventDetailTableViewController
             vc.selectedEventType = selectedEventType
             vc.navigationItem.title = "Новый " + selectedEventType.name.lowercased()
+            vc.navc = self.navigationController
         }
     }
     

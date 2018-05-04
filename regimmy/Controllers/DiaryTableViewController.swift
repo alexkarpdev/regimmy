@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DiaryTableViewController: UITableViewController {
     
@@ -17,18 +18,25 @@ class DiaryTableViewController: UITableViewController {
     
     @IBOutlet var topDateLabel: UILabel!
     @IBOutlet var todayLabel: UILabel!
+    
     //@IBOutlet var calendarButton: UIButton!
     //@IBOutlet var addEventButton: UIButton!
+    
+    var tapOnTableView: UITapGestureRecognizer!
     
     var isItemsShowen = false
     
     var selectedDate = Date()
+    
+    var selectedEvent = RBaseEvent()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //navigationController?.navigationBar.shadowImage = UIImage()
         
+        tapOnTableView = UITapGestureRecognizer(target: self, action: #selector(showSelectedEvent(sender:)))
+        view.addGestureRecognizer(tapOnTableView)
+        view.isUserInteractionEnabled = true
         
         setUpItemButtons()
         
@@ -38,12 +46,12 @@ class DiaryTableViewController: UITableViewController {
         topDateLabel = headerView?.topDateLabel
         todayLabel = headerView?.todayLabel
         
-        headerView?.calendarButton.addTarget(self, action: #selector(calendarAction(_:)), for: .touchUpInside)
-        headerView?.addEventButton.addTarget(self, action: #selector(addAction(_:)), for: .touchUpInside)
+        //headerView?.calendarButton.addTarget(self, action: #selector(calendarAction(_:)), for: .touchUpInside)
+        //headerView?.addEventButton.addTarget(self, action: #selector(addAction(_:)), for: .touchUpInside)
         
-        let seporatorView = UIView(frame: CGRect(x: 0, y: headerView!.frame.size.height - 1, width: self.view.frame.size.width, height: 0.5))
-        seporatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        headerView!.addSubview(seporatorView)
+        //let seporatorView = UIView(frame: CGRect(x: 0, y: headerView!.frame.size.height - 1, width: self.view.frame.size.width, height: 0.5))
+        //seporatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        //headerView!.addSubview(seporatorView)
         tableView.tableHeaderView = headerView
         
         tableView.register(UINib(nibName: SimpleEventCell.identifier, bundle: nil), forCellReuseIdentifier: SimpleEventCell.identifier)
@@ -58,6 +66,8 @@ class DiaryTableViewController: UITableViewController {
         
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 44
+        
+        //tableView.backgroundColor = #colorLiteral(red: 0.9764705882, green: 0.9764705882, blue: 0.9764705882, alpha: 1)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -66,6 +76,14 @@ class DiaryTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         generateEvents()
         updateDateOn(selectedDate: selectedDate)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //navigationController?.navigationBar.shadowImage = nil
     }
     
     @IBAction func addAction(_ sender: Any) {
@@ -108,6 +126,10 @@ class DiaryTableViewController: UITableViewController {
         
         navigationController?.navigationBar.topItem?.leftBarButtonItem = nil
         navigationController?.navigationBar.topItem?.rightBarButtonItem = nil
+        
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = rightButton
+        navigationController?.navigationBar.topItem?.leftBarButtonItem = leftButton
+        //navigationController?.navigationBar.topItem?.title = ""
     }
  
     
@@ -121,13 +143,13 @@ class DiaryTableViewController: UITableViewController {
         
         if dif > 0 && !isItemsShowen {
             isItemsShowen = true
-            navigationController?.navigationBar.topItem?.rightBarButtonItem = rightButton
-            navigationController?.navigationBar.topItem?.leftBarButtonItem = leftButton
+            //navigationController?.navigationBar.topItem?.rightBarButtonItem = rightButton
+            //navigationController?.navigationBar.topItem?.leftBarButtonItem = leftButton
             navigationController?.navigationBar.topItem?.title = todayLabel.text
         }else if dif < 0 && isItemsShowen {
             isItemsShowen = false
-            navigationController?.navigationBar.topItem?.rightBarButtonItem = nil
-            navigationController?.navigationBar.topItem?.leftBarButtonItem = nil
+            //navigationController?.navigationBar.topItem?.rightBarButtonItem = nil
+            //navigationController?.navigationBar.topItem?.leftBarButtonItem = nil
             navigationController?.navigationBar.topItem?.title = "Дневник"
         }
         
@@ -186,10 +208,10 @@ class DiaryTableViewController: UITableViewController {
             today = df.string(from: selectedDate)
             
             df.dateFormat = "EEEE, yyyy"
-            top = df.string(from: selectedDate).capitalizingFirstLetter()
+            top = df.string(from: selectedDate)
         }
         
-        topDateLabel.text = top
+        topDateLabel.text = top.uppercased()
         todayLabel.text = today
         
         if isItemsShowen {
@@ -214,18 +236,31 @@ class DiaryTableViewController: UITableViewController {
         if events[section].type == .eating {
             let cell = tableView.dequeueReusableCell(withIdentifier: CalendarEatingHeaderCell.identifier) as! CalendarEatingHeaderCell
             cell.configure(with: events[section])
-            let seporatorView = UIView(frame: CGRect(x: 15, y: cell.frame.size.height - 1, width: self.view.frame.size.width - 15, height: 0.5))
-            seporatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-            cell.contentView.addSubview(seporatorView)
+            
+            let bottomSeporatorView = UIView(frame: CGRect(x: 64, y: cell.frame.size.height - 1, width: self.view.frame.size.width - 64, height: 0.5))
+            bottomSeporatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            cell.contentView.addSubview(bottomSeporatorView)
+            
+            let topSeporatorView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 0.5))
+            topSeporatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            cell.contentView.addSubview(topSeporatorView)
+            
             return cell.contentView
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: SimpleEventCell.identifier) as! SimpleEventCell
         cell.configure(with: events[section])
         
-        let seporatorView = UIView(frame: CGRect(x: 15, y: cell.frame.size.height - 1, width: self.view.frame.size.width - 15, height: 0.5))
-        seporatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        cell.contentView.addSubview(seporatorView)
+        let bottomSeporatorView = UIView(frame: CGRect(x: 64, y: cell.frame.size.height - 1, width: self.view.frame.size.width - 64, height: 0.5))
+        bottomSeporatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        cell.contentView.addSubview(bottomSeporatorView)
+        
+        let topSeporatorView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 0.5))
+        topSeporatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        cell.contentView.addSubview(topSeporatorView)
+        
+//        cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showSelectedEvent(sender:))))
+//        cell.contentView.tag = section
         
         return cell.contentView
     }
@@ -256,6 +291,7 @@ class DiaryTableViewController: UITableViewController {
         }
         //cell.configure(with: events[indexPath.row])
 
+        cell.separatorInset.left = 64
         return cell
     }
     
@@ -294,25 +330,20 @@ class DiaryTableViewController: UITableViewController {
         return true
     }
     */
-
-    func hideTabBar() {
-        var frame = self.tabBarController?.tabBar.frame
-        frame!.origin.y = self.view.frame.size.height// + (frame?.size.height)!
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-            self.tabBarController?.tabBar.frame = frame!
-        }, completion: nil)
-    }
-    
-    func showTabBar() {
-        var frame = self.tabBarController?.tabBar.frame
-        frame!.origin.y = self.view.frame.size.height - (frame?.size.height)!
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-            self.tabBarController?.tabBar.frame = frame!
-        }, completion: nil)
-    }
     
     // MARK: - Navigation
 
+    @objc func showSelectedEvent(sender: UITapGestureRecognizer) {
+        
+        let tapLocation = sender.location(in: tableView)
+        if let indexPath: IndexPath = tableView.indexPathForRow(at: tapLocation){
+            
+            print("tag = \(indexPath.section)")
+            selectedEvent.type = events[indexPath.section].type.rawValue
+            performSegue(withIdentifier: "ShowEventSegue", sender: self)
+        }
+    }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        
@@ -326,6 +357,8 @@ class DiaryTableViewController: UITableViewController {
                 self.updateDateOn(selectedDate: selectedDate)
                 print(selectedDate)
             }
+        }else if segue.identifier == "ShowEventSegue" {
+            (segue.destination as! EventDetailTableViewController).selectedEventType = EventType(rawValue: (selectedEvent.type))!
         }
     }
     

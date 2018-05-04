@@ -15,7 +15,6 @@
 		780AC21A2057D0D100C06598 /* CalendarHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 780AC2182057D0D100C06598 /* CalendarHeaderCell.xib */; };
 		781132AA2089B1B900FD4944 /* ChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781132A92089B1B900FD4944 /* ChartController.swift */; };
 		781132AE2089B2C200FD4944 /* GraphTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781132AD2089B2C200FD4944 /* GraphTableViewController.swift */; };
-		781132B0208AD50600FD4944 /* DBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781132AF208AD50600FD4944 /* DBController.swift */; };
 		781132B2208AF1F300FD4944 /* EventFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781132B1208AF1F300FD4944 /* EventFactory.swift */; };
 		78159EF42057D6D6000E0AAE /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78159ED62057D6D3000E0AAE /* SF-Pro-Text-Medium.otf */; };
 		78159EF52057D6D6000E0AAE /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78159ED72057D6D3000E0AAE /* SF-Pro-Display-Semibold.otf */; };
@@ -61,7 +60,7 @@
 		78159F2D206B53A3000E0AAE /* CalendarMeasureHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78159F2B206B53A3000E0AAE /* CalendarMeasureHeaderCell.xib */; };
 		78159F30206BDB69000E0AAE /* AddEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78159F2E206BDB69000E0AAE /* AddEventCell.swift */; };
 		78159F31206BDB69000E0AAE /* AddEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78159F2F206BDB69000E0AAE /* AddEventCell.xib */; };
-		78159F33206BDCFF000E0AAE /* AddEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78159F32206BDCFF000E0AAE /* AddEventTableViewController.swift */; };
+		78159F33206BDCFF000E0AAE /* EventTypesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78159F32206BDCFF000E0AAE /* EventTypesListTableViewController.swift */; };
 		78159F36206CDA22000E0AAE /* CalendarMeasureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78159F34206CDA22000E0AAE /* CalendarMeasureCell.swift */; };
 		78159F37206CDA22000E0AAE /* CalendarMeasureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78159F35206CDA22000E0AAE /* CalendarMeasureCell.xib */; };
 		78159F3C206CF5D6000E0AAE /* AddHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78159F3A206CF5D6000E0AAE /* AddHeaderCell.swift */; };
@@ -74,7 +73,7 @@
 		78159F49206D0FE7000E0AAE /* AddMeasureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78159F47206D0FE7000E0AAE /* AddMeasureCell.xib */; };
 		78159F4C206D1004000E0AAE /* AddDrugsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78159F4A206D1004000E0AAE /* AddDrugsCell.swift */; };
 		78159F4D206D1004000E0AAE /* AddDrugsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78159F4B206D1004000E0AAE /* AddDrugsCell.xib */; };
-		78159F4F206D27D4000E0AAE /* AddTemplateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78159F4E206D27D4000E0AAE /* AddTemplateTableViewController.swift */; };
+		78159F4F206D27D4000E0AAE /* EventTemplatesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78159F4E206D27D4000E0AAE /* EventTemplatesListTableViewController.swift */; };
 		78159F53206DFC86000E0AAE /* EditFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78159F51206DFC86000E0AAE /* EditFieldCell.swift */; };
 		78159F54206DFC86000E0AAE /* EditFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78159F52206DFC86000E0AAE /* EditFieldCell.xib */; };
 		78159F57206DFCB0000E0AAE /* EditDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78159F55206DFCB0000E0AAE /* EditDateCell.swift */; };
@@ -83,13 +82,13 @@
 		78159F5C206DFCF4000E0AAE /* EditRepeatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78159F5A206DFCF4000E0AAE /* EditRepeatCell.xib */; };
 		78159F5F206E18AB000E0AAE /* EditSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78159F5D206E18AB000E0AAE /* EditSetCell.swift */; };
 		78159F60206E18AB000E0AAE /* EditSetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78159F5E206E18AB000E0AAE /* EditSetCell.xib */; };
-		78163EC32070078D00528CF3 /* EditEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78163EC22070078D00528CF3 /* EditEventTableViewController.swift */; };
-		78163EC5207118A800528CF3 /* IngredientsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78163EC4207118A800528CF3 /* IngredientsListTableViewController.swift */; };
+		78163EC32070078D00528CF3 /* EventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78163EC22070078D00528CF3 /* EventDetailTableViewController.swift */; };
+		78163EC5207118A800528CF3 /* SubEventsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78163EC4207118A800528CF3 /* SubEventsListTableViewController.swift */; };
 		78163EC72071353800528CF3 /* SetsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78163EC62071353800528CF3 /* SetsListTableViewController.swift */; };
 		781FE160207D332D0013D646 /* MuscleChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE15F207D332D0013D646 /* MuscleChooseViewController.swift */; };
 		781FE162207D3C8E0013D646 /* MuscleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE161207D3C8E0013D646 /* MuscleButton.swift */; };
 		781FE164207E2CD80013D646 /* MeasureChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE163207E2CD80013D646 /* MeasureChooseViewController.swift */; };
-		781FE16720804A3D0013D646 /* EditorEditSubeventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE16620804A3D0013D646 /* EditorEditSubeventTableViewController.swift */; };
+		781FE16720804A3D0013D646 /* EditorSubEventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE16620804A3D0013D646 /* EditorSubEventDetailTableViewController.swift */; };
 		781FE16A20804A6E0013D646 /* EditorNutrientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE16820804A6E0013D646 /* EditorNutrientCell.swift */; };
 		781FE16B20804A6E0013D646 /* EditorNutrientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781FE16920804A6E0013D646 /* EditorNutrientCell.xib */; };
 		781FE16E208090B80013D646 /* EditorMuscleChooseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE16C208090B80013D646 /* EditorMuscleChooseCell.swift */; };
@@ -104,7 +103,12 @@
 		781FE180208314910013D646 /* GraphSegChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781FE17E208314910013D646 /* GraphSegChooseCell.xib */; };
 		781FE1832083243D0013D646 /* GraphParameterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE1812083243D0013D646 /* GraphParameterCell.swift */; };
 		781FE1842083243D0013D646 /* GraphParameterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781FE1822083243D0013D646 /* GraphParameterCell.xib */; };
-		784D09F42073869B00D328EA /* EditorMainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784D09F32073869B00D328EA /* EditorMainTableViewController.swift */; };
+		78403AAC209376510037A074 /* EditorIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78403AAA209376510037A074 /* EditorIngredientCell.swift */; };
+		78403AAD209376510037A074 /* EditorIngredientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78403AAB209376510037A074 /* EditorIngredientCell.xib */; };
+		78403AB02094AFA90037A074 /* AddIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78403AAE2094AFA90037A074 /* AddIngredientCell.swift */; };
+		78403AB12094AFA90037A074 /* AddIngredientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78403AAF2094AFA90037A074 /* AddIngredientCell.xib */; };
+		78403AB5209578630037A074 /* Ingredients.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78403AB4209578630037A074 /* Ingredients.plist */; };
+		784D09F42073869B00D328EA /* EditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784D09F32073869B00D328EA /* EditorTableViewController.swift */; };
 		785A21D8204D6771007CFC9B /* SimpleEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A21D6204D6771007CFC9B /* SimpleEventCell.swift */; };
 		785A21D9204D6771007CFC9B /* SimpleEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785A21D7204D6771007CFC9B /* SimpleEventCell.xib */; };
 		785A21DC204D6785007CFC9B /* PhotoEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A21DA204D6784007CFC9B /* PhotoEventCell.swift */; };
@@ -120,6 +124,27 @@
 		789CFAEA204CFA390093B6D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 789CFAE8204CFA390093B6D9 /* LaunchScreen.storyboard */; };
 		789DB0E7208C81AC0076B7FF /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789DB0E6208C81AC0076B7FF /* RealmObjects.swift */; };
 		789DB0E9208C820F0076B7FF /* RealmDBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789DB0E8208C820F0076B7FF /* RealmDBController.swift */; };
+		789DB0EB208DF8930076B7FF /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789DB0EA208DF8930076B7FF /* CalendarViewController.swift */; };
+		789DB144208E09820076B7FF /* FSCalendarCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB123208E09820076B7FF /* FSCalendarCollectionView.m */; };
+		789DB145208E09820076B7FF /* FSCalendarDelegationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB127208E09820076B7FF /* FSCalendarDelegationProxy.m */; };
+		789DB146208E09820076B7FF /* FSCalendarDelegationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB129208E09820076B7FF /* FSCalendarDelegationFactory.m */; };
+		789DB147208E09820076B7FF /* FSCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB12F208E09820076B7FF /* FSCalendarCell.m */; };
+		789DB148208E09820076B7FF /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB130208E09820076B7FF /* FSCalendarStickyHeader.m */; };
+		789DB149208E09820076B7FF /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB131208E09820076B7FF /* FSCalendar.m */; };
+		789DB14A208E09820076B7FF /* FSCalendarCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB132208E09820076B7FF /* FSCalendarCollectionViewLayout.m */; };
+		789DB14B208E09820076B7FF /* FSCalendarScopeHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB133208E09820076B7FF /* FSCalendarScopeHandle.m */; };
+		789DB14C208E09820076B7FF /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB134208E09820076B7FF /* FSCalendarWeekdayView.m */; };
+		789DB14D208E09820076B7FF /* FSCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB138208E09820076B7FF /* FSCalendarExtensions.m */; };
+		789DB14E208E09820076B7FF /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB13A208E09820076B7FF /* FSCalendar+Deprecated.m */; };
+		789DB14F208E09820076B7FF /* FSCalendarConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB13B208E09820076B7FF /* FSCalendarConstants.m */; };
+		789DB150208E09820076B7FF /* FSCalendarCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB13C208E09820076B7FF /* FSCalendarCalculator.m */; };
+		789DB151208E09820076B7FF /* FSCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB13D208E09820076B7FF /* FSCalendarHeaderView.m */; };
+		789DB152208E09820076B7FF /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB141208E09820076B7FF /* FSCalendarTransitionCoordinator.m */; };
+		789DB153208E09820076B7FF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 789DB142208E09820076B7FF /* Info.plist */; };
+		789DB154208E09820076B7FF /* FSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB143208E09820076B7FF /* FSCalendarAppearance.m */; };
+		789DB1572091F00D0076B7FF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789DB1562091F00D0076B7FF /* Extensions.swift */; };
+		789DB15920922A910076B7FF /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789DB15820922A910076B7FF /* NSDate+Extension.swift */; };
+		78B60EC02095A5F0002584D8 /* DBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781132AF208AD50600FD4944 /* DBController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -178,7 +203,7 @@
 		78159F2B206B53A3000E0AAE /* CalendarMeasureHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarMeasureHeaderCell.xib; sourceTree = "<group>"; };
 		78159F2E206BDB69000E0AAE /* AddEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventCell.swift; sourceTree = "<group>"; };
 		78159F2F206BDB69000E0AAE /* AddEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddEventCell.xib; sourceTree = "<group>"; };
-		78159F32206BDCFF000E0AAE /* AddEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventTableViewController.swift; sourceTree = "<group>"; };
+		78159F32206BDCFF000E0AAE /* EventTypesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTypesListTableViewController.swift; sourceTree = "<group>"; };
 		78159F34206CDA22000E0AAE /* CalendarMeasureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMeasureCell.swift; sourceTree = "<group>"; };
 		78159F35206CDA22000E0AAE /* CalendarMeasureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarMeasureCell.xib; sourceTree = "<group>"; };
 		78159F3A206CF5D6000E0AAE /* AddHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHeaderCell.swift; sourceTree = "<group>"; };
@@ -191,7 +216,7 @@
 		78159F47206D0FE7000E0AAE /* AddMeasureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMeasureCell.xib; sourceTree = "<group>"; };
 		78159F4A206D1004000E0AAE /* AddDrugsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrugsCell.swift; sourceTree = "<group>"; };
 		78159F4B206D1004000E0AAE /* AddDrugsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDrugsCell.xib; sourceTree = "<group>"; };
-		78159F4E206D27D4000E0AAE /* AddTemplateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTemplateTableViewController.swift; sourceTree = "<group>"; };
+		78159F4E206D27D4000E0AAE /* EventTemplatesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTemplatesListTableViewController.swift; sourceTree = "<group>"; };
 		78159F51206DFC86000E0AAE /* EditFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldCell.swift; sourceTree = "<group>"; };
 		78159F52206DFC86000E0AAE /* EditFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditFieldCell.xib; sourceTree = "<group>"; };
 		78159F55206DFCB0000E0AAE /* EditDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDateCell.swift; sourceTree = "<group>"; };
@@ -200,13 +225,13 @@
 		78159F5A206DFCF4000E0AAE /* EditRepeatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditRepeatCell.xib; sourceTree = "<group>"; };
 		78159F5D206E18AB000E0AAE /* EditSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSetCell.swift; sourceTree = "<group>"; };
 		78159F5E206E18AB000E0AAE /* EditSetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditSetCell.xib; sourceTree = "<group>"; };
-		78163EC22070078D00528CF3 /* EditEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventTableViewController.swift; sourceTree = "<group>"; };
-		78163EC4207118A800528CF3 /* IngredientsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListTableViewController.swift; sourceTree = "<group>"; };
+		78163EC22070078D00528CF3 /* EventDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailTableViewController.swift; sourceTree = "<group>"; };
+		78163EC4207118A800528CF3 /* SubEventsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubEventsListTableViewController.swift; sourceTree = "<group>"; };
 		78163EC62071353800528CF3 /* SetsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsListTableViewController.swift; sourceTree = "<group>"; };
 		781FE15F207D332D0013D646 /* MuscleChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleChooseViewController.swift; sourceTree = "<group>"; };
 		781FE161207D3C8E0013D646 /* MuscleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleButton.swift; sourceTree = "<group>"; };
 		781FE163207E2CD80013D646 /* MeasureChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureChooseViewController.swift; sourceTree = "<group>"; };
-		781FE16620804A3D0013D646 /* EditorEditSubeventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorEditSubeventTableViewController.swift; sourceTree = "<group>"; };
+		781FE16620804A3D0013D646 /* EditorSubEventDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorSubEventDetailTableViewController.swift; sourceTree = "<group>"; };
 		781FE16820804A6E0013D646 /* EditorNutrientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorNutrientCell.swift; sourceTree = "<group>"; };
 		781FE16920804A6E0013D646 /* EditorNutrientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditorNutrientCell.xib; sourceTree = "<group>"; };
 		781FE16C208090B80013D646 /* EditorMuscleChooseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorMuscleChooseCell.swift; sourceTree = "<group>"; };
@@ -221,7 +246,12 @@
 		781FE17E208314910013D646 /* GraphSegChooseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphSegChooseCell.xib; sourceTree = "<group>"; };
 		781FE1812083243D0013D646 /* GraphParameterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphParameterCell.swift; sourceTree = "<group>"; };
 		781FE1822083243D0013D646 /* GraphParameterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphParameterCell.xib; sourceTree = "<group>"; };
-		784D09F32073869B00D328EA /* EditorMainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorMainTableViewController.swift; sourceTree = "<group>"; };
+		78403AAA209376510037A074 /* EditorIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorIngredientCell.swift; sourceTree = "<group>"; };
+		78403AAB209376510037A074 /* EditorIngredientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditorIngredientCell.xib; sourceTree = "<group>"; };
+		78403AAE2094AFA90037A074 /* AddIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientCell.swift; sourceTree = "<group>"; };
+		78403AAF2094AFA90037A074 /* AddIngredientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddIngredientCell.xib; sourceTree = "<group>"; };
+		78403AB4209578630037A074 /* Ingredients.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Ingredients.plist; sourceTree = "<group>"; };
+		784D09F32073869B00D328EA /* EditorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTableViewController.swift; sourceTree = "<group>"; };
 		785A21D6204D6771007CFC9B /* SimpleEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEventCell.swift; sourceTree = "<group>"; };
 		785A21D7204D6771007CFC9B /* SimpleEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleEventCell.xib; sourceTree = "<group>"; };
 		785A21DA204D6784007CFC9B /* PhotoEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEventCell.swift; sourceTree = "<group>"; };
@@ -239,6 +269,43 @@
 		789CFAEB204CFA390093B6D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		789DB0E6208C81AC0076B7FF /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
 		789DB0E8208C820F0076B7FF /* RealmDBController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDBController.swift; sourceTree = "<group>"; };
+		789DB0EA208DF8930076B7FF /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		789DB123208E09820076B7FF /* FSCalendarCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionView.m; sourceTree = "<group>"; };
+		789DB124208E09820076B7FF /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
+		789DB125208E09820076B7FF /* FSCalendarCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionViewLayout.h; sourceTree = "<group>"; };
+		789DB126208E09820076B7FF /* FSCalendarScopeHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarScopeHandle.h; sourceTree = "<group>"; };
+		789DB127208E09820076B7FF /* FSCalendarDelegationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationProxy.m; sourceTree = "<group>"; };
+		789DB128208E09820076B7FF /* FSCalendarExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarExtensions.h; sourceTree = "<group>"; };
+		789DB129208E09820076B7FF /* FSCalendarDelegationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationFactory.m; sourceTree = "<group>"; };
+		789DB12A208E09820076B7FF /* FSCalendarCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCalculator.h; sourceTree = "<group>"; };
+		789DB12B208E09820076B7FF /* FSCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarHeaderView.h; sourceTree = "<group>"; };
+		789DB12C208E09820076B7FF /* FSCalendarConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarConstants.h; sourceTree = "<group>"; };
+		789DB12D208E09820076B7FF /* FSCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarAppearance.h; sourceTree = "<group>"; };
+		789DB12E208E09820076B7FF /* FSCalendarTransitionCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarTransitionCoordinator.h; sourceTree = "<group>"; };
+		789DB12F208E09820076B7FF /* FSCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCell.m; sourceTree = "<group>"; };
+		789DB130208E09820076B7FF /* FSCalendarStickyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarStickyHeader.m; sourceTree = "<group>"; };
+		789DB131208E09820076B7FF /* FSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendar.m; sourceTree = "<group>"; };
+		789DB132208E09820076B7FF /* FSCalendarCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionViewLayout.m; sourceTree = "<group>"; };
+		789DB133208E09820076B7FF /* FSCalendarScopeHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarScopeHandle.m; sourceTree = "<group>"; };
+		789DB134208E09820076B7FF /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
+		789DB135208E09820076B7FF /* FSCalendarCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionView.h; sourceTree = "<group>"; };
+		789DB136208E09820076B7FF /* FSCalendarDynamicHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDynamicHeader.h; sourceTree = "<group>"; };
+		789DB137208E09820076B7FF /* FSCalendarDelegationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationFactory.h; sourceTree = "<group>"; };
+		789DB138208E09820076B7FF /* FSCalendarExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarExtensions.m; sourceTree = "<group>"; };
+		789DB139208E09820076B7FF /* FSCalendarDelegationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationProxy.h; sourceTree = "<group>"; };
+		789DB13A208E09820076B7FF /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
+		789DB13B208E09820076B7FF /* FSCalendarConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarConstants.m; sourceTree = "<group>"; };
+		789DB13C208E09820076B7FF /* FSCalendarCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCalculator.m; sourceTree = "<group>"; };
+		789DB13D208E09820076B7FF /* FSCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarHeaderView.m; sourceTree = "<group>"; };
+		789DB13E208E09820076B7FF /* FSCalendarStickyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarStickyHeader.h; sourceTree = "<group>"; };
+		789DB13F208E09820076B7FF /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
+		789DB140208E09820076B7FF /* FSCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCell.h; sourceTree = "<group>"; };
+		789DB141208E09820076B7FF /* FSCalendarTransitionCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarTransitionCoordinator.m; sourceTree = "<group>"; };
+		789DB142208E09820076B7FF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		789DB143208E09820076B7FF /* FSCalendarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarAppearance.m; sourceTree = "<group>"; };
+		789DB155208E09C80076B7FF /* regimmy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "regimmy-Bridging-Header.h"; path = "regimmy/regimmy-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		789DB1562091F00D0076B7FF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		789DB15820922A910076B7FF /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
 		D4069DCD3728F413BD87EFF7 /* Pods-regimmy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-regimmy.release.xcconfig"; path = "Pods/Target Support Files/Pods-regimmy/Pods-regimmy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -365,6 +432,8 @@
 				78159F47206D0FE7000E0AAE /* AddMeasureCell.xib */,
 				78159F4A206D1004000E0AAE /* AddDrugsCell.swift */,
 				78159F4B206D1004000E0AAE /* AddDrugsCell.xib */,
+				78403AAE2094AFA90037A074 /* AddIngredientCell.swift */,
+				78403AAF2094AFA90037A074 /* AddIngredientCell.xib */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -393,6 +462,8 @@
 				781FE16D208090B80013D646 /* EditorMuscleChooseCell.xib */,
 				781FE170208091100013D646 /* EditorDescriptionCell.swift */,
 				781FE171208091100013D646 /* EditorDescriptionCell.xib */,
+				78403AAA209376510037A074 /* EditorIngredientCell.swift */,
+				78403AAB209376510037A074 /* EditorIngredientCell.xib */,
 			);
 			path = Editor;
 			sourceTree = "<group>";
@@ -412,19 +483,28 @@
 			path = Graph;
 			sourceTree = "<group>";
 		};
+		78403AB3209578220037A074 /* DefaultData */ = {
+			isa = PBXGroup;
+			children = (
+				78403AB4209578630037A074 /* Ingredients.plist */,
+			);
+			path = DefaultData;
+			sourceTree = "<group>";
+		};
 		785A21CF204D663F007CFC9B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				785A21E4204D7F56007CFC9B /* DiaryTableViewController.swift */,
-				78159F32206BDCFF000E0AAE /* AddEventTableViewController.swift */,
-				78159F4E206D27D4000E0AAE /* AddTemplateTableViewController.swift */,
-				78163EC22070078D00528CF3 /* EditEventTableViewController.swift */,
-				78163EC4207118A800528CF3 /* IngredientsListTableViewController.swift */,
+				789DB0EA208DF8930076B7FF /* CalendarViewController.swift */,
+				78159F32206BDCFF000E0AAE /* EventTypesListTableViewController.swift */,
+				78159F4E206D27D4000E0AAE /* EventTemplatesListTableViewController.swift */,
+				78163EC22070078D00528CF3 /* EventDetailTableViewController.swift */,
+				78163EC4207118A800528CF3 /* SubEventsListTableViewController.swift */,
 				78163EC62071353800528CF3 /* SetsListTableViewController.swift */,
-				784D09F32073869B00D328EA /* EditorMainTableViewController.swift */,
+				784D09F32073869B00D328EA /* EditorTableViewController.swift */,
+				781FE16620804A3D0013D646 /* EditorSubEventDetailTableViewController.swift */,
 				781FE15F207D332D0013D646 /* MuscleChooseViewController.swift */,
 				781FE163207E2CD80013D646 /* MeasureChooseViewController.swift */,
-				781FE16620804A3D0013D646 /* EditorEditSubeventTableViewController.swift */,
 				781132AD2089B2C200FD4944 /* GraphTableViewController.swift */,
 			);
 			path = Controllers;
@@ -437,13 +517,13 @@
 				781FE165208047B30013D646 /* Editor */,
 				78159F50206DFACE000E0AAE /* Edit */,
 				78159F39206CEF00000E0AAE /* Add */,
+				78159F38206CEEEE000E0AAE /* Calendar */,
 				785A21D6204D6771007CFC9B /* SimpleEventCell.swift */,
 				785A21D7204D6771007CFC9B /* SimpleEventCell.xib */,
 				785A21DA204D6784007CFC9B /* PhotoEventCell.swift */,
 				785A21DB204D6785007CFC9B /* PhotoEventCell.xib */,
 				785A21E0204D7F0C007CFC9B /* CalendarCell.swift */,
 				785A21E1204D7F0D007CFC9B /* CalendarCell.xib */,
-				78159F38206CEEEE000E0AAE /* Calendar */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -455,6 +535,8 @@
 				781FE161207D3C8E0013D646 /* MuscleButton.swift */,
 				781132A92089B1B900FD4944 /* ChartController.swift */,
 				781132AF208AD50600FD4944 /* DBController.swift */,
+				789DB1562091F00D0076B7FF /* Extensions.swift */,
+				789DB15820922A910076B7FF /* NSDate+Extension.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -462,6 +544,7 @@
 		789CFAD0204CFA390093B6D9 = {
 			isa = PBXGroup;
 			children = (
+				789DB122208E09820076B7FF /* FSCalendar */,
 				789CFADB204CFA390093B6D9 /* regimmy */,
 				789CFADA204CFA390093B6D9 /* Products */,
 				5D80ECCB7DC02752F4C6BBD1 /* Pods */,
@@ -480,6 +563,7 @@
 		789CFADB204CFA390093B6D9 /* regimmy */ = {
 			isa = PBXGroup;
 			children = (
+				78403AB3209578220037A074 /* DefaultData */,
 				781132D1208B8A3100FD4944 /* RealmDB */,
 				78159E992057D58E000E0AAE /* MyFonts */,
 				780AC210204D82F600C06598 /* Models */,
@@ -493,8 +577,49 @@
 				789CFAE8204CFA390093B6D9 /* LaunchScreen.storyboard */,
 				789CFAEB204CFA390093B6D9 /* Info.plist */,
 				789CFAE3204CFA390093B6D9 /* regimmy.xcdatamodeld */,
+				789DB155208E09C80076B7FF /* regimmy-Bridging-Header.h */,
 			);
 			path = regimmy;
+			sourceTree = "<group>";
+		};
+		789DB122208E09820076B7FF /* FSCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				789DB123208E09820076B7FF /* FSCalendarCollectionView.m */,
+				789DB124208E09820076B7FF /* FSCalendarWeekdayView.h */,
+				789DB125208E09820076B7FF /* FSCalendarCollectionViewLayout.h */,
+				789DB126208E09820076B7FF /* FSCalendarScopeHandle.h */,
+				789DB127208E09820076B7FF /* FSCalendarDelegationProxy.m */,
+				789DB128208E09820076B7FF /* FSCalendarExtensions.h */,
+				789DB129208E09820076B7FF /* FSCalendarDelegationFactory.m */,
+				789DB12A208E09820076B7FF /* FSCalendarCalculator.h */,
+				789DB12B208E09820076B7FF /* FSCalendarHeaderView.h */,
+				789DB12C208E09820076B7FF /* FSCalendarConstants.h */,
+				789DB12D208E09820076B7FF /* FSCalendarAppearance.h */,
+				789DB12E208E09820076B7FF /* FSCalendarTransitionCoordinator.h */,
+				789DB12F208E09820076B7FF /* FSCalendarCell.m */,
+				789DB130208E09820076B7FF /* FSCalendarStickyHeader.m */,
+				789DB131208E09820076B7FF /* FSCalendar.m */,
+				789DB132208E09820076B7FF /* FSCalendarCollectionViewLayout.m */,
+				789DB133208E09820076B7FF /* FSCalendarScopeHandle.m */,
+				789DB134208E09820076B7FF /* FSCalendarWeekdayView.m */,
+				789DB135208E09820076B7FF /* FSCalendarCollectionView.h */,
+				789DB136208E09820076B7FF /* FSCalendarDynamicHeader.h */,
+				789DB137208E09820076B7FF /* FSCalendarDelegationFactory.h */,
+				789DB138208E09820076B7FF /* FSCalendarExtensions.m */,
+				789DB139208E09820076B7FF /* FSCalendarDelegationProxy.h */,
+				789DB13A208E09820076B7FF /* FSCalendar+Deprecated.m */,
+				789DB13B208E09820076B7FF /* FSCalendarConstants.m */,
+				789DB13C208E09820076B7FF /* FSCalendarCalculator.m */,
+				789DB13D208E09820076B7FF /* FSCalendarHeaderView.m */,
+				789DB13E208E09820076B7FF /* FSCalendarStickyHeader.h */,
+				789DB13F208E09820076B7FF /* FSCalendar.h */,
+				789DB140208E09820076B7FF /* FSCalendarCell.h */,
+				789DB141208E09820076B7FF /* FSCalendarTransitionCoordinator.m */,
+				789DB142208E09820076B7FF /* Info.plist */,
+				789DB143208E09820076B7FF /* FSCalendarAppearance.m */,
+			);
+			path = FSCalendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,7 +634,6 @@
 				789CFAD6204CFA390093B6D9 /* Frameworks */,
 				789CFAD7204CFA390093B6D9 /* Resources */,
 				48E50B08F25A8A8EE5115303 /* [CP] Embed Pods Frameworks */,
-				09E99240D11154692D6FBD33 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -579,9 +703,12 @@
 				78159EFE2057D6D6000E0AAE /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				78159F4D206D1004000E0AAE /* AddDrugsCell.xib in Resources */,
 				78159EFB2057D6D6000E0AAE /* SF-Pro-Text-Regular.otf in Resources */,
+				78403AAD209376510037A074 /* EditorIngredientCell.xib in Resources */,
 				78159F0A2057D6D6000E0AAE /* SF-Pro-Text-LightItalic.otf in Resources */,
 				78159F052057D6D6000E0AAE /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
+				78403AB5209578630037A074 /* Ingredients.plist in Resources */,
 				78159F37206CDA22000E0AAE /* CalendarMeasureCell.xib in Resources */,
+				78403AB12094AFA90037A074 /* AddIngredientCell.xib in Resources */,
 				78159EF42057D6D6000E0AAE /* SF-Pro-Text-Medium.otf in Resources */,
 				78159F15205935BE000E0AAE /* CalendarExerciseCell.xib in Resources */,
 				78159EFF2057D6D6000E0AAE /* SF-Pro-Display-Light.otf in Resources */,
@@ -589,6 +716,7 @@
 				78159F0C2057D6D6000E0AAE /* SF-Pro-Display-BlackItalic.otf in Resources */,
 				78159F2D206B53A3000E0AAE /* CalendarMeasureHeaderCell.xib in Resources */,
 				781FE178208281A00013D646 /* GraphCell.xib in Resources */,
+				789DB153208E09820076B7FF /* Info.plist in Resources */,
 				78159F29206B5387000E0AAE /* CalendarDrugsHeaderCell.xib in Resources */,
 				785A21E3204D7F0D007CFC9B /* CalendarCell.xib in Resources */,
 				78159EF62057D6D6000E0AAE /* SF-Pro-Display-Bold.otf in Resources */,
@@ -626,21 +754,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09E99240D11154692D6FBD33 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-regimmy/Pods-regimmy-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		48E50B08F25A8A8EE5115303 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -650,6 +763,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-regimmy/Pods-regimmy-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/ChartsRealm/ChartsRealm.framework",
+				"${BUILT_PRODUCTS_DIR}/NSDate+TimeAgo/NSDate_TimeAgo.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
@@ -657,6 +771,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChartsRealm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSDate_TimeAgo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
@@ -696,50 +811,71 @@
 				781FE162207D3C8E0013D646 /* MuscleButton.swift in Sources */,
 				789DB0E7208C81AC0076B7FF /* RealmObjects.swift in Sources */,
 				789DB0E9208C820F0076B7FF /* RealmDBController.swift in Sources */,
-				78163EC5207118A800528CF3 /* IngredientsListTableViewController.swift in Sources */,
+				78163EC5207118A800528CF3 /* SubEventsListTableViewController.swift in Sources */,
 				781FE17F208314910013D646 /* GraphSegChooseCell.swift in Sources */,
+				789DB149208E09820076B7FF /* FSCalendar.m in Sources */,
+				789DB0EB208DF8930076B7FF /* CalendarViewController.swift in Sources */,
 				780AC212204D830900C06598 /* RootEvent.swift in Sources */,
 				780AC216204D858D00C06598 /* TrainEvent.swift in Sources */,
-				78159F33206BDCFF000E0AAE /* AddEventTableViewController.swift in Sources */,
+				789DB154208E09820076B7FF /* FSCalendarAppearance.m in Sources */,
+				789DB14D208E09820076B7FF /* FSCalendarExtensions.m in Sources */,
+				78159F33206BDCFF000E0AAE /* EventTypesListTableViewController.swift in Sources */,
 				78159F57206DFCB0000E0AAE /* EditDateCell.swift in Sources */,
+				789DB146208E09820076B7FF /* FSCalendarDelegationFactory.m in Sources */,
 				781FE16E208090B80013D646 /* EditorMuscleChooseCell.swift in Sources */,
+				789DB14A208E09820076B7FF /* FSCalendarCollectionViewLayout.m in Sources */,
 				780AC2192057D0D100C06598 /* CalendarHeaderCell.swift in Sources */,
+				789DB145208E09820076B7FF /* FSCalendarDelegationProxy.m in Sources */,
 				781FE17B2083143F0013D646 /* GraphColorChooseCell.swift in Sources */,
-				78163EC32070078D00528CF3 /* EditEventTableViewController.swift in Sources */,
+				78163EC32070078D00528CF3 /* EventDetailTableViewController.swift in Sources */,
 				781132AA2089B1B900FD4944 /* ChartController.swift in Sources */,
 				78159F53206DFC86000E0AAE /* EditFieldCell.swift in Sources */,
 				781FE1832083243D0013D646 /* GraphParameterCell.swift in Sources */,
+				789DB14E208E09820076B7FF /* FSCalendar+Deprecated.m in Sources */,
+				789DB147208E09820076B7FF /* FSCalendarCell.m in Sources */,
+				78403AB02094AFA90037A074 /* AddIngredientCell.swift in Sources */,
 				781132AE2089B2C200FD4944 /* GraphTableViewController.swift in Sources */,
 				78159F24206B5369000E0AAE /* CalendarTrainHeaderCell.swift in Sources */,
 				785A21E5204D7F56007CFC9B /* DiaryTableViewController.swift in Sources */,
 				789CFADF204CFA390093B6D9 /* ViewController.swift in Sources */,
 				78159F36206CDA22000E0AAE /* CalendarMeasureCell.swift in Sources */,
+				789DB14F208E09820076B7FF /* FSCalendarConstants.m in Sources */,
+				789DB15920922A910076B7FF /* NSDate+Extension.swift in Sources */,
 				781FE16A20804A6E0013D646 /* EditorNutrientCell.swift in Sources */,
-				781132B0208AD50600FD4944 /* DBController.swift in Sources */,
 				78159F48206D0FE7000E0AAE /* AddMeasureCell.swift in Sources */,
 				78159F1820595645000E0AAE /* CalendarIngredientCell.swift in Sources */,
+				789DB144208E09820076B7FF /* FSCalendarCollectionView.m in Sources */,
 				78159F40206D0FA1000E0AAE /* AddTrainCell.swift in Sources */,
 				78159F2C206B53A3000E0AAE /* CalendarMeasureHeaderCell.swift in Sources */,
+				789DB152208E09820076B7FF /* FSCalendarTransitionCoordinator.m in Sources */,
+				789DB151208E09820076B7FF /* FSCalendarHeaderView.m in Sources */,
 				781FE160207D332D0013D646 /* MuscleChooseViewController.swift in Sources */,
 				781FE164207E2CD80013D646 /* MeasureChooseViewController.swift in Sources */,
 				78159F14205935BE000E0AAE /* CalendarExerciseCell.swift in Sources */,
-				784D09F42073869B00D328EA /* EditorMainTableViewController.swift in Sources */,
+				78B60EC02095A5F0002584D8 /* DBController.swift in Sources */,
+				789DB1572091F00D0076B7FF /* Extensions.swift in Sources */,
+				784D09F42073869B00D328EA /* EditorTableViewController.swift in Sources */,
+				78403AAC209376510037A074 /* EditorIngredientCell.swift in Sources */,
 				785A21E2204D7F0D007CFC9B /* CalendarCell.swift in Sources */,
 				78159F3C206CF5D6000E0AAE /* AddHeaderCell.swift in Sources */,
+				789DB150208E09820076B7FF /* FSCalendarCalculator.m in Sources */,
+				789DB14C208E09820076B7FF /* FSCalendarWeekdayView.m in Sources */,
 				785A21D8204D6771007CFC9B /* SimpleEventCell.swift in Sources */,
 				78159F30206BDB69000E0AAE /* AddEventCell.swift in Sources */,
 				781FE172208091100013D646 /* EditorDescriptionCell.swift in Sources */,
 				78159F4C206D1004000E0AAE /* AddDrugsCell.swift in Sources */,
+				789DB14B208E09820076B7FF /* FSCalendarScopeHandle.m in Sources */,
 				78159F5F206E18AB000E0AAE /* EditSetCell.swift in Sources */,
 				789CFAE5204CFA390093B6D9 /* regimmy.xcdatamodeld in Sources */,
 				789CFADD204CFA390093B6D9 /* AppDelegate.swift in Sources */,
 				780AC214204D842E00C06598 /* Enums.swift in Sources */,
 				785A21DC204D6785007CFC9B /* PhotoEventCell.swift in Sources */,
 				78163EC72071353800528CF3 /* SetsListTableViewController.swift in Sources */,
-				781FE16720804A3D0013D646 /* EditorEditSubeventTableViewController.swift in Sources */,
+				781FE16720804A3D0013D646 /* EditorSubEventDetailTableViewController.swift in Sources */,
+				789DB148208E09820076B7FF /* FSCalendarStickyHeader.m in Sources */,
 				78159F20206B5338000E0AAE /* CalendarEatingHeaderCell.swift in Sources */,
 				78159F5B206DFCF4000E0AAE /* EditRepeatCell.swift in Sources */,
-				78159F4F206D27D4000E0AAE /* AddTemplateTableViewController.swift in Sources */,
+				78159F4F206D27D4000E0AAE /* EventTemplatesListTableViewController.swift in Sources */,
 				781132B2208AF1F300FD4944 /* EventFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -819,6 +955,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -868,6 +1005,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -880,11 +1018,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3QZ97JEQUU;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Charts\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ChartsRealm\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Realm\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RealmSwift\"",
+				);
 				INFOPLIST_FILE = regimmy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.natasondev.regimmy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "regimmy/regimmy-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -897,11 +1043,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3QZ97JEQUU;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Charts\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ChartsRealm\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Realm\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RealmSwift\"",
+				);
 				INFOPLIST_FILE = regimmy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.natasondev.regimmy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "regimmy/regimmy-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

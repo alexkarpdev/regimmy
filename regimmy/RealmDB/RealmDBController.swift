@@ -32,9 +32,13 @@ class RealmDBController {
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
-    func save<T:Object>(object: T) {
+    func save<T: Object>(object: T) {
         try! realm.write {
             realm.add(object)
         }
+    }
+    
+    func load<T: Object>() -> [T] {
+        return Array(realm.objects(T.self))
     }
 }
