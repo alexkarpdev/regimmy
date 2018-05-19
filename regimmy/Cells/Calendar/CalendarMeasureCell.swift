@@ -12,6 +12,11 @@ class CalendarMeasureCell: UITableViewCell {
 
     static let identifier = "CalendarMeasureCell"
     
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    
     func configure() {
         
     }

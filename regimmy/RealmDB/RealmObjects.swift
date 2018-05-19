@@ -13,10 +13,12 @@ import RealmSwift
 // MARK: - REvents
 
 class RBaseEvent: Object {
-    @objc dynamic var data = Data()
+    @objc dynamic var date = Date()
     @objc dynamic var type = ""
     @objc dynamic var name = ""
     @objc dynamic var info = ""
+    //@objc dynamic var repeating = ""
+    //@objc dynamic var notification = ""
 }
 
 class REating: RBaseEvent {
@@ -41,6 +43,8 @@ class RMeasuring: RBaseEvent {
 }
 
 // MARK: - RSubEvents
+
+//class BaseSubEvent: Object
 
 class RIngredient: Object {
     @objc dynamic var name = ""
@@ -112,10 +116,8 @@ class RExercise: Object {
     
     @objc dynamic var muscle = ""
     
-    @objc dynamic var type = ""
-    @objc dynamic var repsType = ""
-    @objc dynamic var loadType = ""
-    @objc dynamic var repsUnit = ""
+    @objc dynamic var type = "" //тип
+    @objc dynamic var durationType = "" //продолжительность
     @objc dynamic var loadUnit = ""
     
     func copy() -> RExerciseE {
@@ -125,9 +127,7 @@ class RExercise: Object {
         exerciseE.info = self.info
         exerciseE.muscle = self.muscle
         exerciseE.type = self.type
-        exerciseE.repsType = self.repsType
-        exerciseE.loadType = self.loadType
-        exerciseE.repsUnit = self.repsUnit
+        exerciseE.durationType = self.durationType
         exerciseE.loadUnit = self.loadUnit
         
         return exerciseE

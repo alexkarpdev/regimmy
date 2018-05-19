@@ -106,7 +106,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9B-Uk-BsY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3143" y="-845"/>
+            <point key="canvasLocation" x="3151" y="-1141"/>
         </scene>
         <!--Тренировку-->
         <scene sceneID="ZC8-bq-fbD">
@@ -139,12 +139,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="eEP-u4-apV" kind="show" identifier="EditEventSegue" id="IH6-Qo-sfo"/>
+                        <segue destination="eEP-u4-apV" kind="show" identifier="AddEventSegue" id="IH6-Qo-sfo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5dg-69-fwe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4007" y="-845"/>
+            <point key="canvasLocation" x="4006" y="-1141"/>
         </scene>
         <!--Новую-->
         <scene sceneID="VLM-Gl-3Yt">
@@ -186,7 +186,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbg-0L-3mX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5942" y="-824"/>
+            <point key="canvasLocation" x="5906" y="-790"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="1k3-iq-SRV">
@@ -737,10 +737,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEL-Dr-IkP" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="190" width="105" height="22"/>
+                                                <rect key="frame" x="24" y="190" width="88" height="22"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
-                                                <state key="normal" title="Бронхиалис" image="unchecked">
+                                                <state key="normal" title="Плечевая" image="unchecked">
                                                     <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -985,6 +985,34 @@
             </objects>
             <point key="canvasLocation" x="10402.4" y="-827.13643178410803"/>
         </scene>
+        <!--Properties List Table View Controller-->
+        <scene sceneID="SOw-II-up9">
+            <objects>
+                <tableViewController id="Udw-7U-MfB" customClass="PropertiesListTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UcE-DK-FqU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="uIK-8N-OGR">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uIK-8N-OGR" id="pK3-MM-Lbk">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Udw-7U-MfB" id="uaX-ZJ-YRg"/>
+                            <outlet property="delegate" destination="Udw-7U-MfB" id="eXW-ko-U3N"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ptf-ev-rJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10138" y="-48"/>
+        </scene>
         <!--Дневник-->
         <scene sceneID="OlP-26-4TA">
             <objects>
@@ -1156,7 +1184,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXc-St-2xP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4996" y="-827"/>
+            <point key="canvasLocation" x="4964" y="-1141"/>
         </scene>
         <!--Упражнения-->
         <scene sceneID="yw3-wd-KBV">
@@ -1181,7 +1209,7 @@
                             <outlet property="delegate" destination="vMY-k3-wTD" id="izq-Vw-gIC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Упражнения" prompt="Выберите упражнение" id="Vz3-K6-fZl">
+                    <navigationItem key="navigationItem" title="Упражнения" id="Vz3-K6-fZl">
                         <barButtonItem key="leftBarButtonItem" title="Готово" id="jSM-vx-r2s">
                             <connections>
                                 <action selector="cancelAction:" destination="vMY-k3-wTD" id="bda-00-0a1"/>
@@ -1201,10 +1229,10 @@
             </objects>
             <point key="canvasLocation" x="6782" y="641"/>
         </scene>
-        <!--Editor Sub Event Detail Table View Controller-->
+        <!--Sub Event Detail Table View Controller-->
         <scene sceneID="7YU-IM-AVT">
             <objects>
-                <tableViewController id="LN7-Ud-zu6" customClass="EditorSubEventDetailTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="LN7-Ud-zu6" customClass="SubEventDetailTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YKj-7A-kun">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1236,6 +1264,7 @@
                         <outlet property="leftButtonItem" destination="gdp-7j-gz0" id="7eQ-t3-XLQ"/>
                         <outlet property="rightButtonItem" destination="tyE-eQ-PuN" id="Als-iZ-zEK"/>
                         <segue destination="2Rn-uX-Wze" kind="show" identifier="MuscleChooseSegue" id="4Kp-gF-yAK"/>
+                        <segue destination="Udw-7U-MfB" kind="show" identifier="PropertiesListSegue" id="3IX-CY-zPm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQU-ab-1sK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1258,7 +1287,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NxD-UI-N70" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6781.6000000000004" y="-824.43778110944538"/>
+            <point key="canvasLocation" x="6782" y="-790"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fds-jf-iXy">
@@ -1296,7 +1325,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Qq6-5D-HZv"/>
-        <segue reference="dyg-EQ-HTj"/>
-        <segue reference="MOX-3E-5N8"/>
+        <segue reference="Zaj-sX-PlJ"/>
+        <segue reference="lUp-pB-HzD"/>
     </inferredMetricsTieBreakers>
 </document>

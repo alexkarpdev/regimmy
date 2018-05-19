@@ -88,7 +88,7 @@
 		781FE160207D332D0013D646 /* MuscleChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE15F207D332D0013D646 /* MuscleChooseViewController.swift */; };
 		781FE162207D3C8E0013D646 /* MuscleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE161207D3C8E0013D646 /* MuscleButton.swift */; };
 		781FE164207E2CD80013D646 /* MeasureChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE163207E2CD80013D646 /* MeasureChooseViewController.swift */; };
-		781FE16720804A3D0013D646 /* EditorSubEventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE16620804A3D0013D646 /* EditorSubEventDetailTableViewController.swift */; };
+		781FE16720804A3D0013D646 /* SubEventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE16620804A3D0013D646 /* SubEventDetailTableViewController.swift */; };
 		781FE16A20804A6E0013D646 /* EditorNutrientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE16820804A6E0013D646 /* EditorNutrientCell.swift */; };
 		781FE16B20804A6E0013D646 /* EditorNutrientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781FE16920804A6E0013D646 /* EditorNutrientCell.xib */; };
 		781FE16E208090B80013D646 /* EditorMuscleChooseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE16C208090B80013D646 /* EditorMuscleChooseCell.swift */; };
@@ -103,6 +103,7 @@
 		781FE180208314910013D646 /* GraphSegChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781FE17E208314910013D646 /* GraphSegChooseCell.xib */; };
 		781FE1832083243D0013D646 /* GraphParameterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781FE1812083243D0013D646 /* GraphParameterCell.swift */; };
 		781FE1842083243D0013D646 /* GraphParameterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781FE1822083243D0013D646 /* GraphParameterCell.xib */; };
+		7829089D209D129900EF4847 /* PropertiesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7829089C209D129900EF4847 /* PropertiesListTableViewController.swift */; };
 		78403AAC209376510037A074 /* EditorIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78403AAA209376510037A074 /* EditorIngredientCell.swift */; };
 		78403AAD209376510037A074 /* EditorIngredientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78403AAB209376510037A074 /* EditorIngredientCell.xib */; };
 		78403AB02094AFA90037A074 /* AddIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78403AAE2094AFA90037A074 /* AddIngredientCell.swift */; };
@@ -116,6 +117,7 @@
 		785A21E2204D7F0D007CFC9B /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A21E0204D7F0C007CFC9B /* CalendarCell.swift */; };
 		785A21E3204D7F0D007CFC9B /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785A21E1204D7F0D007CFC9B /* CalendarCell.xib */; };
 		785A21E5204D7F56007CFC9B /* DiaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A21E4204D7F56007CFC9B /* DiaryTableViewController.swift */; };
+		788DCA6C20A5364C0094D8DD /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788DCA6B20A5364C0094D8DD /* PaddingLabel.swift */; };
 		789CFADD204CFA390093B6D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CFADC204CFA390093B6D9 /* AppDelegate.swift */; };
 		789CFADF204CFA390093B6D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CFADE204CFA390093B6D9 /* ViewController.swift */; };
 		789CFAE2204CFA390093B6D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 789CFAE0204CFA390093B6D9 /* Main.storyboard */; };
@@ -231,7 +233,7 @@
 		781FE15F207D332D0013D646 /* MuscleChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleChooseViewController.swift; sourceTree = "<group>"; };
 		781FE161207D3C8E0013D646 /* MuscleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleButton.swift; sourceTree = "<group>"; };
 		781FE163207E2CD80013D646 /* MeasureChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureChooseViewController.swift; sourceTree = "<group>"; };
-		781FE16620804A3D0013D646 /* EditorSubEventDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorSubEventDetailTableViewController.swift; sourceTree = "<group>"; };
+		781FE16620804A3D0013D646 /* SubEventDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubEventDetailTableViewController.swift; sourceTree = "<group>"; };
 		781FE16820804A6E0013D646 /* EditorNutrientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorNutrientCell.swift; sourceTree = "<group>"; };
 		781FE16920804A6E0013D646 /* EditorNutrientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditorNutrientCell.xib; sourceTree = "<group>"; };
 		781FE16C208090B80013D646 /* EditorMuscleChooseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorMuscleChooseCell.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 		781FE17E208314910013D646 /* GraphSegChooseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphSegChooseCell.xib; sourceTree = "<group>"; };
 		781FE1812083243D0013D646 /* GraphParameterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphParameterCell.swift; sourceTree = "<group>"; };
 		781FE1822083243D0013D646 /* GraphParameterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphParameterCell.xib; sourceTree = "<group>"; };
+		7829089C209D129900EF4847 /* PropertiesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesListTableViewController.swift; sourceTree = "<group>"; };
 		78403AAA209376510037A074 /* EditorIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorIngredientCell.swift; sourceTree = "<group>"; };
 		78403AAB209376510037A074 /* EditorIngredientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditorIngredientCell.xib; sourceTree = "<group>"; };
 		78403AAE2094AFA90037A074 /* AddIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientCell.swift; sourceTree = "<group>"; };
@@ -259,6 +262,7 @@
 		785A21E0204D7F0C007CFC9B /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		785A21E1204D7F0D007CFC9B /* CalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
 		785A21E4204D7F56007CFC9B /* DiaryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewController.swift; sourceTree = "<group>"; };
+		788DCA6B20A5364C0094D8DD /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		789CFAD9204CFA390093B6D9 /* regimmy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = regimmy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		789CFADC204CFA390093B6D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		789CFADE204CFA390093B6D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -502,10 +506,11 @@
 				78163EC4207118A800528CF3 /* SubEventsListTableViewController.swift */,
 				78163EC62071353800528CF3 /* SetsListTableViewController.swift */,
 				784D09F32073869B00D328EA /* EditorTableViewController.swift */,
-				781FE16620804A3D0013D646 /* EditorSubEventDetailTableViewController.swift */,
+				781FE16620804A3D0013D646 /* SubEventDetailTableViewController.swift */,
 				781FE15F207D332D0013D646 /* MuscleChooseViewController.swift */,
 				781FE163207E2CD80013D646 /* MeasureChooseViewController.swift */,
 				781132AD2089B2C200FD4944 /* GraphTableViewController.swift */,
+				7829089C209D129900EF4847 /* PropertiesListTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -537,6 +542,7 @@
 				781132AF208AD50600FD4944 /* DBController.swift */,
 				789DB1562091F00D0076B7FF /* Extensions.swift */,
 				789DB15820922A910076B7FF /* NSDate+Extension.swift */,
+				788DCA6B20A5364C0094D8DD /* PaddingLabel.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -809,6 +815,7 @@
 				78159F28206B5387000E0AAE /* CalendarDrugsHeaderCell.swift in Sources */,
 				78159F44206D0FB5000E0AAE /* AddEatingCell.swift in Sources */,
 				781FE162207D3C8E0013D646 /* MuscleButton.swift in Sources */,
+				788DCA6C20A5364C0094D8DD /* PaddingLabel.swift in Sources */,
 				789DB0E7208C81AC0076B7FF /* RealmObjects.swift in Sources */,
 				789DB0E9208C820F0076B7FF /* RealmDBController.swift in Sources */,
 				78163EC5207118A800528CF3 /* SubEventsListTableViewController.swift in Sources */,
@@ -839,6 +846,7 @@
 				785A21E5204D7F56007CFC9B /* DiaryTableViewController.swift in Sources */,
 				789CFADF204CFA390093B6D9 /* ViewController.swift in Sources */,
 				78159F36206CDA22000E0AAE /* CalendarMeasureCell.swift in Sources */,
+				7829089D209D129900EF4847 /* PropertiesListTableViewController.swift in Sources */,
 				789DB14F208E09820076B7FF /* FSCalendarConstants.m in Sources */,
 				789DB15920922A910076B7FF /* NSDate+Extension.swift in Sources */,
 				781FE16A20804A6E0013D646 /* EditorNutrientCell.swift in Sources */,
@@ -871,7 +879,7 @@
 				780AC214204D842E00C06598 /* Enums.swift in Sources */,
 				785A21DC204D6785007CFC9B /* PhotoEventCell.swift in Sources */,
 				78163EC72071353800528CF3 /* SetsListTableViewController.swift in Sources */,
-				781FE16720804A3D0013D646 /* EditorSubEventDetailTableViewController.swift in Sources */,
+				781FE16720804A3D0013D646 /* SubEventDetailTableViewController.swift in Sources */,
 				789DB148208E09820076B7FF /* FSCalendarStickyHeader.m in Sources */,
 				78159F20206B5338000E0AAE /* CalendarEatingHeaderCell.swift in Sources */,
 				78159F5B206DFCF4000E0AAE /* EditRepeatCell.swift in Sources */,

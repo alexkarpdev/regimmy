@@ -13,9 +13,14 @@ class AddHeaderCell: UITableViewCell {
     static let identifier = "AddHeaderCell"
     
     @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var arrowImageView: UIImageView!
     
     func configure() {
         
+    }
+    
+    func rotateArrow(){
+        arrowImageView.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
     }
 
     override func awakeFromNib() {

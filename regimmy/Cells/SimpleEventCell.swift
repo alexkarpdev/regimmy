@@ -20,7 +20,7 @@ class SimpleEventCell: UITableViewCell {
     func configure(with event:RootEvent) {
         
         typeImageView.image = event.type.image
-        timeLabel.text = "" + event.dateTime + "   " // 3 spaces
+        timeLabel.text = event.dateTime
         nameLabel.text = event.name
         
     }

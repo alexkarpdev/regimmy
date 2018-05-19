@@ -14,7 +14,7 @@ class EditFieldCell: UITableViewCell {
     
     @IBOutlet weak var textField: UITextField!
     
-    func configure(placeHolder: String?, text: String?, fontSize: CGFloat?) {
+    func configure(placeHolder: String?, text: String?, fontSize: CGFloat = 17.0) {
         
         if let p = placeHolder {
             textField.placeholder = p
@@ -28,9 +28,8 @@ class EditFieldCell: UITableViewCell {
             textField.text = ""
         }
         
-        if let s = fontSize {
-            textField.font = textField.font!.withSize(s)
-        }
+        textField.font = textField.font!.withSize(fontSize)
+        
     }
     
     override func awakeFromNib() {

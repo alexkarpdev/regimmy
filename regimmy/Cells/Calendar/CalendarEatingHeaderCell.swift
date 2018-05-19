@@ -20,7 +20,7 @@ class CalendarEatingHeaderCell: UITableViewCell {
     func configure(with event:RootEvent) {
         
         typeImageView.image = event.type.image
-        timeLabel.text = "" + event.dateTime + "   "
+        timeLabel.text = event.dateTime
         nameLabel.text = event.name
         
     }

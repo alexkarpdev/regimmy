@@ -12,12 +12,17 @@ class EditorDescriptionCell: UITableViewCell {
 
     static let identifier = "EditorDescriptionCell"
     
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
     func configure() {
         
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        
+        
         // Initialization code
     }
 

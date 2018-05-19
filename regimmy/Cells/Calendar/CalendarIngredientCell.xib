@@ -13,6 +13,9 @@
         <array key="SF-Pro-Text-Heavy.otf">
             <string>SFProText-Heavy</string>
         </array>
+        <array key="SF-Pro-Text-Light.otf">
+            <string>SFProText-Light</string>
+        </array>
         <array key="SF-Pro-Text-Medium.otf">
             <string>SFProText-Medium</string>
         </array>
@@ -23,15 +26,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="59" id="KGk-i7-Jjw" customClass="CalendarIngredientCell" customModule="regimmy" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="386" height="59"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="KGk-i7-Jjw" customClass="CalendarIngredientCell" customModule="regimmy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="386" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="386" height="58.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="386" height="39.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Блюдо/Рецепт" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBl-gE-Ylk">
-                        <rect key="frame" x="64" y="9.5" width="306" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ингредиент" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBl-gE-Ylk">
+                        <rect key="frame" x="60" y="8.5" width="103" height="23"/>
                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -46,14 +49,18 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="грамм" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tke-8C-LNY">
-                        <rect key="frame" x="172" y="35" width="38" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="г" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tke-8C-LNY">
+                        <rect key="frame" x="364" y="13.5" width="6" height="14.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="6" id="6mh-hO-QIf"/>
+                            <constraint firstAttribute="height" constant="14.5" id="NBU-y0-ONJ"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="345" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWd-qn-svv">
-                        <rect key="frame" x="64" y="33" width="28.5" height="18"/>
+                        <rect key="frame" x="286.5" y="11" width="28.5" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="LBD-Mb-NxS"/>
                         </constraints>
@@ -61,42 +68,58 @@
                         <color key="textColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ккал." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBX-dN-mXf">
-                        <rect key="frame" x="94" y="34" width="30.5" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="к" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBX-dN-mXf">
+                        <rect key="frame" x="315" y="12.5" width="7" height="15"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="7" id="5Il-6X-Xag"/>
                             <constraint firstAttribute="height" constant="15" id="KIK-5v-rJa"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="mMO-d9-QEz"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                         <color key="textColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYn-kj-Dgp">
-                        <rect key="frame" x="141" y="33" width="29" height="18"/>
+                        <rect key="frame" x="335" y="11.5" width="29" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="nED-OA-RgO"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEM-7X-NxE">
+                        <rect key="frame" x="326" y="11" width="5" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="rsg-LD-yRG"/>
+                            <constraint firstAttribute="width" constant="5" id="zNT-b7-WWa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="LNK-7y-r0S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="1dh-h8-AyP"/>
-                    <constraint firstItem="YBX-dN-mXf" firstAttribute="leading" secondItem="xWd-qn-svv" secondAttribute="trailing" constant="2" id="2eQ-NQ-3lu"/>
-                    <constraint firstItem="Tke-8C-LNY" firstAttribute="leading" secondItem="SYn-kj-Dgp" secondAttribute="trailing" constant="2" id="9JQ-dB-L1B"/>
+                    <constraint firstItem="YBX-dN-mXf" firstAttribute="leading" secondItem="xWd-qn-svv" secondAttribute="trailing" id="2eQ-NQ-3lu"/>
+                    <constraint firstItem="SYn-kj-Dgp" firstAttribute="leading" secondItem="NEM-7X-NxE" secondAttribute="trailing" constant="4" id="4IX-qX-dAF"/>
+                    <constraint firstItem="Tke-8C-LNY" firstAttribute="leading" secondItem="SYn-kj-Dgp" secondAttribute="trailing" id="9JQ-dB-L1B"/>
                     <constraint firstItem="LNK-7y-r0S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="ASo-a3-G4W"/>
-                    <constraint firstItem="SYn-kj-Dgp" firstAttribute="leading" secondItem="YBX-dN-mXf" secondAttribute="trailing" constant="16.5" id="Arb-Ga-evz"/>
-                    <constraint firstItem="GBl-gE-Ylk" firstAttribute="leading" secondItem="xWd-qn-svv" secondAttribute="trailing" constant="-28.5" id="Egk-Yp-RuS"/>
-                    <constraint firstItem="xWd-qn-svv" firstAttribute="leading" secondItem="GBl-gE-Ylk" secondAttribute="leading" id="GXe-od-kH8"/>
+                    <constraint firstAttribute="trailing" secondItem="Tke-8C-LNY" secondAttribute="trailing" constant="16" id="EUq-ld-lpL"/>
                     <constraint firstItem="GBl-gE-Ylk" firstAttribute="centerY" secondItem="LNK-7y-r0S" secondAttribute="centerY" id="H1T-Un-4Oj"/>
                     <constraint firstItem="SYn-kj-Dgp" firstAttribute="centerY" secondItem="YBX-dN-mXf" secondAttribute="centerY" id="Jdi-8E-Czn"/>
+                    <constraint firstItem="NEM-7X-NxE" firstAttribute="leading" secondItem="YBX-dN-mXf" secondAttribute="trailing" constant="4" id="NZ5-g2-0N3"/>
+                    <constraint firstItem="xWd-qn-svv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GBl-gE-Ylk" secondAttribute="trailing" constant="8" id="OJC-3H-xi4"/>
+                    <constraint firstAttribute="bottom" secondItem="GBl-gE-Ylk" secondAttribute="bottom" constant="8.5" id="Pyp-Z8-bZp"/>
                     <constraint firstItem="YBX-dN-mXf" firstAttribute="centerY" secondItem="xWd-qn-svv" secondAttribute="centerY" id="TiU-6t-9PK"/>
                     <constraint firstItem="Tke-8C-LNY" firstAttribute="centerY" secondItem="SYn-kj-Dgp" secondAttribute="centerY" id="Xye-8J-mH6"/>
-                    <constraint firstItem="xWd-qn-svv" firstAttribute="top" secondItem="GBl-gE-Ylk" secondAttribute="bottom" constant="2.5" id="ZC3-xj-Ojr"/>
-                    <constraint firstAttribute="bottom" secondItem="xWd-qn-svv" secondAttribute="bottom" constant="7.5" id="aDI-jC-qmb"/>
-                    <constraint firstAttribute="trailing" secondItem="GBl-gE-Ylk" secondAttribute="trailing" constant="16" id="gCD-7o-9aq"/>
-                    <constraint firstItem="GBl-gE-Ylk" firstAttribute="leading" secondItem="LNK-7y-r0S" secondAttribute="trailing" constant="8" id="pAG-8d-M5b"/>
+                    <constraint firstItem="xWd-qn-svv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="nGz-IC-Wp7"/>
+                    <constraint firstItem="GBl-gE-Ylk" firstAttribute="leading" secondItem="LNK-7y-r0S" secondAttribute="trailing" constant="4" id="pAG-8d-M5b"/>
+                    <constraint firstItem="NEM-7X-NxE" firstAttribute="centerY" secondItem="xWd-qn-svv" secondAttribute="centerY" id="xUy-55-uYS"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="67" y="61.5"/>
+            <point key="canvasLocation" x="67" y="52"/>
         </tableViewCell>
     </objects>
 </document>

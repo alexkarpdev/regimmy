@@ -24,7 +24,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Название" placeholder="Название" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="If8-FS-fpo">
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Название" placeholder="Название" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="If8-FS-fpo">
                         <rect key="frame" x="16" y="6" width="288" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="OFT-ND-iwg"/>
@@ -43,7 +43,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="textField" destination="If8-FS-fpo" id="owH-kE-XJ0"/>
+                <outlet property="textField" destination="If8-FS-fpo" id="Ymh-gk-qa8"/>
             </connections>
         </tableViewCell>
     </objects>

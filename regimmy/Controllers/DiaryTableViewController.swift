@@ -28,7 +28,7 @@ class DiaryTableViewController: UITableViewController {
     
     var selectedDate = Date()
     
-    var selectedEvent = RBaseEvent()
+    var selectedEvent: RBaseEvent?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,7 +157,7 @@ class DiaryTableViewController: UITableViewController {
     
     func generateEvents(){
         
-        let names = ["Завтрак 1", "Тренировка груди", "Замеры рук, ног", "Обед углеводы", "Протеин", "Ужин белки"]
+        let names = ["Завтрак 1", "Тренировка груди", "Замеры вечер", "Обед углеводы", "Приём препаратов утро", "Ужин белки"]
         let types: [EventType] = [.eating, .train, .measure, .eating, .drugs, .eating]
         
         for i in 0..<names.count {
@@ -339,7 +339,7 @@ class DiaryTableViewController: UITableViewController {
         if let indexPath: IndexPath = tableView.indexPathForRow(at: tapLocation){
             
             print("tag = \(indexPath.section)")
-            selectedEvent.type = events[indexPath.section].type.rawValue
+            //selectedEvent.type = events[indexPath.section].type.rawValue
             performSegue(withIdentifier: "ShowEventSegue", sender: self)
         }
     }
@@ -350,15 +350,23 @@ class DiaryTableViewController: UITableViewController {
         if segue.identifier == "ShowCalendarSegue" {
             hideTabBar()
             (segue.destination as! CalendarViewController).selectedDate = selectedDate
-            (segue.destination as! CalendarViewController).isPickerHidden = false
+            (segue.destination as! CalendarViewController).isPickerHidden = true
             (segue.destination as! CalendarViewController).completion = { [unowned self](selectedDate: Date) in
                 
                 self.showTabBar()
                 self.updateDateOn(selectedDate: selectedDate)
                 print(selectedDate)
             }
-        }else if segue.identifier == "ShowEventSegue" {
-            (segue.destination as! EventDetailTableViewController).selectedEventType = EventType(rawValue: (selectedEvent.type))!
+        }
+        if segue.identifier == "ShowEventSegue" {
+            let vc = segue.destination as! EventDetailTableViewController
+            //vc.selectedEventType = EventType(rawValue: (selectedEvent.type))!
+            vc.selectedEvent = selectedEvent
+            
+        }
+        
+        if segue.identifier == "AddSegue" {
+            //let vc = (segue.destination as! UINavigationController).viewControllers.first as! EventDetailTableViewController
         }
     }
     

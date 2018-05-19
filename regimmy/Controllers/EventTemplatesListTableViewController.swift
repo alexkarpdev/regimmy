@@ -12,7 +12,7 @@ class EventTemplatesListTableViewController: UITableViewController {
     
     var selectedEventType: EventType!
     
-    var captions = ["Новую", "Последние", "Шаблоны"]
+    var captions = ["Новую", "Последние", "Избранное"]
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -65,21 +65,41 @@ class EventTemplatesListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: AddHeaderCell.identifier) as! AddHeaderCell
+        var caption = captions[section]
         
         if section == 0 {
             cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(makeNewEvent)))
+            switch selectedEventType! {
+            case .eating:
+                caption = "Новый"
+            case .train:
+                caption = "Новую"
+            case .measure:
+                caption = "Новые"
+            case .drugs:
+                caption = "Новый"
+            }
+        }else{
+            cell.rotateArrow()
         }
         
-        cell.captionLabel.text = captions[section]
+        cell.captionLabel.text = caption
+        
         let seporatorView = UIView(frame: CGRect(x: 15, y: cell.frame.size.height - 1, width: self.view.frame.size.width - 15, height: 0.5))
         seporatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         cell.contentView.addSubview(seporatorView)
+        
+        if section == 2 {
+            let topSeporatorView = UIView(frame: CGRect(x: 8, y: 0, width: self.view.frame.size.width - 8, height: 0.5))
+            topSeporatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            cell.contentView.addSubview(topSeporatorView)
+        }
         
         return cell.contentView
     }
     
     @objc func makeNewEvent(){
-        performSegue(withIdentifier: "EditEventSegue", sender: self)
+        performSegue(withIdentifier: "AddEventSegue", sender: self)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -148,11 +168,26 @@ class EventTemplatesListTableViewController: UITableViewController {
     }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EditEventSegue" {
+        if segue.identifier == "AddEventSegue" {
             let vc = (segue.destination as! UINavigationController).viewControllers.first as! EventDetailTableViewController
-            vc.selectedEventType = selectedEventType
-            vc.navigationItem.title = "Новый " + selectedEventType.name.lowercased()
-            vc.navc = self.navigationController
+            
+            let newEvent: RBaseEvent!
+            switch selectedEventType! {
+            case .eating:
+                newEvent = REating()
+            case .train:
+                newEvent = RTrain()
+            case .measure:
+                newEvent = RMeasuring()
+            case .drugs:
+                newEvent = RDrugging()
+            }
+            
+            newEvent.type = selectedEventType.rawValue
+            vc.selectedEvent = newEvent
+            vc.navigationItem.title = selectedEventType.name
+            
+            vc.navc = self.navigationController // это нужно для того, чтобы вернуться сразу в дневник
         }
     }
     

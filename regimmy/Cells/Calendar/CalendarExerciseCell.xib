@@ -34,13 +34,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Какое-то упраженение" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCf-6N-7TN">
-                        <rect key="frame" x="64" y="10.5" width="285" height="20.5"/>
+                        <rect key="frame" x="60" y="10.5" width="289" height="20.5"/>
                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Подходы" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boR-pn-5Qm">
-                        <rect key="frame" x="64" y="50" width="58" height="15"/>
+                        <rect key="frame" x="60" y="50" width="58" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="6of-3K-peg"/>
                             <constraint firstAttribute="width" constant="58" id="75K-vY-avq"/>
@@ -79,7 +79,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpN-Ds-DGx">
-                        <rect key="frame" x="88" y="67" width="10" height="18"/>
+                        <rect key="frame" x="84" y="67" width="10" height="18"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -116,7 +116,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Примечание" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ug8-2f-dpv">
-                        <rect key="frame" x="64" y="31" width="50" height="10"/>
+                        <rect key="frame" x="60" y="31" width="50" height="10"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="8"/>
                         <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                         <nil key="highlightedColor"/>
@@ -174,7 +174,7 @@
                     <constraint firstItem="4TQ-Tx-NUN" firstAttribute="centerY" secondItem="boR-pn-5Qm" secondAttribute="centerY" id="bRR-yS-s8A"/>
                     <constraint firstItem="oCf-6N-7TN" firstAttribute="centerY" secondItem="4Ja-4v-9aY" secondAttribute="centerY" id="d8J-ao-XTD"/>
                     <constraint firstItem="A6L-ya-LW3" firstAttribute="centerY" secondItem="boR-pn-5Qm" secondAttribute="centerY" id="dJc-gv-3k8"/>
-                    <constraint firstItem="oCf-6N-7TN" firstAttribute="leading" secondItem="4Ja-4v-9aY" secondAttribute="trailing" constant="8" id="dW7-Gr-LcU"/>
+                    <constraint firstItem="oCf-6N-7TN" firstAttribute="leading" secondItem="4Ja-4v-9aY" secondAttribute="trailing" constant="4" id="dW7-Gr-LcU"/>
                     <constraint firstItem="rNU-Am-bAZ" firstAttribute="centerY" secondItem="NAq-ES-pvs" secondAttribute="centerY" id="eO7-ym-gIX"/>
                     <constraint firstItem="Wus-nY-5lE" firstAttribute="trailing" secondItem="A6L-ya-LW3" secondAttribute="trailing" id="iwT-8S-DdC"/>
                     <constraint firstAttribute="trailing" secondItem="oCf-6N-7TN" secondAttribute="trailing" constant="16" id="jBt-47-9GD"/>
@@ -183,11 +183,17 @@
                     <constraint firstItem="NAq-ES-pvs" firstAttribute="top" secondItem="4TQ-Tx-NUN" secondAttribute="bottom" constant="2" id="v8p-oa-ZVE"/>
                     <constraint firstItem="uCp-9g-s5h" firstAttribute="height" secondItem="vG3-uq-j4Q" secondAttribute="height" id="vXR-Ao-P1b"/>
                     <constraint firstItem="vG3-uq-j4Q" firstAttribute="top" secondItem="Wus-nY-5lE" secondAttribute="bottom" constant="13" id="wQk-Vl-yZX"/>
-                    <constraint firstItem="boR-pn-5Qm" firstAttribute="leading" secondItem="4Ja-4v-9aY" secondAttribute="trailing" constant="8" id="wmu-XG-71i"/>
+                    <constraint firstItem="boR-pn-5Qm" firstAttribute="leading" secondItem="4Ja-4v-9aY" secondAttribute="trailing" constant="4" id="wmu-XG-71i"/>
                     <constraint firstItem="ug8-2f-dpv" firstAttribute="top" secondItem="oCf-6N-7TN" secondAttribute="bottom" id="wyP-HJ-KrV"/>
                     <constraint firstItem="lpN-Ds-DGx" firstAttribute="top" secondItem="boR-pn-5Qm" secondAttribute="bottom" constant="2" id="xHt-m6-f73"/>
                     <constraint firstAttribute="trailing" secondItem="4TQ-Tx-NUN" secondAttribute="trailing" constant="16" id="xyI-MI-aUO"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="subviews">
+                        <exclude reference="Wus-nY-5lE"/>
+                        <exclude reference="EJf-yd-rn1"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

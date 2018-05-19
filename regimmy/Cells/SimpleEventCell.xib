@@ -38,8 +38,8 @@
                         </view>
                         <blurEffect style="light"/>
                     </visualEffectView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTk-w6-Dnt">
-                        <rect key="frame" x="263" y="15" width="41" height="22"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTk-w6-Dnt" customClass="PaddingLabel" customModule="regimmy" customModuleProvider="target">
+                        <rect key="frame" x="249" y="8" width="55" height="22"/>
                         <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="WHr-Br-RuU"/>
@@ -84,8 +84,8 @@
                     <constraint firstAttribute="trailing" secondItem="OTk-w6-Dnt" secondAttribute="trailing" constant="16" id="4uk-qu-Tac"/>
                     <constraint firstAttribute="bottom" secondItem="TH3-gm-AJb" secondAttribute="bottom" constant="6.5" id="A9P-QB-w0t"/>
                     <constraint firstItem="0It-CV-zqD" firstAttribute="top" secondItem="RaX-aG-gdG" secondAttribute="bottom" constant="1" id="Ac6-gW-hAY"/>
-                    <constraint firstItem="OTk-w6-Dnt" firstAttribute="centerY" secondItem="TH3-gm-AJb" secondAttribute="centerY" id="Ar9-QP-hL5"/>
                     <constraint firstItem="h1o-dc-qYh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="CpF-jS-gpP"/>
+                    <constraint firstItem="OTk-w6-Dnt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="GTB-kU-b0r"/>
                     <constraint firstItem="0It-CV-zqD" firstAttribute="trailing" secondItem="RaX-aG-gdG" secondAttribute="trailing" id="aHf-Nh-ERN"/>
                     <constraint firstItem="OTk-w6-Dnt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RaX-aG-gdG" secondAttribute="trailing" constant="8" id="aLc-uv-CSP"/>
                     <constraint firstItem="TH3-gm-AJb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="b0m-lt-jaQ"/>

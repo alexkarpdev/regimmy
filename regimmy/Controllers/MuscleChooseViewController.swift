@@ -21,6 +21,10 @@ class MuscleChooseViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var csView: UIView!
     @IBOutlet weak var musclePartsImageView: UIImageView!
     @IBOutlet weak var muscleMainImageView: UIImageView!
+    
+    var selectedMuscleType: MuscleType?
+    var selectionHendler: ((MuscleType)->())!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,8 +47,22 @@ class MuscleChooseViewController: UIViewController, UIScrollViewDelegate {
         scrollView.isUserInteractionEnabled = true
         
         muscleButtons.map{$0.addTarget(self, action: #selector(selectMuscle(_:)), for: .touchUpInside)}
+        
+        if let mt = selectedMuscleType {
+            let muscleButton = muscleButtons.filter{($0 as! MuscleButton).imageName == mt.rawValue}.first
+            selectMuscle(muscleButton as! MuscleButton)
+        }else{
+            musclePartsImageView.alpha = 0
+            muscleButtons.map{$0.setImage(UIImage(named: "unchecked"), for: .normal)}
+        }
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        segmentedControl.selectedSegmentIndex = 1
+        changeViewOn(1)
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,6 +98,10 @@ class MuscleChooseViewController: UIViewController, UIScrollViewDelegate {
         if let muscleImage = UIImage(named: sender.imageName) {
             musclePartsImageView.alpha = 0
             musclePartsImageView.image = muscleImage
+            
+            selectedMuscleType = MuscleType(rawValue: sender.imageName)
+            selectionHendler(selectedMuscleType!)
+            
             
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: ({
                 self.musclePartsImageView.alpha = 1

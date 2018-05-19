@@ -16,7 +16,7 @@ class RealmDBController {
     
     var isIngredientsExist: Bool!
     
-    private let realm: Realm!
+    let realm: Realm!
     
     init() {
         
@@ -32,6 +32,7 @@ class RealmDBController {
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
+    
     func save<T: Object>(object: T) {
         try! realm.write {
             realm.add(object)
@@ -39,6 +40,16 @@ class RealmDBController {
     }
     
     func load<T: Object>() -> [T] {
-        return Array(realm.objects(T.self))
+        return Array(realm.objects(T.self).sorted(byKeyPath: "name"))
+    }
+    
+    func loadCollection<T: Object>() -> Results<T>  {
+        return realm.objects(T.self).sorted(byKeyPath: "name")
+    }
+    
+    func delete<T: Object>(object: T) {
+        try! realm.write {
+            realm.delete(object)
+        }
     }
 }

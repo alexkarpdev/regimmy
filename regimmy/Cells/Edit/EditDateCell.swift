@@ -13,6 +13,7 @@ class EditDateCell: UITableViewCell {
     static let identifier = "EditDateCell"
     
     @IBOutlet weak var dateLabel: UILabel!
+    var date = Date()
     
     func configure(date: Date?) {
         func dateToString(date: Date) -> String {

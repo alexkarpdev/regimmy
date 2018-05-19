@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,11 +39,20 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uiarrowright" translatesAutoresizingMaskIntoConstraints="NO" id="11r-Dh-1hZ">
+                                    <rect key="frame" x="295" y="15" width="10" height="22"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="10" id="4t3-pc-IOg"/>
+                                        <constraint firstAttribute="height" constant="22" id="gaN-gv-EB5"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="pWM-2b-sV4" firstAttribute="top" secondItem="lXT-mA-V6c" secondAttribute="top" constant="12" id="NKf-3H-XpR"/>
+                                <constraint firstAttribute="trailing" secondItem="11r-Dh-1hZ" secondAttribute="trailing" constant="15" id="Qc8-tY-D3s"/>
                                 <constraint firstItem="pWM-2b-sV4" firstAttribute="leading" secondItem="lXT-mA-V6c" secondAttribute="leading" constant="16" id="ddN-xi-b4V"/>
                                 <constraint firstAttribute="bottom" secondItem="pWM-2b-sV4" secondAttribute="bottom" constant="12.5" id="g56-07-Tjw"/>
+                                <constraint firstItem="11r-Dh-1hZ" firstAttribute="centerY" secondItem="lXT-mA-V6c" secondAttribute="centerY" id="rdO-au-ViH"/>
                             </constraints>
                         </view>
                         <blurEffect style="light"/>
@@ -58,9 +67,13 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="arrowImageView" destination="11r-Dh-1hZ" id="Dj0-Zy-TpW"/>
                 <outlet property="captionLabel" destination="pWM-2b-sV4" id="sEy-am-Lj9"/>
             </connections>
             <point key="canvasLocation" x="34" y="58"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="uiarrowright" width="10" height="22"/>
+    </resources>
 </document>

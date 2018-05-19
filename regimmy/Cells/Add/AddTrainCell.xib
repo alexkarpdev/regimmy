@@ -23,15 +23,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="124" id="KGk-i7-Jjw" customClass="AddTrainCell" customModule="regimmy" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="124" id="KGk-i7-Jjw" customClass="AddTrainCell" customModule="regimmy" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="123.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="286" height="123.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На сушку" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77G-om-abQ">
-                        <rect key="frame" x="16" y="33" width="288" height="12"/>
+                        <rect key="frame" x="16" y="33" width="254" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="9WB-iv-Yx5"/>
                         </constraints>
@@ -41,15 +41,12 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тренировка ног" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMh-xv-oE9">
                         <rect key="frame" x="16" y="11" width="142" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="YKs-dD-KEC"/>
-                        </constraints>
                         <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQK-Jy-rHe">
-                        <rect key="frame" x="263" y="11" width="41" height="22"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22 апр." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQK-Jy-rHe" customClass="PaddingLabel" customModule="regimmy" customModuleProvider="target">
+                        <rect key="frame" x="217.5" y="11" width="68.5" height="22"/>
                         <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="Bzf-oK-3wT"/>
@@ -113,7 +110,7 @@
                             <constraint firstAttribute="height" constant="15" id="s3F-i3-Bx0"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
-                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(жим ногами, тяга блоков)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7K-31-aTA">
@@ -139,6 +136,7 @@
                     <constraint firstItem="iaR-TK-Yow" firstAttribute="top" secondItem="77G-om-abQ" secondAttribute="bottom" constant="8" id="Wuk-zY-bzr"/>
                     <constraint firstAttribute="bottom" secondItem="yna-fJ-e70" secondAttribute="bottom" constant="7.5" id="a4G-qp-Hag"/>
                     <constraint firstItem="QnL-mf-8hk" firstAttribute="leading" secondItem="k1Y-sR-KIC" secondAttribute="trailing" constant="8" id="ave-bm-6CE"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o7K-31-aTA" secondAttribute="trailing" id="cM6-ZM-PPO"/>
                     <constraint firstItem="TQK-Jy-rHe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dMh-xv-oE9" secondAttribute="trailing" constant="8" id="cRQ-RA-jqz"/>
                     <constraint firstItem="o7K-31-aTA" firstAttribute="leading" secondItem="Njw-YN-QGW" secondAttribute="trailing" constant="2" id="hFZ-ts-dm6"/>
                     <constraint firstItem="k1Y-sR-KIC" firstAttribute="top" secondItem="77G-om-abQ" secondAttribute="bottom" constant="8" id="ixM-W4-MQF"/>
@@ -148,7 +146,7 @@
                     <constraint firstItem="dMh-xv-oE9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="pV5-Cy-HFA"/>
                     <constraint firstItem="o7K-31-aTA" firstAttribute="centerY" secondItem="Njw-YN-QGW" secondAttribute="centerY" id="ror-ZB-dmF"/>
                     <constraint firstItem="77G-om-abQ" firstAttribute="top" secondItem="dMh-xv-oE9" secondAttribute="bottom" constant="1" id="ukP-Z7-Gdz"/>
-                    <constraint firstAttribute="trailing" secondItem="TQK-Jy-rHe" secondAttribute="trailing" constant="16" id="uvb-Mm-Tx0"/>
+                    <constraint firstAttribute="trailing" secondItem="TQK-Jy-rHe" secondAttribute="trailing" id="uvb-Mm-Tx0"/>
                     <constraint firstItem="j3O-EP-krf" firstAttribute="top" secondItem="77G-om-abQ" secondAttribute="bottom" constant="8" id="w53-TT-04d"/>
                     <constraint firstItem="iaR-TK-Yow" firstAttribute="leading" secondItem="j3O-EP-krf" secondAttribute="trailing" constant="8" id="wAt-yP-yWq"/>
                     <constraint firstItem="j3O-EP-krf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="wtp-nt-034"/>

@@ -12,12 +12,9 @@ class EditRepeatCell: UITableViewCell {
 
     static let identifier = "EditRepeatCell"
     
-    @IBOutlet weak var captionLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
-    
     func configure(caption: String, detail: String) {
-        captionLabel.text = caption
-        detailLabel.text = detail
+        textLabel!.text = caption
+        detailTextLabel!.text = detail
     }
     
     override func awakeFromNib() {
