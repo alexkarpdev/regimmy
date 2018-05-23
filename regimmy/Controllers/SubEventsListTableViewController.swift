@@ -13,17 +13,27 @@ class SubEventsListTableViewController: UITableViewController {
     
     var selectedEventType: EventType!
     var selectedSubEventType: SubEventType!
+    var selectedSubEvent: RBaseSubEvent!
+    
+    var selectedIndexPath: IndexPath!
     
     var isEditorMode = true
     
-    var selectedObjects = [Object]()
-    var objects = [Object]()
+    var selectedObjects = [RBaseSubEvent]()
+    var objects = [RBaseSubEvent]()
+    
+    var posObjects = [AnyObject]()
+    
+   // var results: Results<Object>! // чё-та не понимаю как сделать дженерик
     
     let repeatList = ["Нет", "Каждый день", "Каждую неделю", "Каждые 2 недели", "Каждый месяц", "Каждый год"]
     let notifyList = ["Нет", "В момент события", "За 5 минут", "За 15 минут", "За 30 минут", "За 1 час", "За 2 часа", "За 1 день", "За 2 дня", "За 2 неделю"]
+    
+    var notificationToken: NotificationToken?
 
     @IBOutlet var leftButtonItem: UIBarButtonItem!
     @IBOutlet var rightButtonItem: UIBarButtonItem!
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -33,30 +43,10 @@ class SubEventsListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        isEditorMode = navigationController?.viewControllers.first === self ? false : true
         setButtonItemsForEditor()
         
-        if let sel = selectedSubEventType {
-            
-            //set right button on edit
-            
-            switch sel {
-            case .exercise:
-                selectedEventType = .train
-                objects = RealmDBController.shared.load() as [RExercise]
-            case .ingredient:
-                selectedEventType = .eating
-                objects = RealmDBController.shared.load() as [RIngredient]
-            case .drug:
-                selectedEventType = .drugs
-                objects = RealmDBController.shared.load() as [RDrug]
-            default:
-                break
-            }
-            
-        }else{
-            
-        }
-        
+        reloadObjects(.initial)
         
         tableView.register(UINib(nibName: EditorIngredientCell.identifier, bundle: nil), forCellReuseIdentifier: EditorIngredientCell.identifier)
         tableView.register(UINib(nibName: CalendarMeasureCell.identifier, bundle: nil), forCellReuseIdentifier: CalendarMeasureCell.identifier)
@@ -67,11 +57,69 @@ class SubEventsListTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 44
         
         tableView.tableHeaderView = UIView()
+
+    }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        reloadObjects(.insert)
+//    }
+    
+    func reloadObjects(_ reloadType: ReloadDataType) {
+        
+        switch selectedSubEventType! {
+        case .exercise:
+            selectedEventType = .train
+            objects = RealmDBController.shared.load() as [RExercise]
+        case .ingredient:
+            selectedEventType = .eating
+            objects = RealmDBController.shared.load() as [RIngredient]
+            let posObjects1 = (objects as! [RIngredient]).map(){Ingredient.init(from: ($0))}
+            posObjects = posObjects1// as [BaseSubEvent<RIngredient>]
+        case .drug:
+            selectedEventType = .drugs
+            objects = RealmDBController.shared.load() as [RDrug]
+        }
+        
+        switch reloadType{
+        case .initial:
+            tableView.reloadData()
+            
+        case .insert, .modify:
+            var index: Int? = nil
+            
+            switch selectedSubEventType! {
+            case .exercise:
+                index = RealmDBController.shared.index(of: selectedSubEvent as! RExercise)
+            case .ingredient:
+                index = RealmDBController.shared.index(of: selectedSubEvent as! RIngredient)
+            case .drug:
+                index = RealmDBController.shared.index(of: selectedSubEvent as! RDrug)
+            }
+            
+            if let index = index{
+                
+                if reloadType == .insert{
+                    tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                }else{
+                    tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                }
+                
+                tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: true)
+            }
+            
+        default:
+            break
+        }
+        
+            
+        
         
     }
+    
     //func setButtonsFor
     func setButtonItemsForEditor(){
-        if navigationController?.viewControllers.first !== self {
+        if isEditorMode {
             
             //tabBarController?.tabBar.isHidden = tableView.isEditing
             if tableView.isEditing == true {
@@ -94,6 +142,7 @@ class SubEventsListTableViewController: UITableViewController {
             
         }
     }
+        
     
 
     
@@ -122,10 +171,12 @@ class SubEventsListTableViewController: UITableViewController {
         switch selectedEventType! {
         case .eating:
             cell = tableView.dequeueReusableCell(withIdentifier: EditorIngredientCell.identifier, for: indexPath) as! EditorIngredientCell
-            let object = objects[indexPath.row] as! RIngredient
-            (cell as! EditorIngredientCell).configure(name: object.name, prot: object.prot, fat: object.fat, carb: object.carbo, cal: object.cal)
+            let posObject = posObjects[indexPath.row] as! Ingredient
+            (cell as! EditorIngredientCell).configure(name: posObject.name, prot: posObject.prot, fat: posObject.fat, carb: posObject.carbo, cal: posObject.cal)
         case .train:
             cell = tableView.dequeueReusableCell(withIdentifier: CalendarExerciseCell.identifier, for: indexPath) as! CalendarExerciseCell
+            let object = objects[indexPath.row] as! RExercise
+            (cell as! CalendarExerciseCell).nameLabel.text = object.name
         case .measure:
             cell = tableView.dequeueReusableCell(withIdentifier: CalendarMeasureCell.identifier, for: indexPath) as! CalendarMeasureCell
         case .drugs:
@@ -135,22 +186,40 @@ class SubEventsListTableViewController: UITableViewController {
         if isEditorMode {
             cell.accessoryType = .disclosureIndicator
         }else{
-            //checkMARK
+            if selectedObjects.contains(objects[indexPath.row]) {
+                cell.accessoryType = .checkmark
+            }else{
+                cell.accessoryType = .none
+            }
         }
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch selectedEventType! {
-        case .eating:
-            break
-        case .train:
-            performSegue(withIdentifier: "SetsListSegue", sender: self)
-        case .measure:
-            break
-        case .drugs:
-            break
+        
+        selectedIndexPath = indexPath
+        
+        if isEditorMode {
+            selectedSubEvent = objects[indexPath.row]
+            performSegue(withIdentifier: "ShowSubEventDetailSegue", sender: self)
+        }else{
+            if selectedObjects.contains(objects[indexPath.row]) {
+                selectedObjects.remove(at: selectedObjects.index(of: objects[indexPath.row])!)
+            }else{
+                selectedObjects.append(objects[indexPath.row])
+            }
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            switch selectedEventType! {
+            case .eating:
+                break
+            case .train:
+                performSegue(withIdentifier: "SetsListSegue", sender: self)
+            case .measure:
+                break
+            case .drugs:
+                break
+            }
         }
         
     }
@@ -163,17 +232,18 @@ class SubEventsListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            RealmDBController.shared.delete(object: objects[indexPath.row])
+            reloadObjects(.delete)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -197,13 +267,36 @@ class SubEventsListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "AddSubEventSegue" {
-            let vc = (segue.destination as! UINavigationController).viewControllers.first as! EditorSubEventDetailTableViewController
+            let vc = (segue.destination as! UINavigationController).viewControllers.first as! SubEventDetailTableViewController
             vc.selectedSubEventType = selectedSubEventType
+            
+            let newSubEvent: RBaseSubEvent!
+            switch selectedSubEventType! {
+            case .ingredient:
+                newSubEvent = RIngredient()
+            case .exercise:
+                newSubEvent = RExercise()
+                (newSubEvent as! RExercise).type = ExerciseType.force.rawValue
+                (newSubEvent as! RExercise).durationType = DurationUnitType.repeats.rawValue
+                (newSubEvent as! RExercise).loadUnit = LoadUnitType.mass.rawValue
+            case .drug:
+                newSubEvent = RDrug()
+                (newSubEvent as! RDrug).servUnit = DrugUnitType.mass.rawValue
+            }
+            selectedSubEvent = newSubEvent
+            vc.selectedSubEvent = newSubEvent
+            vc.complitionHandler = ({[unowned self] in
+                self.reloadObjects(.insert)
+            })
         }
         
         if segue.identifier == "ShowSubEventDetailSegue" {
-            let vc = (segue.destination as! UINavigationController).viewControllers.first as! EditorSubEventDetailTableViewController
+            let vc = segue.destination as! SubEventDetailTableViewController
             vc.selectedSubEventType = selectedSubEventType
+            vc.selectedSubEvent = selectedSubEvent
+            vc.complitionHandler = ({[unowned self] in
+                self.reloadObjects(.modify)
+            })
         }
     }
     @IBAction func dismissAction(_ sender: Any) {

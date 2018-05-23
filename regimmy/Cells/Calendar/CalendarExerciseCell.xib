@@ -199,6 +199,7 @@
             <connections>
                 <outlet property="loadUnitLabel" destination="rNU-Am-bAZ" id="qUh-HN-FTh"/>
                 <outlet property="loadValueLabel" destination="NAq-ES-pvs" id="4mB-qj-UOp"/>
+                <outlet property="nameLabel" destination="oCf-6N-7TN" id="gtT-0g-Ubp"/>
                 <outlet property="repeatsUnitLabel" destination="uCp-9g-s5h" id="7O3-fX-3iE"/>
                 <outlet property="repeatsValueLabel" destination="vG3-uq-j4Q" id="hIj-Pf-IaS"/>
                 <outlet property="setIndexLabel" destination="lpN-Ds-DGx" id="AuM-E8-6ah"/>

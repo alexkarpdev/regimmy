@@ -12,11 +12,9 @@ import RealmSwift
 
 // MARK: - REvents
 
-class RBaseEvent: Object {
+class RBaseEvent: RBaseSubEvent {
     @objc dynamic var date = Date()
     @objc dynamic var type = ""
-    @objc dynamic var name = ""
-    @objc dynamic var info = ""
     //@objc dynamic var repeating = ""
     //@objc dynamic var notification = ""
 }
@@ -44,11 +42,12 @@ class RMeasuring: RBaseEvent {
 
 // MARK: - RSubEvents
 
-//class BaseSubEvent: Object
-
-class RIngredient: Object {
+class RBaseSubEvent: Object {
     @objc dynamic var name = ""
     @objc dynamic var info = ""
+}
+
+class RIngredient: RBaseSubEvent {
     
     @objc dynamic var prot = 0.0
     @objc dynamic var fat = 0.0
@@ -83,9 +82,7 @@ class RIngredientE: RIngredient {
     }
 }
 
-class RDrug: Object {
-    @objc dynamic var name = ""
-    @objc dynamic var info = ""
+class RDrug: RBaseSubEvent {
     
     @objc dynamic var servSize = 0.0
     @objc dynamic var servUnit = ""
@@ -110,9 +107,7 @@ class RExerciseE: RExercise {
     let sets = List<RExerciseSet>()
 }
 
-class RExercise: Object {
-    @objc dynamic var name = ""
-    @objc dynamic var info = ""
+class RExercise: RBaseSubEvent {
     
     @objc dynamic var muscle = ""
     
@@ -140,8 +135,7 @@ class RExerciseSet: Object {
     @objc dynamic var load = 0.0
 }
 
-class RMeasure: Object {
-    @objc dynamic var name = ""
+class RMeasure: RBaseSubEvent {
     @objc dynamic var value = 0.0
     @objc dynamic var unit = ""
     

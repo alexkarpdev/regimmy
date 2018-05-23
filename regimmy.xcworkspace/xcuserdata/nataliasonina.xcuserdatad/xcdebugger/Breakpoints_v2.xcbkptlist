@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "regimmy/AppDelegate.swift"
-            timestampString = "547837645.924245"
+            timestampString = "548430932.368132"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "regimmy/Controllers/DiaryTableViewController.swift"
-            timestampString = "548397170.78084"
+            timestampString = "548693015.578025"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "215"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "regimmy/AppDelegate.swift"
-            timestampString = "547837645.924657"
+            timestampString = "548430932.3685631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "regimmy/Controllers/EventDetailTableViewController.swift"
-            timestampString = "548397170.78095"
+            timestampString = "548693015.57815"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "337"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "regimmy/Controllers/EventDetailTableViewController.swift"
-            timestampString = "548397170.781033"
+            timestampString = "548693015.578236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "355"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "regimmy/Controllers/EventDetailTableViewController.swift"
-            timestampString = "548397170.7811019"
+            timestampString = "548693015.578312"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "359"
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "regimmy/Other/Extensions.swift"
-            timestampString = "547701085.635904"
+            timestampString = "548693015.578469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "addPlaceholder(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,13 +170,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "regimmy/Other/Extensions.swift"
-            timestampString = "547701085.635947"
+            timestampString = "548693015.578522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "UITextView"
-            landmarkType = "21">
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "placeholder"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -186,13 +186,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "regimmy/Other/Extensions.swift"
-            timestampString = "547701085.635985"
+            timestampString = "548693015.5785789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "UITextView"
-            landmarkType = "21">
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "resizePlaceholder()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "regimmy/Controllers/SubEventDetailTableViewController.swift"
-            timestampString = "548397170.7812819"
+            timestampString = "548693015.578655"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "regimmy/Controllers/EventDetailTableViewController.swift"
-            timestampString = "548397170.78222"
+            timestampString = "548693015.579699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "376"
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "regimmy/Controllers/SubEventDetailTableViewController.swift"
-            timestampString = "548397170.782398"
+            timestampString = "548693015.579851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "saveAction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -249,13 +249,93 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "regimmy/Controllers/SubEventsListTableViewController.swift"
-            timestampString = "548397170.7824889"
+            filePath = "regimmy/Controllers/SubEventDetailTableViewController.swift"
+            timestampString = "548693015.57997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
+            landmarkName = "textFieldDidEndEditing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "regimmy/Controllers/SubEventDetailTableViewController.swift"
+            timestampString = "548693015.580066"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
+            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "regimmy.SubEventDetailTableViewController.textField(__ObjC.UITextField, shouldChangeCharactersIn: __C._NSRange, replacementString: Swift.String) -&gt; Swift.Bool"
+                  moduleName = "regimmy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nataliasonina/Documents/Xcode%20projects/regimmy/regimmy/Controllers/SubEventDetailTableViewController.swift"
+                  timestampString = "548431405.79655"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "379"
+                  endingLineNumber = "379"
+                  offsetFromSymbolStart = "1063">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in regimmy.SubEventDetailTableViewController.textField(__ObjC.UITextField, shouldChangeCharactersIn: __C._NSRange, replacementString: Swift.String) -&gt; Swift.Bool"
+                  moduleName = "regimmy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nataliasonina/Documents/Xcode%20projects/regimmy/regimmy/Controllers/SubEventDetailTableViewController.swift"
+                  timestampString = "548431405.803376"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "380"
+                  endingLineNumber = "380"
+                  offsetFromSymbolStart = "33">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "regimmy/Controllers/SubEventsListTableViewController.swift"
+            timestampString = "548693015.580175"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "reloadObjects(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "regimmy/Controllers/SubEventsListTableViewController.swift"
+            timestampString = "548693015.580801"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "reloadObjects(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

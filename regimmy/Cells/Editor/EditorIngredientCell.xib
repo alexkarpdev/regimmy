@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,7 +24,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whx-GH-vQN">
-                        <rect key="frame" x="68" y="57" width="27" height="18"/>
+                        <rect key="frame" x="68" y="57" width="23.5" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="0DI-br-aiX"/>
                         </constraints>
@@ -37,7 +33,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kur-fL-KJf">
-                        <rect key="frame" x="16" y="57" width="27" height="18"/>
+                        <rect key="frame" x="16" y="57" width="23.5" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="37N-ai-RNx"/>
                         </constraints>
@@ -56,7 +52,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99.9K" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMj-9p-Qa2">
-                        <rect key="frame" x="120" y="57" width="39.5" height="18"/>
+                        <rect key="frame" x="120" y="57" width="37" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="adF-lg-QBw"/>
                         </constraints>
@@ -75,19 +71,19 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="г" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YC9-wY-jvi">
-                        <rect key="frame" x="159.5" y="60" width="5" height="12"/>
+                        <rect key="frame" x="157" y="60" width="4.5" height="12"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
                         <color key="textColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="г" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRs-K5-LPi">
-                        <rect key="frame" x="95" y="60" width="5" height="12"/>
+                        <rect key="frame" x="91.5" y="60" width="4.5" height="12"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
                         <color key="textColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdw-JS-93i">
-                        <rect key="frame" x="172" y="57" width="27" height="18"/>
+                        <rect key="frame" x="172" y="57" width="23.5" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="9Kb-nX-wzj"/>
                         </constraints>
@@ -122,13 +118,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="г" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uf6-ad-kfh">
-                        <rect key="frame" x="43" y="60" width="5" height="12"/>
+                        <rect key="frame" x="39.5" y="60" width="4.5" height="12"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
                         <color key="textColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="к" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkL-0D-JyR">
-                        <rect key="frame" x="199" y="60" width="5.5" height="12"/>
+                        <rect key="frame" x="195.5" y="60" width="5.5" height="12"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
                         <color key="textColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
                         <nil key="highlightedColor"/>
@@ -170,7 +166,7 @@
                 <outlet property="calLabel" destination="qdw-JS-93i" id="6ag-dj-9Wz"/>
                 <outlet property="carbLabel" destination="cMj-9p-Qa2" id="soV-2u-NaN"/>
                 <outlet property="fatLabel" destination="Whx-GH-vQN" id="dq9-zj-R6b"/>
-                <outlet property="ingredientNameLabel" destination="73Z-T6-N2t" id="QWy-1e-FgB"/>
+                <outlet property="nameLabel" destination="73Z-T6-N2t" id="QWy-1e-FgB"/>
                 <outlet property="protLabel" destination="kur-fL-KJf" id="W2n-S1-mKZ"/>
             </connections>
             <point key="canvasLocation" x="35" y="74"/>

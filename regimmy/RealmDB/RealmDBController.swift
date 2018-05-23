@@ -39,11 +39,33 @@ class RealmDBController {
         }
     }
     
+    func index<T: RBaseSubEvent>(of object:T) -> Int? {
+        let objects = realm.objects(T.self).sorted(byKeyPath: "name")
+        if let object = objects.filter("name == '\(object.name)'").first, let index = objects.index(of: object) {
+            return index
+        }else {
+            return nil
+        }
+    }
+//    func loadPOSOs<T:BaseSubEvent>() -> [T] {
+//        var objects = load() as [T]
+//        
+//    }
+    
+    func loadRealmObjectBy<T: Object>(name: String) -> T? {
+        let objects = realm.objects(T.self).sorted(byKeyPath: "name")
+        if let object = objects.filter("name == '\(name)'").first {
+            return object
+        }else {
+            return nil
+        }
+    }
+    
     func load<T: Object>() -> [T] {
         return Array(realm.objects(T.self).sorted(byKeyPath: "name"))
     }
     
-    func loadCollection<T: Object>() -> Results<T>  {
+    func loadResults<T: Object>() -> Results<T>  {
         return realm.objects(T.self).sorted(byKeyPath: "name")
     }
     

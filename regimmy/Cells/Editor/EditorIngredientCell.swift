@@ -12,7 +12,7 @@ class EditorIngredientCell: UITableViewCell {
 
     static let identifier = "EditorIngredientCell"
     
-    @IBOutlet weak var ingredientNameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var protLabel: UILabel!
     @IBOutlet weak var fatLabel: UILabel!
@@ -24,7 +24,7 @@ class EditorIngredientCell: UITableViewCell {
     
     func configure(name: String, prot: Double, fat: Double, carb: Double, cal: Double, mass: Double = 100, number: Double = 0){
         
-        self.ingredientNameLabel.text = name
+        self.nameLabel.text = name
         self.protLabel.text = String(prot)
         self.fatLabel.text = String(fat)
         self.carbLabel.text = String(carb)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+// MARK: - String
 extension String {
     func capitalizingFirstLetter() -> String {
         return prefix(1).uppercased() + dropFirst()
@@ -18,7 +18,11 @@ extension String {
         self = self.capitalizingFirstLetter()
     }
     
+    
+    
 }
+
+// MARK: - Double
 extension Double {
     /// Rounds the double to decimal places value
     func rounded(toPlaces places:Int) -> Double {
@@ -27,6 +31,49 @@ extension Double {
     }
 }
 
+extension Double {
+    /// Rounds the double to decimal places value
+    func roundTo(places:Int) -> String {
+        let divisor = pow(10.0, Double(places))
+        var res:Double
+        if self >= 1000{
+            res  = (self / 1000 * divisor).rounded() / divisor
+            if (res - Double(Int(res)) == 0){
+                
+                print(String.init(format: "%.0f", (self/1000 * divisor).rounded() / divisor))
+                return String.init(format: "%.0fK", (self/1000 * divisor).rounded() / divisor)
+                
+            }
+            return String.init(format: "%.1fK", (self/1000 * divisor).rounded() / divisor)
+        }
+        res  = (self * divisor).rounded() / divisor
+        if (res - Double(Int(res)) == 0){
+            return String.init(format: "%.0f", res)
+        }
+        return String.init(format: "%.1f", res)
+    }
+}
+
+extension Double {
+    func formatToHumanReadableForm() -> String {
+        guard self > 0 else {
+            return "0 bytes"
+        }
+        let suffixes = ["", "K", "M", "G", "TB", "PB", "EB", "ZB", "YB"]
+        let k: Double = 1000
+        let i = floor(log(self) / log(k))
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.maximumFractionDigits = i == 0 ? 1 : 0
+        numberFormatter.numberStyle = .decimal
+        
+        let numberString = numberFormatter.string(from: NSNumber(value: self / pow(k, i))) ?? "Unknown"
+        let suffix = suffixes[Int(i)]
+        return "\(numberString) \(suffix)"
+    }
+}
+
+// MARK: - UIViewController
 extension UIViewController {
     func hideTabBar() {
         if var frame = self.tabBarController?.tabBar.frame {
@@ -47,6 +94,7 @@ extension UIViewController {
     }
 }
 
+// MARK: - UITextView
 extension UITextView: UITextViewDelegate {
     
     /// Resize the placeholder when the UITextView bounds change

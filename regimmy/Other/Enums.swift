@@ -199,6 +199,10 @@ enum DrugUnitType: String{
 }
 
 
+enum ReloadDataType {
+    case initial, delete, insert, replace, modify
+}
+
 
 
 

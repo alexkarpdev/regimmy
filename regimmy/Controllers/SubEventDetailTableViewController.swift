@@ -15,7 +15,7 @@ class SubEventDetailTableViewController: UITableViewController {
     var navc: UINavigationController?
     var selectedSubEventType: SubEventType!
     
-    var selectedSubEvent: Object!
+    var selectedSubEvent: RBaseSubEvent!
     
     var isEditingMode = false
     
@@ -28,6 +28,8 @@ class SubEventDetailTableViewController: UITableViewController {
     var selectedRow: IndexPath!
     
     var propertiesList: [String]!
+    
+    var complitionHandler: (()->())!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -291,7 +293,9 @@ class SubEventDetailTableViewController: UITableViewController {
         RealmDBController.shared.save(object: selectedSubEvent)
         setEditingMode(isEdit: false)
         if navigationController?.viewControllers.first === self {
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: complitionHandler)
+        }else{
+            complitionHandler()
         }
     }
     
@@ -307,6 +311,7 @@ class SubEventDetailTableViewController: UITableViewController {
                 (selectedSubEvent as! RExercise).loadUnit = property
             case .drugUnitType:
                 (selectedSubEvent as! RDrug).servUnit = property
+                tableView.reloadRows(at: [IndexPath(row: selectedRow.row + 1, section: 0)], with: .automatic)
             default:
                 break
             }
@@ -360,48 +365,59 @@ class SubEventDetailTableViewController: UITableViewController {
 
 extension SubEventDetailTableViewController: UITextFieldDelegate {
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print(textField.text)
+    }
+    
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let text = (textField.text ?? "") + string
-        try! RealmDBController.shared.realm.write{
-            switch selectedSubEventType! {
-            case .exercise:
-                switch textField.tag {
-                case 0:
-                    (selectedSubEvent as! RExercise).name = text
-                case 1:
-                    (selectedSubEvent as! RExercise).info = text
-                default:
-                    break
-                }
-            case .ingredient:
-                switch textField.tag {
-                case 0:
-                    (selectedSubEvent as! RIngredient).name = text
-                case 1:
-                    (selectedSubEvent as! RIngredient).info = text
-                case 2:
-                    (selectedSubEvent as! RIngredient).prot = Double(text)!
-                case 3:
-                    (selectedSubEvent as! RIngredient).fat = Double(text)!
-                case 4:
-                    (selectedSubEvent as! RIngredient).carbo = Double(text)!
-                case 5:
-                    (selectedSubEvent as! RIngredient).cal = Double(text)!
-                default:
-                    break
-                }
-            case .drug:
-                switch textField.tag {
-                case 0:
-                    (selectedSubEvent as! RDrug).name = text
-                case 1:
-                    (selectedSubEvent as! RDrug).info = text
-                default:
-                    break
+        var text = ""
+        if let t = textField.text,
+            let textRange = Range(range, in: t) {
+            let updatedText = t.replacingCharacters(in: textRange, with: string)
+            text = updatedText
+            
+            try! RealmDBController.shared.realm.write{
+                switch selectedSubEventType! {
+                case .exercise:
+                    switch textField.tag {
+                    case 0:
+                        (selectedSubEvent as! RExercise).name = text
+                    case 1:
+                        (selectedSubEvent as! RExercise).info = text
+                    default:
+                        break
+                    }
+                case .ingredient:
+                    switch textField.tag {
+                    case 0:
+                        (selectedSubEvent as! RIngredient).name = text
+                    case 1:
+                        (selectedSubEvent as! RIngredient).info = text
+                    case 2:
+                        (selectedSubEvent as! RIngredient).prot = Double(text)!
+                    case 3:
+                        (selectedSubEvent as! RIngredient).fat = Double(text)!
+                    case 4:
+                        (selectedSubEvent as! RIngredient).carbo = Double(text)!
+                    case 5:
+                        (selectedSubEvent as! RIngredient).cal = Double(text)!
+                    default:
+                        break
+                    }
+                case .drug:
+                    switch textField.tag {
+                    case 0:
+                        (selectedSubEvent as! RDrug).name = text
+                    case 1:
+                        (selectedSubEvent as! RDrug).info = text
+                    default:
+                        break
+                    }
                 }
             }
         }
-
+        
         return true
     }
     

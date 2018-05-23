@@ -13,6 +13,7 @@ class CalendarExerciseCell: UITableViewCell {
     
     static let identifier = "CalendarExerciseCell"
     
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var setIndexLabel: UILabel!
     @IBOutlet weak var repeatsValueLabel: UILabel!
     @IBOutlet weak var loadValueLabel: UILabel!
