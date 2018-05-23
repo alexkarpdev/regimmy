@@ -11,29 +11,40 @@ import RealmSwift
 
 // MARK: - Generic Protocol
 
-
+protocol POSOProtocol{
+    
+    func saveToDB()
+    //func backup() // return object params before editing if cancel button was clicked
+}
 
 // MARK: - SubEvents
 
-class BaseSubEvent <T: RBaseSubEvent> {
+class BaseSubEvent <T: RBaseSubEvent> : POSOProtocol{
     
     var name = ""
     var info = ""
+    var object: T?
     
     func saveToDB() {
-        RealmDBController.shared.save(object: makeRealmObject())
+        var savedObject = T()
+        try! RealmDBController.shared.realm.write {
+            savedObject = makeRealmObject()
+        }
+        RealmDBController.shared.save(object: savedObject)
     }
     
     func removeFromDB() {
-        RealmDBController.shared.delete(object: getRealmObjectFromDB()!)
+        if let o = object {
+            RealmDBController.shared.delete(object: o)
+        }
     }
     
-    func getRealmObjectFromDB() -> T? {
-        return RealmDBController.shared.loadRealmObjectBy(name: self.name)
-    }
+//    func getRealmObjectFromDB() -> T? {
+//        return RealmDBController.shared.loadRealmObjectBy(name: self.name)
+//    }
     
     func makeRealmObject() -> T {
-        let object = T()
+        let object = self.object ?? T()
         object.name = name
         object.info = info
         return object
@@ -42,9 +53,11 @@ class BaseSubEvent <T: RBaseSubEvent> {
     init(from realmObject: T) {
         name = realmObject.name
         info = realmObject.info
+        object = realmObject
     }
     
     init(name: String, info: String) {
+        self.object = nil
         self.name = name
         self.info = info
     }
@@ -68,9 +81,7 @@ class Ingredient<T:RIngredient>: BaseSubEvent<RIngredient> {
     }
     
     override func makeRealmObject() -> RIngredient{
-        let object: RIngredient = RIngredient()
-        object.name = name
-        object.info = info
+        let object: RIngredient = super.makeRealmObject()
         object.prot = prot
         object.fat = fat
         object.carbo = carbo

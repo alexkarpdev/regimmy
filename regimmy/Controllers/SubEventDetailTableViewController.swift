@@ -14,8 +14,9 @@ class SubEventDetailTableViewController: UITableViewController {
     
     var navc: UINavigationController?
     var selectedSubEventType: SubEventType!
-    
     var selectedSubEvent: RBaseSubEvent!
+    
+    var selectedPoso: POSOProtocol!
     
     var isEditingMode = false
     
@@ -145,35 +146,38 @@ class SubEventDetailTableViewController: UITableViewController {
                 cell = UITableViewCell()
             }
         case .ingredient:
+            
+            let ingredientPoso = selectedPoso as! Ingredient
+            
             switch indexPath.row {
             case 0:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath)
-                (cell as! EditFieldCell).configure(placeHolder: "Название", text: (selectedSubEvent as! RIngredient).name)
+                (cell as! EditFieldCell).configure(placeHolder: "Название", text: ingredientPoso.name)
                 (cell as! EditFieldCell).textField.delegate = self
                 (cell as! EditFieldCell).textField.tag = indexPath.row
             case 1:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath)
-                (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: (selectedSubEvent as! RIngredient).info, fontSize: 15)
+                (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: ingredientPoso.info, fontSize: 15)
                 (cell as! EditFieldCell).textField.delegate = self
                 (cell as! EditFieldCell).textField.tag = indexPath.row
             case 2:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditorNutrientCell.identifier, for: indexPath)
-                (cell as! EditorNutrientCell).configure(name: "Белки", value: (selectedSubEvent as! RIngredient).prot, unit: "грамм", color: #colorLiteral(red: 0.1058823529, green: 0.6784313725, blue: 0.9725490196, alpha: 1))
+                (cell as! EditorNutrientCell).configure(name: "Белки", value: ingredientPoso.prot, unit: "грамм", color: #colorLiteral(red: 0.1058823529, green: 0.6784313725, blue: 0.9725490196, alpha: 1))
                 (cell as! EditorNutrientCell).valueField.delegate = self
                 (cell as! EditorNutrientCell).valueField.tag = indexPath.row
             case 3:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditorNutrientCell.identifier, for: indexPath)
-                (cell as! EditorNutrientCell).configure(name: "Жиры", value: (selectedSubEvent as! RIngredient).fat, unit: "грамм", color: #colorLiteral(red: 1, green: 0.8, blue: 0, alpha: 1))
+                (cell as! EditorNutrientCell).configure(name: "Жиры", value: ingredientPoso.fat, unit: "грамм", color: #colorLiteral(red: 1, green: 0.8, blue: 0, alpha: 1))
                 (cell as! EditorNutrientCell).valueField.delegate = self
                 (cell as! EditorNutrientCell).valueField.tag = indexPath.row
             case 4:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditorNutrientCell.identifier, for: indexPath)
-                (cell as! EditorNutrientCell).configure(name: "Углеводы", value: (selectedSubEvent as! RIngredient).carbo, unit: "грамм", color: #colorLiteral(red: 0.3882352941, green: 0.8549019608, blue: 0.2196078431, alpha: 1))
+                (cell as! EditorNutrientCell).configure(name: "Углеводы", value: ingredientPoso.carbo, unit: "грамм", color: #colorLiteral(red: 0.3882352941, green: 0.8549019608, blue: 0.2196078431, alpha: 1))
                 (cell as! EditorNutrientCell).valueField.delegate = self
                 (cell as! EditorNutrientCell).valueField.tag = indexPath.row
             case 5:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditorNutrientCell.identifier, for: indexPath)
-                (cell as! EditorNutrientCell).configure(name: "Энерг.", value: (selectedSubEvent as! RIngredient).cal, unit: "ккал.", color: #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1))
+                (cell as! EditorNutrientCell).configure(name: "Энерг.", value: ingredientPoso.cal, unit: "ккал.", color: #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1))
                 (cell as! EditorNutrientCell).valueField.delegate = self
                 (cell as! EditorNutrientCell).valueField.tag = indexPath.row
             default:
@@ -290,7 +294,8 @@ class SubEventDetailTableViewController: UITableViewController {
     }
     
     @objc func saveAction() {
-        RealmDBController.shared.save(object: selectedSubEvent)
+        //RealmDBController.shared.save(object: selectedSubEvent)
+        selectedPoso.saveToDB()
         setEditingMode(isEdit: false)
         if navigationController?.viewControllers.first === self {
             dismiss(animated: true, completion: complitionHandler)
@@ -389,19 +394,22 @@ extension SubEventDetailTableViewController: UITextFieldDelegate {
                         break
                     }
                 case .ingredient:
+                    
+                    let ingredientPoso = selectedPoso as! Ingredient
+                    
                     switch textField.tag {
                     case 0:
-                        (selectedSubEvent as! RIngredient).name = text
+                        ingredientPoso.name = text
                     case 1:
-                        (selectedSubEvent as! RIngredient).info = text
+                        ingredientPoso.info = text
                     case 2:
-                        (selectedSubEvent as! RIngredient).prot = Double(text)!
+                        ingredientPoso.prot = Double(text)!
                     case 3:
-                        (selectedSubEvent as! RIngredient).fat = Double(text)!
+                        ingredientPoso.fat = Double(text)!
                     case 4:
-                        (selectedSubEvent as! RIngredient).carbo = Double(text)!
+                        ingredientPoso.carbo = Double(text)!
                     case 5:
-                        (selectedSubEvent as! RIngredient).cal = Double(text)!
+                        ingredientPoso.cal = Double(text)!
                     default:
                         break
                     }

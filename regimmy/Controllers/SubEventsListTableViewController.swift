@@ -22,7 +22,8 @@ class SubEventsListTableViewController: UITableViewController {
     var selectedObjects = [RBaseSubEvent]()
     var objects = [RBaseSubEvent]()
     
-    var posObjects = [AnyObject]()
+    var posObjects = [POSOProtocol]()
+    var selectedPoso:POSOProtocol!
     
    // var results: Results<Object>! // чё-та не понимаю как сделать дженерик
     
@@ -80,6 +81,9 @@ class SubEventsListTableViewController: UITableViewController {
             selectedEventType = .drugs
             objects = RealmDBController.shared.load() as [RDrug]
         }
+        
+        tableView.reloadData()
+        return
         
         switch reloadType{
         case .initial:
@@ -201,7 +205,8 @@ class SubEventsListTableViewController: UITableViewController {
         selectedIndexPath = indexPath
         
         if isEditorMode {
-            selectedSubEvent = objects[indexPath.row]
+            //selectedSubEvent = objects[indexPath.row]
+            selectedPoso = posObjects[indexPath.row]
             performSegue(withIdentifier: "ShowSubEventDetailSegue", sender: self)
         }else{
             if selectedObjects.contains(objects[indexPath.row]) {
@@ -293,7 +298,10 @@ class SubEventsListTableViewController: UITableViewController {
         if segue.identifier == "ShowSubEventDetailSegue" {
             let vc = segue.destination as! SubEventDetailTableViewController
             vc.selectedSubEventType = selectedSubEventType
-            vc.selectedSubEvent = selectedSubEvent
+            //vc.selectedSubEvent = selectedSubEvent
+            
+            vc.selectedPoso = selectedPoso
+            
             vc.complitionHandler = ({[unowned self] in
                 self.reloadObjects(.modify)
             })
