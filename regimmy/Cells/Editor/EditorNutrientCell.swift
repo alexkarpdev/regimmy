@@ -16,7 +16,9 @@ class EditorNutrientCell: UITableViewCell {
     @IBOutlet weak var nutrientUnitLabel: UILabel!
     @IBOutlet weak var valueField: UITextField!
     
-    func configure(name: String, value: Double?, unit: String, color: UIColor) {
+    var isEditMode = false
+    
+    func configure(name: String, value: Double?, unit: String, color: UIColor, mode: Bool) {
         
         nutrientNameLabel.textColor = color
         valueField.textColor = color
@@ -24,9 +26,22 @@ class EditorNutrientCell: UITableViewCell {
         
         nutrientNameLabel.text = name
         nutrientUnitLabel.text = unit == "ккал." ? "  ккал." : unit
+        
+        //isEditMode = valueField.isEnabled
+        isEditMode = mode
+        valueField.text = ""
+        var str = ""
+        
         if let val = value{
-            valueField.text = "\(val)"
+            if isEditMode {
+                if val != 0.0 {
+                    valueField.text = "\(val)"
+                }
+            }else{
+                valueField.text = val.formatToHumanReadableForm()
+            }
         }
+        str = valueField.text!
         
     }
     

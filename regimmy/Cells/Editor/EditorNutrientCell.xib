@@ -37,7 +37,7 @@
                         <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="0" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FFH-k6-ylm">
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="0.0" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FFH-k6-ylm">
                         <rect key="frame" x="78" y="8" width="169.5" height="27"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="27" id="hS6-4j-RnP"/>

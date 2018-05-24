@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		327BC6FD557DF083D970F454 /* Pods_regimmy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E0F8D06EA8D56B909E6B837 /* Pods_regimmy.framework */; };
-		780AC212204D830900C06598 /* RootEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780AC211204D830900C06598 /* RootEvent.swift */; };
+		780AC212204D830900C06598 /* SimpleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780AC211204D830900C06598 /* SimpleEvent.swift */; };
 		780AC214204D842E00C06598 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780AC213204D842E00C06598 /* Enums.swift */; };
 		780AC216204D858D00C06598 /* TrainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780AC215204D858D00C06598 /* TrainEvent.swift */; };
 		780AC2192057D0D100C06598 /* CalendarHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780AC2172057D0D100C06598 /* CalendarHeaderCell.swift */; };
@@ -157,7 +157,7 @@
 /* Begin PBXFileReference section */
 		2E0F8D06EA8D56B909E6B837 /* Pods_regimmy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_regimmy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65879681037CF8471DEF8567 /* Pods-regimmy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-regimmy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-regimmy/Pods-regimmy.debug.xcconfig"; sourceTree = "<group>"; };
-		780AC211204D830900C06598 /* RootEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootEvent.swift; sourceTree = "<group>"; };
+		780AC211204D830900C06598 /* SimpleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEvent.swift; sourceTree = "<group>"; };
 		780AC213204D842E00C06598 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		780AC215204D858D00C06598 /* TrainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEvent.swift; sourceTree = "<group>"; };
 		780AC2172057D0D100C06598 /* CalendarHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderCell.swift; sourceTree = "<group>"; };
@@ -355,7 +355,7 @@
 		780AC210204D82F600C06598 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				780AC211204D830900C06598 /* RootEvent.swift */,
+				780AC211204D830900C06598 /* SimpleEvent.swift */,
 				780AC215204D858D00C06598 /* TrainEvent.swift */,
 				781132B1208AF1F300FD4944 /* EventFactory.swift */,
 			);
@@ -839,7 +839,7 @@
 				781FE17F208314910013D646 /* GraphSegChooseCell.swift in Sources */,
 				789DB149208E09820076B7FF /* FSCalendar.m in Sources */,
 				789DB0EB208DF8930076B7FF /* CalendarViewController.swift in Sources */,
-				780AC212204D830900C06598 /* RootEvent.swift in Sources */,
+				780AC212204D830900C06598 /* SimpleEvent.swift in Sources */,
 				780AC216204D858D00C06598 /* TrainEvent.swift in Sources */,
 				789DB154208E09820076B7FF /* FSCalendarAppearance.m in Sources */,
 				789DB14D208E09820076B7FF /* FSCalendarExtensions.m in Sources */,

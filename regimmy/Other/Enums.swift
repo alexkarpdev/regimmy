@@ -173,7 +173,7 @@ enum ExerciseType: String{
     case warmup = "разминка"
 }
 
-enum DurationUnitType: String{
+enum DurationType: String{
     case repeats = "повтры"
     case time = "время"
     case laps = "круги"

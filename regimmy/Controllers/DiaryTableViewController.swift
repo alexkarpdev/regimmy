@@ -11,7 +11,7 @@ import RealmSwift
 
 class DiaryTableViewController: UITableViewController {
     
-    var events = [RootEvent]()
+    var events = [SimpleEvent]()
     
     @IBOutlet var leftButton: UIBarButtonItem! //calendar
     @IBOutlet var rightButton: UIBarButtonItem! //add
@@ -161,7 +161,7 @@ class DiaryTableViewController: UITableViewController {
         let types: [EventType] = [.eating, .train, .measure, .eating, .drugs, .eating]
         
         for i in 0..<names.count {
-            let event = RootEvent(date: selectedDate, name: names[i], type: types[i])
+            let event = SimpleEvent(date: selectedDate, name: names[i], type: types[i])
             events.append(event)
         }
         

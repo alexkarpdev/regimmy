@@ -13,22 +13,28 @@ class EditorIngredientCell: UITableViewCell {
     static let identifier = "EditorIngredientCell"
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
     
     @IBOutlet weak var protLabel: UILabel!
     @IBOutlet weak var fatLabel: UILabel!
     @IBOutlet weak var carbLabel: UILabel!
     @IBOutlet weak var calLabel: UILabel!
-    @IBOutlet weak var massLabel: UILabel!
     
-    @IBOutlet weak var numberLabel: UILabel!
+    //@IBOutlet weak var massLabel: UILabel!
     
-    func configure(name: String, prot: Double, fat: Double, carb: Double, cal: Double, mass: Double = 100, number: Double = 0){
+    //@IBOutlet weak var numberLabel: UILabel!
+    
+    func configure(posObject: Ingredient){
         
-        self.nameLabel.text = name
-        self.protLabel.text = String(prot)
-        self.fatLabel.text = String(fat)
-        self.carbLabel.text = String(carb)
-        self.calLabel.text = String(cal)
+        self.nameLabel.text = posObject.name
+        
+        infoLabel.isEnabled = !posObject.info.isEmpty
+        infoLabel.text = posObject.info
+        
+        self.protLabel.text = posObject.prot.formatToHumanReadableForm()
+        self.fatLabel.text = posObject.fat.formatToHumanReadableForm()
+        self.carbLabel.text = posObject.carbo.formatToHumanReadableForm()
+        self.calLabel.text = posObject.cal.formatToHumanReadableForm()
         
     }
     

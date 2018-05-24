@@ -17,7 +17,7 @@ class AddEatingCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     
-    func configure(with event:RootEvent) {
+    func configure(with event:SimpleEvent) {
         
         typeImageView.image = event.type.image
         timeLabel.text = "" + event.dateTime + "   "

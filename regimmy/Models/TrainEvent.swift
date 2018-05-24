@@ -8,6 +8,6 @@
 
 import Foundation
 
-class TrainEvent: RootEvent {
+class TrainEvent: SimpleEvent {
     
 }

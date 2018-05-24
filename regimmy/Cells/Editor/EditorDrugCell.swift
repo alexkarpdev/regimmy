@@ -17,6 +17,17 @@ class EditorDrugCell: UITableViewCell {
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
     
+    func configure(posObject: Drug) {
+        nameLabel.text = posObject.name
+        
+        infoLabel.isEnabled = !posObject.info.isEmpty
+        infoLabel.text = posObject.info
+        
+        valueLabel.text = posObject.servSize.formatToHumanReadableForm()
+        unitLabel.text = posObject.servUnit.rawValue
+        
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

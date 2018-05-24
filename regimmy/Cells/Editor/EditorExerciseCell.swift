@@ -24,6 +24,26 @@ class EditorExerciseCell: UITableViewCell {
         // Initialization code
     }
 
+    func configure(posObject: Exercise){
+        
+        nameLabel.text = posObject.name
+        
+        infoLabel.isEnabled = !posObject.info.isEmpty
+        infoLabel.text = posObject.info
+        
+        if let mi = posObject.muscle {
+            muscleImageView.image = UIImage(named: mi.typeImageName)
+            muscleImageView.alpha = 1
+        }else{
+            muscleImageView.alpha = 0.3
+        }
+        
+        typeLabel.text = posObject.type.rawValue
+        durationLabel.text = posObject.durationType.rawValue
+        loadLabel.text = posObject.loadUnit.rawValue
+        
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

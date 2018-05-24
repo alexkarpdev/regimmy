@@ -13,17 +13,18 @@ class SubEventsListTableViewController: UITableViewController {
     
     var selectedEventType: EventType!
     var selectedSubEventType: SubEventType!
-    var selectedSubEvent: RBaseSubEvent!
+    //var selectedSubEvent: RBaseSubEvent!
     
     var selectedIndexPath: IndexPath!
     
     var isEditorMode = true
     
-    var selectedObjects = [RBaseSubEvent]()
-    var objects = [RBaseSubEvent]()
+    //var selectedObjects = [RBaseSubEvent]()
+    //var objects = [RBaseSubEvent]()
     
-    var posObjects = [POSOProtocol]()
-    var selectedPoso:POSOProtocol!
+    var selectedPosObjects = [RootEvent]()
+    var posObjects = [RootEvent]()
+    var selectedPoso:RootEvent!
     
    // var results: Results<Object>! // чё-та не понимаю как сделать дженерик
     
@@ -50,14 +51,16 @@ class SubEventsListTableViewController: UITableViewController {
         reloadObjects(.initial)
         
         tableView.register(UINib(nibName: EditorIngredientCell.identifier, bundle: nil), forCellReuseIdentifier: EditorIngredientCell.identifier)
-        tableView.register(UINib(nibName: CalendarMeasureCell.identifier, bundle: nil), forCellReuseIdentifier: CalendarMeasureCell.identifier)
-        tableView.register(UINib(nibName: CalendarIngredientCell.identifier, bundle: nil), forCellReuseIdentifier: CalendarIngredientCell.identifier)
-        tableView.register(UINib(nibName: CalendarExerciseCell.identifier, bundle: nil), forCellReuseIdentifier: CalendarExerciseCell.identifier)
+        tableView.register(UINib(nibName: EditorExerciseCell.identifier, bundle: nil), forCellReuseIdentifier: EditorExerciseCell.identifier)
+        tableView.register(UINib(nibName: EditorDrugCell.identifier, bundle: nil), forCellReuseIdentifier: EditorDrugCell.identifier)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
         
         tableView.tableHeaderView = UIView()
+        
+        let ar: [RootEvent] = [RootEvent]()
+        ar.index(of: Ingredient())
 
     }
     
@@ -71,16 +74,16 @@ class SubEventsListTableViewController: UITableViewController {
         switch selectedSubEventType! {
         case .exercise:
             selectedEventType = .train
-            objects = RealmDBController.shared.load() as [RExercise]
+            posObjects = (RealmDBController.shared.load() as [RExercise]).map(){Exercise.init(from: ($0))}
         case .ingredient:
             selectedEventType = .eating
-            objects = RealmDBController.shared.load() as [RIngredient]
-            let posObjects1 = (objects as! [RIngredient]).map(){Ingredient.init(from: ($0))}
-            posObjects = posObjects1// as [BaseSubEvent<RIngredient>]
+            posObjects = (RealmDBController.shared.load() as [RIngredient]).map(){Ingredient.init(from: ($0))}
         case .drug:
             selectedEventType = .drugs
-            objects = RealmDBController.shared.load() as [RDrug]
+            posObjects = (RealmDBController.shared.load() as [RDrug]).map(){Drug.init(from: ($0))}
         }
+        
+        
         
         tableView.reloadData()
         return
@@ -94,11 +97,14 @@ class SubEventsListTableViewController: UITableViewController {
             
             switch selectedSubEventType! {
             case .exercise:
-                index = RealmDBController.shared.index(of: selectedSubEvent as! RExercise)
+                index = (posObjects as! [Ingredient]).index(of: selectedPoso as! Ingredient)
+                //index = RealmDBController.shared.index(of: selectedSubEvent as! RExercise)
             case .ingredient:
-                index = RealmDBController.shared.index(of: selectedSubEvent as! RIngredient)
+                index = (posObjects as! [Ingredient]).index(of: selectedPoso as! Ingredient)
+                //index = RealmDBController.shared.index(of: selectedSubEvent as! RIngredient)
             case .drug:
-                index = RealmDBController.shared.index(of: selectedSubEvent as! RDrug)
+                index = (posObjects as! [Ingredient]).index(of: selectedPoso as! Ingredient)
+                //index = RealmDBController.shared.index(of: selectedSubEvent as! RDrug)
             }
             
             if let index = index{
@@ -162,7 +168,7 @@ class SubEventsListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return posObjects.count
     }
 
     
@@ -176,25 +182,28 @@ class SubEventsListTableViewController: UITableViewController {
         case .eating:
             cell = tableView.dequeueReusableCell(withIdentifier: EditorIngredientCell.identifier, for: indexPath) as! EditorIngredientCell
             let posObject = posObjects[indexPath.row] as! Ingredient
-            (cell as! EditorIngredientCell).configure(name: posObject.name, prot: posObject.prot, fat: posObject.fat, carb: posObject.carbo, cal: posObject.cal)
+            (cell as! EditorIngredientCell).configure(posObject: posObject)
         case .train:
-            cell = tableView.dequeueReusableCell(withIdentifier: CalendarExerciseCell.identifier, for: indexPath) as! CalendarExerciseCell
-            let object = objects[indexPath.row] as! RExercise
-            (cell as! CalendarExerciseCell).nameLabel.text = object.name
-        case .measure:
-            cell = tableView.dequeueReusableCell(withIdentifier: CalendarMeasureCell.identifier, for: indexPath) as! CalendarMeasureCell
+            cell = tableView.dequeueReusableCell(withIdentifier: EditorExerciseCell.identifier, for: indexPath) as! EditorExerciseCell
+            let posObject = posObjects[indexPath.row] as! Exercise
+            (cell as! EditorExerciseCell).configure(posObject: posObject)
         case .drugs:
-            cell = tableView.dequeueReusableCell(withIdentifier: CalendarMeasureCell.identifier, for: indexPath) as! CalendarMeasureCell
+            cell = tableView.dequeueReusableCell(withIdentifier: EditorDrugCell.identifier, for: indexPath) as! EditorDrugCell
+            let posObject = posObjects[indexPath.row] as! Drug
+            (cell as! EditorDrugCell).configure(posObject: posObject)
+        default :
+            cell = UITableViewCell()
         }
+        
         
         if isEditorMode {
             cell.accessoryType = .disclosureIndicator
         }else{
-            if selectedObjects.contains(objects[indexPath.row]) {
-                cell.accessoryType = .checkmark
-            }else{
-                cell.accessoryType = .none
-            }
+//            if selectedPosObjects.contains(posObjects[indexPath.row]) {
+//                cell.accessoryType = .checkmark
+//            }else{
+//                cell.accessoryType = .none
+//            }
         }
         
         return cell
@@ -209,11 +218,11 @@ class SubEventsListTableViewController: UITableViewController {
             selectedPoso = posObjects[indexPath.row]
             performSegue(withIdentifier: "ShowSubEventDetailSegue", sender: self)
         }else{
-            if selectedObjects.contains(objects[indexPath.row]) {
-                selectedObjects.remove(at: selectedObjects.index(of: objects[indexPath.row])!)
-            }else{
-                selectedObjects.append(objects[indexPath.row])
-            }
+//            if selectedObjects.contains(objects[indexPath.row]) {
+//                selectedObjects.remove(at: selectedObjects.index(of: objects[indexPath.row])!)
+//            }else{
+//                selectedObjects.append(objects[indexPath.row])
+//            }
             tableView.reloadRows(at: [indexPath], with: .automatic)
             switch selectedEventType! {
             case .eating:
@@ -241,7 +250,7 @@ class SubEventsListTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            RealmDBController.shared.delete(object: objects[indexPath.row])
+            posObjects[indexPath.row].removeFromDB()
             reloadObjects(.delete)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -275,21 +284,21 @@ class SubEventsListTableViewController: UITableViewController {
             let vc = (segue.destination as! UINavigationController).viewControllers.first as! SubEventDetailTableViewController
             vc.selectedSubEventType = selectedSubEventType
             
-            let newSubEvent: RBaseSubEvent!
+            let newSubEvent: RBaseSubEvent! // delete
+            
+            let newPosoEvent: RootEvent!
+            
             switch selectedSubEventType! {
             case .ingredient:
-                newSubEvent = RIngredient()
+                newPosoEvent = Ingredient()
             case .exercise:
-                newSubEvent = RExercise()
-                (newSubEvent as! RExercise).type = ExerciseType.force.rawValue
-                (newSubEvent as! RExercise).durationType = DurationUnitType.repeats.rawValue
-                (newSubEvent as! RExercise).loadUnit = LoadUnitType.mass.rawValue
+                newPosoEvent = Exercise()
             case .drug:
-                newSubEvent = RDrug()
-                (newSubEvent as! RDrug).servUnit = DrugUnitType.mass.rawValue
+                newPosoEvent = Drug()
             }
-            selectedSubEvent = newSubEvent
-            vc.selectedSubEvent = newSubEvent
+            
+            vc.selectedPoso = newPosoEvent
+            
             vc.complitionHandler = ({[unowned self] in
                 self.reloadObjects(.insert)
             })
@@ -298,7 +307,6 @@ class SubEventsListTableViewController: UITableViewController {
         if segue.identifier == "ShowSubEventDetailSegue" {
             let vc = segue.destination as! SubEventDetailTableViewController
             vc.selectedSubEventType = selectedSubEventType
-            //vc.selectedSubEvent = selectedSubEvent
             
             vc.selectedPoso = selectedPoso
             

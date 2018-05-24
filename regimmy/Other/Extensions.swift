@@ -57,11 +57,12 @@ extension Double {
 extension Double {
     func formatToHumanReadableForm() -> String {
         guard self > 0 else {
-            return "0 bytes"
+            return "0"
         }
         let suffixes = ["", "K", "M", "G", "TB", "PB", "EB", "ZB", "YB"]
         let k: Double = 1000
-        let i = floor(log(self) / log(k))
+        var i = floor(log(self) / log(k))
+        i = i < 0 ? 0 : i
         
         let numberFormatter = NumberFormatter()
         numberFormatter.maximumFractionDigits = i == 0 ? 1 : 0

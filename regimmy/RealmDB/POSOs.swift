@@ -11,21 +11,58 @@ import RealmSwift
 
 // MARK: - Generic Protocol
 
-protocol POSOProtocol{
-    
+protocol POSOProtocol: class, Equatable {
     func saveToDB()
-    //func backup() // return object params before editing if cancel button was clicked
+    func removeFromDB()
+    func equals(other: Self) -> Bool
+    func backup() // return object params before editing if cancel button was clicked
+}
+
+extension POSOProtocol {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.equals(other: rhs)
+    }
 }
 
 // MARK: - SubEvents
 
-class BaseSubEvent <T: RBaseSubEvent> : POSOProtocol{
+class RootEvent: POSOProtocol {
+    func saveToDB() {
+        fatalError("override it!")
+    }
+    
+    func removeFromDB() {
+        fatalError("override it!")
+    }
+    
+    func equals(other: RootEvent) -> Bool {
+        return (other === self) && (other.name == self.name) &&
+            (other.info == self.info)
+    }
     
     var name = ""
     var info = ""
+    
+    init() {
+        name = ""
+        info = ""
+    }
+    
+    func backup() {
+        fatalError("override it!")
+    }
+}
+
+class BaseSubEvent <T: RBaseSubEvent> : RootEvent {
+    
     var object: T?
     
-    func saveToDB() {
+    func equals<P: BaseSubEvent<T>>(other: P) -> Bool {
+        return super.equals(other: other)
+        
+    }
+    
+    override func saveToDB() {
         var savedObject = T()
         try! RealmDBController.shared.realm.write {
             savedObject = makeRealmObject()
@@ -33,10 +70,15 @@ class BaseSubEvent <T: RBaseSubEvent> : POSOProtocol{
         RealmDBController.shared.save(object: savedObject)
     }
     
-    func removeFromDB() {
+    override func removeFromDB() {
         if let o = object {
             RealmDBController.shared.delete(object: o)
         }
+    }
+    
+    override func backup() {
+        name = object!.name
+        info = object!.info
     }
     
 //    func getRealmObjectFromDB() -> T? {
@@ -50,13 +92,19 @@ class BaseSubEvent <T: RBaseSubEvent> : POSOProtocol{
         return object
     }
     
+    override init() {
+        super.init()
+        object = nil
+    }
+    
     init(from realmObject: T) {
-        name = realmObject.name
-        info = realmObject.info
+        super.init()
         object = realmObject
+        backup()
     }
     
     init(name: String, info: String) {
+        super.init()
         self.object = nil
         self.name = name
         self.info = info
@@ -64,7 +112,8 @@ class BaseSubEvent <T: RBaseSubEvent> : POSOProtocol{
     
 }
 
-class Ingredient<T:RIngredient>: BaseSubEvent<RIngredient> {
+
+class Ingredient: BaseSubEvent<RIngredient> {
     
     var prot = 0.0
     var fat = 0.0
@@ -72,12 +121,32 @@ class Ingredient<T:RIngredient>: BaseSubEvent<RIngredient> {
     var cal = 0.0
     //var massa = 0.0
     
+    override init() {
+        super.init()
+        prot = 0.0
+        fat = 0.0
+        carbo = 0.0
+        cal = 0.0
+    }
+    override func equals<P>(other: P) -> Bool where P : Ingredient {
+        return super.equals(other: other) &&
+            (other.prot == prot) &&
+            (other.fat == fat) &&
+            (other.carbo == carbo) &&
+            (other.cal == cal)
+    }
+    
     override init(from realmObject: RIngredient) {
         super.init(from: realmObject)
-        prot = realmObject.prot
-        fat = realmObject.fat
-        carbo = realmObject.carbo
-        cal = realmObject.cal
+        backup()
+    }
+    
+    override func backup() {
+        super.backup()
+        prot = object!.prot
+        fat = object!.fat
+        carbo = object!.carbo
+        cal = object!.cal
     }
     
     override func makeRealmObject() -> RIngredient{
@@ -93,16 +162,73 @@ class Ingredient<T:RIngredient>: BaseSubEvent<RIngredient> {
 }
 
 class Drug: BaseSubEvent<RDrug> {
+    
     var servSize = 0.0
     var servUnit = DrugUnitType.mass
-    var servs = 0.0
+    
+    override init() {
+        super.init()
+        servSize = 0.0
+        servUnit = DrugUnitType.mass
+    }
+    
+    override init(from realmObject: RDrug) {
+        super.init(from: realmObject)
+        backup()
+    }
+    
+    override func backup() {
+        super.backup()
+        servSize = object!.servSize
+        servUnit = DrugUnitType(rawValue: object!.servUnit)!
+    }
+    
+    override func makeRealmObject() -> RDrug{
+        let object: RDrug = super.makeRealmObject()
+        object.servSize = servSize
+        object.servUnit = servUnit.rawValue
+        
+        return object
+    }
 }
 
 class Exercise: BaseSubEvent<RExercise> {
+    
     var muscle: MuscleType?
     var type = ExerciseType.force //тип
-    var durationType = DurationUnitType.repeats //продолжительность
+    var durationType = DurationType.repeats //продолжительность
     var loadUnit = LoadUnitType.mass
+    
+    override init() {
+        super.init()
+        muscle = nil
+        type = ExerciseType.force //тип
+        durationType = DurationType.repeats //продолжительность
+        loadUnit = LoadUnitType.mass
+    }
+    
+    override init(from realmObject: RExercise) {
+        super.init(from: realmObject)
+        backup()
+    }
+    
+    override func backup() {
+        super.backup()
+        muscle =  MuscleType(rawValue: object!.muscle)!
+        type = ExerciseType(rawValue: object!.type)!
+        durationType = DurationType(rawValue: object!.durationType)!
+        loadUnit = LoadUnitType(rawValue: object!.loadUnit)!
+    }
+    
+    override func makeRealmObject() -> RExercise{
+        let object: RExercise = super.makeRealmObject()
+        object.muscle = muscle!.rawValue
+        object.type = type.rawValue
+        object.durationType = durationType.rawValue
+        object.loadUnit = loadUnit.rawValue
+        
+        return object
+    }
 }
 
 class ExerciseSet {

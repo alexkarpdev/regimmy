@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RootEvent {
+class SimpleEvent {
     var date:Date
     var name:String
     var note: String?
