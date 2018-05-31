@@ -11,7 +11,7 @@ import RealmSwift
 
 class DiaryTableViewController: UITableViewController {
     
-    var events = [SimpleEvent]()
+   // var events = [SimpleEvent]()
     
     @IBOutlet var leftButton: UIBarButtonItem! //calendar
     @IBOutlet var rightButton: UIBarButtonItem! //add
@@ -28,7 +28,13 @@ class DiaryTableViewController: UITableViewController {
     
     var selectedDate = Date()
     
-    var selectedEvent: RBaseEvent?
+    //var selectedEvent: RBaseEvent?
+    
+    var objects = [RBaseEvent]()
+    
+    var selectedPosObjects = [RootEvent]()
+    var posObjects = [RootEvent]()
+    var selectedPoso: RootEvent!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +80,10 @@ class DiaryTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        generateEvents()
+        //generateEvents()
+        
+        //loadEvents()
+        
         updateDateOn(selectedDate: selectedDate)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -154,6 +163,20 @@ class DiaryTableViewController: UITableViewController {
         }
         
     }
+    func loadEvents() {
+        posObjects.removeAll()
+        
+        posObjects.append(contentsOf: Array(RealmDBController.shared.loadEventsFor(date: selectedDate) as [REating]).map(){Eating.init(from: ($0))})
+        posObjects.append(contentsOf: Array(RealmDBController.shared.loadEventsFor(date: selectedDate) as [RTrain]).map(){Train.init(from: ($0))})
+        posObjects.append(contentsOf: Array(RealmDBController.shared.loadEventsFor(date: selectedDate) as [RMeasuring]).map(){Measuring.init(from: ($0))})
+        posObjects.append(contentsOf: Array(RealmDBController.shared.loadEventsFor(date: selectedDate) as [RDrugging]).map(){Drugging.init(from: ($0))})
+        
+        posObjects.sort(){$0.date < $1.date}
+        //objects.append(RealmDBController.shared.loadEventsFor(date: selectedDate) as [REating])
+        //posObjects = objects.map(){BaseEvent.init(from: ($0))}
+        
+        tableView.reloadData()
+    }
     
     func generateEvents(){
         
@@ -162,7 +185,7 @@ class DiaryTableViewController: UITableViewController {
         
         for i in 0..<names.count {
             let event = SimpleEvent(date: selectedDate, name: names[i], type: types[i])
-            events.append(event)
+           // events.append(event)
         }
         
         
@@ -171,9 +194,9 @@ class DiaryTableViewController: UITableViewController {
     func updateDateOn(selectedDate: Date){
         self.selectedDate = selectedDate
         generateEvents()
-        tableView.reloadData()
         //topDateLabel.text = selectedDate.description(with: Locale(identifier: "ru-RU"))
         prepareDate()
+        loadEvents()
     }
     
     func prepareDate(){
@@ -229,13 +252,13 @@ class DiaryTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return events.count
+        return posObjects.count
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if events[section].type == .eating {
+        if posObjects[section].type == .eating {
             let cell = tableView.dequeueReusableCell(withIdentifier: CalendarEatingHeaderCell.identifier) as! CalendarEatingHeaderCell
-            cell.configure(with: events[section])
+            cell.configure(with: posObjects[section] as! Eating)
             
             let bottomSeporatorView = UIView(frame: CGRect(x: 64, y: cell.frame.size.height - 1, width: self.view.frame.size.width - 64, height: 0.5))
             bottomSeporatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -249,7 +272,7 @@ class DiaryTableViewController: UITableViewController {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: SimpleEventCell.identifier) as! SimpleEventCell
-        cell.configure(with: events[section])
+        cell.configure(with: posObjects[section])
         
         let bottomSeporatorView = UIView(frame: CGRect(x: 64, y: cell.frame.size.height - 1, width: self.view.frame.size.width - 64, height: 0.5))
         bottomSeporatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -276,7 +299,7 @@ class DiaryTableViewController: UITableViewController {
         
         let cell: UITableViewCell!
         
-        switch events[indexPath.section].type {
+        switch posObjects[indexPath.section].type! {
         case .eating:
             cell = tableView.dequeueReusableCell(withIdentifier: CalendarIngredientCell.identifier, for: indexPath) as! CalendarIngredientCell
         case .train:
@@ -331,6 +354,7 @@ class DiaryTableViewController: UITableViewController {
     }
     */
     
+    
     // MARK: - Navigation
 
     @objc func showSelectedEvent(sender: UITapGestureRecognizer) {
@@ -340,6 +364,7 @@ class DiaryTableViewController: UITableViewController {
             
             print("tag = \(indexPath.section)")
             //selectedEvent.type = events[indexPath.section].type.rawValue
+            selectedPoso = posObjects[indexPath.section]
             performSegue(withIdentifier: "ShowEventSegue", sender: self)
         }
     }
@@ -361,7 +386,7 @@ class DiaryTableViewController: UITableViewController {
         if segue.identifier == "ShowEventSegue" {
             let vc = segue.destination as! EventDetailTableViewController
             //vc.selectedEventType = EventType(rawValue: (selectedEvent.type))!
-            vc.selectedEvent = selectedEvent
+            vc.selectedPoso = selectedPoso
             
         }
         

@@ -17,10 +17,10 @@ class CalendarEatingHeaderCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     
-    func configure(with event:SimpleEvent) {
+    func configure(with event: Eating) {
         
-        typeImageView.image = event.type.image
-        timeLabel.text = event.dateTime
+        typeImageView.image = event.type!.image
+        timeLabel.text = event.time
         nameLabel.text = event.name
         
     }

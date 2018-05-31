@@ -12,7 +12,16 @@ class EditorMuscleChooseCell: UITableViewCell {
 
     static let identifier = "EditorMuscleChooseCell"
     
-    @IBOutlet weak var muscleImage: UIImageView!
+    @IBOutlet weak var muscleImageView: UIImageView!
+    
+    @IBOutlet weak var muscleImageConstraint: NSLayoutConstraint!
+    
+    func changeConstraintFor(edit:Bool) {
+        UIView.animate(withDuration: 0.1) {
+            self.muscleImageConstraint.constant = edit ? 0 : 16
+            self.layoutSubviews()
+        }
+    }
     
     func configure() {
         
@@ -21,10 +30,10 @@ class EditorMuscleChooseCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        muscleImage.layer.cornerRadius = muscleImage.frame.size.width / 2
-        muscleImage.layer.borderWidth = 1
-        muscleImage.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        muscleImage.clipsToBounds = true
+        muscleImageView.layer.cornerRadius = muscleImageView.frame.size.width / 2
+        muscleImageView.layer.borderWidth = 1
+        muscleImageView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        muscleImageView.clipsToBounds = true
         
         // Initialization code
     }

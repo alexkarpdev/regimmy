@@ -21,13 +21,14 @@ class EventDetailTableViewController: UITableViewController {
     var isEditingMode = false
     var isCreateNew = false
     
-    var selectedEvent: RBaseEvent!
+    //var selectedEvent: RBaseEvent!
+    var selectedPoso: RootEvent!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        selectedEventType = EventType(rawValue: selectedEvent.type)!
+        selectedEventType = selectedPoso.type
         
         tableView.register(UINib(nibName: EditFieldCell.identifier, bundle: nil), forCellReuseIdentifier: EditFieldCell.identifier)
         
@@ -63,6 +64,17 @@ class EventDetailTableViewController: UITableViewController {
     
     func setEditingMode(isEdit: Bool){
         isEditingMode = isEdit
+        
+        if isEditingMode {
+            tableView.insertSections([2], with: .automatic)
+            
+        } else {
+            if tableView.numberOfSections > 2 {
+                tableView.deleteSections([2], with: .automatic)
+                
+            }
+        }
+        
         tableView.setEditing(isEdit, animated: true)
         setButtonItemsForEditor()
         
@@ -82,6 +94,9 @@ class EventDetailTableViewController: UITableViewController {
         }
         
         tableView.allowsSelection = isEdit
+        
+       
+        
         
     }
     
@@ -120,19 +135,8 @@ class EventDetailTableViewController: UITableViewController {
             return 1
         } else {
             var count = 1
-            
-            switch selectedEventType! {
-            case .eating:
-                count += (selectedEvent as! REating).ingredients.count
-            case .train:
-                count += (selectedEvent as! RTrain).exercises.count
-            case .measure:
-                count += (selectedEvent as! RMeasuring).measures.count
-            case .drugs:
-                count += (selectedEvent as! RDrugging).drugs.count
-            }
-            
-            return count
+            count += selectedPoso.subEvents.count
+           return count
         }
     }
     
@@ -146,20 +150,20 @@ class EventDetailTableViewController: UITableViewController {
             switch indexPath.row {
             case 0:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath) as! EditFieldCell
-                (cell as! EditFieldCell).configure(placeHolder: "Название", text: selectedEvent.name, fontSize: 17)
+                (cell as! EditFieldCell).configure(placeHolder: "Название", text: selectedPoso.name, fontSize: 17)
                 (cell as! EditFieldCell).textField.tag = indexPath.row
                 (cell as! EditFieldCell).textField.delegate = self
                 (cell as! EditFieldCell).textField.isEnabled = isEditingMode
             case 1:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath) as! EditFieldCell
-                (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: selectedEvent.info, fontSize: 15)
+                (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: selectedPoso.info, fontSize: 15)
                 (cell as! EditFieldCell).textField.tag = indexPath.row
                 (cell as! EditFieldCell).textField.delegate = self
                 (cell as! EditFieldCell).textField.isEnabled = isEditingMode
             case 2:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditDateCell.identifier, for: indexPath) as! EditDateCell
-                (cell as! EditDateCell).configure(date: selectedEvent.date)
-                cell.selectionStyle = isEditingMode ? .default : .none
+                (cell as! EditDateCell).configure(date: selectedPoso.date)
+                cell.selectionStyle = .default// isEditingMode ? .default : .none
                 cell.accessoryType = tableView.isEditing ? .disclosureIndicator : .none
             case 3:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditRepeatCell.identifier, for: indexPath) as! EditRepeatCell
@@ -174,7 +178,7 @@ class EventDetailTableViewController: UITableViewController {
             default:
                 cell = UITableViewCell()
             }
-        }else if indexPath.section == 1 {
+        } else if indexPath.section == 1 {
             
             switch selectedEventType! {
             case .eating:
@@ -217,12 +221,15 @@ class EventDetailTableViewController: UITableViewController {
                 }
             }
             cell.selectionStyle = .none
-        } else {
+        } else if indexPath.section == 2{
             cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath) as! EditFieldCell
             (cell as! EditFieldCell).configure(placeHolder: "", text: "Удалить событие", fontSize: 17)
             (cell as! EditFieldCell).textField.isEnabled = false
             (cell as! EditFieldCell).textField.textColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
             (cell as! EditFieldCell).textField.textAlignment = .center
+        } else {
+            cell = UITableViewCell()
+            fatalError("no case for cell!!")
         }
         
         return cell
@@ -255,7 +262,7 @@ class EventDetailTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            selectedPoso.removeSubEvent(at: indexPath.row - 1)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             switch selectedEventType! {
@@ -314,19 +321,46 @@ class EventDetailTableViewController: UITableViewController {
      */
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 2:
+                performSegue(withIdentifier: "ShowCalendarSegue", sender: self)
+            default:
+                break
+            }
+        }else if indexPath.section == 1 {
+            
+        }
     }
     
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowCalendarSegue" {
+            hideTabBar()
+            (segue.destination as! CalendarViewController).selectedDate = selectedPoso.date
+            (segue.destination as! CalendarViewController).isPickerHidden = false
+            (segue.destination as! CalendarViewController).completion = { [unowned self](selectedDate: Date) in
+                
+                self.showTabBar()
+                self.updateDateOn(selectedDate: selectedDate)
+                print(selectedDate)
+            }
+        }
+        
         if segue.identifier == "IngredientsListSegue" {
             let vc = (segue.destination as! UINavigationController).viewControllers.first as! SubEventsListTableViewController
             vc.selectedSubEventType = selectedEventType.subEventType
             vc.navigationItem.title = "Выберите"
             vc.navigationItem.rightBarButtonItem = nil
         }
+    }
+    
+    func updateDateOn(selectedDate: Date){
+        selectedPoso.date = selectedDate
+        tableView.reloadRows(at: [IndexPath(row: 2, section: 0)], with: .automatic)
+        //topDateLabel.text = selectedDate.description(with: Locale(identifier: "ru-RU"))
     }
     
     @IBAction func dismissAction(_ sender: Any) {
@@ -340,7 +374,7 @@ class EventDetailTableViewController: UITableViewController {
     
     @objc func saveAction() {
         
-        saveEvent()
+        selectedPoso.saveToDB()
         
         setEditingMode(isEdit: false)
         
@@ -357,41 +391,41 @@ class EventDetailTableViewController: UITableViewController {
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         setEditingMode(isEdit: false)
+        selectedPoso.backup()
+        tableView.reloadSections([0], with: .automatic)
         //dismiss(animated: true, completion: nil)
-    }
-    
-    func saveEvent(){
-        
-//        switch selectedEventType! {
-//        case .eating:
-//            addNewExercise()
-//        case .train:
-//            addNewExercise()
-//        case .measure:
-//            addNewMeasure()
-//        case .drugs:
-//            addNewExercise()
-//        }
-        
-        RealmDBController.shared.save(object: selectedEvent)
     }
     
 }
 
 extension EventDetailTableViewController: UITextFieldDelegate {
     
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        updateFieldFor(row: textField.tag, text: "")
+        return true
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let text = (textField.text ?? "") + string
-        switch textField.tag
+        var text = ""
+        if let t = textField.text,
+            let textRange = Range(range, in: t) {
+            let updatedText = t.replacingCharacters(in: textRange, with: string)
+            text = updatedText
+            updateFieldFor(row: textField.tag, text: text)
+        }
+        return true
+    }
+    
+    func updateFieldFor(row: Int, text: String) {
+        switch row
         {
         case 0:
-            selectedEvent.name = text
+            selectedPoso.name = text
         case 1:
-            selectedEvent.info = text
+            selectedPoso.info = text
         default:
             print("It is nothing");
         }
-        return true
     }
     
 }

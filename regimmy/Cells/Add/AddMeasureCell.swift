@@ -12,21 +12,27 @@ class AddMeasureCell: UITableViewCell {
 
     static let identifier = "AddMeasureCell"
     
-    @IBOutlet weak var typeImageView: UIImageView!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var measureImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var unitLabel: UILabel!
     
     
-    func configure(with event:SimpleEvent) {
+    func configure() {
+
         
-        typeImageView.image = event.type.image
-        timeLabel.text = "" + event.dateTime + "   "
-        nameLabel.text = event.name
         
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        measureImageView.layer.cornerRadius = measureImageView.frame.size.width / 2
+        measureImageView.layer.borderWidth = 1
+        measureImageView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        measureImageView.clipsToBounds = true
+        
         // Initialization code
     }
 

@@ -24,7 +24,7 @@ class SubEventsListTableViewController: UITableViewController {
     
     var selectedPosObjects = [RootEvent]()
     var posObjects = [RootEvent]()
-    var selectedPoso:RootEvent!
+    var selectedPoso: RootEvent!
     
    // var results: Results<Object>! // чё-та не понимаю как сделать дженерик
     

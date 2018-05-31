@@ -32,7 +32,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мышечная группа" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwu-Kx-3ZN">
-                        <rect key="frame" x="16" y="21" width="152" height="21"/>
+                        <rect key="frame" x="20" y="21" width="152" height="21"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -42,13 +42,14 @@
                     <constraint firstItem="zwu-Kx-3ZN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="KfK-qz-vAD"/>
                     <constraint firstItem="hcr-5h-3xs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="Rea-DA-nqO"/>
                     <constraint firstAttribute="trailing" secondItem="hcr-5h-3xs" secondAttribute="trailing" id="aez-IT-7wc"/>
-                    <constraint firstItem="zwu-Kx-3ZN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="fTx-GP-E8S"/>
+                    <constraint firstItem="zwu-Kx-3ZN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="fTx-GP-E8S"/>
                     <constraint firstAttribute="bottom" secondItem="hcr-5h-3xs" secondAttribute="bottom" constant="10.5" id="lfL-pm-kG9"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="muscleImage" destination="hcr-5h-3xs" id="j2q-9f-bSi"/>
+                <outlet property="muscleImageConstraint" destination="aez-IT-7wc" id="zLu-kR-MSd"/>
+                <outlet property="muscleImageView" destination="hcr-5h-3xs" id="j2q-9f-bSi"/>
             </connections>
             <point key="canvasLocation" x="34" y="63"/>
         </tableViewCell>

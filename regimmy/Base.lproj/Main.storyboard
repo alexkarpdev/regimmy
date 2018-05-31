@@ -150,7 +150,7 @@
         <scene sceneID="VLM-Gl-3Yt">
             <objects>
                 <tableViewController id="hBn-k6-oaI" customClass="EventDetailTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cUE-XP-x1f">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cUE-XP-x1f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -182,6 +182,7 @@
                         <outlet property="rightButtonItem" destination="Du9-dZ-Ri3" id="kw6-3Z-YmG"/>
                         <segue destination="V9Z-zH-gUJ" kind="show" identifier="IngredientsListSegue" id="U49-QO-aCc"/>
                         <segue destination="aLt-qS-58u" kind="show" identifier="MeasureChooseSegue" id="l56-KZ-95J"/>
+                        <segue destination="Xo9-hU-dpt" kind="presentation" identifier="ShowCalendarSegue" modalPresentationStyle="overCurrentContext" id="1sr-M7-7Kv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbg-0L-3mX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -261,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lvG-mK-mS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1396" y="-1454.1229385307347"/>
+            <point key="canvasLocation" x="3596" y="-1923"/>
         </scene>
         <!--Графики-->
         <scene sceneID="R0Y-M7-kRd">
@@ -395,7 +396,7 @@
                                     <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="weist"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="waist"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arD-nI-zob" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
@@ -1326,6 +1327,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Qq6-5D-HZv"/>
         <segue reference="Zaj-sX-PlJ"/>
+        <segue reference="1sr-M7-7Kv"/>
         <segue reference="lUp-pB-HzD"/>
     </inferredMetricsTieBreakers>
 </document>

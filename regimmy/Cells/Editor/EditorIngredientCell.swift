@@ -33,7 +33,7 @@ class EditorIngredientCell: UITableViewCell {
         
         self.protLabel.text = posObject.prot.formatToHumanReadableForm()
         self.fatLabel.text = posObject.fat.formatToHumanReadableForm()
-        self.carbLabel.text = posObject.carbo.formatToHumanReadableForm()
+        self.carbLabel.text = posObject.carb.formatToHumanReadableForm()
         self.calLabel.text = posObject.cal.formatToHumanReadableForm()
         
     }

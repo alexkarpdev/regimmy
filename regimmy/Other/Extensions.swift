@@ -70,7 +70,7 @@ extension Double {
         
         let numberString = numberFormatter.string(from: NSNumber(value: self / pow(k, i))) ?? "Unknown"
         let suffix = suffixes[Int(i)]
-        return "\(numberString) \(suffix)"
+        return "\(numberString)\(suffix)"
     }
 }
 

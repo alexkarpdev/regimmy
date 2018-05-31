@@ -65,6 +65,25 @@ class RealmDBController {
         return Array(realm.objects(T.self).sorted(byKeyPath: "name"))
     }
     
+    func loadEventsFor<T:Object>(date: Date) -> [T] {
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day, .month, .year, .timeZone], from: date as Date)
+        
+        let startDate = calendar.date(from: components)
+        let endDate = calendar.date(byAdding: DateComponents(hour: 23, minute: 59, second: 59), to: startDate!)
+        
+        let result = Array(realm.objects(T.self).filter("date BETWEEN {%@, %@}", startDate, endDate))
+//        result.append(contentsOf: Array(realm.objects(RMeasuring.self).filter("date BETWEEN {%@, %@}", startDate, endDate)))
+//        result.append(contentsOf: Array(realm.objects(RTrain.self).filter("date BETWEEN {%@, %@}", startDate, endDate)))
+//        result.append(contentsOf: Array(realm.objects(RDrugging.self).filter("date BETWEEN {%@, %@}", startDate, endDate)))
+        
+        //var e = result.first as! REating
+        
+        return result//.sorted{$0.date > $1.date}
+    }
+    
+    
     func loadResults<T: Object>() -> Results<T>  {
         return realm.objects(T.self).sorted(byKeyPath: "name")
     }

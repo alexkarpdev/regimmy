@@ -111,21 +111,42 @@ enum SubEventType: String {
 }
 
 enum MeasureType: String {
-    case neck = "neck"
-    case shoulders = "shoulders"
-    case arm = "arm"
-    case forearm = "forearm"
-    case chest = "chest"
-    case weist = "weist"
-    case hips = "hips"
-    case wrist = "wrist"
-    case ankle = "ankle"
-    case thigh = "thigh"
-    case calf = "calf"
+    case neck = "neck" //шея
+    case shoulders = "shoulders" //плечи
+    case arm = "arm" //рука
+    case forearm = "forearm" //предплечье
+    case chest = "chest" //грудь
+    case waist = "waist" //талия
+    case hips = "hips" //ягодицы
+    case wrist = "wrist" //запястье
+    case ankle = "ankle" //лодыжка
+    case thigh = "thigh" //бедро
+    case calf = "calf" //икры
     case photo = "photo"
     case weight = "weight"
     case height = "height"
     case fat = "fat"
+    
+    var typeImageName: String {
+        switch self {
+        case .photo: fallthrough
+        case .weight: fallthrough
+        case .height: fallthrough
+        case .fat: return self.rawValue
+        default:
+            return self.rawValue + "-ico"
+        }
+    }
+    
+    var unit: String {
+        switch self {
+        case .photo: return ""
+        case .weight: return "кг"
+        case .fat: return "%"
+        default:
+        return "см"
+    }
+    }
 }
 enum MuscleType: String {
     case neck = "neck"

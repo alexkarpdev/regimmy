@@ -171,20 +171,20 @@ class EventTemplatesListTableViewController: UITableViewController {
         if segue.identifier == "AddEventSegue" {
             let vc = (segue.destination as! UINavigationController).viewControllers.first as! EventDetailTableViewController
             
-            let newEvent: RBaseEvent!
+            let newEvent: RootEvent!
             switch selectedEventType! {
             case .eating:
-                newEvent = REating()
+                newEvent = Eating()
             case .train:
-                newEvent = RTrain()
+                newEvent = Train()
             case .measure:
-                newEvent = RMeasuring()
+                newEvent = Measuring()
             case .drugs:
-                newEvent = RDrugging()
+                newEvent = Drugging()
             }
             
-            newEvent.type = selectedEventType.rawValue
-            vc.selectedEvent = newEvent
+            newEvent.type = selectedEventType
+            vc.selectedPoso = newEvent
             vc.navigationItem.title = selectedEventType.name
             
             vc.navc = self.navigationController // это нужно для того, чтобы вернуться сразу в дневник

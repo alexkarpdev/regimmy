@@ -138,8 +138,7 @@ class RExerciseSet: Object {
 class RMeasure: RBaseSubEvent {
     @objc dynamic var value = 0.0
     @objc dynamic var unit = ""
-    
-    @objc dynamic var path = ""
+    @objc dynamic var photoName = ""
 }
 
 
