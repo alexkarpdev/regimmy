@@ -41,6 +41,7 @@ class EventDetailTableViewController: UITableViewController {
         tableView.register(UINib(nibName: CalendarExerciseCell.identifier, bundle: nil), forCellReuseIdentifier: CalendarExerciseCell.identifier)//ex
         tableView.register(UINib(nibName: AddMeasureCell.identifier, bundle: nil), forCellReuseIdentifier: AddMeasureCell.identifier)//mes/drug
         
+        tableView.register(UINib(nibName: EditDeleteCell.identifier, bundle: nil), forCellReuseIdentifier: EditDeleteCell.identifier)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
@@ -65,13 +66,16 @@ class EventDetailTableViewController: UITableViewController {
     func setEditingMode(isEdit: Bool){
         isEditingMode = isEdit
         
-        if isEditingMode {
-            tableView.insertSections([2], with: .automatic)
+        if !isCreateNew {
             
-        } else {
-            if tableView.numberOfSections > 2 {
-                tableView.deleteSections([2], with: .automatic)
+            if isEditingMode {
+                tableView.insertSections([2], with: .automatic)
                 
+            } else {
+                if tableView.numberOfSections > 2 {
+                    tableView.deleteSections([2], with: .automatic)
+                    
+                }
             }
         }
         
@@ -80,7 +84,7 @@ class EventDetailTableViewController: UITableViewController {
         
         isEdit ? hideTabBar() : showTabBar()
         
-        tableView.reloadSections([0], with: .automatic)
+        tableView.reloadSections([0,1], with: .automatic)
         
         if let field = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditFieldCell)?.textField {
             field.isEnabled = isEdit
@@ -150,16 +154,14 @@ class EventDetailTableViewController: UITableViewController {
             switch indexPath.row {
             case 0:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath) as! EditFieldCell
-                (cell as! EditFieldCell).configure(placeHolder: "Название", text: selectedPoso.name, fontSize: 17)
-                (cell as! EditFieldCell).textField.tag = indexPath.row
-                (cell as! EditFieldCell).textField.delegate = self
-                (cell as! EditFieldCell).textField.isEnabled = isEditingMode
+                (cell as! EditFieldCell).configure(placeHolder: "Название", text: selectedPoso.name, smartDelegate: self, tag: indexPath.row, fieldIsEnabled: isEditingMode, fontSize: 17) { t in
+                    self.selectedPoso.name = t
+                }
             case 1:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath) as! EditFieldCell
-                (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: selectedPoso.info, fontSize: 15)
-                (cell as! EditFieldCell).textField.tag = indexPath.row
-                (cell as! EditFieldCell).textField.delegate = self
-                (cell as! EditFieldCell).textField.isEnabled = isEditingMode
+                (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: selectedPoso.info, smartDelegate: self, tag: indexPath.row, fieldIsEnabled: isEditingMode, fontSize: 15) { t in
+                    self.selectedPoso.info = t
+                }
             case 2:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditDateCell.identifier, for: indexPath) as! EditDateCell
                 (cell as! EditDateCell).configure(date: selectedPoso.date)
@@ -189,7 +191,7 @@ class EventDetailTableViewController: UITableViewController {
                     (cell as! AddHeaderCell).rotateArrow()
                 }else{
                     cell = tableView.dequeueReusableCell(withIdentifier: AddIngredientCell.identifier, for: indexPath) as! AddIngredientCell
-                    (cell as! AddIngredientCell).numberLabel.text = String(indexPath.row)
+                    (cell as! AddIngredientCell).configure(subEvent: selectedPoso.subEvents[indexPath.row - 1] as! IngredientE, row: indexPath.row)
                 }
             case .train:
                 if indexPath.row == 0 {
@@ -220,13 +222,9 @@ class EventDetailTableViewController: UITableViewController {
                     cell = tableView.dequeueReusableCell(withIdentifier: AddMeasureCell.identifier, for: indexPath) as! AddMeasureCell
                 }
             }
-            cell.selectionStyle = .none
+            cell.selectionStyle = isEditingMode ? .default : .none
         } else if indexPath.section == 2{
-            cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath) as! EditFieldCell
-            (cell as! EditFieldCell).configure(placeHolder: "", text: "Удалить событие", fontSize: 17)
-            (cell as! EditFieldCell).textField.isEnabled = false
-            (cell as! EditFieldCell).textField.textColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
-            (cell as! EditFieldCell).textField.textAlignment = .center
+            cell = tableView.dequeueReusableCell(withIdentifier: EditDeleteCell.identifier, for: indexPath) as! EditDeleteCell
         } else {
             cell = UITableViewCell()
             fatalError("no case for cell!!")
@@ -297,6 +295,10 @@ class EventDetailTableViewController: UITableViewController {
         
     }
     
+    @objc func addNewIngredient(){
+        performSegue(withIdentifier: "IngredientsListSegue", sender: self)
+    }
+    
     @objc func addNewExercise(){
         performSegue(withIdentifier: "IngredientsListSegue", sender: self)
     }
@@ -329,7 +331,9 @@ class EventDetailTableViewController: UITableViewController {
                 break
             }
         }else if indexPath.section == 1 {
-            
+            if indexPath.row == 0 {
+                addNewExercise()
+            }
         }
     }
     
@@ -351,9 +355,14 @@ class EventDetailTableViewController: UITableViewController {
         
         if segue.identifier == "IngredientsListSegue" {
             let vc = (segue.destination as! UINavigationController).viewControllers.first as! SubEventsListTableViewController
+            vc.selectedPosObjects = selectedPoso.subEvents
             vc.selectedSubEventType = selectedEventType.subEventType
             vc.navigationItem.title = "Выберите"
             vc.navigationItem.rightBarButtonItem = nil
+            vc.complitionHandler = { selectedSubEvents in
+                self.selectedPoso.addSubEvents(subEvents: selectedSubEvents)
+                self.tableView.reloadSections([1], with: .automatic)
+            }
         }
     }
     
@@ -375,7 +384,7 @@ class EventDetailTableViewController: UITableViewController {
     @objc func saveAction() {
         
         selectedPoso.saveToDB()
-        
+        tableView.reloadSections([0,1], with: .automatic)
         setEditingMode(isEdit: false)
         
         if !isCreateNew {
@@ -390,39 +399,26 @@ class EventDetailTableViewController: UITableViewController {
     }
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
-        setEditingMode(isEdit: false)
         selectedPoso.backup()
-        tableView.reloadSections([0], with: .automatic)
+        tableView.reloadSections([0,1], with: .automatic)
+        setEditingMode(isEdit: false)
+        
+        
         //dismiss(animated: true, completion: nil)
     }
     
 }
 
-extension EventDetailTableViewController: UITextFieldDelegate {
-    
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        updateFieldFor(row: textField.tag, text: "")
-        return true
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        var text = ""
-        if let t = textField.text,
-            let textRange = Range(range, in: t) {
-            let updatedText = t.replacingCharacters(in: textRange, with: string)
-            text = updatedText
-            updateFieldFor(row: textField.tag, text: text)
-        }
-        return true
-    }
-    
-    func updateFieldFor(row: Int, text: String) {
+extension EventDetailTableViewController: SmartFieldDelegate {
+    func updateNumericValueBy(row: Int, text: String) {
         switch row
         {
         case 0:
-            selectedPoso.name = text
+            //selectedPoso.name = text
+            break
         case 1:
-            selectedPoso.info = text
+            //selectedPoso.info = text
+            break
         default:
             print("It is nothing");
         }

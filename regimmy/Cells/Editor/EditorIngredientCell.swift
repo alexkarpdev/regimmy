@@ -20,6 +20,9 @@ class EditorIngredientCell: UITableViewCell {
     @IBOutlet weak var carbLabel: UILabel!
     @IBOutlet weak var calLabel: UILabel!
     
+    @IBOutlet weak var massCaptionLabel: UILabel!
+    @IBOutlet weak var massValueLabel: UILabel!
+    @IBOutlet weak var massUnitLabel: UILabel!
     //@IBOutlet weak var massLabel: UILabel!
     
     //@IBOutlet weak var numberLabel: UILabel!
@@ -36,6 +39,19 @@ class EditorIngredientCell: UITableViewCell {
         self.carbLabel.text = posObject.carb.formatToHumanReadableForm()
         self.calLabel.text = posObject.cal.formatToHumanReadableForm()
         
+        setMass(nil)
+    }
+    
+    func setMass(_ value: Double?){
+        if let v = value {
+            massCaptionLabel.text = "Масса"
+            massValueLabel.text = v.formatToHumanReadableForm()
+            massUnitLabel.text = "г"
+        }else{
+            massCaptionLabel.text = ""
+            massValueLabel.text = ""
+            massUnitLabel.text = ""
+        }
     }
     
     override func awakeFromNib() {

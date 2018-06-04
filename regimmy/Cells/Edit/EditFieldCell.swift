@@ -12,9 +12,9 @@ class EditFieldCell: UITableViewCell {
 
     static let identifier = "EditFieldCell"
     
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: SmartField!
     
-    func configure(placeHolder: String?, text: String?, fontSize: CGFloat = 17.0) {
+    func configure(placeHolder: String?, text: String?, tag: Int, fieldIsEnabled: Bool, fontSize: CGFloat = 17.0, updatedHandler: @escaping (String)->()) {
         
         if let p = placeHolder {
             textField.placeholder = p
@@ -30,10 +30,15 @@ class EditFieldCell: UITableViewCell {
         
         textField.font = textField.font!.withSize(fontSize)
         
+        textField.tag = tag
+        textField.isEnabled = fieldIsEnabled
+        textField.updatedHandler = updatedHandler
+        
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        textField.type = .text
         // Initialization code
     }
 

@@ -12,7 +12,7 @@ class AddIngredientCell: UITableViewCell {
 
     static let identifier = "AddIngredientCell"
     
-    @IBOutlet weak var ingredientNameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var protLabel: UILabel!
     @IBOutlet weak var fatLabel: UILabel!
@@ -22,9 +22,19 @@ class AddIngredientCell: UITableViewCell {
     
     @IBOutlet weak var numberLabel: UILabel!
     
+    func configure(subEvent: IngredientE, row: Int) {
+        numberLabel.text = "\(row)"
+        nameLabel.text = subEvent.name
+        protLabel.text = subEvent.prot.formatToHumanReadableForm()
+        fatLabel.text = subEvent.fat.formatToHumanReadableForm()
+        carbLabel.text = subEvent.carb.formatToHumanReadableForm()
+        calLabel.text = subEvent.cal.formatToHumanReadableForm()
+        massLabel.text = subEvent.mass.formatToHumanReadableForm()
+    }
+    
     func configure(name: String, prot: Double, fat: Double, carb: Double, cal: Double, mass: Double = 100, number: Double = 0){
         
-        self.ingredientNameLabel.text = name
+        self.nameLabel.text = name
         self.protLabel.text = String(prot)
         self.fatLabel.text = String(fat)
         self.carbLabel.text = String(carb)

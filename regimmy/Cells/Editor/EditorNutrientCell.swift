@@ -14,11 +14,9 @@ class EditorNutrientCell: UITableViewCell {
     
     @IBOutlet weak var nutrientNameLabel: UILabel!
     @IBOutlet weak var nutrientUnitLabel: UILabel!
-    @IBOutlet weak var valueField: UITextField!
+    @IBOutlet weak var valueField: SmartField!
     
-    var isEditMode = false
-    
-    func configure(name: String, value: Double?, unit: String, color: UIColor, mode: Bool) {
+    func configure(name: String, value: Double?, unit: String, color: UIColor, smartDelegate: SmartFieldDelegate, tag: Int, fieldIsEnabled: Bool, updatedHandler: @escaping (String)->()) {
         
         nutrientNameLabel.textColor = color
         valueField.textColor = color
@@ -27,13 +25,10 @@ class EditorNutrientCell: UITableViewCell {
         nutrientNameLabel.text = name
         nutrientUnitLabel.text = unit == "ккал." ? "  ккал." : unit
         
-        //isEditMode = valueField.isEnabled
-        isEditMode = mode
         valueField.text = ""
-        var str = ""
         
         if let val = value{
-            if isEditMode {
+            if fieldIsEnabled {
                 if val != 0.0 {
                     valueField.text = "\(val)"
                 }
@@ -41,12 +36,16 @@ class EditorNutrientCell: UITableViewCell {
                 valueField.text = val.formatToHumanReadableForm()
             }
         }
-        str = valueField.text!
         
+        valueField.tag = tag
+        valueField.smartDelegate = smartDelegate
+        valueField.isEnabled = fieldIsEnabled
+        valueField.updatedHandler = updatedHandler
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        valueField.type = .numeric
         // Initialization code
     }
 

@@ -36,6 +36,8 @@ class SubEventsListTableViewController: UITableViewController {
     @IBOutlet var leftButtonItem: UIBarButtonItem!
     @IBOutlet var rightButtonItem: UIBarButtonItem!
     
+    var complitionHandler: (([RootEvent]) -> ())! //
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -199,11 +201,13 @@ class SubEventsListTableViewController: UITableViewController {
         if isEditorMode {
             cell.accessoryType = .disclosureIndicator
         }else{
-//            if selectedPosObjects.contains(posObjects[indexPath.row]) {
-//                cell.accessoryType = .checkmark
-//            }else{
-//                cell.accessoryType = .none
-//            }
+            if selectedPosObjects.contains(posObjects[indexPath.row]) {
+                (cell as! EditorIngredientCell).setMass((selectedPosObjects[selectedPosObjects.index(of: posObjects[indexPath.row])!] as! IngredientE).mass)
+                cell.accessoryType = .checkmark
+            }else{
+                cell.accessoryType = .none
+                (cell as! EditorIngredientCell).setMass(nil)
+            }
         }
         
         return cell
@@ -218,14 +222,37 @@ class SubEventsListTableViewController: UITableViewController {
             selectedPoso = posObjects[indexPath.row]
             performSegue(withIdentifier: "ShowSubEventDetailSegue", sender: self)
         }else{
-//            if selectedObjects.contains(objects[indexPath.row]) {
-//                selectedObjects.remove(at: selectedObjects.index(of: objects[indexPath.row])!)
-//            }else{
-//                selectedObjects.append(objects[indexPath.row])
-//            }
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+            if selectedPosObjects.contains(posObjects[indexPath.row]) {
+                selectedPosObjects.remove(at: selectedPosObjects.index(of: posObjects[indexPath.row])!)
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+            }else{
+                let ac = SmartAlertController(title: "Сколько в граммах?", message: "\(posObjects[indexPath.row].name)", preferredStyle: .alert)
+                ac.addTextField()
+                ac.textFields?.first?.keyboardType = .decimalPad
+                ac.textFields?.first?.keyboardAppearance = .alert
+                ac.smartField.updatedHandler = { t in
+                    ac.textFields?.first?.text = t
+                    print( "t : \(t)")
+                }
+                ac.smartField.type = .numeric
+                ac.textFields?.first?.delegate = ac
+                
+                let submitAction = UIAlertAction(title: "Добавить", style: .default) { [unowned ac, self] _ in
+                    let mass = Double(ac.textFields![0].text!)!
+                    self.selectedPosObjects.append((self.posObjects[indexPath.row] as! Ingredient).convertToIngredientE(mass: mass))
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                    // do something interesting with "answer" here
+                }
+                
+                ac.addAction(submitAction)
+                
+                present(ac, animated: true)
+            }
+            
+            
             switch selectedEventType! {
             case .eating:
+                //call alert
                 break
             case .train:
                 performSegue(withIdentifier: "SetsListSegue", sender: self)
@@ -316,7 +343,9 @@ class SubEventsListTableViewController: UITableViewController {
         }
     }
     @IBAction func dismissAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true){ [unowned self] in
+            self.complitionHandler(self.selectedPosObjects)
+        }
     }
     @IBAction func cancelAction(_ sender: Any) {
         tableView.setEditing(false, animated: true)

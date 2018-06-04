@@ -140,6 +140,31 @@
                         <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Масса" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNj-pF-WXS">
+                        <rect key="frame" x="224" y="49.5" width="40" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="0gj-vl-PRj"/>
+                            <constraint firstAttribute="width" constant="40" id="3vO-WT-Nni"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDZ-8J-QYs">
+                        <rect key="frame" x="224" y="66.5" width="29" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="nc5-Sj-Gqd"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="г" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDm-tb-xG9">
+                        <rect key="frame" x="253" y="69.5" width="5" height="12"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="kur-fL-KJf" secondAttribute="bottom" constant="7" id="2Tk-qt-lZm"/>
@@ -148,13 +173,17 @@
                     <constraint firstItem="oRs-K5-LPi" firstAttribute="centerY" secondItem="Whx-GH-vQN" secondAttribute="centerY" id="7mo-Ue-1Z1"/>
                     <constraint firstItem="uf6-ad-kfh" firstAttribute="centerY" secondItem="kur-fL-KJf" secondAttribute="centerY" id="8bl-Y1-e7J"/>
                     <constraint firstItem="dkL-0D-JyR" firstAttribute="leading" secondItem="qdw-JS-93i" secondAttribute="trailing" id="99j-Zs-Ed2"/>
+                    <constraint firstItem="dDZ-8J-QYs" firstAttribute="leading" secondItem="gNj-pF-WXS" secondAttribute="leading" id="BhB-AC-QVT"/>
+                    <constraint firstItem="gNj-pF-WXS" firstAttribute="centerY" secondItem="BiY-5d-sx0" secondAttribute="centerY" id="BrU-Jd-U83"/>
                     <constraint firstItem="iAt-9g-8qc" firstAttribute="centerY" secondItem="UAN-Kn-hUE" secondAttribute="centerY" id="BtP-J6-OLv"/>
                     <constraint firstItem="73Z-T6-N2t" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="CCl-HF-VK1"/>
                     <constraint firstItem="oRs-K5-LPi" firstAttribute="leading" secondItem="Whx-GH-vQN" secondAttribute="trailing" id="Cgj-2C-zYg"/>
+                    <constraint firstItem="fom-Ih-auP" firstAttribute="leading" secondItem="73Z-T6-N2t" secondAttribute="leading" id="D5f-4a-hmk"/>
                     <constraint firstItem="Whx-GH-vQN" firstAttribute="leading" secondItem="4Td-Iq-sJ1" secondAttribute="leading" id="GVA-r4-xlK"/>
                     <constraint firstItem="cMj-9p-Qa2" firstAttribute="leading" secondItem="iAt-9g-8qc" secondAttribute="leading" id="GsP-OE-eBS"/>
                     <constraint firstItem="4Td-Iq-sJ1" firstAttribute="centerY" secondItem="UAN-Kn-hUE" secondAttribute="centerY" id="HdH-Qx-n9k"/>
                     <constraint firstItem="UAN-Kn-hUE" firstAttribute="leading" secondItem="73Z-T6-N2t" secondAttribute="leading" id="HrH-f4-aYV"/>
+                    <constraint firstItem="gNj-pF-WXS" firstAttribute="leading" secondItem="BiY-5d-sx0" secondAttribute="trailing" constant="12" id="KBt-SL-oxe"/>
                     <constraint firstItem="BiY-5d-sx0" firstAttribute="centerY" secondItem="UAN-Kn-hUE" secondAttribute="centerY" id="RM3-Xm-iyL"/>
                     <constraint firstItem="YC9-wY-jvi" firstAttribute="leading" secondItem="cMj-9p-Qa2" secondAttribute="trailing" id="UAY-PO-Rex"/>
                     <constraint firstItem="qdw-JS-93i" firstAttribute="leading" secondItem="BiY-5d-sx0" secondAttribute="leading" id="Wki-WP-qXg"/>
@@ -163,6 +192,7 @@
                     <constraint firstItem="fom-Ih-auP" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="ZcZ-zn-UaU"/>
                     <constraint firstItem="uf6-ad-kfh" firstAttribute="leading" secondItem="kur-fL-KJf" secondAttribute="trailing" id="ZoI-SY-HHK"/>
                     <constraint firstItem="qdw-JS-93i" firstAttribute="top" secondItem="BiY-5d-sx0" secondAttribute="bottom" constant="2" id="a6A-xF-yK6"/>
+                    <constraint firstItem="dDZ-8J-QYs" firstAttribute="top" secondItem="gNj-pF-WXS" secondAttribute="bottom" constant="2" id="aQn-Ev-U6d"/>
                     <constraint firstItem="kur-fL-KJf" firstAttribute="leading" secondItem="UAN-Kn-hUE" secondAttribute="leading" id="aUD-df-2oF"/>
                     <constraint firstItem="YC9-wY-jvi" firstAttribute="centerY" secondItem="cMj-9p-Qa2" secondAttribute="centerY" id="bQy-qR-81U"/>
                     <constraint firstItem="fom-Ih-auP" firstAttribute="top" secondItem="73Z-T6-N2t" secondAttribute="bottom" id="ego-ig-KFb"/>
@@ -170,8 +200,9 @@
                     <constraint firstItem="cMj-9p-Qa2" firstAttribute="top" secondItem="iAt-9g-8qc" secondAttribute="bottom" constant="2" id="hyN-ou-HQo"/>
                     <constraint firstItem="73Z-T6-N2t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="kXD-ZW-F7G"/>
                     <constraint firstItem="dkL-0D-JyR" firstAttribute="centerY" secondItem="qdw-JS-93i" secondAttribute="centerY" id="mGC-QM-0nL"/>
-                    <constraint firstItem="fom-Ih-auP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="pPy-Au-8Bj"/>
+                    <constraint firstItem="vDm-tb-xG9" firstAttribute="centerY" secondItem="dDZ-8J-QYs" secondAttribute="centerY" id="n37-yZ-iM9"/>
                     <constraint firstItem="Whx-GH-vQN" firstAttribute="top" secondItem="4Td-Iq-sJ1" secondAttribute="bottom" constant="2" id="r80-GU-Q7s"/>
+                    <constraint firstItem="vDm-tb-xG9" firstAttribute="leading" secondItem="dDZ-8J-QYs" secondAttribute="trailing" id="zKd-Av-vWC"/>
                     <constraint firstItem="kur-fL-KJf" firstAttribute="top" secondItem="UAN-Kn-hUE" secondAttribute="bottom" constant="2" id="zYq-qI-Rdr"/>
                 </constraints>
             </tableViewCellContentView>
@@ -181,6 +212,9 @@
                 <outlet property="carbLabel" destination="cMj-9p-Qa2" id="soV-2u-NaN"/>
                 <outlet property="fatLabel" destination="Whx-GH-vQN" id="dq9-zj-R6b"/>
                 <outlet property="infoLabel" destination="fom-Ih-auP" id="8Ah-yw-MzT"/>
+                <outlet property="massCaptionLabel" destination="gNj-pF-WXS" id="h4t-52-yhU"/>
+                <outlet property="massUnitLabel" destination="vDm-tb-xG9" id="cZR-Jb-mU9"/>
+                <outlet property="massValueLabel" destination="dDZ-8J-QYs" id="ilk-9M-5gx"/>
                 <outlet property="nameLabel" destination="73Z-T6-N2t" id="QWy-1e-FgB"/>
                 <outlet property="protLabel" destination="kur-fL-KJf" id="W2n-S1-mKZ"/>
             </connections>

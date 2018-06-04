@@ -18,6 +18,8 @@ protocol POSOProtocol: class, Equatable {
     func backup() // return object params before editing if cancel button was clicked
     func removeSubEvent(at index:Int)
     func addSubEvent<T:RootEvent>(subEvent: T)
+    func removeAllSubEvents()
+    func addSubEvents<T:RootEvent>(subEvents: [T])
     
 }
 
@@ -59,7 +61,7 @@ class RootEvent: POSOProtocol {
     }
     
     func equals(other: RootEvent) -> Bool {
-        return (other === self) && (other.name == self.name) &&
+        return (other.name == self.name) &&
             (other.info == self.info)
     }
     
@@ -76,6 +78,13 @@ class RootEvent: POSOProtocol {
         fatalError("override it!")
     }
     
+    func removeAllSubEvents() {
+        fatalError("override it!")
+    }
+    
+    func addSubEvents<T>(subEvents: [T]) where T : RootEvent {
+        fatalError("override it!")
+    }
     
 }
 
@@ -187,6 +196,8 @@ class Ingredient: BaseSubEvent<RIngredient> {
     
     func convertToIngredientE(mass: Double = 100.0) -> IngredientE {
         let object = IngredientE.init()
+        object.name = name
+        object.info = info
         object.prot = prot
         object.fat = fat
         object.carb = carb
@@ -468,6 +479,34 @@ class BaseEvent <E: RBaseEvent>: BaseSubEvent<E> {
         object.date = date
         return object
     }
+    
+    override func addSubEvent<T>(subEvent: T) where T : RootEvent {
+        subEvents.append(subEvent as! IngredientE)
+        reloadEventValues()
+    }
+    
+    override func addSubEvents<T>(subEvents: [T]) where T : RootEvent {
+        self.subEvents.removeAll()
+        for i in subEvents {
+            self.subEvents.append(i)
+        }
+        reloadEventValues()
+    }
+    
+    override func removeSubEvent(at index: Int) {
+        subEvents.remove(at: index)
+        reloadEventValues()
+    }
+    
+    override func removeAllSubEvents() {
+        subEvents.removeAll()
+        reloadEventValues()
+    }
+    
+    func reloadEventValues() {
+        fatalError("override it!!")
+    }
+    
 }
 
 class Eating: BaseEvent<REating> {
@@ -476,7 +515,6 @@ class Eating: BaseEvent<REating> {
     var carb = 0.0
     var cal = 0.0
     var mass = 0.0
-    //var ingredients = [IngredientE]()
     
     override init() {
         super.init()
@@ -514,25 +552,41 @@ class Eating: BaseEvent<REating> {
         object.fat = fat
         object.carbo = carb
         object.cal = cal
+        object.mass = mass
+        
+        for ri in object.ingredients {
+            var finded = false
+            for i in (subEvents as! [IngredientE]) {
+                
+                if ri.name == i.name {
+                    if ri.mass != i.mass {
+                        ri.mass = i.mass
+                    }
+                    finded = true
+                    subEvents.remove(at: subEvents.index(of: i)!)
+                    break
+                }
+            }
+            if !finded {
+                RealmDBController.shared.realm.delete(ri)
+                //RealmDBController.shared.delete(object: ri)
+            }
+            
+        }
         
         for i in 0..<subEvents.count {
             object.ingredients.append((subEvents[i] as! IngredientE).makeRealmObject())
         }
         
+        subEvents = [IngredientE]()
+        for i in 0..<object.ingredients.count {
+            subEvents.append(IngredientE(from: object.ingredients[i]))
+        }
+        
         return object
     }
     
-    override func addSubEvent<T>(subEvent: T) where T : RootEvent {
-        subEvents.append(subEvent as! IngredientE)
-        recalculateNutrients()
-    }
-    
-    override func removeSubEvent(at index: Int) {
-        subEvents.remove(at: index)
-        recalculateNutrients()
-    }
-    
-    func recalculateNutrients(){
+    override func reloadEventValues(){
         prot = 0.0
         fat = 0.0
         carb = 0.0

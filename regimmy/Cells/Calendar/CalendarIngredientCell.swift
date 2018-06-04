@@ -12,8 +12,16 @@ class CalendarIngredientCell: UITableViewCell {
 
     static let identifier = "CalendarIngredientCell"
     
-    func configure() {
-        
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var calLabel: UILabel!
+    @IBOutlet weak var massLabel: UILabel!
+    
+    func configure(subEvent: IngredientE, row: Int) {
+        numberLabel.text = "\(row)"
+        nameLabel.text = subEvent.name
+        calLabel.text = subEvent.cal.formatToHumanReadableForm()
+        massLabel.text = subEvent.mass.formatToHumanReadableForm()
     }
     
     override func awakeFromNib() {

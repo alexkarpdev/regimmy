@@ -152,6 +152,11 @@
 		789DB1572091F00D0076B7FF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789DB1562091F00D0076B7FF /* Extensions.swift */; };
 		789DB15920922A910076B7FF /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789DB15820922A910076B7FF /* NSDate+Extension.swift */; };
 		78B60EC02095A5F0002584D8 /* DBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781132AF208AD50600FD4944 /* DBController.swift */; };
+		78BFF41220C019A800AA886E /* EditDeleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BFF41020C019A800AA886E /* EditDeleteCell.swift */; };
+		78BFF41320C019A800AA886E /* EditDeleteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BFF41120C019A800AA886E /* EditDeleteCell.xib */; };
+		78FFFA4D20C4BBB8005FF53D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FFFA4C20C4BBB8005FF53D /* Protocols.swift */; };
+		78FFFA4F20C4D3D8005FF53D /* SmartField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FFFA4E20C4D3D8005FF53D /* SmartField.swift */; };
+		78FFFA5120C549F2005FF53D /* SmartAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FFFA5020C549F2005FF53D /* SmartAlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -320,6 +325,11 @@
 		789DB155208E09C80076B7FF /* regimmy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "regimmy-Bridging-Header.h"; path = "regimmy/regimmy-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		789DB1562091F00D0076B7FF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		789DB15820922A910076B7FF /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
+		78BFF41020C019A800AA886E /* EditDeleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDeleteCell.swift; sourceTree = "<group>"; };
+		78BFF41120C019A800AA886E /* EditDeleteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditDeleteCell.xib; sourceTree = "<group>"; };
+		78FFFA4C20C4BBB8005FF53D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		78FFFA4E20C4D3D8005FF53D /* SmartField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartField.swift; sourceTree = "<group>"; };
+		78FFFA5020C549F2005FF53D /* SmartAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartAlertController.swift; sourceTree = "<group>"; };
 		D4069DCD3728F413BD87EFF7 /* Pods-regimmy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-regimmy.release.xcconfig"; path = "Pods/Target Support Files/Pods-regimmy/Pods-regimmy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -464,6 +474,8 @@
 				78159F5A206DFCF4000E0AAE /* EditRepeatCell.xib */,
 				78159F5D206E18AB000E0AAE /* EditSetCell.swift */,
 				78159F5E206E18AB000E0AAE /* EditSetCell.xib */,
+				78BFF41020C019A800AA886E /* EditDeleteCell.swift */,
+				78BFF41120C019A800AA886E /* EditDeleteCell.xib */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -558,6 +570,9 @@
 				781132AF208AD50600FD4944 /* DBController.swift */,
 				789DB15820922A910076B7FF /* NSDate+Extension.swift */,
 				788DCA6B20A5364C0094D8DD /* PaddingLabel.swift */,
+				78FFFA4C20C4BBB8005FF53D /* Protocols.swift */,
+				78FFFA4E20C4D3D8005FF53D /* SmartField.swift */,
+				78FFFA5020C549F2005FF53D /* SmartAlertController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -724,6 +739,7 @@
 				78159EFE2057D6D6000E0AAE /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				78159F4D206D1004000E0AAE /* AddDrugsCell.xib in Resources */,
 				78159EFB2057D6D6000E0AAE /* SF-Pro-Text-Regular.otf in Resources */,
+				78BFF41320C019A800AA886E /* EditDeleteCell.xib in Resources */,
 				78403AAD209376510037A074 /* EditorIngredientCell.xib in Resources */,
 				78159F0A2057D6D6000E0AAE /* SF-Pro-Text-LightItalic.otf in Resources */,
 				78159F052057D6D6000E0AAE /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
@@ -842,11 +858,13 @@
 				780AC212204D830900C06598 /* SimpleEvent.swift in Sources */,
 				780AC216204D858D00C06598 /* TrainEvent.swift in Sources */,
 				789DB154208E09820076B7FF /* FSCalendarAppearance.m in Sources */,
+				78BFF41220C019A800AA886E /* EditDeleteCell.swift in Sources */,
 				789DB14D208E09820076B7FF /* FSCalendarExtensions.m in Sources */,
 				78159F33206BDCFF000E0AAE /* EventTypesListTableViewController.swift in Sources */,
 				78159F57206DFCB0000E0AAE /* EditDateCell.swift in Sources */,
 				789DB146208E09820076B7FF /* FSCalendarDelegationFactory.m in Sources */,
 				781FE16E208090B80013D646 /* EditorMuscleChooseCell.swift in Sources */,
+				78FFFA4F20C4D3D8005FF53D /* SmartField.swift in Sources */,
 				789DB14A208E09820076B7FF /* FSCalendarCollectionViewLayout.m in Sources */,
 				780AC2192057D0D100C06598 /* CalendarHeaderCell.swift in Sources */,
 				789DB145208E09820076B7FF /* FSCalendarDelegationProxy.m in Sources */,
@@ -870,6 +888,7 @@
 				781FE16A20804A6E0013D646 /* EditorNutrientCell.swift in Sources */,
 				78159F48206D0FE7000E0AAE /* AddMeasureCell.swift in Sources */,
 				78159F1820595645000E0AAE /* CalendarIngredientCell.swift in Sources */,
+				78FFFA5120C549F2005FF53D /* SmartAlertController.swift in Sources */,
 				789DB144208E09820076B7FF /* FSCalendarCollectionView.m in Sources */,
 				78159F40206D0FA1000E0AAE /* AddTrainCell.swift in Sources */,
 				78159F2C206B53A3000E0AAE /* CalendarMeasureHeaderCell.swift in Sources */,
@@ -898,6 +917,7 @@
 				780AC214204D842E00C06598 /* Enums.swift in Sources */,
 				785A21DC204D6785007CFC9B /* PhotoEventCell.swift in Sources */,
 				78163EC72071353800528CF3 /* SetsListTableViewController.swift in Sources */,
+				78FFFA4D20C4BBB8005FF53D /* Protocols.swift in Sources */,
 				781FE16720804A3D0013D646 /* SubEventDetailTableViewController.swift in Sources */,
 				789DB148208E09820076B7FF /* FSCalendarStickyHeader.m in Sources */,
 				78159F20206B5338000E0AAE /* CalendarEatingHeaderCell.swift in Sources */,

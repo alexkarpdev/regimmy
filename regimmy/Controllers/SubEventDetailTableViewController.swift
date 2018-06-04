@@ -174,17 +174,15 @@ class SubEventDetailTableViewController: UITableViewController {
             switch row {
             case nameCellRow:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath)
-                (cell as! EditFieldCell).configure(placeHolder: "Название", text: exercisePoso.name)
-                (cell as! EditFieldCell).textField.delegate = self
-                (cell as! EditFieldCell).textField.tag = row
-                (cell as! EditFieldCell).textField.isEnabled = isEditingMode
+                (cell as! EditFieldCell).configure(placeHolder: "Название", text: exercisePoso.name, smartDelegate: self, tag: indexPath.row, fieldIsEnabled: isEditingMode) { t in
+                    self.selectedPoso.name = t
+                }
                 cell.selectionStyle = .none
             case infoCellRow:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath)
-                (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: exercisePoso.info, fontSize: 15)
-                (cell as! EditFieldCell).textField.delegate = self
-                (cell as! EditFieldCell).textField.tag = row
-                (cell as! EditFieldCell).textField.isEnabled = isEditingMode
+                (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: exercisePoso.info, smartDelegate: self, tag: indexPath.row, fieldIsEnabled: isEditingMode, fontSize: 15) { t in
+                    self.selectedPoso.info = t
+                }
                 cell.selectionStyle = .none
             case typeCellRow:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditRepeatCell.identifier, for: indexPath)
@@ -224,40 +222,34 @@ class SubEventDetailTableViewController: UITableViewController {
             switch row {
             case 0:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath)
-                (cell as! EditFieldCell).configure(placeHolder: "Название", text: ingredientPoso.name)
-                (cell as! EditFieldCell).textField.delegate = self
-                (cell as! EditFieldCell).textField.tag = row
-                (cell as! EditFieldCell).textField.isEnabled = isEditingMode
+                (cell as! EditFieldCell).configure(placeHolder: "Название", text: ingredientPoso.name, smartDelegate: self, tag: row, fieldIsEnabled: isEditingMode) { t in
+                    self.selectedPoso.name = t
+                }
             case 1:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath)
-                (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: ingredientPoso.info, fontSize: 15)
-                (cell as! EditFieldCell).textField.delegate = self
-                (cell as! EditFieldCell).textField.tag = row
-                (cell as! EditFieldCell).textField.isEnabled = isEditingMode
+                (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: ingredientPoso.info, smartDelegate: self, tag: row, fieldIsEnabled: isEditingMode, fontSize: 15) { t in
+                    self.selectedPoso.info = t
+                }
             case 2:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditorNutrientCell.identifier, for: indexPath)
-                (cell as! EditorNutrientCell).configure(name: "Белки", value: ingredientPoso.prot, unit: "грамм", color: #colorLiteral(red: 0.1058823529, green: 0.6784313725, blue: 0.9725490196, alpha: 1), mode: isEditingMode)
-                (cell as! EditorNutrientCell).valueField.delegate = self
-                (cell as! EditorNutrientCell).valueField.tag = row
-                (cell as! EditorNutrientCell).valueField.isEnabled = isEditingMode
+                (cell as! EditorNutrientCell).configure(name: "Белки", value: ingredientPoso.prot, unit: "грамм", color: #colorLiteral(red: 0.1058823529, green: 0.6784313725, blue: 0.9725490196, alpha: 1), smartDelegate: self, tag: row, fieldIsEnabled: isEditingMode) { t in
+                    ingredientPoso.prot = Double(t)!
+                }
             case 3:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditorNutrientCell.identifier, for: indexPath)
-                (cell as! EditorNutrientCell).configure(name: "Жиры", value: ingredientPoso.fat, unit: "грамм", color: #colorLiteral(red: 1, green: 0.8, blue: 0, alpha: 1), mode: isEditingMode)
-                (cell as! EditorNutrientCell).valueField.delegate = self
-                (cell as! EditorNutrientCell).valueField.tag = row
-                (cell as! EditorNutrientCell).valueField.isEnabled = isEditingMode
+                (cell as! EditorNutrientCell).configure(name: "Жиры", value: ingredientPoso.fat, unit: "грамм", color: #colorLiteral(red: 1, green: 0.8, blue: 0, alpha: 1), smartDelegate: self, tag: row, fieldIsEnabled: isEditingMode) { t in
+                    ingredientPoso.fat = Double(t)!
+                }
             case 4:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditorNutrientCell.identifier, for: indexPath)
-                (cell as! EditorNutrientCell).configure(name: "Углеводы", value: ingredientPoso.carb, unit: "грамм", color: #colorLiteral(red: 0.3882352941, green: 0.8549019608, blue: 0.2196078431, alpha: 1), mode: isEditingMode)
-                (cell as! EditorNutrientCell).valueField.delegate = self
-                (cell as! EditorNutrientCell).valueField.tag = row
-                (cell as! EditorNutrientCell).valueField.isEnabled = isEditingMode
+                (cell as! EditorNutrientCell).configure(name: "Углеводы", value: ingredientPoso.carb, unit: "грамм", color: #colorLiteral(red: 0.3882352941, green: 0.8549019608, blue: 0.2196078431, alpha: 1), smartDelegate: self, tag: row, fieldIsEnabled: isEditingMode) { t in
+                    ingredientPoso.carb = Double(t)!
+                }
             case 5:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditorNutrientCell.identifier, for: indexPath)
-                (cell as! EditorNutrientCell).configure(name: "Энерг.", value: ingredientPoso.cal, unit: "ккал.", color: #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1), mode: isEditingMode)
-                (cell as! EditorNutrientCell).valueField.delegate = self
-                (cell as! EditorNutrientCell).valueField.tag = row
-                (cell as! EditorNutrientCell).valueField.isEnabled = isEditingMode
+                (cell as! EditorNutrientCell).configure(name: "Энерг.", value: ingredientPoso.cal, unit: "ккал.", color: #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1), smartDelegate: self, tag: row, fieldIsEnabled: isEditingMode) { t in
+                    ingredientPoso.cal = Double(t)!
+                }
             default:
                 cell = UITableViewCell()
             }
@@ -271,17 +263,15 @@ class SubEventDetailTableViewController: UITableViewController {
             switch row {
             case 0:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath)
-                (cell as! EditFieldCell).configure(placeHolder: "Название", text: drugPoso.name)
-                (cell as! EditFieldCell).textField.delegate = self
-                (cell as! EditFieldCell).textField.tag = row
-                (cell as! EditFieldCell).textField.isEnabled = isEditingMode
+                (cell as! EditFieldCell).configure(placeHolder: "Название", text: drugPoso.name,  smartDelegate: self, tag: row, fieldIsEnabled: isEditingMode) { t in
+                    self.selectedPoso.name = t
+                }
                 cell.selectionStyle = .none
             case 1:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath)
-                (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: drugPoso.info, fontSize: 15)
-                (cell as! EditFieldCell).textField.delegate = self
-                (cell as! EditFieldCell).textField.tag = row
-                (cell as! EditFieldCell).textField.isEnabled = isEditingMode
+                (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: drugPoso.info,  smartDelegate: self, tag: row, fieldIsEnabled: isEditingMode, fontSize: 15) { t in
+                    self.selectedPoso.info = t
+                }
                 cell.selectionStyle = .none
             case 2:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditRepeatCell.identifier, for: indexPath)
@@ -290,10 +280,9 @@ class SubEventDetailTableViewController: UITableViewController {
                 cell.accessoryType = isEditingMode ? .disclosureIndicator : .none
             case 3:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditorNutrientCell.identifier, for: indexPath)
-                (cell as! EditorNutrientCell).configure(name: "Размер порции", value: drugPoso.servSize, unit: drugPoso.servUnit.rawValue, color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), mode: isEditingMode)
-                (cell as! EditorNutrientCell).valueField.delegate = self
-                (cell as! EditorNutrientCell).valueField.tag = row
-                (cell as! EditorNutrientCell).valueField.isEnabled = isEditingMode
+                (cell as! EditorNutrientCell).configure(name: "Размер порции", value: drugPoso.servSize, unit: drugPoso.servUnit.rawValue, color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),  smartDelegate: self, tag: row, fieldIsEnabled: isEditingMode) { t in
+                    drugPoso.servSize = Double(t)!
+                }
                 cell.selectionStyle = .none
             default:
                 cell = UITableViewCell()
@@ -465,82 +454,60 @@ class SubEventDetailTableViewController: UITableViewController {
 
 }
 
-extension SubEventDetailTableViewController: UITextFieldDelegate {
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        print(textField.text)
-    }
-    
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        updateFieldFor(row: textField.tag, text: "")
-        return true
-    }
-    
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        var text = ""
-        if let t = textField.text,
-            let textRange = Range(range, in: t) {
-            let updatedText = t.replacingCharacters(in: textRange, with: string)
-            text = updatedText
-            updateFieldFor(row: textField.tag, text: text)
-        }
-        
-        return true
-    }
-    
-    func updateFieldFor(row: Int, text: String) {
-        
-        switch selectedSubEventType! {
-        case .exercise:
-            
-            let exercisePoso = selectedPoso as! Exercise
-            
-            switch row {
-            case 0:
-                exercisePoso.name = text
-            case 1:
-                exercisePoso.info = text
-            default:
-                break
-            }
-        case .ingredient:
-            
-            let ingredientPoso = selectedPoso as! Ingredient
-            
-            switch row {
-            case 0:
-                ingredientPoso.name = text
-            case 1:
-                ingredientPoso.info = text
-            case 2:
-                ingredientPoso.prot = Double(text)!
-            case 3:
-                ingredientPoso.fat = Double(text)!
-            case 4:
-                ingredientPoso.carb = Double(text)!
-            case 5:
-                ingredientPoso.cal = Double(text)!
-            default:
-                break
-            }
-        case .drug:
-            
-            let drugPoso = selectedPoso as! Drug
-            
-            switch row {
-            case 0:
-                drugPoso.name = text
-            case 1:
-                drugPoso.info = text
-            case 3:
-                drugPoso.servSize = Double(text)!
-            default:
-                break
-            }
-        }
-    }
-}
+//extension SubEventDetailTableViewController: SmartFieldDelegate {
+//    
+//    func updateNumericValueBy(row: Int, text: String) {
+//        
+//        switch selectedSubEventType! {
+//        case .exercise:
+//            
+//            let exercisePoso = selectedPoso as! Exercise
+//            
+//            switch row {
+//            case 0:
+//                exercisePoso.name = text
+//            case 1:
+//                exercisePoso.info = text
+//            default:
+//                break
+//            }
+//        case .ingredient:
+//            
+//            let ingredientPoso = selectedPoso as! Ingredient
+//            
+//            switch row {
+//            case 0:
+//                ingredientPoso.name = text
+//            case 1:
+//                ingredientPoso.info = text
+//            case 2:
+//                ingredientPoso.prot = Double(text)!
+//            case 3:
+//                ingredientPoso.fat = Double(text)!
+//            case 4:
+//                ingredientPoso.carb = Double(text)!
+//            case 5:
+//                ingredientPoso.cal = Double(text)!
+//            default:
+//                break
+//            }
+//        case .drug:
+//            
+//            let drugPoso = selectedPoso as! Drug
+//            
+//            switch row {
+//            case 0:
+//                drugPoso.name = text
+//            case 1:
+//                drugPoso.info = text
+//            case 3:
+//                drugPoso.servSize = Double(text)!
+//            default:
+//                break
+//            }
+//        }
+//    }
+//}
 
 
 

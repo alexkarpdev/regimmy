@@ -243,6 +243,9 @@ class DiaryTableViewController: UITableViewController {
         
         
     }
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -291,8 +294,7 @@ class DiaryTableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 4
+        return posObjects[section].subEvents.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -302,6 +304,7 @@ class DiaryTableViewController: UITableViewController {
         switch posObjects[indexPath.section].type! {
         case .eating:
             cell = tableView.dequeueReusableCell(withIdentifier: CalendarIngredientCell.identifier, for: indexPath) as! CalendarIngredientCell
+            (cell as! CalendarIngredientCell).configure(subEvent: posObjects[indexPath.section].subEvents[indexPath.row] as! IngredientE, row: indexPath.row + 1)
         case .train:
             cell = tableView.dequeueReusableCell(withIdentifier: CalendarExerciseCell.identifier, for: indexPath) as! CalendarExerciseCell
             (cell as! CalendarExerciseCell).configure()
@@ -315,6 +318,8 @@ class DiaryTableViewController: UITableViewController {
         //cell.configure(with: events[indexPath.row])
 
         cell.separatorInset.left = 64
+        cell.layoutIfNeeded()
+        
         return cell
     }
     
