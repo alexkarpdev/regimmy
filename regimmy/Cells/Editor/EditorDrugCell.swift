@@ -14,10 +14,11 @@ class EditorDrugCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
     
-    func configure(posObject: Drug) {
+    func configure(posObject: Drug, servs: Double? = nil) {
         nameLabel.text = posObject.name
         
         infoLabel.isEnabled = !posObject.info.isEmpty
@@ -25,6 +26,16 @@ class EditorDrugCell: UITableViewCell {
         
         valueLabel.text = posObject.servSize.formatToHumanReadableForm()
         unitLabel.text = posObject.servUnit.rawValue
+        
+        if let s = servs {
+            captionLabel.text = "Порций:"
+            valueLabel.text = s.formatToHumanReadableForm()
+            unitLabel.text = "(\((s * posObject.servSize).formatToHumanReadableForm()) \(posObject.servUnit.rawValue))"
+        }else{
+            captionLabel.text = "Размер порции:"
+            valueLabel.text = posObject.servSize.formatToHumanReadableForm()
+            unitLabel.text = posObject.servUnit.rawValue
+        }
         
     }
     

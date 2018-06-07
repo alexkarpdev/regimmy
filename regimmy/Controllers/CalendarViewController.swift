@@ -16,6 +16,9 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var timePicker: UIDatePicker!
     var isPickerHidden = false
     
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var stackViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
     fileprivate let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy"
@@ -29,6 +32,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         timePicker.isHidden = isPickerHidden
         timePicker.timeZone = TimeZone.current
         calendarView.delegate = self
@@ -37,7 +42,31 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
             calendarView.select(sd)
         }
         
+        self.view.layoutSubviews()
+        
+        visualEffectView.alpha = 0
+        stackViewConstraint.constant = self.view.frame.height/2 + stackView.frame.height/2
+        
+//        print("qq 1: \(stackViewConstraint.constant)")
+//        print("qq 2: \(self.view.frame.height)")
+//        print("qq 3: \(stackView.frame.height)")
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: ({
+            self.visualEffectView.alpha = 1
+            }), completion: nil)
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: ({
+            self.stackViewConstraint.constant = 10
+            self.view.layoutSubviews()
+        }), completion: nil)
+        
     }
     
     override func didReceiveMemoryWarning() {

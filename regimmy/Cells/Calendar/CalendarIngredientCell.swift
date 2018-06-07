@@ -17,8 +17,8 @@ class CalendarIngredientCell: UITableViewCell {
     @IBOutlet weak var calLabel: UILabel!
     @IBOutlet weak var massLabel: UILabel!
     
-    func configure(subEvent: IngredientE, row: Int) {
-        numberLabel.text = "\(row)"
+    func configure(subEvent: IngredientE) {
+        numberLabel.text = subEvent.index
         nameLabel.text = subEvent.name
         calLabel.text = subEvent.cal.formatToHumanReadableForm()
         massLabel.text = subEvent.mass.formatToHumanReadableForm()

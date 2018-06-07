@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Название" placeholder="Название" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="If8-FS-fpo" customClass="SmartField" customModule="regimmy" customModuleProvider="target">
-                        <rect key="frame" x="16" y="6" width="288" height="30"/>
+                        <rect key="frame" x="20" y="6" width="284" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="OFT-ND-iwg"/>
                         </constraints>
@@ -38,7 +38,7 @@
                     <constraint firstItem="If8-FS-fpo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="6Pw-Ct-a14"/>
                     <constraint firstAttribute="trailing" secondItem="If8-FS-fpo" secondAttribute="trailing" constant="16" id="JoE-8v-Zp1"/>
                     <constraint firstAttribute="bottom" secondItem="If8-FS-fpo" secondAttribute="bottom" constant="7.5" id="TjU-P1-kDF"/>
-                    <constraint firstItem="If8-FS-fpo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="hkO-sq-pvP"/>
+                    <constraint firstItem="If8-FS-fpo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="hkO-sq-pvP"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

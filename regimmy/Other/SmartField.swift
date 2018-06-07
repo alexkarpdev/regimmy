@@ -53,24 +53,28 @@ class SmartField: UITextField, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         var text = ""
-        if let t = textField.text, let textRange = Range(range, in: t) {
+        if let t0 = textField.text, let textRange = Range(range, in: t0) {
             if self.type == .text{
-                let updatedText = t.replacingCharacters(in: textRange, with: string)
+                let updatedText = t0.replacingCharacters(in: textRange, with: string)
                 text = updatedText
                 updatedHandler(text)
                 smartDelegate?.updateNumericValueBy(row: textField.tag, text: text)
             } else {
+                let t = t0.replacingOccurrences(of: ",", with: ".")
                 if string == "," {
-                    if t.contains(".") {
+                    if t.contains(".") || t.contains(",") {
                         return false
-                    }else{
+                    } else if t.count < 1 {
+                        return false
+                    }
+                    else{
                         let updatedText = t.replacingCharacters(in: textRange, with: ".")
                         text = updatedText
                         updatedHandler(text)
                         smartDelegate?.updateNumericValueBy(row: textField.tag, text: text)
                     }
                 } else if string == "." {
-                    if (t.contains(string)) {
+                    if t.contains(".") || t.contains(",") {
                         return false
                     } else if t.count < 1{
                         let updatedText = t.replacingCharacters(in: textRange, with: ".0")
@@ -84,9 +88,9 @@ class SmartField: UITextField, UITextFieldDelegate {
                         smartDelegate?.updateNumericValueBy(row: textField.tag, text: text)
                     }
                 } else if string == "0" {
-                    if (t.first == "0") && !t.contains(".") {
+                    if (t.first == "0") && !(t.contains(".") || t.contains(",")) {
                         return false
-                    } else if (t.first == "0" && t.contains(".") && range.location < 2) {
+                    } else if (t.first == "0" && (t.contains(".") || t.contains(",")) && range.location < 2) {
                         return false
                     } else if (t.count > 0) && (range.location == 0) {
                         return false
@@ -103,8 +107,10 @@ class SmartField: UITextField, UITextFieldDelegate {
                         text = updatedText
                         updatedHandler(text)
                         smartDelegate?.updateNumericValueBy(row: textField.tag, text: text)
-                    } else if let r1 = t.range(of: ".")?.lowerBound.encodedOffset {
+                    } else if let r1 = t.contains(".") ? t.range(of: ".")?.lowerBound.encodedOffset : t.range(of: ",")?.lowerBound.encodedOffset {
+                        
                         let r2 = textRange.lowerBound.encodedOffset
+                        
                         if (t.count < 3 && r1 < r2) {
                             let updatedText = t.replacingCharacters(in: textRange, with: "0")
                             text = updatedText
@@ -128,13 +134,43 @@ class SmartField: UITextField, UITextFieldDelegate {
                     let numberFiltered = compSepByCharInSet.joined(separator: "")
                     if string == numberFiltered {
                         
-                        if t.first == "0" && range.location > 0 {
+                        if t.first == "0" && range.location == 1 {
+                            //  if let r1 = t.range(of: ".")?.lowerBound.encodedOffset {
+                            //      let r2 = textRange.lowerBound.encodedOffset
+                            //      if (r1 < r2) {
+                            //          let updatedText = t.replacingCharacters(in: textRange, with: string)
+                            //          text = updatedText
+                            //          updatedHandler(text)
+                            //          smartDelegate?.updateNumericValueBy(row: textField.tag, text: text)
+                            //      }else{
+                            //
+                            //      }
+                            //  } else {
+                            
                             let updatedText = t.replacingCharacters(in: textRange, with: string)
                             text = updatedText
                             text.removeFirst()
+                            if let selectedRange = textField.selectedTextRange {
+                                
+                                let cursorPosition = textField.offset(from: textField.beginningOfDocument, to: selectedRange.start)
+                                
+                                print("\(cursorPosition)")
+                                
+                                textField.text = text
+                                
+                                
+                                if let newPosition = textField.position(from: textField.beginningOfDocument, offset: cursorPosition) {
+                                    
+                                    textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+                                }
+                            }
+                            //,}
+                            
+                            
                             updatedHandler(text)
                             smartDelegate?.updateNumericValueBy(row: textField.tag, text: text)
-                        }else {
+                            return false
+                        } else {
                             let updatedText = t.replacingCharacters(in: textRange, with: string)
                             text = updatedText
                             updatedHandler(text)

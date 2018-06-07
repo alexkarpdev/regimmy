@@ -45,6 +45,8 @@ class RMeasuring: RBaseEvent {
 class RBaseSubEvent: Object {
     @objc dynamic var name = ""
     @objc dynamic var info = ""
+    @objc dynamic var index = ""
+    
 }
 
 class RIngredient: RBaseSubEvent {

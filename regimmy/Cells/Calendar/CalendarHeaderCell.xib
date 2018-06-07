@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,7 +29,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUESDAY, JUNE 6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jX-YR-Hod">
-                        <rect key="frame" x="16" y="11" width="146" height="16"/>
+                        <rect key="frame" x="20" y="11" width="146" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="9WE-a8-beX"/>
                         </constraints>
@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CW-u8-6bT">
-                        <rect key="frame" x="16" y="32" width="288" height="41"/>
+                        <rect key="frame" x="20" y="32" width="284" height="41"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="41" id="l5c-kc-ZEM"/>
                         </constraints>
@@ -52,7 +52,7 @@
                     <constraint firstItem="0CW-u8-6bT" firstAttribute="leading" secondItem="2jX-YR-Hod" secondAttribute="leading" id="0LX-30-RjP"/>
                     <constraint firstItem="0CW-u8-6bT" firstAttribute="top" secondItem="2jX-YR-Hod" secondAttribute="bottom" constant="5" id="4fd-PR-ikg"/>
                     <constraint firstItem="2jX-YR-Hod" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="QdC-hE-VUF"/>
-                    <constraint firstItem="2jX-YR-Hod" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="RgY-PU-i2b"/>
+                    <constraint firstItem="2jX-YR-Hod" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="RgY-PU-i2b"/>
                     <constraint firstItem="0CW-u8-6bT" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="vlg-Fw-7ND"/>
                     <constraint firstAttribute="bottom" secondItem="0CW-u8-6bT" secondAttribute="bottom" constant="8.5" id="vqO-27-A2P"/>
                 </constraints>

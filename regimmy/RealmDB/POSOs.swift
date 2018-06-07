@@ -35,6 +35,7 @@ class RootEvent: POSOProtocol {
     
     var name = ""
     var info = ""
+    var index = "" // for ordering in list of subevents
     
     var type: EventType?
     var date = Date ()
@@ -86,6 +87,10 @@ class RootEvent: POSOProtocol {
         fatalError("override it!")
     }
     
+    func moveSubEvent(fromIndex: Int, toIndex: Int) {
+        fatalError("override it!")
+    }
+    
 }
 
 class BaseSubEvent <T: RBaseSubEvent> : RootEvent {
@@ -114,6 +119,7 @@ class BaseSubEvent <T: RBaseSubEvent> : RootEvent {
     override func backup() {
         name = object!.name
         info = object!.info
+        index = object!.index
     }
     
 //    func getRealmObjectFromDB() -> T? {
@@ -124,6 +130,7 @@ class BaseSubEvent <T: RBaseSubEvent> : RootEvent {
         let object = self.object ?? T()
         object.name = name
         object.info = info
+        object.index = index
         return object
     }
     
@@ -138,11 +145,20 @@ class BaseSubEvent <T: RBaseSubEvent> : RootEvent {
         backup()
     }
     
+    init(name: String, info: String, index: String) {
+        super.init()
+        self.object = nil
+        self.name = name
+        self.info = info
+        self.index = index
+    }
+    
     init(name: String, info: String) {
         super.init()
         self.object = nil
         self.name = name
         self.info = info
+        self.index = ""
     }
     
 }
@@ -298,6 +314,51 @@ class Drug: BaseSubEvent<RDrug> {
         object.servSize = servSize
         object.servUnit = servUnit.rawValue
         
+        return object
+    }
+    
+    func convertToDrugE(servs: Double = 0.0) -> DrugE {
+        let object = DrugE.init()
+        object.name = name
+        object.info = info
+        object.servUnit = servUnit
+        object.servSize = servSize
+        object.servs = servs
+        
+        return object
+    }
+}
+
+class DrugE: BaseSubEvent<RDrugE> {
+    
+    var servSize = 0.0
+    var servUnit = DrugUnitType.mass
+    var servs = 0.0
+    
+    override init() {
+        super.init()
+        servs = 0
+        servSize = 0.0
+        servUnit = DrugUnitType.mass
+    }
+    
+    override init(from realmObject: RDrugE) {
+        super.init(from: realmObject)
+        backup()
+    }
+    
+    override func backup() {
+        super.backup()
+        servs = object!.servs
+        servSize = object!.servSize
+        servUnit = DrugUnitType(rawValue: object!.servUnit)!
+    }
+    
+    override func makeRealmObject() -> RDrugE{
+        let object: RDrugE = super.makeRealmObject()
+        object.servSize = servSize
+        object.servUnit = servUnit.rawValue
+        object.servs = servs
         return object
     }
 }
@@ -491,20 +552,36 @@ class BaseEvent <E: RBaseEvent>: BaseSubEvent<E> {
             self.subEvents.append(i)
         }
         reloadEventValues()
+        reloadIndexes()
     }
     
     override func removeSubEvent(at index: Int) {
         subEvents.remove(at: index)
         reloadEventValues()
+        reloadIndexes()
     }
     
     override func removeAllSubEvents() {
         subEvents.removeAll()
         reloadEventValues()
+        reloadIndexes()
+    }
+    
+    override func moveSubEvent(fromIndex: Int, toIndex: Int) {
+        subEvents.insert(subEvents.remove(at: fromIndex), at: toIndex)
+        reloadIndexes()
     }
     
     func reloadEventValues() {
         fatalError("override it!!")
+    }
+    
+    func reloadIndexes() {
+        var index = 1
+        for i in subEvents {
+            i.index = "\(index)"
+            index += 1
+        }
     }
     
 }
@@ -544,6 +621,8 @@ class Eating: BaseEvent<REating> {
             subEvents.append(IngredientE(from: object!.ingredients[i]))
         }
         
+        subEvents.sort{Int($0.index)! < Int($1.index)!}
+        
     }
     
     override func makeRealmObject() -> REating{
@@ -559,9 +638,9 @@ class Eating: BaseEvent<REating> {
             for i in (subEvents as! [IngredientE]) {
                 
                 if ri.name == i.name {
-                    if ri.mass != i.mass {
-                        ri.mass = i.mass
-                    }
+                    ri.mass = i.mass
+                    ri.index = i.index
+                    
                     finded = true
                     subEvents.remove(at: subEvents.index(of: i)!)
                     break
@@ -582,6 +661,7 @@ class Eating: BaseEvent<REating> {
         for i in 0..<object.ingredients.count {
             subEvents.append(IngredientE(from: object.ingredients[i]))
         }
+        subEvents.sort{Int($0.index)! < Int($1.index)!}
         
         return object
     }
@@ -605,7 +685,75 @@ class Eating: BaseEvent<REating> {
 }
 
 class Drugging: BaseEvent<RDrugging> {
-    let drugs = [Drug]()
+
+    
+    override init() {
+        super.init()
+        subEvents = [DrugE]()
+    }
+    
+    override init(from realmObject: RDrugging) {
+        super.init(from: realmObject)
+        backup()
+    }
+    
+    override func backup() {
+        super.backup()
+        
+        subEvents = [DrugE]()
+        for i in 0..<object!.drugs.count {
+            subEvents.append(DrugE(from: object!.drugs[i]))
+        }
+        
+        subEvents.sort{Int($0.index)! < Int($1.index)!}
+        
+    }
+    
+    override func makeRealmObject() -> RDrugging{
+        let object: RDrugging = super.makeRealmObject()
+        
+        for ri in object.drugs {
+            var finded = false
+            for i in (subEvents as! [DrugE]) {
+                
+                if ri.name == i.name {
+                    ri.servSize = i.servSize
+                    ri.servUnit = i.servUnit.rawValue
+                    //ri.servs = i.servs
+                    
+                    finded = true
+                    subEvents.remove(at: subEvents.index(of: i)!)
+                    break
+                }
+            }
+            if !finded {
+                RealmDBController.shared.realm.delete(ri)
+                //RealmDBController.shared.delete(object: ri)
+            }
+            
+        }
+        
+        for i in 0..<subEvents.count {
+            object.drugs.append((subEvents[i] as! DrugE).makeRealmObject())
+        }
+        
+        subEvents = [DrugE]()
+        for i in 0..<object.drugs.count {
+            subEvents.append(DrugE(from: object.drugs[i]))
+        }
+        subEvents.sort{Int($0.index)! < Int($1.index)!}
+        
+        return object
+    }
+    
+    override func reloadEventValues(){
+
+        
+        for i in (subEvents as! [DrugE]){
+
+        }
+    }
+    
 }
 
 class Train: BaseEvent<RTrain> {

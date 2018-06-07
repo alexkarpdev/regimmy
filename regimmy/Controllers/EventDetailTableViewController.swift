@@ -21,6 +21,21 @@ class EventDetailTableViewController: UITableViewController {
     var isEditingMode = false
     var isCreateNew = false
     
+    let nameCellRow = 0
+    let infoCellRow = 1
+    
+    let calendarCellRow = 2
+    let repeatCellRow = 3
+    let notifyCellRow = 4
+    let statisticCellRow = 5
+    
+    let addSubEventCellRow = 0 //section 1
+    let removeEventCellRow = 0 //section 2
+    
+    var showedRows = [Int]()
+    
+    var showDeleteCell = false
+    
     //var selectedEvent: RBaseEvent!
     var selectedPoso: RootEvent!
     
@@ -42,6 +57,13 @@ class EventDetailTableViewController: UITableViewController {
         tableView.register(UINib(nibName: AddMeasureCell.identifier, bundle: nil), forCellReuseIdentifier: AddMeasureCell.identifier)//mes/drug
         
         tableView.register(UINib(nibName: EditDeleteCell.identifier, bundle: nil), forCellReuseIdentifier: EditDeleteCell.identifier)
+        
+        tableView.register(UINib(nibName: EditEmptyCell.identifier, bundle: nil), forCellReuseIdentifier: EditEmptyCell.identifier)
+        
+        tableView.register(UINib(nibName: StatisticEatingCell.identifier, bundle: nil), forCellReuseIdentifier: StatisticEatingCell.identifier)
+        tableView.register(UINib(nibName: StatisticDrugCell.identifier, bundle: nil), forCellReuseIdentifier: StatisticDrugCell.identifier)
+        tableView.register(UINib(nibName: StatisticMeasureCell.identifier, bundle: nil), forCellReuseIdentifier: StatisticMeasureCell.identifier)
+        tableView.register(UINib(nibName: StatisticTrainCell.identifier, bundle: nil), forCellReuseIdentifier: StatisticTrainCell.identifier)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
@@ -66,8 +88,11 @@ class EventDetailTableViewController: UITableViewController {
     func setEditingMode(isEdit: Bool){
         isEditingMode = isEdit
         
+        tableView.reloadSections([0,1], with: .none)
+        
+        showDeleteCell = isEditingMode && !isCreateNew
+        
         if !isCreateNew {
-            
             if isEditingMode {
                 tableView.insertSections([2], with: .automatic)
                 
@@ -84,41 +109,32 @@ class EventDetailTableViewController: UITableViewController {
         
         isEdit ? hideTabBar() : showTabBar()
         
-        tableView.reloadSections([0,1], with: .automatic)
-        
-        if let field = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditFieldCell)?.textField {
-            field.isEnabled = isEdit
-            isEditing ? field.becomeFirstResponder() : field.resignFirstResponder()
-        }
-        if let field = (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? EditFieldCell)?.textField {
-            field.isEnabled = isEdit
-        }
-        if let cell = (tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? AddHeaderCell) {
-            cell.contentView.isUserInteractionEnabled = isEdit
-        }
-        
         tableView.allowsSelection = isEdit
         
-       
-        
+//        let dispatchTime = DispatchTime.now() + 1.6
+//        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+//            self.tableView.reloadSections([1], with: .none)
+//            print("reloaded")
+//        }
+        //tableView.reloadSections([1], with: .none)
         
     }
     
     func setButtonItemsForEditor(){
-            //tabBarController?.tabBar.isHidden = tableView.isEditing
-            if tableView.isEditing == true {
-                hideTabBar()
-                rightButtonItem.action = #selector(saveAction)
-                rightButtonItem.target = self
-                rightButtonItem.title = "Сохранить"
-                navigationItem.leftBarButtonItem = leftButtonItem
-            }else{
-                showTabBar()
-                navigationItem.leftBarButtonItem = nil
-                rightButtonItem.action = #selector(openForEditAction)
-                rightButtonItem.target = self
-                rightButtonItem.title = "Изменить"
-            }
+        //tabBarController?.tabBar.isHidden = tableView.isEditing
+        if tableView.isEditing == true {
+            hideTabBar()
+            rightButtonItem.action = #selector(saveAction)
+            rightButtonItem.target = self
+            rightButtonItem.title = "Сохранить"
+            navigationItem.leftBarButtonItem = leftButtonItem
+        }else{
+            showTabBar()
+            navigationItem.leftBarButtonItem = nil
+            rightButtonItem.action = #selector(openForEditAction)
+            rightButtonItem.target = self
+            rightButtonItem.title = "Изменить"
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -129,21 +145,28 @@ class EventDetailTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return (isEditingMode && !isCreateNew) ? 3 : 2
+        return showDeleteCell ? 3 : 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 5
+            showedRows.removeAll()
+            showedRows.append(nameCellRow)
+            if (!selectedPoso.info.isEmpty || isEditingMode) {showedRows.append(infoCellRow)}
+            showedRows.append(calendarCellRow)
+            if (isEditingMode) {showedRows.append(repeatCellRow)}
+            if (isEditingMode) {showedRows.append(notifyCellRow)}
+            showedRows.append(statisticCellRow)
+            return showedRows.count
         } else if section == 2 {
             return 1
         } else {
             var count = 1
-            count += selectedPoso.subEvents.count
-           return count
+            count += selectedPoso.subEvents.count == 0 ? 1 : selectedPoso.subEvents.count
+            return count
         }
     }
-    
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -151,32 +174,52 @@ class EventDetailTableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             
-            switch indexPath.row {
-            case 0:
+            let row = showedRows[indexPath.row]
+            
+            switch row{
+            case nameCellRow:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath) as! EditFieldCell
-                (cell as! EditFieldCell).configure(placeHolder: "Название", text: selectedPoso.name, smartDelegate: self, tag: indexPath.row, fieldIsEnabled: isEditingMode, fontSize: 17) { t in
+                (cell as! EditFieldCell).configure(placeHolder: "Название", text: selectedPoso.name, tag: indexPath.row, fieldIsEnabled: isEditingMode, fontSize: 17) { t in
                     self.selectedPoso.name = t
                 }
-            case 1:
+                cell.selectionStyle = .none
+            case infoCellRow:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath) as! EditFieldCell
-                (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: selectedPoso.info, smartDelegate: self, tag: indexPath.row, fieldIsEnabled: isEditingMode, fontSize: 15) { t in
+                (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: selectedPoso.info, tag: indexPath.row, fieldIsEnabled: isEditingMode, fontSize: 15) { t in
                     self.selectedPoso.info = t
                 }
-            case 2:
+                cell.selectionStyle = .none
+            case calendarCellRow:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditDateCell.identifier, for: indexPath) as! EditDateCell
                 (cell as! EditDateCell).configure(date: selectedPoso.date)
-                cell.selectionStyle = .default// isEditingMode ? .default : .none
-                cell.accessoryType = tableView.isEditing ? .disclosureIndicator : .none
-            case 3:
+                cell.selectionStyle = isEditingMode ? .default : .none
+                cell.accessoryType = isEditingMode ? .disclosureIndicator : .none
+            case repeatCellRow:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditRepeatCell.identifier, for: indexPath) as! EditRepeatCell
                 (cell as! EditRepeatCell).configure(caption: "Повторить", detail: "нет")
                 cell.selectionStyle = isEditingMode ? .default : .none
-                cell.accessoryType = tableView.isEditing ? .disclosureIndicator : .none
-            case 4:
+                cell.accessoryType = isEditingMode ? .disclosureIndicator : .none
+            case notifyCellRow:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditRepeatCell.identifier, for: indexPath) as! EditRepeatCell
                 (cell as! EditRepeatCell).configure(caption: "Напомнить", detail: "нет")
                 cell.selectionStyle = isEditingMode ? .default : .none
-                cell.accessoryType = tableView.isEditing ? .disclosureIndicator : .none
+                cell.accessoryType = isEditingMode ? .disclosureIndicator : .none
+            case statisticCellRow:
+                switch selectedEventType! {
+                case .eating:
+                    cell = tableView.dequeueReusableCell(withIdentifier: StatisticEatingCell.identifier, for: indexPath) as! StatisticEatingCell
+                    (cell as! StatisticEatingCell).configure(with: selectedPoso as! Eating)
+                case .drugs:
+                    cell = tableView.dequeueReusableCell(withIdentifier: StatisticDrugCell.identifier, for: indexPath) as! StatisticDrugCell
+                    //(cell as! StatisticEatingCell).configure(with: selectedPoso as! Eating)
+                case .measure:
+                    cell = tableView.dequeueReusableCell(withIdentifier: StatisticMeasureCell.identifier, for: indexPath) as! StatisticMeasureCell
+                    //(cell as! StatisticEatingCell).configure(with: selectedPoso as! Eating)
+                case .train:
+                    cell = tableView.dequeueReusableCell(withIdentifier: StatisticTrainCell.identifier, for: indexPath) as! StatisticTrainCell
+                    //(cell as! StatisticEatingCell).configure(with: selectedPoso as! Eating)
+                }
+                cell.selectionStyle = .none
             default:
                 cell = UITableViewCell()
             }
@@ -186,12 +229,34 @@ class EventDetailTableViewController: UITableViewController {
             case .eating:
                 if indexPath.row == 0 {
                     cell = tableView.dequeueReusableCell(withIdentifier: AddHeaderCell.identifier, for: indexPath) as! AddHeaderCell
-                    cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addNewExercise)))
+                    //cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addNewExercise)))
                     (cell as! AddHeaderCell).captionLabel.text = "Ингредиенты"
                     (cell as! AddHeaderCell).rotateArrow()
-                }else{
+                }else if selectedPoso.subEvents.count > 0{
                     cell = tableView.dequeueReusableCell(withIdentifier: AddIngredientCell.identifier, for: indexPath) as! AddIngredientCell
-                    (cell as! AddIngredientCell).configure(subEvent: selectedPoso.subEvents[indexPath.row - 1] as! IngredientE, row: indexPath.row)
+                    (cell as! AddIngredientCell).configure(subEvent: selectedPoso.subEvents[indexPath.row - 1] as! IngredientE)
+                    
+                    if (!isEditingMode) {
+                        (cell as! AddIngredientCell).nameLabelConstraint.constant = (view.frame.width - 33 - 16)
+                    }else{
+                        (cell as! AddIngredientCell).nameLabelConstraint.constant = (view.frame.width - 33 - 16 - 43 - 52)
+                    }
+                    //cell.layoutSubviews()
+//                    print((cell as! AddIngredientCell).nameLabel.text)
+//                    print((cell as! AddIngredientCell).nameLabel.preferredMaxLayoutWidth)
+                    
+                    //(cell as! AddIngredientCell).nameLabel.preferredMaxLayoutWidth = isEditingMode ? (tableView.bounds.width - (52 + 47 + 20)) : 0.0
+                    
+//                    print(tableView.bounds.width)
+//                    print((cell as! AddIngredientCell).nameLabel.preferredMaxLayoutWidth)
+                    
+                    //(cell as! AddIngredientCell).nameLabel.layoutIfNeeded()
+                    //(cell as! AddIngredientCell).setNeedsUpdateConstraints()
+                    //(cell as! AddIngredientCell).updateConstraints()
+                   // (cell as! AddIngredientCell).layoutSubviews()
+                    cell.setNeedsLayout()
+                }else{
+                    cell = tableView.dequeueReusableCell(withIdentifier: EditEmptyCell.identifier, for: indexPath) as! EditEmptyCell
                 }
             case .train:
                 if indexPath.row == 0 {
@@ -199,9 +264,11 @@ class EventDetailTableViewController: UITableViewController {
                     cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addNewExercise)))
                     (cell as! AddHeaderCell).captionLabel.text = "Упражнения"
                     (cell as! AddHeaderCell).rotateArrow()
-                }else{
+                }else if selectedPoso.subEvents.count > 0{
                     cell = tableView.dequeueReusableCell(withIdentifier: CalendarExerciseCell.identifier, for: indexPath) as! CalendarExerciseCell
                     (cell as! CalendarExerciseCell).configure()
+                }else{
+                    cell = tableView.dequeueReusableCell(withIdentifier: EditEmptyCell.identifier, for: indexPath) as! EditEmptyCell
                 }
             case .measure:
                 if indexPath.row == 0 {
@@ -209,8 +276,10 @@ class EventDetailTableViewController: UITableViewController {
                     cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addNewMeasure)))
                     (cell as! AddHeaderCell).captionLabel.text = "Измерения"
                     (cell as! AddHeaderCell).rotateArrow()
-                }else{
+                }else if selectedPoso.subEvents.count > 0{
                     cell = tableView.dequeueReusableCell(withIdentifier: AddMeasureCell.identifier, for: indexPath) as! AddMeasureCell
+                }else{
+                    cell = tableView.dequeueReusableCell(withIdentifier: EditEmptyCell.identifier, for: indexPath) as! EditEmptyCell
                 }
             case .drugs:
                 if indexPath.row == 0 {
@@ -218,8 +287,10 @@ class EventDetailTableViewController: UITableViewController {
                     cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addNewExercise)))
                     (cell as! AddHeaderCell).captionLabel.text = "Препараты"
                     (cell as! AddHeaderCell).rotateArrow()
-                }else{
+                }else if selectedPoso.subEvents.count > 0{
                     cell = tableView.dequeueReusableCell(withIdentifier: AddMeasureCell.identifier, for: indexPath) as! AddMeasureCell
+                }else{
+                    cell = tableView.dequeueReusableCell(withIdentifier: EditEmptyCell.identifier, for: indexPath) as! EditEmptyCell
                 }
             }
             cell.selectionStyle = isEditingMode ? .default : .none
@@ -230,9 +301,23 @@ class EventDetailTableViewController: UITableViewController {
             fatalError("no case for cell!!")
         }
         
+        //cell.layoutSubviews()
         return cell
     }
-    
+    //    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    //
+    //        if cell.isKind(of: AddIngredientCell.self) {
+    //            //(cell as! AddIngredientCell).nameLabel.sizeToFit()
+    //        }
+    //
+    //        cell.setNeedsLayout()
+    //        cell.layoutIfNeeded()
+    //        cell.layoutSubviews()
+    //    }
+    //    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        return UITableViewAutomaticDimension
+    //    }
+
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         if indexPath.section == 0{
@@ -241,10 +326,10 @@ class EventDetailTableViewController: UITableViewController {
             if indexPath.row == 0 {
                 return .insert
             }else{
-                return .delete
+                return selectedPoso.subEvents.count == 0 ? .none : .delete
             }
         }else{
-             return .none
+            return .none
         }
     }
     // Override to support conditional editing of the table view.
@@ -252,6 +337,7 @@ class EventDetailTableViewController: UITableViewController {
         if indexPath.section == 0 || indexPath.section == 2{
             return false
         }// Return false if you do not want the specified item to be editable.
+        
         return true
     }
     
@@ -261,7 +347,17 @@ class EventDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             selectedPoso.removeSubEvent(at: indexPath.row - 1)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if selectedPoso.subEvents.count == 0 {
+                //tableView.insertRows(at: [indexPath], with: .automatic)
+                //tableView.deleteRows(at: [indexPath], with: .automatic)
+            }else{
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                //tableView.insertRows(at: [indexPath], with: .automatic)
+            }
+            self.tableView.reloadSections([1], with: .none)
+            self.tableView.reloadRows(at: [IndexPath(row: self.statisticCellRow, section: 0)], with: .none)
+            
+            
         } else if editingStyle == .insert {
             switch selectedEventType! {
             case .eating:
@@ -280,10 +376,10 @@ class EventDetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section == 0{
+        if indexPath.section == 0 || indexPath.section == 2{
             return false
-        }else{
-            if indexPath.row == 0 {
+        } else {
+            if indexPath.row == 0 || (indexPath.row == 1 && selectedPoso.subEvents.count == 0){
                 return false
             }else{
                 return true
@@ -292,7 +388,24 @@ class EventDetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        selectedPoso.moveSubEvent(fromIndex: sourceIndexPath.row - 1, toIndex: destinationIndexPath.row - 1)
         
+        let dispatchTime = DispatchTime.now() + 0.2
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+            self.tableView.reloadSections([1], with: .none)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        let row = proposedDestinationIndexPath.row
+        let section = proposedDestinationIndexPath.section
+        if section == 1{
+            if row == 0 {
+                return IndexPath(row: proposedDestinationIndexPath.row + 1, section: 1)
+            }
+            return IndexPath(row: proposedDestinationIndexPath.row, section: 1)
+        }
+        return IndexPath(row: 1, section: 1)
     }
     
     @objc func addNewIngredient(){
@@ -307,22 +420,8 @@ class EventDetailTableViewController: UITableViewController {
     }
     
     
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if indexPath.section == 0 {
             switch indexPath.row {
             case 2:
@@ -333,6 +432,8 @@ class EventDetailTableViewController: UITableViewController {
         }else if indexPath.section == 1 {
             if indexPath.row == 0 {
                 addNewExercise()
+            }else{
+                //show alert for editing
             }
         }
     }
@@ -362,6 +463,7 @@ class EventDetailTableViewController: UITableViewController {
             vc.complitionHandler = { selectedSubEvents in
                 self.selectedPoso.addSubEvents(subEvents: selectedSubEvents)
                 self.tableView.reloadSections([1], with: .automatic)
+                self.tableView.reloadRows(at: [IndexPath(row: self.statisticCellRow, section: 0)], with: .automatic)
             }
         }
     }
@@ -384,7 +486,7 @@ class EventDetailTableViewController: UITableViewController {
     @objc func saveAction() {
         
         selectedPoso.saveToDB()
-        tableView.reloadSections([0,1], with: .automatic)
+        tableView.reloadSections([0,1], with: .none)
         setEditingMode(isEdit: false)
         
         if !isCreateNew {
@@ -400,7 +502,7 @@ class EventDetailTableViewController: UITableViewController {
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         selectedPoso.backup()
-        tableView.reloadSections([0,1], with: .automatic)
+        tableView.reloadSections([0,1], with: .none)
         setEditingMode(isEdit: false)
         
         

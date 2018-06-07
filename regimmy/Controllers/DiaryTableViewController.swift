@@ -271,6 +271,9 @@ class DiaryTableViewController: UITableViewController {
             topSeporatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             cell.contentView.addSubview(topSeporatorView)
             
+//            cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showSelectedEvent(sender:))))
+//            cell.contentView.tag = section
+            
             return cell.contentView
         }
         
@@ -304,7 +307,7 @@ class DiaryTableViewController: UITableViewController {
         switch posObjects[indexPath.section].type! {
         case .eating:
             cell = tableView.dequeueReusableCell(withIdentifier: CalendarIngredientCell.identifier, for: indexPath) as! CalendarIngredientCell
-            (cell as! CalendarIngredientCell).configure(subEvent: posObjects[indexPath.section].subEvents[indexPath.row] as! IngredientE, row: indexPath.row + 1)
+            (cell as! CalendarIngredientCell).configure(subEvent: posObjects[indexPath.section].subEvents[indexPath.row] as! IngredientE)
         case .train:
             cell = tableView.dequeueReusableCell(withIdentifier: CalendarExerciseCell.identifier, for: indexPath) as! CalendarExerciseCell
             (cell as! CalendarExerciseCell).configure()
@@ -361,18 +364,50 @@ class DiaryTableViewController: UITableViewController {
     
     
     // MARK: - Navigation
-
+    
     @objc func showSelectedEvent(sender: UITapGestureRecognizer) {
-        
-        let tapLocation = sender.location(in: tableView)
-        if let indexPath: IndexPath = tableView.indexPathForRow(at: tapLocation){
-            
-            print("tag = \(indexPath.section)")
-            //selectedEvent.type = events[indexPath.section].type.rawValue
-            selectedPoso = posObjects[indexPath.section]
-            performSegue(withIdentifier: "ShowEventSegue", sender: self)
+        if sender.state == UIGestureRecognizerState.ended {
+            guard let tableView = self.tableView else {
+                return
+            }
+            if let view = sender.view {
+                let tapLocation = sender.location(in: tableView)
+                if let tapIndexPath = tableView.indexPathForRow(at: tapLocation) {
+                    if (tableView.cellForRow(at: tapIndexPath) as? UITableViewCell) != nil {
+                        // do something with the row
+                        selectedPoso = posObjects[tapIndexPath.section]
+                        performSegue(withIdentifier: "ShowEventSegue", sender: self)
+                        print("tapped on row at index: \(tapIndexPath.row)")
+                    }
+                }  else {
+                    for i in 0..<tableView.numberOfSections {
+                        let sectionHeaderArea = tableView.rectForHeader(inSection: i)
+                        if sectionHeaderArea.contains(tapLocation) {
+                            // do something with the section
+                            selectedPoso = posObjects[i]
+                            performSegue(withIdentifier: "ShowEventSegue", sender: self)
+                            print("tapped on section at index: \(i)")
+                        }
+                    }
+                }
+            }
         }
     }
+
+//    @objc func showSelectedEvent(sender: UITapGestureRecognizer) {
+//
+//        let tapLocation = sender.location(in: tableView)
+//        if let indexPath: IndexPath = tableView.indexPathForRow(at: tapLocation){
+//
+//            print("tag = \(indexPath.section)")
+//            //selectedEvent.type = events[indexPath.section].type.rawValue
+//            selectedPoso = posObjects[indexPath.section]
+//            performSegue(withIdentifier: "ShowEventSegue", sender: self)
+//        }else{
+//            selectedPoso = posObjects[Int(sender.name!)!]
+//            performSegue(withIdentifier: "ShowEventSegue", sender: self)
+//        }
+//    }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

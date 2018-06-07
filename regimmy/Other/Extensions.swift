@@ -96,6 +96,17 @@ extension Double {
         let suffix = suffixes[Int(i)]
         return "\(numberString)\(suffix)"
     }
+    
+    func formatToLocal() -> String {
+        guard self > 0 else {
+            return "0"
+        }
+        let numberFormatter = NumberFormatter()
+        numberFormatter.maximumFractionDigits = 4
+        numberFormatter.numberStyle = .decimal
+        let numberString = numberFormatter.string(from: NSNumber(value: self)) ?? "Unknown"
+        return numberString
+    }
 }
 
 // MARK: - UIViewController

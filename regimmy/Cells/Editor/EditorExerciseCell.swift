@@ -33,7 +33,7 @@ class EditorExerciseCell: UITableViewCell {
             muscleImageView.alpha = 0.3
         }
         
-        typeLabel.text = posObject.type!.rawValue
+        typeLabel.text = posObject.exerciseType.rawValue
         durationLabel.text = posObject.durationType.rawValue
         loadLabel.text = posObject.loadUnit.rawValue
         

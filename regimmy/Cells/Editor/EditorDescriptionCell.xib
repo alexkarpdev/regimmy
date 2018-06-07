@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GuJ-Xx-kgb">
-                        <rect key="frame" x="16" y="11" width="288" height="66"/>
+                        <rect key="frame" x="20" y="11" width="284" height="66"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="66" id="eD4-AV-TV3"/>
@@ -40,7 +40,7 @@
                     <constraint firstAttribute="bottom" secondItem="GuJ-Xx-kgb" secondAttribute="bottom" constant="10.5" id="SA2-GH-49S"/>
                     <constraint firstItem="GuJ-Xx-kgb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="SIy-kv-hLh"/>
                     <constraint firstAttribute="trailing" secondItem="GuJ-Xx-kgb" secondAttribute="trailing" constant="16" id="qL1-kt-pLj"/>
-                    <constraint firstItem="GuJ-Xx-kgb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="xZy-tH-ydn"/>
+                    <constraint firstItem="GuJ-Xx-kgb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="xZy-tH-ydn"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -26,13 +26,13 @@ class SubEventsListTableViewController: UITableViewController {
     var posObjects = [RootEvent]()
     var selectedPoso: RootEvent!
     
-   // var results: Results<Object>! // чё-та не понимаю как сделать дженерик
+    // var results: Results<Object>! // чё-та не понимаю как сделать дженерик
     
     let repeatList = ["Нет", "Каждый день", "Каждую неделю", "Каждые 2 недели", "Каждый месяц", "Каждый год"]
     let notifyList = ["Нет", "В момент события", "За 5 минут", "За 15 минут", "За 30 минут", "За 1 час", "За 2 часа", "За 1 день", "За 2 дня", "За 2 неделю"]
     
     var notificationToken: NotificationToken?
-
+    
     @IBOutlet var leftButtonItem: UIBarButtonItem!
     @IBOutlet var rightButtonItem: UIBarButtonItem!
     
@@ -63,13 +63,13 @@ class SubEventsListTableViewController: UITableViewController {
         
         let ar: [RootEvent] = [RootEvent]()
         ar.index(of: Ingredient())
-
+        
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        reloadObjects(.insert)
-//    }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //        reloadObjects(.insert)
+    //    }
     
     func reloadObjects(_ reloadType: ReloadDataType) {
         
@@ -100,10 +100,10 @@ class SubEventsListTableViewController: UITableViewController {
             switch selectedSubEventType! {
             case .exercise:
                 index = (posObjects as! [Ingredient]).index(of: selectedPoso as! Ingredient)
-                //index = RealmDBController.shared.index(of: selectedSubEvent as! RExercise)
+            //index = RealmDBController.shared.index(of: selectedSubEvent as! RExercise)
             case .ingredient:
                 index = (posObjects as! [Ingredient]).index(of: selectedPoso as! Ingredient)
-                //index = RealmDBController.shared.index(of: selectedSubEvent as! RIngredient)
+            //index = RealmDBController.shared.index(of: selectedSubEvent as! RIngredient)
             case .drug:
                 index = (posObjects as! [Ingredient]).index(of: selectedPoso as! Ingredient)
                 //index = RealmDBController.shared.index(of: selectedSubEvent as! RDrug)
@@ -124,7 +124,7 @@ class SubEventsListTableViewController: UITableViewController {
             break
         }
         
-            
+        
         
         
     }
@@ -154,25 +154,25 @@ class SubEventsListTableViewController: UITableViewController {
             
         }
     }
-        
     
-
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posObjects.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell!
@@ -184,7 +184,19 @@ class SubEventsListTableViewController: UITableViewController {
         case .eating:
             cell = tableView.dequeueReusableCell(withIdentifier: EditorIngredientCell.identifier, for: indexPath) as! EditorIngredientCell
             let posObject = posObjects[indexPath.row] as! Ingredient
-            (cell as! EditorIngredientCell).configure(posObject: posObject)
+            var mass: Double? = nil
+            if isEditorMode {
+                cell.accessoryType = .disclosureIndicator
+            }else{
+                if selectedPosObjects.contains(posObjects[indexPath.row]) {
+                    mass = (selectedPosObjects[selectedPosObjects.index(of: posObjects[indexPath.row])!] as! IngredientE).mass
+                    cell.accessoryType = .checkmark
+                }else{
+                    cell.accessoryType = .none
+                }
+            }
+            (cell as! EditorIngredientCell).configure(posObject: posObject, mass: mass)
+            
         case .train:
             cell = tableView.dequeueReusableCell(withIdentifier: EditorExerciseCell.identifier, for: indexPath) as! EditorExerciseCell
             let posObject = posObjects[indexPath.row] as! Exercise
@@ -192,28 +204,31 @@ class SubEventsListTableViewController: UITableViewController {
         case .drugs:
             cell = tableView.dequeueReusableCell(withIdentifier: EditorDrugCell.identifier, for: indexPath) as! EditorDrugCell
             let posObject = posObjects[indexPath.row] as! Drug
-            (cell as! EditorDrugCell).configure(posObject: posObject)
+            var servs: Double? = nil
+            if isEditorMode {
+                cell.accessoryType = .disclosureIndicator
+            }else{
+                if selectedPosObjects.contains(posObjects[indexPath.row]) {
+                    servs = (selectedPosObjects[selectedPosObjects.index(of: posObjects[indexPath.row])!] as! DrugE).servs
+                    cell.accessoryType = .checkmark
+                }else{
+                    cell.accessoryType = .none
+                }
+            }
+            (cell as! EditorDrugCell).configure(posObject: posObject, servs: servs)
+            
         default :
             cell = UITableViewCell()
         }
         
         
-        if isEditorMode {
-            cell.accessoryType = .disclosureIndicator
-        }else{
-            if selectedPosObjects.contains(posObjects[indexPath.row]) {
-                (cell as! EditorIngredientCell).setMass((selectedPosObjects[selectedPosObjects.index(of: posObjects[indexPath.row])!] as! IngredientE).mass)
-                cell.accessoryType = .checkmark
-            }else{
-                cell.accessoryType = .none
-                (cell as! EditorIngredientCell).setMass(nil)
-            }
-        }
+        
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
         
         selectedIndexPath = indexPath
         
@@ -226,53 +241,34 @@ class SubEventsListTableViewController: UITableViewController {
                 selectedPosObjects.remove(at: selectedPosObjects.index(of: posObjects[indexPath.row])!)
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             }else{
-                let ac = SmartAlertController(title: "Сколько в граммах?", message: "\(posObjects[indexPath.row].name)", preferredStyle: .alert)
-                ac.addTextField()
-                ac.textFields?.first?.keyboardType = .decimalPad
-                ac.textFields?.first?.keyboardAppearance = .alert
-                ac.smartField.updatedHandler = { t in
-                    ac.textFields?.first?.text = t
-                    print( "t : \(t)")
-                }
-                ac.smartField.type = .numeric
-                ac.textFields?.first?.delegate = ac
-                
-                let submitAction = UIAlertAction(title: "Добавить", style: .default) { [unowned ac, self] _ in
-                    let mass = Double(ac.textFields![0].text!)!
-                    self.selectedPosObjects.append((self.posObjects[indexPath.row] as! Ingredient).convertToIngredientE(mass: mass))
-                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
-                    // do something interesting with "answer" here
+                switch selectedEventType! {
+                case .eating:
+                    callSmartAlert(caption: "Сколько в граммах?", row: indexPath.row){mass in
+                        self.selectedPosObjects.append((self.posObjects[indexPath.row] as! Ingredient).convertToIngredientE(mass: mass))
+                    }
+                case .drugs:
+                    callSmartAlert(caption: "Сколько порций?", row: indexPath.row){servs in
+                        self.selectedPosObjects.append((self.posObjects[indexPath.row] as! Drug).convertToDrugE(servs: servs))
+                    }
+                case .measure: // never be used because measure perform at measureViewController
+                    break
+                case .train:
+                    performSegue(withIdentifier: "SetsListSegue", sender: self)
                 }
                 
-                ac.addAction(submitAction)
-                
-                present(ac, animated: true)
-            }
-            
-            
-            switch selectedEventType! {
-            case .eating:
-                //call alert
-                break
-            case .train:
-                performSegue(withIdentifier: "SetsListSegue", sender: self)
-            case .measure:
-                break
-            case .drugs:
-                break
             }
         }
         
     }
-
+    
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -285,25 +281,25 @@ class SubEventsListTableViewController: UITableViewController {
         }    
     }
     
-
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -359,10 +355,60 @@ class SubEventsListTableViewController: UITableViewController {
         //performSegue(withIdentifier: "IngredientsEditSegue", sender: self)
     }
     
-     @objc func addAction() {
+    @objc func addAction() {
         performSegue(withIdentifier: "AddSubEventSegue", sender: self)
+    }
+    
+    func callSmartAlert(caption: String, row: Int, updateAction: @escaping (Double)->()){
+        let ac = SmartAlertController(title: caption, message: "\(posObjects[row].name)", preferredStyle: .alert)
+        ac.addTextField()
+        ac.textFields?.first?.keyboardType = .decimalPad
+        ac.textFields?.first?.keyboardAppearance = .alert
+        var value = 0.0
+        ac.smartField.updatedHandler = { t in
+            value = Double(t)!
+            if let selectedRange = ac.textFields?.first?.selectedTextRange {
+                let cursorPosition = ac.textFields?.first?.offset(from: (ac.textFields?.first?.beginningOfDocument)!, to: selectedRange.start)
+                print("\(cursorPosition)")
+                let locale = NSLocale.autoupdatingCurrent
+                let separator = locale.decimalSeparator
+                let text = t.replacingOccurrences(of: ".", with: separator!)
+                ac.textFields?.first?.text = text
+                let add = (ac.textFields?.first?.text?.count)! < t.count ? 0 : 1
+                if let newPosition = ac.textFields?.first?.position(from: (ac.textFields?.first?.beginningOfDocument)!, offset: cursorPosition! + add) {
+                    ac.textFields?.first?.selectedTextRange = ac.textFields?.first?.textRange(from: newPosition, to: newPosition)
+                }
+            }
+            print( "t : \(t)")
+        }
+        ac.smartField.type = .numeric
+        ac.textFields?.first?.delegate = ac
+        let submitAction = UIAlertAction(title: "Добавить", style: .default) { [unowned ac, self] _ in
+            updateAction(value)
+            self.tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+            // do something interesting with "answer" here
+        }
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        ac.addAction(submitAction)
+        ac.addAction(cancelAction)
+        present(ac, animated: true)
     }
     
     
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

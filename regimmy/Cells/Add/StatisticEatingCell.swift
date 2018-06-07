@@ -1,21 +1,16 @@
 //
-//  CalendarEatingHeaderCell.swift
+//  StatisticEatingCell.swift
 //  regimmy
 //
-//  Created by Natalia Sonina on 28.03.2018.
+//  Created by Natalia Sonina on 06.06.2018.
 //  Copyright © 2018 Natalia Sonina. All rights reserved.
 //
 
 import UIKit
 
-class CalendarEatingHeaderCell: UITableViewCell {
-    
-    static let identifier = "CalendarEatingHeaderCell"
-    
-    @IBOutlet weak var typeImageView: UIImageView!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var infoLabel: UILabel!
+class StatisticEatingCell: UITableViewCell {
+
+    static let identifier = "StatisticEatingCell"
     
     @IBOutlet weak var protLabel: UILabel!
     @IBOutlet weak var fatLabel: UILabel!
@@ -24,13 +19,6 @@ class CalendarEatingHeaderCell: UITableViewCell {
     @IBOutlet weak var massLabel: UILabel!
     
     func configure(with event: Eating) {
-        
-        typeImageView.image = event.type!.image
-        timeLabel.text = event.time
-        nameLabel.text = event.name
-        
-        infoLabel.isEnabled = !event.info.isEmpty
-        infoLabel.text = event.info
         
         protLabel.text = event.prot.formatToHumanReadableForm()
         fatLabel.text = event.fat.formatToHumanReadableForm()

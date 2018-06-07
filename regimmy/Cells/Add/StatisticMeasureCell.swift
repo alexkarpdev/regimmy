@@ -1,27 +1,25 @@
 //
-//  EditDeleteCell.swift
+//  StatisticMeasureCell.swift
 //  regimmy
 //
-//  Created by Natalia Sonina on 31.05.2018.
+//  Created by Natalia Sonina on 06.06.2018.
 //  Copyright © 2018 Natalia Sonina. All rights reserved.
 //
 
 import UIKit
 
-class EditDeleteCell: UITableViewCell {
+class StatisticMeasureCell: UITableViewCell {
 
-    static let identifier = "EditDeleteCell"
-    
-    @IBOutlet weak var actionLabel: UILabel!
+    static let identifier = "StatisticMeasureCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        actionLabel.text = "Удалить событие"
+        // Initialization code
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
         // Configure the view for the selected state
     }
     

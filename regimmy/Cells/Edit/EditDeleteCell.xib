@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,27 +25,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Название" placeholder="Название" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PSL-K1-ZKg">
-                        <rect key="frame" x="16" y="6" width="288" height="30"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cem-ra-jrr">
+                        <rect key="frame" x="138" y="11" width="44" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="aF9-2B-ZMt"/>
+                            <constraint firstAttribute="height" constant="21" id="uX5-mx-sZO"/>
                         </constraints>
-                        <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
+                        <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="PSL-K1-ZKg" secondAttribute="bottom" constant="7.5" id="f4J-Jk-ZEH"/>
-                    <constraint firstItem="PSL-K1-ZKg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="i8n-ft-43n"/>
-                    <constraint firstAttribute="trailing" secondItem="PSL-K1-ZKg" secondAttribute="trailing" constant="16" id="oat-W9-EKl"/>
-                    <constraint firstItem="PSL-K1-ZKg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="u8e-fM-TwB"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="cem-ra-jrr" secondAttribute="bottom" constant="1" id="504-Ey-ZbZ"/>
+                    <constraint firstItem="cem-ra-jrr" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="fbZ-Zt-1cX"/>
+                    <constraint firstItem="cem-ra-jrr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="jH9-VL-tsb"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="textField" destination="PSL-K1-ZKg" id="ZB8-dz-7Sl"/>
+                <outlet property="actionLabel" destination="cem-ra-jrr" id="L9O-wj-b43"/>
             </connections>
         </tableViewCell>
     </objects>

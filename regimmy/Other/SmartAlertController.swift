@@ -21,6 +21,7 @@ class SmartAlertController: UIAlertController, UITextFieldDelegate {
         smartField.textField(textField, shouldChangeCharactersIn: range, replacementString: string)
         return false
     }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

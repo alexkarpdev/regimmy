@@ -68,6 +68,7 @@ enum EventType: String {
             return .drug
         }
     }
+
 }
 
 enum SubEventType: String {

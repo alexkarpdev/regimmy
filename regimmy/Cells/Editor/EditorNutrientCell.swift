@@ -16,11 +16,13 @@ class EditorNutrientCell: UITableViewCell {
     @IBOutlet weak var nutrientUnitLabel: UILabel!
     @IBOutlet weak var valueField: SmartField!
     
-    func configure(name: String, value: Double?, unit: String, color: UIColor, smartDelegate: SmartFieldDelegate, tag: Int, fieldIsEnabled: Bool, updatedHandler: @escaping (String)->()) {
+    func configure(name: String, value: Double?, unit: String, color: UIColor, tag: Int, fieldIsEnabled: Bool, updatedHandler: @escaping (String)->()) {
         
         nutrientNameLabel.textColor = color
         valueField.textColor = color
         nutrientUnitLabel.textColor = color
+        
+        valueField.placeholder = (0).formatToLocal()
         
         nutrientNameLabel.text = name
         nutrientUnitLabel.text = unit == "ккал." ? "  ккал." : unit
@@ -30,7 +32,7 @@ class EditorNutrientCell: UITableViewCell {
         if let val = value{
             if fieldIsEnabled {
                 if val != 0.0 {
-                    valueField.text = "\(val)"
+                    valueField.text = val.formatToLocal()
                 }
             }else{
                 valueField.text = val.formatToHumanReadableForm()
@@ -38,7 +40,6 @@ class EditorNutrientCell: UITableViewCell {
         }
         
         valueField.tag = tag
-        valueField.smartDelegate = smartDelegate
         valueField.isEnabled = fieldIsEnabled
         valueField.updatedHandler = updatedHandler
     }

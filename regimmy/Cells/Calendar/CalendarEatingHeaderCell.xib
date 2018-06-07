@@ -55,10 +55,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На сушку" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8h-Vg-dnI">
-                        <rect key="frame" x="64" y="32" width="113" height="12"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="12" id="iDi-Ke-Xlq"/>
-                        </constraints>
+                        <rect key="frame" x="64" y="32" width="285" height="14.5"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <nil key="highlightedColor"/>
@@ -217,6 +214,7 @@
                     <constraint firstItem="xMi-2Z-mNy" firstAttribute="centerY" secondItem="ypK-Cx-oc0" secondAttribute="centerY" id="Eoq-Sm-Yzc"/>
                     <constraint firstAttribute="trailing" secondItem="ClY-BZ-9QT" secondAttribute="trailing" id="GI0-Af-FHZ"/>
                     <constraint firstItem="ClY-BZ-9QT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="HPz-Cf-ZEs"/>
+                    <constraint firstAttribute="trailing" secondItem="c8h-Vg-dnI" secondAttribute="trailing" constant="16" id="ITF-zI-fb9"/>
                     <constraint firstItem="ypK-Cx-oc0" firstAttribute="leading" secondItem="X55-8H-pUO" secondAttribute="leading" constant="-2" id="JNm-U5-60a"/>
                     <constraint firstItem="O5K-jq-fry" firstAttribute="leading" secondItem="wVt-AF-xee" secondAttribute="leading" id="JjV-fT-bnP"/>
                     <constraint firstItem="7oF-vB-6Rk" firstAttribute="leading" secondItem="O5K-jq-fry" secondAttribute="trailing" id="JnR-cN-Np9"/>
@@ -226,7 +224,6 @@
                     <constraint firstItem="xMi-2Z-mNy" firstAttribute="leading" secondItem="Ibv-m9-UK2" secondAttribute="trailing" constant="12" id="MwP-no-aar"/>
                     <constraint firstItem="M4E-1d-VzC" firstAttribute="centerY" secondItem="Q1D-GB-wto" secondAttribute="centerY" id="OoR-De-l6R"/>
                     <constraint firstItem="T4U-x2-elt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X55-8H-pUO" secondAttribute="trailing" constant="8" id="PTH-hq-sa5"/>
-                    <constraint firstItem="ypK-Cx-oc0" firstAttribute="top" secondItem="PSB-aV-XdA" secondAttribute="bottom" constant="11" id="Py6-Ok-cbc"/>
                     <constraint firstItem="7oF-vB-6Rk" firstAttribute="centerY" secondItem="O5K-jq-fry" secondAttribute="centerY" id="Q27-Or-PFY"/>
                     <constraint firstItem="X55-8H-pUO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="QoM-nx-BsN"/>
                     <constraint firstItem="ClY-BZ-9QT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Rpt-zm-Q0s"/>
@@ -236,6 +233,7 @@
                     <constraint firstItem="T4U-x2-elt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Y99-x1-Dry"/>
                     <constraint firstItem="xiV-iz-by8" firstAttribute="leading" secondItem="zqm-0B-LJT" secondAttribute="trailing" id="YBh-Fm-sfM"/>
                     <constraint firstItem="X55-8H-pUO" firstAttribute="leading" secondItem="PSB-aV-XdA" secondAttribute="trailing" constant="8" id="bH4-04-rmk"/>
+                    <constraint firstItem="ypK-Cx-oc0" firstAttribute="top" secondItem="c8h-Vg-dnI" secondAttribute="bottom" constant="11.5" id="cCp-po-iep"/>
                     <constraint firstItem="M4E-1d-VzC" firstAttribute="leading" secondItem="Q1D-GB-wto" secondAttribute="trailing" id="daK-U6-Ii6"/>
                     <constraint firstAttribute="bottom" secondItem="zqm-0B-LJT" secondAttribute="bottom" constant="7.5" id="iyD-Ds-P6Y"/>
                     <constraint firstItem="Ibv-m9-UK2" firstAttribute="centerY" secondItem="ypK-Cx-oc0" secondAttribute="centerY" id="j1L-BC-rlc"/>
@@ -243,7 +241,6 @@
                     <constraint firstItem="csK-4e-6yv" firstAttribute="leading" secondItem="xMi-2Z-mNy" secondAttribute="leading" id="jaL-kD-uAx"/>
                     <constraint firstItem="Orh-9Z-tCb" firstAttribute="leading" secondItem="ypK-Cx-oc0" secondAttribute="trailing" constant="12" id="kFB-ab-CUh"/>
                     <constraint firstItem="Orh-9Z-tCb" firstAttribute="centerY" secondItem="ypK-Cx-oc0" secondAttribute="centerY" id="kcW-ax-a1k"/>
-                    <constraint firstItem="c8h-Vg-dnI" firstAttribute="trailing" secondItem="X55-8H-pUO" secondAttribute="trailing" id="mis-k5-wXd"/>
                     <constraint firstItem="Zc0-Wm-7aO" firstAttribute="leading" secondItem="csK-4e-6yv" secondAttribute="trailing" id="of0-zu-KRU"/>
                     <constraint firstItem="Ibv-m9-UK2" firstAttribute="leading" secondItem="wVt-AF-xee" secondAttribute="trailing" constant="12" id="pAV-p6-ETk"/>
                     <constraint firstItem="oAC-IS-g0a" firstAttribute="top" secondItem="Orh-9Z-tCb" secondAttribute="bottom" constant="2" id="qmT-NL-9Kq"/>
@@ -255,7 +252,13 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="calLabel" destination="Q1D-GB-wto" id="KrV-hJ-f6H"/>
+                <outlet property="carbLabel" destination="O5K-jq-fry" id="olR-Gh-HUN"/>
+                <outlet property="fatLabel" destination="oAC-IS-g0a" id="T4y-5J-zLt"/>
+                <outlet property="infoLabel" destination="c8h-Vg-dnI" id="BS3-71-gvN"/>
+                <outlet property="massLabel" destination="csK-4e-6yv" id="ZVF-OY-Z1d"/>
                 <outlet property="nameLabel" destination="X55-8H-pUO" id="xQt-SW-5KJ"/>
+                <outlet property="protLabel" destination="zqm-0B-LJT" id="aEG-VS-mHe"/>
                 <outlet property="timeLabel" destination="T4U-x2-elt" id="HRW-oC-50I"/>
                 <outlet property="typeImageView" destination="PSB-aV-XdA" id="NTq-qd-NBh"/>
             </connections>
