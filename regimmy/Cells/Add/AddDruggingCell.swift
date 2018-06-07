@@ -8,9 +8,9 @@
 
 import UIKit
 
-class AddDrugsCell: UITableViewCell {
+class AddDruggingCell: UITableViewCell {
 
-    static let identifier = "AddDrugsCell"
+    static let identifier = "AddDruggingCell"
     
     @IBOutlet weak var typeImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!

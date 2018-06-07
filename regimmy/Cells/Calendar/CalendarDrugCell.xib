@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="77" id="khH-8a-gdG" userLabel="CalendarDrugCell" customClass="AddDrugCell" customModule="regimmy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="356" height="77"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="khH-8a-gdG" id="wXR-sJ-ccy">
+                <rect key="frame" x="0.0" y="0.0" width="356" height="76.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На сушку" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="li0-Ze-QTG">
+                        <rect key="frame" x="60" y="31.5" width="280" height="14.5"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Препарат" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hs-kC-Ynq">
+                        <rect key="frame" x="60" y="11" width="276" height="20.5"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S19-HI-kVv">
+                        <rect key="frame" x="110.5" y="53" width="10" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="zyw-hT-Zln"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Порций:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9d0-jb-fu1">
+                        <rect key="frame" x="60" y="54" width="49" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="OAR-HP-Y2Q"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(20 грамм)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzP-85-ld6">
+                        <rect key="frame" x="122.5" y="54" width="54.5" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="Jg9-si-uYz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
+                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryp-SD-yMA">
+                        <rect key="frame" x="29" y="11" width="23" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="650-CM-aNn"/>
+                            <constraint firstAttribute="width" constant="23" id="6kE-fD-MGN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9d0-jb-fu1" firstAttribute="leading" secondItem="7hs-kC-Ynq" secondAttribute="leading" id="1rU-1W-8qU"/>
+                    <constraint firstItem="S19-HI-kVv" firstAttribute="centerY" secondItem="9d0-jb-fu1" secondAttribute="centerY" id="3bj-hm-AfD"/>
+                    <constraint firstItem="S19-HI-kVv" firstAttribute="leading" secondItem="9d0-jb-fu1" secondAttribute="trailing" constant="2" id="9Uu-mo-yrf"/>
+                    <constraint firstItem="li0-Ze-QTG" firstAttribute="leading" secondItem="7hs-kC-Ynq" secondAttribute="leading" id="B7Z-mZ-XNH"/>
+                    <constraint firstItem="ryp-SD-yMA" firstAttribute="top" secondItem="wXR-sJ-ccy" secondAttribute="top" constant="11" id="Ial-Of-p7R"/>
+                    <constraint firstAttribute="trailing" secondItem="7hs-kC-Ynq" secondAttribute="trailing" constant="20" id="Nw6-AA-8uk"/>
+                    <constraint firstItem="qzP-85-ld6" firstAttribute="leading" secondItem="S19-HI-kVv" secondAttribute="trailing" constant="1.5" id="UeF-Lo-QGS"/>
+                    <constraint firstItem="7hs-kC-Ynq" firstAttribute="leading" secondItem="ryp-SD-yMA" secondAttribute="trailing" constant="8" id="Ule-jN-WKB"/>
+                    <constraint firstItem="9d0-jb-fu1" firstAttribute="top" secondItem="li0-Ze-QTG" secondAttribute="bottom" constant="8" id="XJ0-FE-PwT"/>
+                    <constraint firstItem="li0-Ze-QTG" firstAttribute="trailing" secondItem="wXR-sJ-ccy" secondAttribute="trailingMargin" id="YmL-mR-5iM"/>
+                    <constraint firstAttribute="bottom" secondItem="9d0-jb-fu1" secondAttribute="bottom" constant="7.5" id="cR7-WZ-Ebh"/>
+                    <constraint firstItem="ryp-SD-yMA" firstAttribute="leading" secondItem="wXR-sJ-ccy" secondAttribute="leading" constant="29" id="iDM-eo-SYD"/>
+                    <constraint firstItem="qzP-85-ld6" firstAttribute="centerY" secondItem="S19-HI-kVv" secondAttribute="centerY" id="nTo-8w-c1C"/>
+                    <constraint firstItem="7hs-kC-Ynq" firstAttribute="top" secondItem="wXR-sJ-ccy" secondAttribute="top" constant="11" id="yin-V8-2d4"/>
+                    <constraint firstItem="li0-Ze-QTG" firstAttribute="top" secondItem="7hs-kC-Ynq" secondAttribute="bottom" id="yqQ-Wy-lfO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="Kr5-4D-Rgg"/>
+            <connections>
+                <outlet property="captionLabel" destination="9d0-jb-fu1" id="MxT-K0-5jO"/>
+                <outlet property="infoLabel" destination="li0-Ze-QTG" id="IoJ-Wy-8Es"/>
+                <outlet property="nameLabel" destination="7hs-kC-Ynq" id="Vhg-dy-xQC"/>
+                <outlet property="numberLabel" destination="ryp-SD-yMA" id="rw6-dY-7yL"/>
+                <outlet property="unitLabel" destination="qzP-85-ld6" id="Rhp-ZT-FyL"/>
+                <outlet property="valueLabel" destination="S19-HI-kVv" id="ddq-C2-bY9"/>
+            </connections>
+            <point key="canvasLocation" x="52" y="70.5"/>
+        </tableViewCell>
+    </objects>
+</document>

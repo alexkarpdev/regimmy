@@ -29,7 +29,7 @@ class EventTemplatesListTableViewController: UITableViewController {
         tableView.register(UINib(nibName: AddMeasureCell.identifier, bundle: nil), forCellReuseIdentifier: AddMeasureCell.identifier)
         tableView.register(UINib(nibName: AddEatingCell.identifier, bundle: nil), forCellReuseIdentifier: AddEatingCell.identifier)
         tableView.register(UINib(nibName: AddTrainCell.identifier, bundle: nil), forCellReuseIdentifier: AddTrainCell.identifier)
-        tableView.register(UINib(nibName: AddDrugsCell.identifier, bundle: nil), forCellReuseIdentifier: AddDrugsCell.identifier)
+        tableView.register(UINib(nibName: AddDruggingCell.identifier, bundle: nil), forCellReuseIdentifier: AddDruggingCell.identifier)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
@@ -114,7 +114,7 @@ class EventTemplatesListTableViewController: UITableViewController {
         case .measure:
             cell = tableView.dequeueReusableCell(withIdentifier: AddTrainCell.identifier, for: indexPath) as! AddTrainCell
         case .drugs:
-            cell = tableView.dequeueReusableCell(withIdentifier: AddDrugsCell.identifier, for: indexPath) as! AddDrugsCell
+            cell = tableView.dequeueReusableCell(withIdentifier: AddDruggingCell.identifier, for: indexPath) as! AddDruggingCell
         default:
             break
         }

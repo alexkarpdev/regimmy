@@ -231,15 +231,16 @@ class IngredientE: BaseSubEvent<RIngredientE> {
     var fat = 0.0
     var carb = 0.0
     var cal = 0.0
-    var mass: Double = 0.0 {
-        didSet{
-            let koef = mass / 100
-            prot *= koef
-            fat *= koef
-            carb *= koef
-            cal *= koef
-        }
-    }
+    var mass = 0.0 // вычислять в другом месте
+//    var mass: Double = 0.0 {
+//        didSet{
+//            let koef = mass / 100
+//            prot *= koef
+//            fat *= koef
+//            carb *= koef
+//            cal *= koef
+//        }
+//    }
     
     override init() {
         super.init()
@@ -719,7 +720,8 @@ class Drugging: BaseEvent<RDrugging> {
                 if ri.name == i.name {
                     ri.servSize = i.servSize
                     ri.servUnit = i.servUnit.rawValue
-                    //ri.servs = i.servs
+                    ri.servs = i.servs
+                    ri.index = i.index
                     
                     finded = true
                     subEvents.remove(at: subEvents.index(of: i)!)
@@ -748,7 +750,6 @@ class Drugging: BaseEvent<RDrugging> {
     
     override func reloadEventValues(){
 
-        
         for i in (subEvents as! [DrugE]){
 
         }

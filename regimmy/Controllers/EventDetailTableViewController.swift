@@ -54,7 +54,8 @@ class EventDetailTableViewController: UITableViewController {
         
         tableView.register(UINib(nibName: AddIngredientCell.identifier, bundle: nil), forCellReuseIdentifier: AddIngredientCell.identifier)//ingr
         tableView.register(UINib(nibName: CalendarExerciseCell.identifier, bundle: nil), forCellReuseIdentifier: CalendarExerciseCell.identifier)//ex
-        tableView.register(UINib(nibName: AddMeasureCell.identifier, bundle: nil), forCellReuseIdentifier: AddMeasureCell.identifier)//mes/drug
+        tableView.register(UINib(nibName: AddMeasureCell.identifier, bundle: nil), forCellReuseIdentifier: AddMeasureCell.identifier)//mes
+        tableView.register(UINib(nibName: AddDrugCell.identifier, bundle: nil), forCellReuseIdentifier: AddDrugCell.identifier)//drug
         
         tableView.register(UINib(nibName: EditDeleteCell.identifier, bundle: nil), forCellReuseIdentifier: EditDeleteCell.identifier)
         
@@ -241,19 +242,6 @@ class EventDetailTableViewController: UITableViewController {
                     }else{
                         (cell as! AddIngredientCell).nameLabelConstraint.constant = (view.frame.width - 33 - 16 - 43 - 52)
                     }
-                    //cell.layoutSubviews()
-//                    print((cell as! AddIngredientCell).nameLabel.text)
-//                    print((cell as! AddIngredientCell).nameLabel.preferredMaxLayoutWidth)
-                    
-                    //(cell as! AddIngredientCell).nameLabel.preferredMaxLayoutWidth = isEditingMode ? (tableView.bounds.width - (52 + 47 + 20)) : 0.0
-                    
-//                    print(tableView.bounds.width)
-//                    print((cell as! AddIngredientCell).nameLabel.preferredMaxLayoutWidth)
-                    
-                    //(cell as! AddIngredientCell).nameLabel.layoutIfNeeded()
-                    //(cell as! AddIngredientCell).setNeedsUpdateConstraints()
-                    //(cell as! AddIngredientCell).updateConstraints()
-                   // (cell as! AddIngredientCell).layoutSubviews()
                     cell.setNeedsLayout()
                 }else{
                     cell = tableView.dequeueReusableCell(withIdentifier: EditEmptyCell.identifier, for: indexPath) as! EditEmptyCell
@@ -261,7 +249,7 @@ class EventDetailTableViewController: UITableViewController {
             case .train:
                 if indexPath.row == 0 {
                     cell = tableView.dequeueReusableCell(withIdentifier: AddHeaderCell.identifier, for: indexPath) as! AddHeaderCell
-                    cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addNewExercise)))
+                    //cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addNewExercise)))
                     (cell as! AddHeaderCell).captionLabel.text = "Упражнения"
                     (cell as! AddHeaderCell).rotateArrow()
                 }else if selectedPoso.subEvents.count > 0{
@@ -273,7 +261,7 @@ class EventDetailTableViewController: UITableViewController {
             case .measure:
                 if indexPath.row == 0 {
                     cell = tableView.dequeueReusableCell(withIdentifier: AddHeaderCell.identifier, for: indexPath) as! AddHeaderCell
-                    cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addNewMeasure)))
+                    //cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addNewMeasure)))
                     (cell as! AddHeaderCell).captionLabel.text = "Измерения"
                     (cell as! AddHeaderCell).rotateArrow()
                 }else if selectedPoso.subEvents.count > 0{
@@ -284,11 +272,12 @@ class EventDetailTableViewController: UITableViewController {
             case .drugs:
                 if indexPath.row == 0 {
                     cell = tableView.dequeueReusableCell(withIdentifier: AddHeaderCell.identifier, for: indexPath) as! AddHeaderCell
-                    cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addNewExercise)))
+                    //cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addNewExercise)))
                     (cell as! AddHeaderCell).captionLabel.text = "Препараты"
                     (cell as! AddHeaderCell).rotateArrow()
                 }else if selectedPoso.subEvents.count > 0{
-                    cell = tableView.dequeueReusableCell(withIdentifier: AddMeasureCell.identifier, for: indexPath) as! AddMeasureCell
+                    cell = tableView.dequeueReusableCell(withIdentifier: AddDrugCell.identifier, for: indexPath) as! AddDrugCell
+                    (cell as! AddDrugCell).configure(subEvent: selectedPoso.subEvents[indexPath.row - 1] as! DrugE)
                 }else{
                     cell = tableView.dequeueReusableCell(withIdentifier: EditEmptyCell.identifier, for: indexPath) as! EditEmptyCell
                 }

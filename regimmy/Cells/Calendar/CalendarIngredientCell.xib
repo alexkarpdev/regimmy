@@ -36,10 +36,10 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNK-7y-r0S">
-                        <rect key="frame" x="24" y="11" width="32" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNK-7y-r0S">
+                        <rect key="frame" x="29" y="11" width="23" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="32" id="w2O-xZ-ToX"/>
+                            <constraint firstAttribute="width" constant="23" id="Yoz-9v-Prz"/>
                             <constraint firstAttribute="height" constant="18" id="xZZ-yI-5qT"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
@@ -97,7 +97,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="LNK-7y-r0S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="1dh-h8-AyP"/>
+                    <constraint firstItem="LNK-7y-r0S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="29" id="1dh-h8-AyP"/>
                     <constraint firstItem="YBX-dN-mXf" firstAttribute="leading" secondItem="xWd-qn-svv" secondAttribute="trailing" id="2eQ-NQ-3lu"/>
                     <constraint firstItem="SYn-kj-Dgp" firstAttribute="leading" secondItem="NEM-7X-NxE" secondAttribute="trailing" constant="4" id="4IX-qX-dAF"/>
                     <constraint firstItem="GBl-gE-Ylk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="7wC-FT-Y0e"/>
@@ -111,7 +111,7 @@
                     <constraint firstItem="Tke-8C-LNY" firstAttribute="centerY" secondItem="SYn-kj-Dgp" secondAttribute="centerY" id="Xye-8J-mH6"/>
                     <constraint firstItem="xWd-qn-svv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GBl-gE-Ylk" secondAttribute="trailing" constant="8" id="fdD-Nx-von"/>
                     <constraint firstItem="xWd-qn-svv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="nGz-IC-Wp7"/>
-                    <constraint firstItem="GBl-gE-Ylk" firstAttribute="leading" secondItem="LNK-7y-r0S" secondAttribute="trailing" constant="4" id="pAG-8d-M5b"/>
+                    <constraint firstItem="GBl-gE-Ylk" firstAttribute="leading" secondItem="LNK-7y-r0S" secondAttribute="trailing" constant="8" id="pAG-8d-M5b"/>
                     <constraint firstItem="NEM-7X-NxE" firstAttribute="centerY" secondItem="xWd-qn-svv" secondAttribute="centerY" id="xUy-55-uYS"/>
                 </constraints>
             </tableViewCellContentView>
