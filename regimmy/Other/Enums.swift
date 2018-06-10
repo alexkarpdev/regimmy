@@ -123,10 +123,10 @@ enum MeasureType: String {
     case ankle = "ankle" //лодыжка
     case thigh = "thigh" //бедро
     case calf = "calf" //икры
-    case photo = "photo"
+    case photo = "phototake"
     case weight = "weight"
     case height = "height"
-    case fat = "fat"
+    case fat = "bodyfat"
     
     var typeImageName: String {
         switch self {
@@ -145,10 +145,50 @@ enum MeasureType: String {
         case .weight: return "кг"
         case .fat: return "%"
         default:
-        return "см"
+            return "см"
+        }
     }
+    var caption: String {
+        switch self {
+        case .neck: return "Шея"
+        case .shoulders: return "Плечи"
+        case .arm: return "Руки"
+        case .forearm: return "Предплечье"
+        case .chest: return "Грудь"
+        case .waist: return "Талия"
+        case .hips: return "Ягодицы"
+        case .wrist: return "Запястье"
+        case .ankle: return "Лодыжка"
+        case .thigh: return "Бедро"
+        case .calf: return "Икры"
+        case .photo: return "Фото"
+        case .weight: return "Вес"
+        case .height: return "Рост"
+        case .fat: return "Жир"
+        }
+    }
+    
+    var internalIndex: Int {
+        switch self {
+        case .neck: return 0
+        case .shoulders: return 1
+        case .arm: return 2
+        case .forearm: return 3
+        case .chest: return 4
+        case .waist: return 5
+        case .hips: return 6
+        case .wrist: return 7
+        case .ankle: return 8
+        case .thigh: return 9
+        case .calf: return 10
+        case .photo: return 14
+        case .weight: return 11
+        case .height: return 13
+        case .fat: return 12
+        }
     }
 }
+
 enum MuscleType: String {
     case neck = "neck"
     case quadriceps = "quadriceps"

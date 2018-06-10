@@ -32,7 +32,10 @@ class MuscleChooseViewController: UIViewController, UIScrollViewDelegate {
         scrollView.isScrollEnabled = false
         
         
-        csViewHeight.constant = self.view.frame.size.height - 140
+        let koef = (self.view.frame.height / self.view.frame.width) / (667/375) //1.779  //375x812
+        //let dh = koef > 1 ? 140 * koef * 2 : 140
+        
+        csViewHeight.constant = (self.view.frame.size.height - 140) / koef
         csViewWidth.constant = self.view.frame.size.width * 2
         
         csView.layoutIfNeeded()

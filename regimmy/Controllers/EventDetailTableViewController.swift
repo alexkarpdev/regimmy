@@ -266,6 +266,7 @@ class EventDetailTableViewController: UITableViewController {
                     (cell as! AddHeaderCell).rotateArrow()
                 }else if selectedPoso.subEvents.count > 0{
                     cell = tableView.dequeueReusableCell(withIdentifier: AddMeasureCell.identifier, for: indexPath) as! AddMeasureCell
+                    (cell as! AddMeasureCell).configure(subEvent: selectedPoso.subEvents[indexPath.row - 1] as! Measure)
                 }else{
                     cell = tableView.dequeueReusableCell(withIdentifier: EditEmptyCell.identifier, for: indexPath) as! EditEmptyCell
                 }
@@ -420,7 +421,11 @@ class EventDetailTableViewController: UITableViewController {
             }
         }else if indexPath.section == 1 {
             if indexPath.row == 0 {
-                addNewExercise()
+                if selectedEventType == .measure {
+                    addNewMeasure()
+                }else{
+                    addNewExercise()
+                }
             }else{
                 //show alert for editing
             }
@@ -449,6 +454,17 @@ class EventDetailTableViewController: UITableViewController {
             vc.selectedSubEventType = selectedEventType.subEventType
             vc.navigationItem.title = "Выберите"
             vc.navigationItem.rightBarButtonItem = nil
+            vc.complitionHandler = { selectedSubEvents in
+                self.selectedPoso.addSubEvents(subEvents: selectedSubEvents)
+                self.tableView.reloadSections([1], with: .automatic)
+                self.tableView.reloadRows(at: [IndexPath(row: self.statisticCellRow, section: 0)], with: .automatic)
+            }
+        }
+        
+        if segue.identifier == "MeasureChooseSegue" {
+            let vc = segue.destination as! MeasureChooseViewController
+            vc.selectedPosObjects = selectedPoso.subEvents
+            vc.navigationItem.title = "Выберите"
             vc.complitionHandler = { selectedSubEvents in
                 self.selectedPoso.addSubEvents(subEvents: selectedSubEvents)
                 self.tableView.reloadSections([1], with: .automatic)

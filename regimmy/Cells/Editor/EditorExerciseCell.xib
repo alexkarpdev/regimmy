@@ -29,13 +29,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Какое-то упраженение" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="va4-sN-Kv4">
-                        <rect key="frame" x="64" y="11" width="255" height="20.5"/>
+                        <rect key="frame" x="84" y="11" width="235" height="20.5"/>
                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тип" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHm-Vn-PSc">
-                        <rect key="frame" x="64" y="50" width="58" height="15"/>
+                        <rect key="frame" x="84" y="50" width="58" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="58" id="4q2-OM-FuN"/>
                             <constraint firstAttribute="height" constant="15" id="cp6-P7-UxH"/>
@@ -45,7 +45,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Продол-ть" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9m-qa-Yj7">
-                        <rect key="frame" x="146" y="50" width="63" height="15"/>
+                        <rect key="frame" x="166" y="50" width="63" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="63" id="9Iy-mA-VB7"/>
                             <constraint firstAttribute="height" constant="15" id="JeI-FF-Ryi"/>
@@ -55,38 +55,38 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="дистанция" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhw-np-I89">
-                        <rect key="frame" x="146" y="65" width="78" height="18"/>
+                        <rect key="frame" x="166" y="65" width="78" height="18"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="кг" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMw-5P-j5D">
-                        <rect key="frame" x="233" y="65" width="15.5" height="18"/>
+                        <rect key="frame" x="253" y="65" width="15.5" height="18"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Примечание" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1R-j3-CUe">
-                        <rect key="frame" x="64" y="32" width="239" height="10"/>
+                        <rect key="frame" x="84" y="32" width="219" height="10"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="8"/>
                         <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testMuscles" translatesAutoresizingMaskIntoConstraints="NO" id="PI5-r4-AeM">
-                        <rect key="frame" x="20" y="11" width="40" height="40"/>
+                        <rect key="frame" x="20" y="11" width="60" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="Ef7-gJ-UZt"/>
-                            <constraint firstAttribute="height" constant="40" id="jCD-MR-UQE"/>
+                            <constraint firstAttribute="width" constant="60" id="Ef7-gJ-UZt"/>
+                            <constraint firstAttribute="height" constant="60" id="jCD-MR-UQE"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="силовое" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBF-c2-zpX">
-                        <rect key="frame" x="64" y="65" width="61.5" height="18"/>
+                        <rect key="frame" x="84" y="65" width="61.5" height="18"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нагрузка" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXy-cY-7SN">
-                        <rect key="frame" x="233" y="50" width="55" height="15"/>
+                        <rect key="frame" x="253" y="50" width="55" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="KbH-x4-LEC"/>
                             <constraint firstAttribute="width" constant="55" id="cZF-gt-LtD"/>

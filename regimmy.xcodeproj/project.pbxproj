@@ -114,7 +114,7 @@
 		78558F3E20B07D72005A01A9 /* EditorExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78558F3C20B07D72005A01A9 /* EditorExerciseCell.xib */; };
 		78558F4120B07D87005A01A9 /* EditorDrugCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78558F3F20B07D87005A01A9 /* EditorDrugCell.swift */; };
 		78558F4220B07D87005A01A9 /* EditorDrugCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78558F4020B07D87005A01A9 /* EditorDrugCell.xib */; };
-		78558F4420B083DB005A01A9 /* POSOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78558F4320B083DB005A01A9 /* POSOs.swift */; };
+		78558F4420B083DB005A01A9 /* RootEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78558F4320B083DB005A01A9 /* RootEvents.swift */; };
 		785A21D8204D6771007CFC9B /* SimpleEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A21D6204D6771007CFC9B /* SimpleEventCell.swift */; };
 		785A21D9204D6771007CFC9B /* SimpleEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785A21D7204D6771007CFC9B /* SimpleEventCell.xib */; };
 		785A21DC204D6785007CFC9B /* PhotoEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A21DA204D6784007CFC9B /* PhotoEventCell.swift */; };
@@ -173,6 +173,10 @@
 		78FFFA6E20C8F961005FF53D /* AddDrugCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78FFFA6C20C8F961005FF53D /* AddDrugCell.xib */; };
 		78FFFA7120C9037D005FF53D /* CalendarDrugCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FFFA6F20C9037D005FF53D /* CalendarDrugCell.swift */; };
 		78FFFA7220C9037D005FF53D /* CalendarDrugCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78FFFA7020C9037D005FF53D /* CalendarDrugCell.xib */; };
+		78FFFA7520CB4566005FF53D /* Eating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FFFA7420CB4566005FF53D /* Eating.swift */; };
+		78FFFA7720CB4573005FF53D /* Measuring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FFFA7620CB4573005FF53D /* Measuring.swift */; };
+		78FFFA7920CB4585005FF53D /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FFFA7820CB4585005FF53D /* Training.swift */; };
+		78FFFA7B20CB459F005FF53D /* Drugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FFFA7A20CB459F005FF53D /* Drugging.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -285,7 +289,7 @@
 		78558F3C20B07D72005A01A9 /* EditorExerciseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditorExerciseCell.xib; sourceTree = "<group>"; };
 		78558F3F20B07D87005A01A9 /* EditorDrugCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorDrugCell.swift; sourceTree = "<group>"; };
 		78558F4020B07D87005A01A9 /* EditorDrugCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditorDrugCell.xib; sourceTree = "<group>"; };
-		78558F4320B083DB005A01A9 /* POSOs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POSOs.swift; sourceTree = "<group>"; };
+		78558F4320B083DB005A01A9 /* RootEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootEvents.swift; sourceTree = "<group>"; };
 		785A21D6204D6771007CFC9B /* SimpleEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEventCell.swift; sourceTree = "<group>"; };
 		785A21D7204D6771007CFC9B /* SimpleEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleEventCell.xib; sourceTree = "<group>"; };
 		785A21DA204D6784007CFC9B /* PhotoEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEventCell.swift; sourceTree = "<group>"; };
@@ -362,6 +366,10 @@
 		78FFFA6C20C8F961005FF53D /* AddDrugCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDrugCell.xib; sourceTree = "<group>"; };
 		78FFFA6F20C9037D005FF53D /* CalendarDrugCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDrugCell.swift; sourceTree = "<group>"; };
 		78FFFA7020C9037D005FF53D /* CalendarDrugCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarDrugCell.xib; sourceTree = "<group>"; };
+		78FFFA7420CB4566005FF53D /* Eating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eating.swift; sourceTree = "<group>"; };
+		78FFFA7620CB4573005FF53D /* Measuring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measuring.swift; sourceTree = "<group>"; };
+		78FFFA7820CB4585005FF53D /* Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
+		78FFFA7A20CB459F005FF53D /* Drugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drugging.swift; sourceTree = "<group>"; };
 		D4069DCD3728F413BD87EFF7 /* Pods-regimmy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-regimmy.release.xcconfig"; path = "Pods/Target Support Files/Pods-regimmy/Pods-regimmy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -404,14 +412,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		781132D1208B8A3100FD4944 /* RealmDB */ = {
+		781132D1208B8A3100FD4944 /* DataBaseComponents */ = {
 			isa = PBXGroup;
 			children = (
+				78FFFA7320CB4537005FF53D /* POSOs */,
 				789DB0E6208C81AC0076B7FF /* RealmObjects.swift */,
 				789DB0E8208C820F0076B7FF /* RealmDBController.swift */,
-				78558F4320B083DB005A01A9 /* POSOs.swift */,
 			);
-			path = RealmDB;
+			path = DataBaseComponents;
 			sourceTree = "<group>";
 		};
 		78159E992057D58E000E0AAE /* MyFonts */ = {
@@ -648,7 +656,7 @@
 			isa = PBXGroup;
 			children = (
 				78403AB3209578220037A074 /* DefaultData */,
-				781132D1208B8A3100FD4944 /* RealmDB */,
+				781132D1208B8A3100FD4944 /* DataBaseComponents */,
 				78159E992057D58E000E0AAE /* MyFonts */,
 				780AC210204D82F600C06598 /* Models */,
 				785A21D1204D6656007CFC9B /* Other */,
@@ -704,6 +712,18 @@
 				789DB143208E09820076B7FF /* FSCalendarAppearance.m */,
 			);
 			path = FSCalendar;
+			sourceTree = "<group>";
+		};
+		78FFFA7320CB4537005FF53D /* POSOs */ = {
+			isa = PBXGroup;
+			children = (
+				78558F4320B083DB005A01A9 /* RootEvents.swift */,
+				78FFFA7420CB4566005FF53D /* Eating.swift */,
+				78FFFA7620CB4573005FF53D /* Measuring.swift */,
+				78FFFA7820CB4585005FF53D /* Training.swift */,
+				78FFFA7A20CB459F005FF53D /* Drugging.swift */,
+			);
+			path = POSOs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -919,6 +939,7 @@
 				78159F33206BDCFF000E0AAE /* EventTypesListTableViewController.swift in Sources */,
 				78159F57206DFCB0000E0AAE /* EditDateCell.swift in Sources */,
 				789DB146208E09820076B7FF /* FSCalendarDelegationFactory.m in Sources */,
+				78FFFA7720CB4573005FF53D /* Measuring.swift in Sources */,
 				781FE16E208090B80013D646 /* EditorMuscleChooseCell.swift in Sources */,
 				78FFFA4F20C4D3D8005FF53D /* SmartField.swift in Sources */,
 				789DB14A208E09820076B7FF /* FSCalendarCollectionViewLayout.m in Sources */,
@@ -944,6 +965,7 @@
 				78159F36206CDA22000E0AAE /* CalendarMeasureCell.swift in Sources */,
 				7829089D209D129900EF4847 /* PropertiesListTableViewController.swift in Sources */,
 				789DB14F208E09820076B7FF /* FSCalendarConstants.m in Sources */,
+				78FFFA7920CB4585005FF53D /* Training.swift in Sources */,
 				789DB15920922A910076B7FF /* NSDate+Extension.swift in Sources */,
 				781FE16A20804A6E0013D646 /* EditorNutrientCell.swift in Sources */,
 				78159F48206D0FE7000E0AAE /* AddMeasureCell.swift in Sources */,
@@ -956,7 +978,7 @@
 				789DB151208E09820076B7FF /* FSCalendarHeaderView.m in Sources */,
 				781FE160207D332D0013D646 /* MuscleChooseViewController.swift in Sources */,
 				781FE164207E2CD80013D646 /* MeasureChooseViewController.swift in Sources */,
-				78558F4420B083DB005A01A9 /* POSOs.swift in Sources */,
+				78558F4420B083DB005A01A9 /* RootEvents.swift in Sources */,
 				78159F14205935BE000E0AAE /* CalendarExerciseCell.swift in Sources */,
 				78B60EC02095A5F0002584D8 /* DBController.swift in Sources */,
 				789DB1572091F00D0076B7FF /* Extensions.swift in Sources */,
@@ -975,6 +997,7 @@
 				78FFFA6D20C8F961005FF53D /* AddDrugCell.swift in Sources */,
 				789CFAE5204CFA390093B6D9 /* regimmy.xcdatamodeld in Sources */,
 				789CFADD204CFA390093B6D9 /* AppDelegate.swift in Sources */,
+				78FFFA7520CB4566005FF53D /* Eating.swift in Sources */,
 				780AC214204D842E00C06598 /* Enums.swift in Sources */,
 				785A21DC204D6785007CFC9B /* PhotoEventCell.swift in Sources */,
 				78163EC72071353800528CF3 /* SetsListTableViewController.swift in Sources */,
@@ -986,6 +1009,7 @@
 				78558F3D20B07D72005A01A9 /* EditorExerciseCell.swift in Sources */,
 				78159F5B206DFCF4000E0AAE /* EditRepeatCell.swift in Sources */,
 				78FFFA5820C7938F005FF53D /* StatisticEatingCell.swift in Sources */,
+				78FFFA7B20CB459F005FF53D /* Drugging.swift in Sources */,
 				78159F4F206D27D4000E0AAE /* EventTemplatesListTableViewController.swift in Sources */,
 				781132B2208AF1F300FD4944 /* EventFactory.swift in Sources */,
 				78FFFA5420C6B3E7005FF53D /* EditEmptyCell.swift in Sources */,

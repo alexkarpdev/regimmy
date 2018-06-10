@@ -67,6 +67,7 @@ class DiaryTableViewController: UITableViewController {
         tableView.register(UINib(nibName: CalendarIngredientCell.identifier, bundle: nil), forCellReuseIdentifier: CalendarIngredientCell.identifier)
         tableView.register(UINib(nibName: CalendarExerciseCell.identifier, bundle: nil), forCellReuseIdentifier: CalendarExerciseCell.identifier)
         tableView.register(UINib(nibName: "CalendarDrugCell", bundle: nil), forCellReuseIdentifier: AddDrugCell.identifier)
+        tableView.register(UINib(nibName: "CalendarMeasureCell", bundle: nil), forCellReuseIdentifier: AddMeasureCell.identifier)
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
@@ -313,7 +314,8 @@ class DiaryTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: CalendarExerciseCell.identifier, for: indexPath) as! CalendarExerciseCell
             (cell as! CalendarExerciseCell).configure()
         case .measure:
-            cell = tableView.dequeueReusableCell(withIdentifier: CalendarMeasureCell.identifier, for: indexPath) as! CalendarMeasureCell
+            cell = tableView.dequeueReusableCell(withIdentifier: AddMeasureCell.identifier, for: indexPath) as! AddMeasureCell
+            (cell as! AddMeasureCell).configure(subEvent: posObjects[indexPath.section].subEvents[indexPath.row] as! Measure)
         case .drugs:
             cell = tableView.dequeueReusableCell(withIdentifier: AddDrugCell.identifier, for: indexPath) as! AddDrugCell
             (cell as! AddDrugCell).configure(subEvent: posObjects[indexPath.section].subEvents[indexPath.row] as! DrugE)

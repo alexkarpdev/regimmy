@@ -305,6 +305,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8AD-CT-B3F" userLabel="CenterView">
+                                <rect key="frame" x="180" y="67" width="15" height="478"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15" id="Tx4-rQ-ZOq"/>
+                                </constraints>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mesureBody" translatesAutoresizingMaskIntoConstraints="NO" id="uGH-4g-xdr">
                                 <rect key="frame" x="115.5" y="122.5" width="168" height="422"/>
                                 <constraints>
@@ -312,25 +319,80 @@
                                     <constraint firstAttribute="height" constant="422" id="TmF-RN-vg4"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="phototake" translatesAutoresizingMaskIntoConstraints="NO" id="ztH-PX-lWZ">
-                                <rect key="frame" x="75" y="560.5" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phototake" translatesAutoresizingMaskIntoConstraints="NO" id="ztH-PX-lWZ">
+                                <rect key="frame" x="75" y="553" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="4tE-uZ-O4i"/>
+                                    <constraint firstAttribute="height" constant="30" id="qME-fT-fzs"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="weight" translatesAutoresizingMaskIntoConstraints="NO" id="ofq-hz-XXe">
-                                <rect key="frame" x="146" y="560.5" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weight" translatesAutoresizingMaskIntoConstraints="NO" id="ofq-hz-XXe">
+                                <rect key="frame" x="149" y="552.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="EjO-0F-GFb"/>
+                                    <constraint firstAttribute="height" constant="30" id="Xi9-9M-0dH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="height" translatesAutoresizingMaskIntoConstraints="NO" id="RRv-jy-pnp">
-                                <rect key="frame" x="217" y="560.5" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="height" translatesAutoresizingMaskIntoConstraints="NO" id="RRv-jy-pnp">
+                                <rect key="frame" x="223" y="552.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Z94-fT-IIe"/>
+                                    <constraint firstAttribute="width" constant="30" id="e9Q-jS-Sfd"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bodyfat" translatesAutoresizingMaskIntoConstraints="NO" id="DRw-t7-Urc">
-                                <rect key="frame" x="288" y="560.5" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bodyfat" translatesAutoresizingMaskIntoConstraints="NO" id="DRw-t7-Urc">
+                                <rect key="frame" x="297" y="552.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3th-IC-oGe"/>
+                                    <constraint firstAttribute="width" constant="30" id="KX0-4x-ocP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TD-Pd-8fH" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TD-Pd-8fH" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
                                 <rect key="frame" x="128" y="171" width="47" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                 <state key="normal" title="Шея" image="Add">
@@ -340,9 +402,8 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="neck"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXY-4q-73S" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXY-4q-73S" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
                                 <rect key="frame" x="74" y="240" width="50" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                 <state key="normal" title="Рука" image="Add">
@@ -352,9 +413,8 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="arm"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7t-qT-Pvt" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7t-qT-Pvt" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
                                 <rect key="frame" x="45" y="272" width="76" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                 <state key="normal" title="П/плечье" image="Add">
@@ -364,9 +424,8 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="forearm"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXL-ys-eGv" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXL-ys-eGv" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
                                 <rect key="frame" x="41" y="310" width="76" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                 <state key="normal" title="Запястье" image="Add">
@@ -376,9 +435,8 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="wrist"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiv-6J-1mU" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiv-6J-1mU" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
                                 <rect key="frame" x="240" y="223" width="56" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                 <state key="normal" title="Грудь" image="Add">
@@ -388,9 +446,8 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="chest"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZ2-hW-eJT" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZ2-hW-eJT" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
                                 <rect key="frame" x="234" y="276" width="57" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.60000002379999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
@@ -401,9 +458,8 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="waist"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arD-nI-zob" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arD-nI-zob" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
                                 <rect key="frame" x="244" y="319" width="42" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.60000002379999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
@@ -414,9 +470,8 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="hips"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0K-r9-O4u" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0K-r9-O4u" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
                                 <rect key="frame" x="252" y="361" width="59" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                 <state key="normal" title="Бедро" image="Add">
@@ -426,9 +481,8 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="thigh"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O34-Lh-sZV" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O34-Lh-sZV" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
                                 <rect key="frame" x="258" y="448" width="54" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                 <state key="normal" title="Икры" image="Add">
@@ -438,9 +492,8 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="calf"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYf-Mh-pcP" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYf-Mh-pcP" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
                                 <rect key="frame" x="258" y="491" width="77" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                 <state key="normal" title="Лодыжка" image="Add">
@@ -450,9 +503,8 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="ankle"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9L-hq-IgI" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9L-hq-IgI" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
                                 <rect key="frame" x="77" y="199" width="59" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                 <state key="normal" title="Плечи" image="Add">
@@ -462,23 +514,21 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="shoulders"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0o7-tq-di3" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                <rect key="frame" x="49" y="565" width="56" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0o7-tq-di3" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="49" y="581" width="52" height="24"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
-                                <inset key="titleEdgeInsets" minX="4" minY="26" maxX="-16" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                 <state key="normal" title="Фото" image="Add">
                                     <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="photo"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="phototake"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWQ-0f-16i" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                <rect key="frame" x="120" y="564" width="56" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWQ-0f-16i" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="127" y="581" width="44" height="24"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
-                                <inset key="titleEdgeInsets" minX="9" minY="26" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                 <state key="normal" title="Вес" image="Add">
                                     <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 </state>
@@ -486,11 +536,10 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="weight"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJR-6v-5FI" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                <rect key="frame" x="191" y="564" width="56" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJR-6v-5FI" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="198" y="581" width="50" height="24"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
-                                <inset key="titleEdgeInsets" minX="6" minY="26" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                 <state key="normal" title="Рост" image="Add">
                                     <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 </state>
@@ -498,29 +547,70 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="height"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsF-Za-SJE" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
-                                <rect key="frame" x="262" y="565" width="56" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsF-Za-SJE" customClass="MuscleButton" customModule="regimmy" customModuleProvider="target">
+                                <rect key="frame" x="272.5" y="581" width="49" height="24"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
-                                <inset key="titleEdgeInsets" minX="6" minY="26" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-8" maxY="0.0"/>
                                 <state key="normal" title="Жир" image="Add">
                                     <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="fat"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="bodyfat"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="O34-Lh-sZV" firstAttribute="leading" secondItem="8AD-CT-B3F" secondAttribute="trailing" constant="63" id="2UL-xv-HnU"/>
+                            <constraint firstItem="kXL-ys-eGv" firstAttribute="centerY" secondItem="4FH-LS-wNK" secondAttribute="centerY" constant="-11.5" id="5vQ-7E-y3Q"/>
+                            <constraint firstItem="O34-Lh-sZV" firstAttribute="centerY" secondItem="4FH-LS-wNK" secondAttribute="centerY" constant="126.5" id="704-Cm-lS5"/>
+                            <constraint firstItem="GYf-Mh-pcP" firstAttribute="centerY" secondItem="4FH-LS-wNK" secondAttribute="centerY" constant="169.5" id="74L-2h-rD8"/>
+                            <constraint firstItem="0o7-tq-di3" firstAttribute="top" secondItem="ztH-PX-lWZ" secondAttribute="bottom" constant="-2" id="78J-gW-YYm"/>
+                            <constraint firstItem="GXY-4q-73S" firstAttribute="centerY" secondItem="4FH-LS-wNK" secondAttribute="centerY" constant="-81.5" id="7WB-Ni-JpW"/>
+                            <constraint firstItem="zZ2-hW-eJT" firstAttribute="leading" secondItem="8AD-CT-B3F" secondAttribute="trailing" constant="39" id="9B0-2Q-Ya8"/>
+                            <constraint firstItem="arD-nI-zob" firstAttribute="leading" secondItem="8AD-CT-B3F" secondAttribute="trailing" constant="49" id="9I4-oo-75w"/>
+                            <constraint firstItem="WsF-Za-SJE" firstAttribute="top" secondItem="DRw-t7-Urc" secondAttribute="bottom" constant="-1.5" id="Ar9-0v-mUq"/>
+                            <constraint firstItem="L9L-hq-IgI" firstAttribute="centerY" secondItem="4FH-LS-wNK" secondAttribute="centerY" constant="-122.5" id="Bh4-5q-n3z"/>
+                            <constraint firstItem="8AD-CT-B3F" firstAttribute="leading" secondItem="GXY-4q-73S" secondAttribute="trailing" constant="56" id="BuU-wj-TkJ"/>
+                            <constraint firstItem="h0K-r9-O4u" firstAttribute="centerY" secondItem="4FH-LS-wNK" secondAttribute="centerY" constant="39.5" id="CGA-PG-hei"/>
+                            <constraint firstItem="ofq-hz-XXe" firstAttribute="leading" secondItem="ztH-PX-lWZ" secondAttribute="trailing" constant="44" id="CtQ-Yg-Fei"/>
+                            <constraint firstItem="vWQ-0f-16i" firstAttribute="top" secondItem="ofq-hz-XXe" secondAttribute="bottom" constant="-1.5" id="GUJ-0K-hN1"/>
+                            <constraint firstItem="8AD-CT-B3F" firstAttribute="top" secondItem="TlI-CZ-zhF" secondAttribute="top" constant="3" id="GdJ-ej-b22"/>
+                            <constraint firstItem="kiv-6J-1mU" firstAttribute="leading" secondItem="8AD-CT-B3F" secondAttribute="trailing" constant="45" id="Lg9-EN-iom"/>
+                            <constraint firstItem="8AD-CT-B3F" firstAttribute="leading" secondItem="kXL-ys-eGv" secondAttribute="trailing" constant="63" id="MNG-6d-yoy"/>
+                            <constraint firstItem="DRw-t7-Urc" firstAttribute="leading" secondItem="RRv-jy-pnp" secondAttribute="trailing" constant="44" id="Nys-mH-8mf"/>
+                            <constraint firstItem="WsF-Za-SJE" firstAttribute="centerX" secondItem="DRw-t7-Urc" secondAttribute="centerX" constant="-15" id="Ph1-EJ-XEp"/>
+                            <constraint firstItem="8AD-CT-B3F" firstAttribute="leading" secondItem="c7t-qT-Pvt" secondAttribute="trailing" constant="59" id="Uek-1c-L8I"/>
+                            <constraint firstItem="0o7-tq-di3" firstAttribute="centerX" secondItem="ztH-PX-lWZ" secondAttribute="centerX" constant="-15" id="Ur7-wT-qxS"/>
+                            <constraint firstItem="kiv-6J-1mU" firstAttribute="centerY" secondItem="4FH-LS-wNK" secondAttribute="centerY" constant="-98.5" id="Zv5-Ee-SrJ"/>
+                            <constraint firstItem="c7t-qT-Pvt" firstAttribute="centerY" secondItem="4FH-LS-wNK" secondAttribute="centerY" constant="-49.5" id="dB3-He-txP"/>
+                            <constraint firstItem="8AD-CT-B3F" firstAttribute="leading" secondItem="8TD-Pd-8fH" secondAttribute="trailing" constant="5" id="dHs-fz-ZCD"/>
+                            <constraint firstItem="arD-nI-zob" firstAttribute="centerY" secondItem="4FH-LS-wNK" secondAttribute="centerY" constant="-2.5" id="ePC-os-MQU"/>
+                            <constraint firstItem="8AD-CT-B3F" firstAttribute="leading" secondItem="L9L-hq-IgI" secondAttribute="trailing" constant="44" id="enQ-1H-RDf"/>
+                            <constraint firstItem="uJR-6v-5FI" firstAttribute="centerX" secondItem="RRv-jy-pnp" secondAttribute="centerX" constant="-15" id="fhm-af-XTm"/>
+                            <constraint firstItem="GYf-Mh-pcP" firstAttribute="leading" secondItem="8AD-CT-B3F" secondAttribute="trailing" constant="63" id="gRQ-XU-fmJ"/>
+                            <constraint firstItem="8AD-CT-B3F" firstAttribute="centerX" secondItem="4FH-LS-wNK" secondAttribute="centerX" id="gmG-k1-jrq"/>
                             <constraint firstItem="uGH-4g-xdr" firstAttribute="centerY" secondItem="4FH-LS-wNK" secondAttribute="centerY" id="l1U-c8-ryJ"/>
+                            <constraint firstItem="ofq-hz-XXe" firstAttribute="centerY" secondItem="RRv-jy-pnp" secondAttribute="centerY" id="mIb-Q2-SFt"/>
+                            <constraint firstItem="zZ2-hW-eJT" firstAttribute="centerY" secondItem="4FH-LS-wNK" secondAttribute="centerY" constant="-45.5" id="mcy-78-Idd"/>
+                            <constraint firstItem="TlI-CZ-zhF" firstAttribute="bottom" secondItem="8AD-CT-B3F" secondAttribute="bottom" constant="122" id="mdu-aF-Ueb"/>
+                            <constraint firstItem="8TD-Pd-8fH" firstAttribute="centerY" secondItem="4FH-LS-wNK" secondAttribute="centerY" constant="-150.5" id="oe5-SV-Zv4"/>
                             <constraint firstItem="uGH-4g-xdr" firstAttribute="centerX" secondItem="4FH-LS-wNK" secondAttribute="centerX" constant="12" id="ouP-xM-Zu7"/>
+                            <constraint firstItem="RRv-jy-pnp" firstAttribute="top" secondItem="uGH-4g-xdr" secondAttribute="bottom" constant="8" id="rGt-Fl-VCr"/>
+                            <constraint firstItem="h0K-r9-O4u" firstAttribute="leading" secondItem="8AD-CT-B3F" secondAttribute="trailing" constant="57" id="rwk-4O-ReI"/>
+                            <constraint firstItem="DRw-t7-Urc" firstAttribute="centerY" secondItem="RRv-jy-pnp" secondAttribute="centerY" id="sJQ-Z1-lSb"/>
+                            <constraint firstItem="vWQ-0f-16i" firstAttribute="centerX" secondItem="ofq-hz-XXe" secondAttribute="centerX" constant="-15" id="sew-8F-5kP"/>
+                            <constraint firstItem="RRv-jy-pnp" firstAttribute="centerX" secondItem="4FH-LS-wNK" secondAttribute="centerX" constant="50" id="vjW-F6-P4u"/>
+                            <constraint firstItem="RRv-jy-pnp" firstAttribute="leading" secondItem="ofq-hz-XXe" secondAttribute="trailing" constant="44" id="vme-oN-ho0"/>
+                            <constraint firstItem="ztH-PX-lWZ" firstAttribute="centerY" secondItem="ofq-hz-XXe" secondAttribute="centerY" id="w8N-gF-3Zu"/>
+                            <constraint firstItem="uJR-6v-5FI" firstAttribute="top" secondItem="RRv-jy-pnp" secondAttribute="bottom" constant="-1.5" id="wce-Kp-np8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TlI-CZ-zhF"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ch7-k1-uwA"/>
                     <connections>
                         <outlet property="mainImageView" destination="uGH-4g-xdr" id="sX0-U2-FAF"/>
+                        <outlet property="photoImageView" destination="ztH-PX-lWZ" id="dzm-tc-aHv"/>
                         <outletCollection property="measureButtons" destination="8TD-Pd-8fH" collectionClass="NSMutableArray" id="69e-sS-2Oy"/>
                         <outletCollection property="measureButtons" destination="GXY-4q-73S" collectionClass="NSMutableArray" id="GVC-he-lvd"/>
                         <outletCollection property="measureButtons" destination="c7t-qT-Pvt" collectionClass="NSMutableArray" id="NVb-hm-e1k"/>
@@ -536,6 +626,10 @@
                         <outletCollection property="measureButtons" destination="vWQ-0f-16i" collectionClass="NSMutableArray" id="cmx-0v-YfN"/>
                         <outletCollection property="measureButtons" destination="uJR-6v-5FI" collectionClass="NSMutableArray" id="P6T-YG-vkU"/>
                         <outletCollection property="measureButtons" destination="WsF-Za-SJE" collectionClass="NSMutableArray" id="rHt-Wn-k9J"/>
+                        <outletCollection property="mIcons" destination="ztH-PX-lWZ" collectionClass="NSMutableArray" id="u59-on-ucr"/>
+                        <outletCollection property="mIcons" destination="ofq-hz-XXe" collectionClass="NSMutableArray" id="Cs7-Tm-EYR"/>
+                        <outletCollection property="mIcons" destination="RRv-jy-pnp" collectionClass="NSMutableArray" id="vU0-Zn-0bU"/>
+                        <outletCollection property="mIcons" destination="DRw-t7-Urc" collectionClass="NSMutableArray" id="9az-tM-V9N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ucE-0N-h4R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -578,11 +672,11 @@
             <objects>
                 <viewController id="2Rn-uX-Wze" customClass="MuscleChooseViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0T3-GY-PQQ">
-                        <rect key="frame" x="0.0" y="0.0" width="703" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="758" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4U-FJ-3tk">
-                                <rect key="frame" x="0.0" y="119" width="703" height="540"/>
+                                <rect key="frame" x="0.0" y="119" width="758" height="540"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MOT-0j-rMv">
                                         <rect key="frame" x="0.0" y="0.0" width="734" height="552"/>
@@ -918,7 +1012,7 @@
                                 </constraints>
                             </scrollView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="J7j-tq-qT1">
-                                <rect key="frame" x="249.5" y="75" width="236" height="29"/>
+                                <rect key="frame" x="276.5" y="75" width="236" height="29"/>
                                 <segments>
                                     <segment title="Передний"/>
                                     <segment title="Общий"/>
@@ -929,7 +1023,7 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вид:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cj9-pD-Xr9">
-                                <rect key="frame" x="209.5" y="81" width="32" height="17"/>
+                                <rect key="frame" x="236.5" y="81" width="32" height="17"/>
                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -950,7 +1044,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="hnb-RQ-UGZ"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <size key="freeformSize" width="703" height="667"/>
+                    <size key="freeformSize" width="758" height="667"/>
                     <connections>
                         <outlet property="csView" destination="MOT-0j-rMv" id="pjm-Oy-G4N"/>
                         <outlet property="csViewHeight" destination="drs-Ba-T7W" id="zw5-oV-i6h"/>
@@ -1314,17 +1408,17 @@
     <resources>
         <image name="Add" width="22" height="24"/>
         <image name="addEvent" width="28" height="28"/>
-        <image name="bodyfat" width="30" height="30"/>
+        <image name="bodyfat" width="66" height="66"/>
         <image name="calendar" width="28" height="29"/>
         <image name="checked" width="22" height="24"/>
         <image name="graphsets" width="21" height="19"/>
-        <image name="height" width="20" height="30"/>
+        <image name="height" width="66" height="66"/>
         <image name="mesureBody" width="171" height="427"/>
         <image name="muscle-main" width="414" height="552"/>
         <image name="muscle-trapezius" width="414" height="552"/>
-        <image name="phototake" width="18" height="30"/>
+        <image name="phototake" width="66" height="66"/>
         <image name="unchecked" width="22" height="22"/>
-        <image name="weight" width="30" height="30"/>
+        <image name="weight" width="66" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Qq6-5D-HZv"/>

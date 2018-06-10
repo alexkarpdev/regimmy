@@ -15,6 +15,7 @@ import RealmSwift
 class RBaseEvent: RBaseSubEvent {
     @objc dynamic var date = Date()
     @objc dynamic var type = ""
+                //var name = ""
     //@objc dynamic var repeating = ""
     //@objc dynamic var notification = ""
 }
@@ -138,8 +139,10 @@ class RExerciseSet: Object {
 }
 
 class RMeasure: RBaseSubEvent {
+    
+    //here name - measuretype.rawvalue
+    
     @objc dynamic var value = 0.0
-    @objc dynamic var unit = ""
     @objc dynamic var photoName = ""
 }
 

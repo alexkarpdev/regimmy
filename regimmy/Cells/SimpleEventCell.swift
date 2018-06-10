@@ -15,6 +15,7 @@ class SimpleEventCell: UITableViewCell {
     @IBOutlet weak var typeImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
     
     
     func configure(with event: RootEvent) {
@@ -22,6 +23,7 @@ class SimpleEventCell: UITableViewCell {
         typeImageView.image = event.type!.image
         timeLabel.text = event.time
         nameLabel.text = event.name
+        infoLabel.text = event.info
         
     }
     
