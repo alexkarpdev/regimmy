@@ -20,6 +20,11 @@ class CalendarExerciseCell: UITableViewCell {
     @IBOutlet weak var repeatsUnitLabel: UILabel!
     @IBOutlet weak var loadUnitLabel: UILabel!
     
+    func configure(exercise: ExerciseE) {
+        nameLabel.text = exercise.name
+        
+    }
+    
     func configure() {
         setIndexLabel.text = "1\n2\n3"
         repeatsValueLabel.text = "10\n12\n13"

@@ -71,7 +71,7 @@ class Train: BaseEvent<RTrain> {
     
     override func reloadEventValues(){
         
-        for i in (subEvents as! [IngredientE]){
+        for i in (subEvents as! [ExerciseE]){
             
         }
     }
@@ -116,7 +116,8 @@ class Exercise: BaseSubEvent<RExercise> {
         return object
     }
     
-    func convertToIngredientE(sets: [ExerciseSet]? = nil) -> ExerciseE {
+    func convertToExerciseE() -> ExerciseE {
+        //func convertToExerciseE(sets: [ExerciseSet]? = nil) -> ExerciseE {
         let object = ExerciseE.init()
         object.name = name
         object.info = info
@@ -164,23 +165,29 @@ class ExerciseE: BaseSubEvent<RExerciseE> {
         object.durationType = durationType.rawValue
         object.loadUnit = loadUnit.rawValue
         
+        //1 очищаем базу от старых записей
+        for set in object.sets {
+            RealmDBController.shared.realm.delete(set)
+        }
+        
+        //2 заполняем текущими значениями (оставшимися после манипуляций)
+        for set in (subEvents as! [ExerciseSet]) {
+            object.sets.append(set.makeRealmObject())
+        }
+        
         return object
     }
     
     override func addSubEvents<T>(subEvents: [T]) where T : RootEvent {
-        addSets(sets: subEvents as! [ExerciseSet])
-    }
-    
-    func addSets(sets: [ExerciseSet]) {
-        
+        self.subEvents.append(contentsOf: subEvents)
     }
     
     override func removeSubEvent(at index: Int) {
 
     }
     
-    override func reloadIndexes() {
-        
+    override func reloadIndexes() { // оасстановка после изменения порядкового номера сета
+        subEvents.sort{($0 as! ExerciseSet ).number < ($1 as! ExerciseSet).number}
     }
     
     
@@ -190,4 +197,34 @@ class ExerciseSet: RootEvent {
     var number = 0
     var repeats = 0.0
     var load = 0.0
+    
+    var object: RExerciseSet?
+    
+    override init() {
+        super.init()
+        number = 0
+        repeats = 0.0
+        load = 0.0
+    }
+    
+    init(from realmObject: RExerciseSet) {
+        super.init()
+        object = realmObject
+        backup()
+    }
+    
+    override func backup() {
+        super.backup()
+        number = object!.number
+        repeats = object!.repeats
+        load = object!.load
+    }
+    
+    func makeRealmObject() -> RExerciseSet{
+        let object:RExerciseSet = self.object ?? RExerciseSet()
+        object.number = number
+        object.repeats = repeats
+        object.load = load
+        return object
+    }
 }

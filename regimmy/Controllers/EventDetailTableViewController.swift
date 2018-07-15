@@ -36,6 +36,8 @@ class EventDetailTableViewController: UITableViewController {
     
     var showDeleteCell = false
     
+    var complitionHandler: (()->())!
+    
     //var selectedEvent: RBaseEvent!
     var selectedPoso: RootEvent!
     
@@ -369,7 +371,7 @@ class EventDetailTableViewController: UITableViewController {
         if indexPath.section == 0 || indexPath.section == 2{
             return false
         } else {
-            if indexPath.row == 0 || (indexPath.row == 1 && selectedPoso.subEvents.count == 0){
+            if indexPath.row == 0 || (indexPath.row == 1 && selectedPoso.subEvents.count == 0) || selectedEventType == .measure {
                 return false
             }else{
                 return true
@@ -454,7 +456,7 @@ class EventDetailTableViewController: UITableViewController {
             vc.selectedSubEventType = selectedEventType.subEventType
             vc.navigationItem.title = "Выберите"
             vc.navigationItem.rightBarButtonItem = nil
-            vc.complitionHandler = { selectedSubEvents in
+            vc.complitionHandler = { [unowned self] selectedSubEvents in
                 self.selectedPoso.addSubEvents(subEvents: selectedSubEvents)
                 self.tableView.reloadSections([1], with: .automatic)
                 self.tableView.reloadRows(at: [IndexPath(row: self.statisticCellRow, section: 0)], with: .automatic)
@@ -493,6 +495,9 @@ class EventDetailTableViewController: UITableViewController {
         selectedPoso.saveToDB()
         tableView.reloadSections([0,1], with: .none)
         setEditingMode(isEdit: false)
+        
+        //call update method in diary vc
+        complitionHandler()
         
         if !isCreateNew {
             //navigationController?.popViewController(animated: true)

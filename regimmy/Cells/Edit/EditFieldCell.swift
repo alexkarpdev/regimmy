@@ -14,8 +14,7 @@ class EditFieldCell: UITableViewCell {
     
     @IBOutlet weak var textField: SmartField!
     
-    func configure(placeHolder: String?, text: String?, tag: Int, fieldIsEnabled: Bool, fontSize: CGFloat = 17.0, updatedHandler: @escaping (String)->()) {
-        
+    func configure(placeHolder: String?, text: String?, tag: Int, fieldIsEnabled: Bool, fontSize: CGFloat = 17.0) {
         if let p = placeHolder {
             textField.placeholder = p
         }else{
@@ -32,6 +31,12 @@ class EditFieldCell: UITableViewCell {
         
         textField.tag = tag
         textField.isEnabled = fieldIsEnabled
+    }
+    
+    func configure(placeHolder: String?, text: String?, tag: Int, fieldIsEnabled: Bool, fontSize: CGFloat = 17.0, updatedHandler: @escaping (String)->()) {
+        
+        self.configure(placeHolder: placeHolder, text: text, tag: tag, fieldIsEnabled: fieldIsEnabled)
+        
         textField.updatedHandler = updatedHandler
         
     }

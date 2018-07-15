@@ -15,6 +15,8 @@ class EventTypesListTableViewController: UITableViewController {
     
     var selectedEventType: EventType!
     
+    var complitionHandler: (()->())!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -109,6 +111,7 @@ class EventTypesListTableViewController: UITableViewController {
             let vc = segue.destination as! EventTemplatesListTableViewController
             vc.selectedEventType = selectedEventType
             vc.navigationItem.title = selectedEventType.name
+            vc.complitionHandler = complitionHandler
         }
     }
     

@@ -222,7 +222,7 @@ class BaseEvent <E: RBaseEvent>: BaseSubEvent<E> {
     }
     
     override func addSubEvents<T>(subEvents: [T]) where T : RootEvent {
-        self.subEvents.removeAll()
+        self.subEvents.removeAll() // очищаем всё
         for i in subEvents {
             self.subEvents.append(i)
         }

@@ -195,7 +195,7 @@ class DiaryTableViewController: UITableViewController {
     
     func updateDateOn(selectedDate: Date){
         self.selectedDate = selectedDate
-        generateEvents()
+        //generateEvents()
         //topDateLabel.text = selectedDate.description(with: Locale(identifier: "ru-RU"))
         prepareDate()
         loadEvents()
@@ -431,11 +431,16 @@ class DiaryTableViewController: UITableViewController {
             let vc = segue.destination as! EventDetailTableViewController
             //vc.selectedEventType = EventType(rawValue: (selectedEvent.type))!
             vc.selectedPoso = selectedPoso
-            
+            vc.complitionHandler = { [unowned self] in
+                self.updateDateOn(selectedDate: self.selectedDate)
+            }
         }
         
         if segue.identifier == "AddSegue" {
-            //let vc = (segue.destination as! UINavigationController).viewControllers.first as! EventDetailTableViewController
+            let vc = (segue.destination as! UINavigationController).viewControllers.first as! EventTypesListTableViewController
+            vc.complitionHandler = { [unowned self] in
+                self.updateDateOn(selectedDate: self.selectedDate)
+            }
         }
     }
     

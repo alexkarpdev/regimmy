@@ -116,7 +116,7 @@ class RExercise: RBaseSubEvent {
     
     @objc dynamic var type = "" //тип
     @objc dynamic var durationType = "" //продолжительность
-    @objc dynamic var loadUnit = ""
+    @objc dynamic var loadUnit = "" // нагрузка
     
     func copy() -> RExerciseE {
         let exerciseE = RExerciseE()

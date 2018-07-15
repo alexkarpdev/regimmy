@@ -9,7 +9,20 @@
 import UIKit
 
 class SetsListTableViewController: UITableViewController {
+    // всегда в режиме editing.
+    
+    var selectedTrainEvent: RootEvent!
+    var selectedExercise: ExerciseE!
+    var sets = [ExerciseSet]()
+    var isEditingMode = false
+    var showInfoCell = true
+    
+    
+    @IBOutlet var leftButtonItem: UIBarButtonItem!
+    @IBOutlet var rightButtonItem: UIBarButtonItem!
 
+    var complitionHandler: ((ExerciseE)->())!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +39,8 @@ class SetsListTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         
         tableView.isEditing = true
+        
+        sets = selectedExercise.subEvents as! [ExerciseSet]
         
     }
 
@@ -44,7 +59,7 @@ class SetsListTableViewController: UITableViewController {
         if section == 0 {
             return 2
         }
-        return 4
+        return 1 + sets.count
     }
 
     
@@ -54,16 +69,23 @@ class SetsListTableViewController: UITableViewController {
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0: cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath) as! EditFieldCell
-                cell.accessoryType = .detailButton
+            cell.accessoryType = .detailButton
+            (cell as! EditFieldCell).configure(placeHolder: "Название", text: selectedExercise.name, tag: 0, fieldIsEnabled: false)
+                
             case 1: cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath) as! EditFieldCell
-                cell.accessoryType = .none
+            cell.accessoryType = .none
+            (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: selectedExercise.info, tag: 1, fieldIsEnabled: false, fontSize: 15)
+                
             default: cell = UITableViewCell()
             }
         }else{
             if indexPath.row == 0 {
                 cell = tableView.dequeueReusableCell(withIdentifier: AddHeaderCell.identifier, for: indexPath) as! AddHeaderCell
+                (cell as! AddHeaderCell).captionLabel.text = "Подходы"
+                (cell as! AddHeaderCell).rotateArrow()
             }else{
                 cell = tableView.dequeueReusableCell(withIdentifier: EditSetCell.identifier, for: indexPath) as! EditSetCell
+                (cell as! EditSetCell).indexLabel.text = String(indexPath.row)
             }
             
         }
@@ -92,18 +114,37 @@ class SetsListTableViewController: UITableViewController {
         return true
     }
  
+//    @objc func addNewSet() {
+//
+//    }
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
+            sets.append(ExerciseSet())
+            tableView.reloadSections([1], with: .automatic)
+            //tableView.insertRows(at: <#T##[IndexPath]#>, with: <#T##UITableViewRowAnimation#>)
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
+    
+    @IBAction func doneAction(_ sender: UIBarButtonItem) {
+        selectedExercise.subEvents = sets
+        complitionHandler(selectedExercise)
+        dismiss(animated: true, completion: nil)
+
+    }
+    
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) { // cancel from editing
+        selectedExercise.backup()
+        dismiss(animated: true, completion: nil)
+    }
+    
 
     /*
     // Override to support rearranging the table view.

@@ -22,9 +22,9 @@ class SubEventsListTableViewController: UITableViewController {
     //var selectedObjects = [RBaseSubEvent]()
     //var objects = [RBaseSubEvent]()
     
-    var selectedPosObjects = [RootEvent]()
+    var selectedPosObjects = [RootEvent]() // будущие евенты
     var posObjects = [RootEvent]()
-    var selectedPoso: RootEvent!
+    var selectedPoso: RootEvent! // это для subevent only
     
     // var results: Results<Object>! // чё-та не понимаю как сделать дженерик
     
@@ -37,6 +37,7 @@ class SubEventsListTableViewController: UITableViewController {
     @IBOutlet var rightButtonItem: UIBarButtonItem!
     
     var complitionHandler: (([RootEvent]) -> ())! //
+    var complitionHandlerForSets: (()->())!
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -123,10 +124,7 @@ class SubEventsListTableViewController: UITableViewController {
         default:
             break
         }
-        
-        
-        
-        
+ 
     }
     
     //func setButtonsFor
@@ -253,6 +251,7 @@ class SubEventsListTableViewController: UITableViewController {
                 case .measure: // never be used because measure perform at measureViewController
                     break
                 case .train:
+                    selectedPoso = posObjects[indexPath.row]
                     performSegue(withIdentifier: "SetsListSegue", sender: self)
                 }
                 
@@ -336,6 +335,18 @@ class SubEventsListTableViewController: UITableViewController {
             vc.complitionHandler = ({[unowned self] in
                 self.reloadObjects(.modify)
             })
+        }
+        
+        if segue.identifier == "SetsListSegue" {
+            print("perform segue: \(segue.identifier)")
+            
+            let vc = (segue.destination as! UINavigationController).topViewController as! SetsListTableViewController
+            vc.selectedExercise = (selectedPoso as! Exercise).convertToExerciseE()
+            
+            vc.complitionHandler = { [unowned self] exercise in
+                self.selectedPosObjects.append(exercise)
+            }
+            
         }
     }
     @IBAction func dismissAction(_ sender: Any) {

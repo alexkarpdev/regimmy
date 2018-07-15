@@ -13,6 +13,8 @@ class EventTemplatesListTableViewController: UITableViewController {
     var selectedEventType: EventType!
     
     var captions = ["Новую", "Последние", "Избранное"]
+    
+    var complitionHandler: (()->())!
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -188,6 +190,8 @@ class EventTemplatesListTableViewController: UITableViewController {
             vc.navigationItem.title = selectedEventType.name
             
             vc.navc = self.navigationController // это нужно для того, чтобы вернуться сразу в дневник
+            
+            vc.complitionHandler = complitionHandler
         }
     }
     
