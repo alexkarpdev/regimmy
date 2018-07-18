@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,12 +35,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Какое-то упраженение" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCf-6N-7TN">
-                        <rect key="frame" x="60" y="10.5" width="289" height="20.5"/>
+                        <rect key="frame" x="60" y="10" width="289" height="20.5"/>
                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Подходы" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boR-pn-5Qm">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Подход" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boR-pn-5Qm">
                         <rect key="frame" x="60" y="50" width="58" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="6of-3K-peg"/>
@@ -79,13 +80,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpN-Ds-DGx">
-                        <rect key="frame" x="84" y="67" width="10" height="18"/>
+                        <rect key="frame" x="84.5" y="67" width="10" height="18"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vG3-uq-j4Q">
-                        <rect key="frame" x="201.5" y="67" width="10" height="18"/>
+                        <rect key="frame" x="202" y="67" width="10" height="18"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -110,13 +111,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAq-ES-pvs">
-                        <rect key="frame" x="316.5" y="67" width="10" height="18"/>
+                        <rect key="frame" x="317" y="67" width="10" height="18"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Примечание" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ug8-2f-dpv">
-                        <rect key="frame" x="60" y="31" width="50" height="10"/>
+                        <rect key="frame" x="60" y="31" width="289" height="10"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="8"/>
                         <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                         <nil key="highlightedColor"/>
@@ -129,7 +130,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCp-9g-s5h">
-                        <rect key="frame" x="214" y="67" width="12.5" height="18"/>
+                        <rect key="frame" x="214.5" y="67" width="12.5" height="18"/>
                         <attributedString key="attributedText">
                             <fragment content="кг.">
                                 <attributes>
@@ -142,7 +143,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNU-Am-bAZ">
-                        <rect key="frame" x="328.5" y="70" width="12.5" height="12"/>
+                        <rect key="frame" x="329" y="70" width="12.5" height="12"/>
                         <attributedString key="attributedText">
                             <fragment content="кг.">
                                 <attributes>
@@ -162,6 +163,7 @@
                     <constraint firstItem="4Ja-4v-9aY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="AeQ-3k-cNA"/>
                     <constraint firstItem="A6L-ya-LW3" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="24" id="AhT-fk-Hk4"/>
                     <constraint firstItem="vG3-uq-j4Q" firstAttribute="top" secondItem="A6L-ya-LW3" secondAttribute="bottom" constant="2" id="Be3-ZX-h3i"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2wT-kh-Hum" secondAttribute="bottom" constant="8.5" id="D3k-14-QDR"/>
                     <constraint firstItem="NAq-ES-pvs" firstAttribute="top" secondItem="EJf-yd-rn1" secondAttribute="bottom" constant="13" id="Ebj-3u-Lfh"/>
                     <constraint firstItem="NAq-ES-pvs" firstAttribute="centerX" secondItem="4TQ-Tx-NUN" secondAttribute="centerX" id="JdF-3J-jsz"/>
                     <constraint firstItem="ug8-2f-dpv" firstAttribute="leading" secondItem="oCf-6N-7TN" secondAttribute="leading" id="K4B-S9-fBG"/>
@@ -170,16 +172,17 @@
                     <constraint firstItem="2wT-kh-Hum" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="QNd-mc-ynO"/>
                     <constraint firstItem="uCp-9g-s5h" firstAttribute="centerY" secondItem="vG3-uq-j4Q" secondAttribute="centerY" id="TBC-aE-72X"/>
                     <constraint firstItem="4Ja-4v-9aY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="W7X-yh-ab6"/>
+                    <constraint firstItem="2wT-kh-Hum" firstAttribute="top" secondItem="4Ja-4v-9aY" secondAttribute="bottom" constant="16" id="XRU-wF-Bbf"/>
                     <constraint firstAttribute="bottom" secondItem="lpN-Ds-DGx" secondAttribute="bottom" constant="8.5" id="XvA-Q9-ZZe"/>
                     <constraint firstItem="4TQ-Tx-NUN" firstAttribute="centerY" secondItem="boR-pn-5Qm" secondAttribute="centerY" id="bRR-yS-s8A"/>
                     <constraint firstItem="oCf-6N-7TN" firstAttribute="centerY" secondItem="4Ja-4v-9aY" secondAttribute="centerY" id="d8J-ao-XTD"/>
                     <constraint firstItem="A6L-ya-LW3" firstAttribute="centerY" secondItem="boR-pn-5Qm" secondAttribute="centerY" id="dJc-gv-3k8"/>
+                    <constraint firstItem="ug8-2f-dpv" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="dLF-fF-ktC"/>
                     <constraint firstItem="oCf-6N-7TN" firstAttribute="leading" secondItem="4Ja-4v-9aY" secondAttribute="trailing" constant="4" id="dW7-Gr-LcU"/>
                     <constraint firstItem="rNU-Am-bAZ" firstAttribute="centerY" secondItem="NAq-ES-pvs" secondAttribute="centerY" id="eO7-ym-gIX"/>
                     <constraint firstItem="Wus-nY-5lE" firstAttribute="trailing" secondItem="A6L-ya-LW3" secondAttribute="trailing" id="iwT-8S-DdC"/>
                     <constraint firstAttribute="trailing" secondItem="oCf-6N-7TN" secondAttribute="trailing" constant="16" id="jBt-47-9GD"/>
                     <constraint firstItem="vG3-uq-j4Q" firstAttribute="centerX" secondItem="A6L-ya-LW3" secondAttribute="centerX" id="kbH-DB-dYN"/>
-                    <constraint firstItem="2wT-kh-Hum" firstAttribute="bottom" secondItem="lpN-Ds-DGx" secondAttribute="bottom" id="kgR-VM-Du5"/>
                     <constraint firstItem="NAq-ES-pvs" firstAttribute="top" secondItem="4TQ-Tx-NUN" secondAttribute="bottom" constant="2" id="v8p-oa-ZVE"/>
                     <constraint firstItem="uCp-9g-s5h" firstAttribute="height" secondItem="vG3-uq-j4Q" secondAttribute="height" id="vXR-Ao-P1b"/>
                     <constraint firstItem="vG3-uq-j4Q" firstAttribute="top" secondItem="Wus-nY-5lE" secondAttribute="bottom" constant="13" id="wQk-Vl-yZX"/>
@@ -197,8 +200,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="exerciseIndexLabel" destination="4Ja-4v-9aY" id="NDb-SB-zRP"/>
+                <outlet property="infoLabel" destination="ug8-2f-dpv" id="Fgr-n9-lf5"/>
                 <outlet property="loadUnitLabel" destination="rNU-Am-bAZ" id="qUh-HN-FTh"/>
                 <outlet property="loadValueLabel" destination="NAq-ES-pvs" id="4mB-qj-UOp"/>
+                <outlet property="muscleGroupImageView" destination="2wT-kh-Hum" id="pZT-RQ-HsV"/>
                 <outlet property="nameLabel" destination="oCf-6N-7TN" id="gtT-0g-Ubp"/>
                 <outlet property="repeatsUnitLabel" destination="uCp-9g-s5h" id="7O3-fX-3iE"/>
                 <outlet property="repeatsValueLabel" destination="vG3-uq-j4Q" id="hIj-Pf-IaS"/>

@@ -29,42 +29,62 @@ class Train: BaseEvent<RTrain> {
             subEvents.append(ExerciseE(from: object!.exercises[i]))
         }
         
-        subEvents.sort{Int($0.index)! < Int($1.index)!} // sort?
+        subEvents.sort{$0.index < $1.index} // sort?
         
+    }
+    
+    override func reloadIndexes() {
+        subEvents.sort{($0.index) < ($1.index)}
     }
     
     override func makeRealmObject() -> RTrain{
         let object: RTrain = super.makeRealmObject()
         
-        for ri in object.exercises {
-            var finded = false
-            for i in (subEvents as! [ExerciseE]) {
-                
-                if ri.name == i.name {
-                    ri.index = i.index
-                    
-                    finded = true
-                    subEvents.remove(at: subEvents.index(of: i)!)
-                    break
-                }
+        //clear all
+        for rex in object.exercises {
+            for rs in rex.sets {
+                RealmDBController.shared.realm.delete(rs)
             }
-            if !finded {
-                //delete sets of exercise
-                RealmDBController.shared.realm.delete(ri)
-                //RealmDBController.shared.delete(object: ri)
-            }
-            
+            RealmDBController.shared.realm.delete(rex)
         }
         
-        for i in 0..<subEvents.count {
-            object.exercises.append((subEvents[i] as! ExerciseE).makeRealmObject())
+        //2 заполняем текущими значениями (оставшимися после манипуляций)
+        for ex in (subEvents as! [ExerciseE]) {
+            object.exercises.append(ex.makeRealmObject())
         }
         
-        subEvents = [ExerciseE]()
-        for i in 0..<object.exercises.count {
-            subEvents.append(ExerciseE(from: object.exercises[i]))
-        }
-        subEvents.sort{Int($0.index)! < Int($1.index)!} // sort ?
+//        for ri in object.exercises {
+//            var finded = false
+//            for i in (subEvents as! [ExerciseE]) {
+//
+//                if ri.name == i.name {
+//                    ri.index = i.index
+//                    finded = true
+//                    subEvents.remove(at: subEvents.index(of: i)!)
+//                    print("removed: \(i.name)")
+//                    break
+//                }
+//            }
+//            if !finded {
+//                for set in ri.sets {
+//                    RealmDBController.shared.realm.delete(set)
+//                }
+//                //delete sets of exercise
+//                RealmDBController.shared.realm.delete(ri)
+//                //RealmDBController.shared.delete(object: ri)
+//            }
+//
+//        }
+//
+//        for i in 0..<subEvents.count {
+//            object.exercises.append((subEvents[i] as! ExerciseE).makeRealmObject())
+//        }
+//
+//        subEvents = [ExerciseE]()
+//        for i in 0..<object.exercises.count {
+//            subEvents.append(ExerciseE(from: object.exercises[i]))
+//        }
+//        subEvents.sort{Int($0.index)! < Int($1.index)!} // sort ?
         
         return object
     }
@@ -74,6 +94,13 @@ class Train: BaseEvent<RTrain> {
         for i in (subEvents as! [ExerciseE]){
             
         }
+    }
+    
+    func createNewExerciseEvent(from exercise: Exercise) -> ExerciseE {
+        let index = (subEvents.last as! ExerciseE?)?.index.components(separatedBy: "-").first ?? "0"
+        let exE = exercise.convertToExerciseE()
+        exE.index = "\(Int(index)! + 1)"
+        return exE
     }
     
 }
@@ -139,6 +166,7 @@ class ExerciseE: BaseSubEvent<RExerciseE> {
     
     override init() {
         super.init()
+        index = "0" //вычислять исходя из колва уприй в тренировке
         muscle = nil
         exerciseType = ExerciseType.force //тип
         durationType = DurationType.repeats //продолжительность
@@ -156,26 +184,36 @@ class ExerciseE: BaseSubEvent<RExerciseE> {
         exerciseType = ExerciseType(rawValue: object!.type)!
         durationType = DurationType(rawValue: object!.durationType)!
         loadUnit = LoadUnitType(rawValue: object!.loadUnit)!
+        
+        subEvents = [ExerciseSet]()
+        for rs in object!.sets {
+            subEvents.append(ExerciseSet(from: rs))
+        }
+        
     }
     
     override func makeRealmObject() -> RExerciseE{
-        let object: RExerciseE = super.makeRealmObject()
-        object.muscle = muscle!.rawValue
-        object.type = exerciseType.rawValue
-        object.durationType = durationType.rawValue
-        object.loadUnit = loadUnit.rawValue
+        //let object: RExerciseE = super.makeRealmObject()
+        self.object = RExerciseE()
+        object!.name = name
+        object!.info = info
+        object!.index = index
+        object!.muscle = muscle!.rawValue
+        object!.type = exerciseType.rawValue
+        object!.durationType = durationType.rawValue
+        object!.loadUnit = loadUnit.rawValue
         
         //1 очищаем базу от старых записей
-        for set in object.sets {
-            RealmDBController.shared.realm.delete(set)
+        for set in object!.sets {
+            //RealmDBController.shared.realm.delete(set)
         }
         
         //2 заполняем текущими значениями (оставшимися после манипуляций)
         for set in (subEvents as! [ExerciseSet]) {
-            object.sets.append(set.makeRealmObject())
+            object!.sets.append(set.makeRealmObject())
         }
         
-        return object
+        return object!
     }
     
     override func addSubEvents<T>(subEvents: [T]) where T : RootEvent {
@@ -187,7 +225,12 @@ class ExerciseE: BaseSubEvent<RExerciseE> {
     }
     
     override func reloadIndexes() { // оасстановка после изменения порядкового номера сета
-        subEvents.sort{($0 as! ExerciseSet ).number < ($1 as! ExerciseSet).number}
+        //subEvents.sort{($0 as! ExerciseSet ).number < ($1 as! ExerciseSet).number}
+        var index = 1
+        for i in (subEvents as! [ExerciseSet]) {
+            i.number = index
+            index += 1
+        }
     }
     
     
@@ -207,6 +250,11 @@ class ExerciseSet: RootEvent {
         load = 0.0
     }
     
+    convenience init(number: Int){
+        self.init()
+        self.number = number
+    }
+    
     init(from realmObject: RExerciseSet) {
         super.init()
         object = realmObject
@@ -214,17 +262,18 @@ class ExerciseSet: RootEvent {
     }
     
     override func backup() {
-        super.backup()
+       // super.backup()
         number = object!.number
         repeats = object!.repeats
         load = object!.load
     }
     
     func makeRealmObject() -> RExerciseSet{
-        let object:RExerciseSet = self.object ?? RExerciseSet()
-        object.number = number
-        object.repeats = repeats
-        object.load = load
-        return object
+        //let object:RExerciseSet = self.object ?? RExerciseSet()
+        self.object = RExerciseSet()
+        object!.number = number
+        object!.repeats = repeats
+        object!.load = load
+        return object!
     }
 }

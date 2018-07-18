@@ -110,6 +110,8 @@
 		78403AB12094AFA90037A074 /* AddIngredientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78403AAF2094AFA90037A074 /* AddIngredientCell.xib */; };
 		78403AB5209578630037A074 /* Ingredients.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78403AB4209578630037A074 /* Ingredients.plist */; };
 		784D09F42073869B00D328EA /* EditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784D09F32073869B00D328EA /* EditorTableViewController.swift */; };
+		7854178B20FC077A0015174A /* SetSupersetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7854178920FC077A0015174A /* SetSupersetCell.swift */; };
+		7854178C20FC077A0015174A /* SetSupersetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7854178A20FC077A0015174A /* SetSupersetCell.xib */; };
 		78558F3D20B07D72005A01A9 /* EditorExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78558F3B20B07D72005A01A9 /* EditorExerciseCell.swift */; };
 		78558F3E20B07D72005A01A9 /* EditorExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78558F3C20B07D72005A01A9 /* EditorExerciseCell.xib */; };
 		78558F4120B07D87005A01A9 /* EditorDrugCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78558F3F20B07D87005A01A9 /* EditorDrugCell.swift */; };
@@ -285,6 +287,8 @@
 		78403AAF2094AFA90037A074 /* AddIngredientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddIngredientCell.xib; sourceTree = "<group>"; };
 		78403AB4209578630037A074 /* Ingredients.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Ingredients.plist; sourceTree = "<group>"; };
 		784D09F32073869B00D328EA /* EditorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTableViewController.swift; sourceTree = "<group>"; };
+		7854178920FC077A0015174A /* SetSupersetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSupersetCell.swift; sourceTree = "<group>"; };
+		7854178A20FC077A0015174A /* SetSupersetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetSupersetCell.xib; sourceTree = "<group>"; };
 		78558F3B20B07D72005A01A9 /* EditorExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorExerciseCell.swift; sourceTree = "<group>"; };
 		78558F3C20B07D72005A01A9 /* EditorExerciseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditorExerciseCell.xib; sourceTree = "<group>"; };
 		78558F3F20B07D87005A01A9 /* EditorDrugCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorDrugCell.swift; sourceTree = "<group>"; };
@@ -532,6 +536,8 @@
 				78BFF41120C019A800AA886E /* EditDeleteCell.xib */,
 				78FFFA5220C6B3E7005FF53D /* EditEmptyCell.swift */,
 				78FFFA5320C6B3E7005FF53D /* EditEmptyCell.xib */,
+				7854178920FC077A0015174A /* SetSupersetCell.swift */,
+				7854178A20FC077A0015174A /* SetSupersetCell.xib */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -788,6 +794,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78159F21206B5338000E0AAE /* CalendarEatingHeaderCell.xib in Resources */,
+				7854178C20FC077A0015174A /* SetSupersetCell.xib in Resources */,
 				78159F0F2057D6D6000E0AAE /* SF-Pro-Display-Thin.otf in Resources */,
 				785A21D9204D6771007CFC9B /* SimpleEventCell.xib in Resources */,
 				781FE1842083243D0013D646 /* GraphParameterCell.xib in Resources */,
@@ -957,6 +964,7 @@
 				789DB14E208E09820076B7FF /* FSCalendar+Deprecated.m in Sources */,
 				78558F4120B07D87005A01A9 /* EditorDrugCell.swift in Sources */,
 				789DB147208E09820076B7FF /* FSCalendarCell.m in Sources */,
+				7854178B20FC077A0015174A /* SetSupersetCell.swift in Sources */,
 				78403AB02094AFA90037A074 /* AddIngredientCell.swift in Sources */,
 				781132AE2089B2C200FD4944 /* GraphTableViewController.swift in Sources */,
 				78159F24206B5369000E0AAE /* CalendarTrainHeaderCell.swift in Sources */,

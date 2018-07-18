@@ -24,7 +24,8 @@ class SubEventsListTableViewController: UITableViewController {
     
     var selectedPosObjects = [RootEvent]() // будущие евенты
     var posObjects = [RootEvent]()
-    var selectedPoso: RootEvent! // это для subevent only
+    var selectedPosoSubevent: RootEvent! // это для subevent only
+    var selectedPosoEvent: RootEvent!
     
     // var results: Results<Object>! // чё-та не понимаю как сделать дженерик
     
@@ -100,13 +101,13 @@ class SubEventsListTableViewController: UITableViewController {
             
             switch selectedSubEventType! {
             case .exercise:
-                index = (posObjects as! [Ingredient]).index(of: selectedPoso as! Ingredient)
+                index = (posObjects as! [Ingredient]).index(of: selectedPosoSubevent as! Ingredient)
             //index = RealmDBController.shared.index(of: selectedSubEvent as! RExercise)
             case .ingredient:
-                index = (posObjects as! [Ingredient]).index(of: selectedPoso as! Ingredient)
+                index = (posObjects as! [Ingredient]).index(of: selectedPosoSubevent as! Ingredient)
             //index = RealmDBController.shared.index(of: selectedSubEvent as! RIngredient)
             case .drug:
-                index = (posObjects as! [Ingredient]).index(of: selectedPoso as! Ingredient)
+                index = (posObjects as! [Ingredient]).index(of: selectedPosoSubevent as! Ingredient)
                 //index = RealmDBController.shared.index(of: selectedSubEvent as! RDrug)
             }
             
@@ -232,7 +233,7 @@ class SubEventsListTableViewController: UITableViewController {
         
         if isEditorMode {
             //selectedSubEvent = objects[indexPath.row]
-            selectedPoso = posObjects[indexPath.row]
+            selectedPosoSubevent = posObjects[indexPath.row]
             performSegue(withIdentifier: "ShowSubEventDetailSegue", sender: self)
         }else{
             if selectedPosObjects.contains(posObjects[indexPath.row]) {
@@ -251,7 +252,7 @@ class SubEventsListTableViewController: UITableViewController {
                 case .measure: // never be used because measure perform at measureViewController
                     break
                 case .train:
-                    selectedPoso = posObjects[indexPath.row]
+                    selectedPosoSubevent = posObjects[indexPath.row]
                     performSegue(withIdentifier: "SetsListSegue", sender: self)
                 }
                 
@@ -330,7 +331,7 @@ class SubEventsListTableViewController: UITableViewController {
             let vc = segue.destination as! SubEventDetailTableViewController
             vc.selectedSubEventType = selectedSubEventType
             
-            vc.selectedPoso = selectedPoso
+            vc.selectedPoso = selectedPosoSubevent
             
             vc.complitionHandler = ({[unowned self] in
                 self.reloadObjects(.modify)
@@ -341,7 +342,7 @@ class SubEventsListTableViewController: UITableViewController {
             print("perform segue: \(segue.identifier)")
             
             let vc = (segue.destination as! UINavigationController).topViewController as! SetsListTableViewController
-            vc.selectedExercise = (selectedPoso as! Exercise).convertToExerciseE()
+            vc.selectedExercise = (selectedPosoEvent as! Train).createNewExerciseEvent(from: (selectedPosoSubevent as! Exercise))
             
             vc.complitionHandler = { [unowned self] exercise in
                 self.selectedPosObjects.append(exercise)

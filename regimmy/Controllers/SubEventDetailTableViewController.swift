@@ -311,7 +311,7 @@ class SubEventDetailTableViewController: UITableViewController {
                     selectedProperty = (selectedPoso as! Exercise).durationType.rawValue
                     performSegue(withIdentifier: "PropertiesListSegue", sender: self)
                 case 4:
-                    propertiesList = [LoadUnitType.mass.rawValue, LoadUnitType.time.rawValue, LoadUnitType.lap.rawValue, LoadUnitType.selfmass.rawValue]
+                    propertiesList = [LoadUnitType.mass.rawValue, LoadUnitType.time.rawValue, LoadUnitType.laps.rawValue, LoadUnitType.selfmass.rawValue]
                     selectedPropertyType = .loadUnitType
                     selectedProperty = (selectedPoso as! Exercise).loadUnit.rawValue
                     performSegue(withIdentifier: "PropertiesListSegue", sender: self)

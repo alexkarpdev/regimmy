@@ -40,6 +40,8 @@ class EventDetailTableViewController: UITableViewController {
     
     //var selectedEvent: RBaseEvent!
     var selectedPoso: RootEvent!
+    var selectedSubEvent: RootEvent!
+    var selectedNumber: Int!
     
     
     override func viewDidLoad() {
@@ -256,7 +258,7 @@ class EventDetailTableViewController: UITableViewController {
                     (cell as! AddHeaderCell).rotateArrow()
                 }else if selectedPoso.subEvents.count > 0{
                     cell = tableView.dequeueReusableCell(withIdentifier: CalendarExerciseCell.identifier, for: indexPath) as! CalendarExerciseCell
-                    (cell as! CalendarExerciseCell).configure()
+                    (cell as! CalendarExerciseCell).configure(exercise: selectedPoso.subEvents[indexPath.row - 1] as! ExerciseE)
                 }else{
                     cell = tableView.dequeueReusableCell(withIdentifier: EditEmptyCell.identifier, for: indexPath) as! EditEmptyCell
                 }
@@ -293,7 +295,7 @@ class EventDetailTableViewController: UITableViewController {
             fatalError("no case for cell!!")
         }
         
-        //cell.layoutSubviews()
+        cell.layoutIfNeeded()
         return cell
     }
     //    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -429,6 +431,11 @@ class EventDetailTableViewController: UITableViewController {
                     addNewExercise()
                 }
             }else{
+                if selectedEventType == .train {
+                    selectedNumber = indexPath.row - 1
+                    selectedSubEvent = selectedPoso.subEvents[indexPath.row - 1]
+                    performSegue(withIdentifier: "SetsListSegue", sender: nil)
+                }
                 //show alert for editing
             }
         }
@@ -453,6 +460,7 @@ class EventDetailTableViewController: UITableViewController {
         if segue.identifier == "IngredientsListSegue" {
             let vc = (segue.destination as! UINavigationController).viewControllers.first as! SubEventsListTableViewController
             vc.selectedPosObjects = selectedPoso.subEvents
+            vc.selectedPosoEvent = selectedPoso
             vc.selectedSubEventType = selectedEventType.subEventType
             vc.navigationItem.title = "Выберите"
             vc.navigationItem.rightBarButtonItem = nil
@@ -471,6 +479,18 @@ class EventDetailTableViewController: UITableViewController {
                 self.selectedPoso.addSubEvents(subEvents: selectedSubEvents)
                 self.tableView.reloadSections([1], with: .automatic)
                 self.tableView.reloadRows(at: [IndexPath(row: self.statisticCellRow, section: 0)], with: .automatic)
+            }
+        }
+        
+        if segue.identifier == "SetsListSegue" {
+            let vc = (segue.destination as! UINavigationController).topViewController as! SetsListTableViewController
+            vc.selectedExercise = selectedSubEvent as! ExerciseE
+            
+            vc.complitionHandler = { [unowned self] exercise in
+                let s = self.selectedSubEvent as! ExerciseE
+                print(s.subEvents.count)
+                self.selectedPoso.subEvents[self.selectedNumber] = exercise
+                self.tableView.reloadSections([1], with: .automatic)
             }
         }
     }

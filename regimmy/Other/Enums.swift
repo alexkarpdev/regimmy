@@ -240,14 +240,40 @@ enum DurationType: String{
     case time = "время"
     case laps = "круги"
     case distance = "дистанция"
+    
+    var unit: String {
+        switch self {
+        case .repeats:
+            return ""
+        case .time:
+            return "сек"
+        case .laps:
+            return ""
+        case .distance:
+            return "м"
+        }
+    }
     //case other
 }
 
 enum LoadUnitType: String{
     case mass = "кг."
     case time = "минуты"
-    case lap = "круги"
+    case laps = "круги"
     case selfmass = "нет"
+    
+    var unit: String {
+        switch self {
+        case .mass:
+            return "кг."
+        case .time:
+            return "сек"
+        case .laps:
+            return ""
+        case .selfmass:
+            return ""
+        }
+    }
 }
 
 // MARK: - Drugs

@@ -97,7 +97,7 @@ extension Double {
         return "\(numberString)\(suffix)"
     }
     
-    func formatToLocal() -> String {
+    func formatToLocal() -> String { // dot or comma
         guard self > 0 else {
             return "0"
         }

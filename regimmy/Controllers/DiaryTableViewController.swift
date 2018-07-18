@@ -312,7 +312,7 @@ class DiaryTableViewController: UITableViewController {
             (cell as! CalendarIngredientCell).configure(subEvent: posObjects[indexPath.section].subEvents[indexPath.row] as! IngredientE)
         case .train:
             cell = tableView.dequeueReusableCell(withIdentifier: CalendarExerciseCell.identifier, for: indexPath) as! CalendarExerciseCell
-            (cell as! CalendarExerciseCell).configure()
+            (cell as! CalendarExerciseCell).configure(exercise: posObjects[indexPath.section].subEvents[indexPath.row] as! ExerciseE)
         case .measure:
             cell = tableView.dequeueReusableCell(withIdentifier: AddMeasureCell.identifier, for: indexPath) as! AddMeasureCell
             (cell as! AddMeasureCell).configure(subEvent: posObjects[indexPath.section].subEvents[indexPath.row] as! Measure)

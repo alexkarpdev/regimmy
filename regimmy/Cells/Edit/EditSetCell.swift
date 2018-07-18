@@ -22,6 +22,18 @@ class EditSetCell: UITableViewCell {
     @IBOutlet weak var loadValueLabel: UILabel!
     @IBOutlet weak var loadUnitLabel: UILabel!
     
+    
+    func configure(set: ExerciseSet, repeatsGestureRecognizer: UITapGestureRecognizer, loadGestureRecognizer: UITapGestureRecognizer){
+        indexLabel.text = "\(set.number)"
+        repeatValueLabel.text = set.repeats.formatToHumanReadableForm()
+        loadValueLabel.text = set.load.formatToHumanReadableForm()
+        
+        repeatValueLabel.tag = set.number
+        repeatValueLabel.addGestureRecognizer(repeatsGestureRecognizer)
+        
+        loadValueLabel.tag = set.number
+        loadValueLabel.addGestureRecognizer(loadGestureRecognizer)
+    }
     func configure(index: Int) {
         indexLabel.text = "\(index)"
     }
