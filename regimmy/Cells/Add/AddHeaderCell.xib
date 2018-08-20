@@ -47,6 +47,9 @@
                                     </constraints>
                                 </imageView>
                             </subviews>
+                            <accessibility key="accessibilityConfiguration">
+                                <bool key="isElement" value="YES"/>
+                            </accessibility>
                             <constraints>
                                 <constraint firstItem="pWM-2b-sV4" firstAttribute="top" secondItem="lXT-mA-V6c" secondAttribute="top" constant="12" id="NKf-3H-XpR"/>
                                 <constraint firstAttribute="trailing" secondItem="11r-Dh-1hZ" secondAttribute="trailing" constant="15" id="Qc8-tY-D3s"/>

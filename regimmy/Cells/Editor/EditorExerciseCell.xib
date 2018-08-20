@@ -74,6 +74,9 @@
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testMuscles" translatesAutoresizingMaskIntoConstraints="NO" id="PI5-r4-AeM">
                         <rect key="frame" x="20" y="11" width="60" height="60"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="Ef7-gJ-UZt"/>
                             <constraint firstAttribute="height" constant="60" id="jCD-MR-UQE"/>
@@ -120,6 +123,9 @@
                     <constraint firstItem="UXy-cY-7SN" firstAttribute="leading" secondItem="l9m-qa-Yj7" secondAttribute="trailing" constant="24" id="uh6-dP-hfe"/>
                 </constraints>
             </tableViewCellContentView>
+            <accessibility key="accessibilityConfiguration">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="durationLabel" destination="mhw-np-I89" id="h5m-sT-EaS"/>

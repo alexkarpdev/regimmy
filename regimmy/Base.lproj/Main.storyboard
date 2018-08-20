@@ -49,6 +49,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexTrackingBackgroundColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="diaryTable"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="cu3-um-1W4" id="yW4-OS-Kgy"/>
                             <outlet property="delegate" destination="cu3-um-1W4" id="qZj-Md-cn9"/>
@@ -164,6 +167,9 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="mainTable"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="hBn-k6-oaI" id="zH3-ST-MRR"/>
                             <outlet property="delegate" destination="hBn-k6-oaI" id="9Eb-Dh-fJM"/>
@@ -307,7 +313,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8AD-CT-B3F" userLabel="CenterView">
-                                <rect key="frame" x="180" y="67" width="15" height="478"/>
+                                <rect key="frame" x="180" y="67" width="15" height="429"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="Tx4-rQ-ZOq"/>
@@ -1452,7 +1458,7 @@
         <segue reference="j8F-mU-JUe"/>
         <segue reference="Qq6-5D-HZv"/>
         <segue reference="dyg-EQ-HTj"/>
-        <segue reference="1sr-M7-7Kv"/>
-        <segue reference="lUp-pB-HzD"/>
+        <segue reference="K8Z-TC-NnJ"/>
+        <segue reference="MOX-3E-5N8"/>
     </inferredMetricsTieBreakers>
 </document>
