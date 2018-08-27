@@ -28,7 +28,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рука" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keM-Y6-aVu">
-                        <rect key="frame" x="142.5" y="11" width="39" height="21"/>
+                        <rect key="frame" x="64" y="11" width="39" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="a5t-bb-3v3"/>
                         </constraints>
@@ -37,14 +37,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="neck-ico" translatesAutoresizingMaskIntoConstraints="NO" id="Sbl-Xj-W4j">
-                        <rect key="frame" x="64" y="11" width="40" height="40"/>
+                        <rect key="frame" x="16" y="11" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="4GP-Yb-Pbo"/>
                             <constraint firstAttribute="height" constant="40" id="4qe-sL-t3K"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtg-iP-PB1">
-                        <rect key="frame" x="112" y="11" width="22.5" height="21"/>
+                        <rect key="frame" x="64" y="11" width="22.5" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="22.5" id="Cwu-Y4-2n1"/>
                             <constraint firstAttribute="height" constant="21" id="Ziu-9N-Pgi"/>
@@ -54,13 +54,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxI-FN-tOk">
-                        <rect key="frame" x="142" y="35" width="18.5" height="18"/>
+                        <rect key="frame" x="63.5" y="35" width="18.5" height="18"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="см" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZp-Mv-H6v">
-                        <rect key="frame" x="162" y="37" width="16" height="14.5"/>
+                        <rect key="frame" x="83.5" y="37" width="16" height="14.5"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                         <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                         <nil key="highlightedColor"/>
@@ -74,13 +74,19 @@
                     <constraint firstItem="lxI-FN-tOk" firstAttribute="top" secondItem="keM-Y6-aVu" secondAttribute="bottom" constant="3" id="Q5f-tT-MxW"/>
                     <constraint firstItem="Xtg-iP-PB1" firstAttribute="leading" secondItem="Sbl-Xj-W4j" secondAttribute="trailing" constant="8" id="SXG-6F-clL"/>
                     <constraint firstItem="lxI-FN-tOk" firstAttribute="leading" secondItem="keM-Y6-aVu" secondAttribute="leading" id="Sdi-2s-6kY"/>
+                    <constraint firstItem="keM-Y6-aVu" firstAttribute="leading" secondItem="Sbl-Xj-W4j" secondAttribute="trailing" constant="8" id="SlY-zQ-suM"/>
                     <constraint firstItem="DZp-Mv-H6v" firstAttribute="centerY" secondItem="lxI-FN-tOk" secondAttribute="centerY" id="SrY-Fy-7ap"/>
                     <constraint firstItem="Sbl-Xj-W4j" firstAttribute="top" secondItem="5eC-hm-3ds" secondAttribute="top" constant="11" id="Zms-IF-Oe8"/>
                     <constraint firstItem="keM-Y6-aVu" firstAttribute="leading" secondItem="Xtg-iP-PB1" secondAttribute="trailing" constant="8" id="hnz-EJ-xJa"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="keM-Y6-aVu" secondAttribute="trailing" constant="16" id="u4h-Zz-5Fw"/>
                     <constraint firstItem="keM-Y6-aVu" firstAttribute="top" secondItem="5eC-hm-3ds" secondAttribute="top" constant="11" id="uIg-Qg-qrb"/>
-                    <constraint firstItem="Sbl-Xj-W4j" firstAttribute="leading" secondItem="5eC-hm-3ds" secondAttribute="leading" constant="64" id="ziM-aX-8T2"/>
+                    <constraint firstItem="Sbl-Xj-W4j" firstAttribute="leading" secondItem="5eC-hm-3ds" secondAttribute="leading" constant="16" id="ziM-aX-8T2"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="subviews">
+                        <exclude reference="Xtg-iP-PB1"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="Rfl-il-5hF"/>
             <connections>

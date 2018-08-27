@@ -103,6 +103,9 @@ class Eating: BaseEvent<REating> {
             cal += i.cal
             mass += i.mass
         }
+        
+        
+        
     }
     
 }
@@ -155,12 +158,17 @@ class Ingredient: BaseSubEvent<RIngredient> {
     
     func convertToIngredientE(mass: Double = 100.0) -> IngredientE {
         let object = IngredientE.init()
+        
+        let koef = mass / 100
+        
         object.name = name
         object.info = info
-        object.prot = prot
-        object.fat = fat
-        object.carb = carb
-        object.cal = cal
+        
+        object.prot = prot * koef
+        object.fat = fat * koef
+        object.carb = carb * koef
+        object.cal = cal * koef
+        
         object.mass = mass
         
         return object

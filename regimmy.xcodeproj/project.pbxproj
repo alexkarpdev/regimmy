@@ -153,6 +153,10 @@
 		789DB154208E09820076B7FF /* FSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 789DB143208E09820076B7FF /* FSCalendarAppearance.m */; };
 		789DB1572091F00D0076B7FF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789DB1562091F00D0076B7FF /* Extensions.swift */; };
 		789DB15920922A910076B7FF /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789DB15820922A910076B7FF /* NSDate+Extension.swift */; };
+		78A09631212B72870062C976 /* regimmyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A09630212B72870062C976 /* regimmyTests.swift */; };
+		78A0963A2131ED100062C976 /* EditSupersetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A096382131ED100062C976 /* EditSupersetCell.swift */; };
+		78A0963B2131ED100062C976 /* EditSupersetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78A096392131ED100062C976 /* EditSupersetCell.xib */; };
+		78A0963E2132F4620062C976 /* CastomFSCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A0963D2132F4620062C976 /* CastomFSCCell.swift */; };
 		78B60EC02095A5F0002584D8 /* DBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781132AF208AD50600FD4944 /* DBController.swift */; };
 		78BFF41220C019A800AA886E /* EditDeleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BFF41020C019A800AA886E /* EditDeleteCell.swift */; };
 		78BFF41320C019A800AA886E /* EditDeleteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BFF41120C019A800AA886E /* EditDeleteCell.xib */; };
@@ -183,6 +187,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		78A09633212B72870062C976 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 789CFAD1204CFA390093B6D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 789CFAD8204CFA390093B6D9;
+			remoteInfo = regimmy;
+		};
 		78DA5206212B352A0096E8F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 789CFAD1204CFA390093B6D9 /* Project object */;
@@ -360,6 +371,12 @@
 		789DB155208E09C80076B7FF /* regimmy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "regimmy-Bridging-Header.h"; path = "regimmy/regimmy-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		789DB1562091F00D0076B7FF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		789DB15820922A910076B7FF /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
+		78A0962E212B72870062C976 /* regimmyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = regimmyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		78A09630212B72870062C976 /* regimmyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = regimmyTests.swift; sourceTree = "<group>"; };
+		78A09632212B72870062C976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78A096382131ED100062C976 /* EditSupersetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSupersetCell.swift; sourceTree = "<group>"; };
+		78A096392131ED100062C976 /* EditSupersetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditSupersetCell.xib; sourceTree = "<group>"; };
+		78A0963D2132F4620062C976 /* CastomFSCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastomFSCCell.swift; sourceTree = "<group>"; };
 		78BFF41020C019A800AA886E /* EditDeleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDeleteCell.swift; sourceTree = "<group>"; };
 		78BFF41120C019A800AA886E /* EditDeleteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditDeleteCell.xib; sourceTree = "<group>"; };
 		78DA5201212B352A0096E8F1 /* regimmyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = regimmyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -397,6 +414,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				327BC6FD557DF083D970F454 /* Pods_regimmy.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78A0962B212B72870062C976 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +583,8 @@
 				78FFFA5320C6B3E7005FF53D /* EditEmptyCell.xib */,
 				7854178920FC077A0015174A /* SetSupersetCell.swift */,
 				7854178A20FC077A0015174A /* SetSupersetCell.xib */,
+				78A096382131ED100062C976 /* EditSupersetCell.swift */,
+				78A096392131ED100062C976 /* EditSupersetCell.xib */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -628,6 +654,7 @@
 		785A21D0204D664A007CFC9B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				78A0963C2132F26A0062C976 /* FSCalendarSastomCells */,
 				781FE1742082813F0013D646 /* Graph */,
 				781FE165208047B30013D646 /* Editor */,
 				78159F50206DFACE000E0AAE /* Edit */,
@@ -666,6 +693,7 @@
 				789DB122208E09820076B7FF /* FSCalendar */,
 				789CFADB204CFA390093B6D9 /* regimmy */,
 				78DA5202212B352A0096E8F1 /* regimmyUITests */,
+				78A0962F212B72870062C976 /* regimmyTests */,
 				789CFADA204CFA390093B6D9 /* Products */,
 				5D80ECCB7DC02752F4C6BBD1 /* Pods */,
 				144F705272E8AED7CD511A13 /* Frameworks */,
@@ -677,6 +705,7 @@
 			children = (
 				789CFAD9204CFA390093B6D9 /* regimmy.app */,
 				78DA5201212B352A0096E8F1 /* regimmyUITests.xctest */,
+				78A0962E212B72870062C976 /* regimmyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -743,6 +772,23 @@
 			path = FSCalendar;
 			sourceTree = "<group>";
 		};
+		78A0962F212B72870062C976 /* regimmyTests */ = {
+			isa = PBXGroup;
+			children = (
+				78A09630212B72870062C976 /* regimmyTests.swift */,
+				78A09632212B72870062C976 /* Info.plist */,
+			);
+			path = regimmyTests;
+			sourceTree = "<group>";
+		};
+		78A0963C2132F26A0062C976 /* FSCalendarSastomCells */ = {
+			isa = PBXGroup;
+			children = (
+				78A0963D2132F4620062C976 /* CastomFSCCell.swift */,
+			);
+			path = FSCalendarSastomCells;
+			sourceTree = "<group>";
+		};
 		78DA5202212B352A0096E8F1 /* regimmyUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -786,6 +832,24 @@
 			productReference = 789CFAD9204CFA390093B6D9 /* regimmy.app */;
 			productType = "com.apple.product-type.application";
 		};
+		78A0962D212B72870062C976 /* regimmyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78A09637212B72870062C976 /* Build configuration list for PBXNativeTarget "regimmyTests" */;
+			buildPhases = (
+				78A0962A212B72870062C976 /* Sources */,
+				78A0962B212B72870062C976 /* Frameworks */,
+				78A0962C212B72870062C976 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				78A09634212B72870062C976 /* PBXTargetDependency */,
+			);
+			name = regimmyTests;
+			productName = regimmyTests;
+			productReference = 78A0962E212B72870062C976 /* regimmyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		78DA5200212B352A0096E8F1 /* regimmyUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78DA520A212B352A0096E8F1 /* Build configuration list for PBXNativeTarget "regimmyUITests" */;
@@ -818,6 +882,11 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
+					78A0962D212B72870062C976 = {
+						CreatedOnToolsVersion = 9.4.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 789CFAD8204CFA390093B6D9;
+					};
 					78DA5200212B352A0096E8F1 = {
 						CreatedOnToolsVersion = 9.4.1;
 						ProvisioningStyle = Automatic;
@@ -840,6 +909,7 @@
 			targets = (
 				789CFAD8204CFA390093B6D9 /* regimmy */,
 				78DA5200212B352A0096E8F1 /* regimmyUITests */,
+				78A0962D212B72870062C976 /* regimmyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -857,6 +927,7 @@
 				78159F45206D0FB5000E0AAE /* AddEatingCell.xib in Resources */,
 				78159F5C206DFCF4000E0AAE /* EditRepeatCell.xib in Resources */,
 				78159EF72057D6D6000E0AAE /* SF-Pro-Display-Heavy.otf in Resources */,
+				78A0963B2131ED100062C976 /* EditSupersetCell.xib in Resources */,
 				78159F3D206CF5D6000E0AAE /* AddHeaderCell.xib in Resources */,
 				78159F31206BDB69000E0AAE /* AddEventCell.xib in Resources */,
 				789CFAEA204CFA390093B6D9 /* LaunchScreen.storyboard in Resources */,
@@ -926,6 +997,13 @@
 				781FE16B20804A6E0013D646 /* EditorNutrientCell.xib in Resources */,
 				78159F1920595645000E0AAE /* CalendarIngredientCell.xib in Resources */,
 				78159EFC2057D6D6000E0AAE /* SF-Pro-Display-UltralightItalic.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78A0962C212B72870062C976 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1007,6 +1085,7 @@
 				78BFF41220C019A800AA886E /* EditDeleteCell.swift in Sources */,
 				789DB14D208E09820076B7FF /* FSCalendarExtensions.m in Sources */,
 				78159F33206BDCFF000E0AAE /* EventTypesListTableViewController.swift in Sources */,
+				78A0963E2132F4620062C976 /* CastomFSCCell.swift in Sources */,
 				78159F57206DFCB0000E0AAE /* EditDateCell.swift in Sources */,
 				789DB146208E09820076B7FF /* FSCalendarDelegationFactory.m in Sources */,
 				78FFFA7720CB4573005FF53D /* Measuring.swift in Sources */,
@@ -1070,6 +1149,7 @@
 				789CFADD204CFA390093B6D9 /* AppDelegate.swift in Sources */,
 				78FFFA7520CB4566005FF53D /* Eating.swift in Sources */,
 				780AC214204D842E00C06598 /* Enums.swift in Sources */,
+				78A0963A2131ED100062C976 /* EditSupersetCell.swift in Sources */,
 				785A21DC204D6785007CFC9B /* PhotoEventCell.swift in Sources */,
 				78163EC72071353800528CF3 /* SetsListTableViewController.swift in Sources */,
 				78FFFA4D20C4BBB8005FF53D /* Protocols.swift in Sources */,
@@ -1087,6 +1167,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		78A0962A212B72870062C976 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78A09631212B72870062C976 /* regimmyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		78DA51FD212B352A0096E8F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1098,6 +1186,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		78A09634212B72870062C976 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 789CFAD8204CFA390093B6D9 /* regimmy */;
+			targetProxy = 78A09633212B72870062C976 /* PBXContainerItemProxy */;
+		};
 		78DA5207212B352A0096E8F1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 789CFAD8204CFA390093B6D9 /* regimmy */;
@@ -1284,6 +1377,46 @@
 			};
 			name = Release;
 		};
+		78A09635212B72870062C976 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DAC52DC6FR;
+				INFOPLIST_FILE = regimmyTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexkarpdev.regimmyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/regimmy.app/regimmy";
+			};
+			name = Debug;
+		};
+		78A09636212B72870062C976 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DAC52DC6FR;
+				INFOPLIST_FILE = regimmyTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexkarpdev.regimmyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/regimmy.app/regimmy";
+			};
+			name = Release;
+		};
 		78DA5208212B352A0096E8F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1339,6 +1472,15 @@
 			buildConfigurations = (
 				789CFAEF204CFA390093B6D9 /* Debug */,
 				789CFAF0204CFA390093B6D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78A09637212B72870062C976 /* Build configuration list for PBXNativeTarget "regimmyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78A09635212B72870062C976 /* Debug */,
+				78A09636212B72870062C976 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

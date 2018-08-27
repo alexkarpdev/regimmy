@@ -10,7 +10,7 @@ import UIKit
 //import FSCalendar
 
 
-class CalendarViewController: UIViewController, FSCalendarDelegate {
+class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var timePicker: UIDatePicker!
@@ -26,6 +26,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
     }()
     
     var selectedDate: Date?
+    var oldSelectedDate: Date?
     
     var completion: ((Date)->())?
     
@@ -37,6 +38,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
         timePicker.isHidden = isPickerHidden
         timePicker.timeZone = TimeZone.current
         calendarView.delegate = self
+        calendarView.dataSource = self
+        
         
         if let sd = selectedDate {
             calendarView.select(sd)
@@ -52,11 +55,14 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
 //        print("qq 3: \(stackView.frame.height)")
         
         // Do any additional setup after loading the view.
+        
+        calendarView.register(CastomFSCCell.self, forCellReuseIdentifier: "cell")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        oldSelectedDate = selectedDate
         
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: ({
             self.visualEffectView.alpha = 1
@@ -96,6 +102,50 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
         
         selectedDate = date
     }
+    
+    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
+        let cell = calendar.dequeueReusableCell(withIdentifier: "cell", for: date, at: position)
+         //(cell as! CastomFSCCell).clearSubviews()
+        return cell
+    }
+    
+    func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
+        var objects = [RBaseEvent]()
+        objects = (RealmDBController.shared.loadEventsFor(date: date) as [REating]) as [RBaseEvent]
+        objects += (RealmDBController.shared.loadEventsFor(date: date) as [RTrain]) as [RBaseEvent]
+        objects += (RealmDBController.shared.loadEventsFor(date: date) as [RMeasuring]) as [RBaseEvent]
+        objects += (RealmDBController.shared.loadEventsFor(date: date) as [RDrugging]) as [RBaseEvent]
+        
+        objects.sort(){$0.date < $1.date}
+        
+        let eventsType: [EventType] = objects.map(){ EventType(rawValue: $0.type)!}
+        
+        print("\(date.description) --- \(eventsType.description) --- \(eventsType.count)")
+        
+        (cell as! CastomFSCCell).configure(eventsType: eventsType)
+    }
+    
+    
+    private func configureVisibleCells() {
+        calendarView.visibleCells().forEach { (cell) in
+            let date = calendarView.date(for: cell)
+            let position = calendarView.monthPosition(for: cell)
+            self.configure(cell: cell, for: date!, at: position)
+        }
+    }
+    
+    private func configure(cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
+        
+        let castomCell = (cell as! CastomFSCCell)
+        cell.contentView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1).withAlphaComponent(0.2)
+        //if position == .current {
+            
+            //cell.contentView.backgroundColor = .blue
+            
+        //}
+    }
+    
+
     
     func combineDateWithTime(date: Date, time: Date) -> Date? {
         let calendar = NSCalendar.current

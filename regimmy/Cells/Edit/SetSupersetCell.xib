@@ -12,29 +12,53 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="183" id="KGk-i7-Jjw" customClass="SetSupersetCell" customModule="regimmy" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="183"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="KGk-i7-Jjw" customClass="SetSupersetCell" customModule="regimmy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="182.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1YI-Ku-pMQ">
-                        <rect key="frame" x="0.0" y="11" width="320" height="162"/>
+                        <rect key="frame" x="0.0" y="28" width="320" height="171.5"/>
                     </pickerView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Суперсет" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5Y-t3-2yI">
+                        <rect key="frame" x="159.5" y="11" width="160.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="RYb-ZK-gzr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сет" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITG-iZ-wvT">
+                        <rect key="frame" x="0.0" y="11" width="160.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="4nG-bx-6iO"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="1YI-Ku-pMQ" secondAttribute="bottom" constant="9.5" id="1IL-VR-DfT"/>
-                    <constraint firstItem="1YI-Ku-pMQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="UWh-WM-CD2"/>
+                    <constraint firstAttribute="bottom" secondItem="1YI-Ku-pMQ" secondAttribute="bottom" id="1IL-VR-DfT"/>
+                    <constraint firstItem="ITG-iZ-wvT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="Ec1-8I-DZ3"/>
+                    <constraint firstItem="h5Y-t3-2yI" firstAttribute="width" secondItem="ITG-iZ-wvT" secondAttribute="width" id="Le9-aH-yhp"/>
+                    <constraint firstItem="h5Y-t3-2yI" firstAttribute="leading" secondItem="ITG-iZ-wvT" secondAttribute="trailing" constant="-1" id="Q2Z-bf-Nsh"/>
+                    <constraint firstItem="ITG-iZ-wvT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Qwh-Mg-bvl"/>
                     <constraint firstAttribute="trailing" secondItem="1YI-Ku-pMQ" secondAttribute="trailing" id="Ufh-qj-GM8"/>
                     <constraint firstItem="1YI-Ku-pMQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YGF-DA-cIZ"/>
+                    <constraint firstAttribute="trailing" secondItem="h5Y-t3-2yI" secondAttribute="trailing" id="bjZ-un-Gll"/>
+                    <constraint firstItem="h5Y-t3-2yI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="eUS-XM-dqn"/>
+                    <constraint firstItem="1YI-Ku-pMQ" firstAttribute="top" secondItem="ITG-iZ-wvT" secondAttribute="bottom" constant="-4" id="rqa-9A-xg5"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="indexPicker" destination="1YI-Ku-pMQ" id="8Aq-uI-vcU"/>
             </connections>
-            <point key="canvasLocation" x="73" y="129.5"/>
+            <point key="canvasLocation" x="73" y="138"/>
         </tableViewCell>
     </objects>
 </document>

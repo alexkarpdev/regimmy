@@ -151,7 +151,7 @@ class Exercise: BaseSubEvent<RExercise> {
         object.muscle = muscle
         object.exerciseType = exerciseType
         object.durationType = durationType
-        object.loadUnit = loadUnit
+        object.loadUnitType = loadUnit
         
         return object
     }
@@ -162,7 +162,7 @@ class ExerciseE: BaseSubEvent<RExerciseE> {
     var muscle: MuscleType?
     var exerciseType = ExerciseType.force //тип
     var durationType = DurationType.repeats //продолжительность
-    var loadUnit = LoadUnitType.mass
+    var loadUnitType = LoadUnitType.mass
     
     override init() {
         super.init()
@@ -170,7 +170,7 @@ class ExerciseE: BaseSubEvent<RExerciseE> {
         muscle = nil
         exerciseType = ExerciseType.force //тип
         durationType = DurationType.repeats //продолжительность
-        loadUnit = LoadUnitType.mass
+        loadUnitType = LoadUnitType.mass
     }
     
     override init(from realmObject: RExerciseE) {
@@ -183,7 +183,7 @@ class ExerciseE: BaseSubEvent<RExerciseE> {
         muscle =  MuscleType(rawValue: object!.muscle)!
         exerciseType = ExerciseType(rawValue: object!.type)!
         durationType = DurationType(rawValue: object!.durationType)!
-        loadUnit = LoadUnitType(rawValue: object!.loadUnit)!
+        loadUnitType = LoadUnitType(rawValue: object!.loadUnit)!
         
         subEvents = [ExerciseSet]()
         for rs in object!.sets {
@@ -201,7 +201,7 @@ class ExerciseE: BaseSubEvent<RExerciseE> {
         object!.muscle = muscle!.rawValue
         object!.type = exerciseType.rawValue
         object!.durationType = durationType.rawValue
-        object!.loadUnit = loadUnit.rawValue
+        object!.loadUnit = loadUnitType.rawValue
         
         //1 очищаем базу от старых записей
         for set in object!.sets {

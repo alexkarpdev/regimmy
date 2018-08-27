@@ -42,7 +42,7 @@
         <!--Дневник-->
         <scene sceneID="UWg-Xv-Kop">
             <objects>
-                <tableViewController id="cu3-um-1W4" customClass="DiaryTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DiaryTVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cu3-um-1W4" customClass="DiaryTableViewController" customModule="regimmy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AeG-X3-XpQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1455,7 +1455,7 @@
         <image name="weight" width="66" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="j8F-mU-JUe"/>
+        <segue reference="4qV-bT-Ttz"/>
         <segue reference="Qq6-5D-HZv"/>
         <segue reference="dyg-EQ-HTj"/>
         <segue reference="K8Z-TC-NnJ"/>

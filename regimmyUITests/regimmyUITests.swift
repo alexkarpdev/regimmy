@@ -9,6 +9,8 @@
 import XCTest
 
 class regimmyUITests: XCTestCase {
+    
+    var topLevelApp: XCUIApplication! = nil
         
     override func setUp() {
         super.setUp()
@@ -20,10 +22,13 @@ class regimmyUITests: XCTestCase {
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
 
+        topLevelApp = XCUIApplication()
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
     override func tearDown() {
+        
+        topLevelApp = nil
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
@@ -33,21 +38,24 @@ class regimmyUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    func createNewEvent() { // regular function
+        
+    }
+    
     func testInput2() {
         
-        let app = XCUIApplication()
-        app.navigationBars["Дневник"].buttons["addEvent"].tap()
+        topLevelApp.navigationBars["Дневник"].buttons["addEvent"].tap()
         
-        let dt = app.tables["diaryTable"]
-        let startCount = dt.
+        let dt = topLevelApp.tables["diaryTable"]
+        let startCount = dt.cells.count
         
-        let tablesQuery = app.tables
+        let tablesQuery = topLevelApp.tables
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Тренировку"]/*[[".cells.staticTexts[\"Тренировку\"]",".staticTexts[\"Тренировку\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         tablesQuery.children(matching: .other).element(boundBy: 0).children(matching: .other).element.tap()
         tablesQuery/*@START_MENU_TOKEN@*/.textFields["Название"]/*[[".cells.textFields[\"Название\"]",".textFields[\"Название\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         tablesQuery/*@START_MENU_TOKEN@*/.textFields["Название"]/*[[".cells.textFields[\"Название\"]",".textFields[\"Название\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.typeText("11qq22wesssssw")
         
-        app.navigationBars["Новую Тренировку"].buttons["Сохранить"].tap()
+        topLevelApp.navigationBars["Новую Тренировку"].buttons["Сохранить"].tap()
         
         XCTAssertEqual(dt.cells.count, startCount)
         

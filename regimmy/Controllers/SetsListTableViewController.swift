@@ -19,6 +19,8 @@ class SetsListTableViewController: UITableViewController {
     var isEditingMode = false
     var showInfoCell = true
     
+    var isPickerShown = false
+    
     
     
     
@@ -43,7 +45,7 @@ class SetsListTableViewController: UITableViewController {
         super.viewDidLoad()
 
         tableView.register(UINib(nibName: EditFieldCell.identifier, bundle: nil), forCellReuseIdentifier: EditFieldCell.identifier)
-        tableView.register(UINib(nibName: EditRepeatCell.identifier, bundle: nil), forCellReuseIdentifier: EditRepeatCell.identifier)
+        tableView.register(UINib(nibName: EditSupersetCell.identifier, bundle: nil), forCellReuseIdentifier: EditSupersetCell.identifier)
         tableView.register(UINib(nibName: SetSupersetCell.identifier, bundle: nil), forCellReuseIdentifier: SetSupersetCell.identifier)
         
         tableView.register(UINib(nibName: AddHeaderCell.identifier, bundle: nil), forCellReuseIdentifier: AddHeaderCell.identifier)
@@ -57,7 +59,7 @@ class SetsListTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         
         tableView.isEditing = true
-        
+        tableView.allowsSelectionDuringEditing = true
         sets = selectedExercise.subEvents as! [ExerciseSet]
         
         
@@ -84,7 +86,7 @@ class SetsListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 4
+            return isPickerShown ? 4 : 3
         }
         return 1 + sets.count
     }
@@ -92,43 +94,54 @@ class SetsListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell!
-        
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath) as! EditFieldCell
                 cell.accessoryType = .detailButton
                 (cell as! EditFieldCell).configure(placeHolder: "Название", text: selectedExercise.name, tag: 0, fieldIsEnabled: false)
+                cell.selectionStyle = .none
                 
             case 1:
                 cell = tableView.dequeueReusableCell(withIdentifier: EditFieldCell.identifier, for: indexPath) as! EditFieldCell
                 cell.accessoryType = .none
                 (cell as! EditFieldCell).configure(placeHolder: "Примечание", text: selectedExercise.info, tag: 1, fieldIsEnabled: false, fontSize: 15)
+                cell.selectionStyle = .none
                 
             case 2:
-                cell = tableView.dequeueReusableCell(withIdentifier: EditRepeatCell.identifier, for: indexPath) as! EditRepeatCell
-                (cell as! EditRepeatCell).configure(caption: "Сет-суперсет", detail: (index.set + (index.superset == "" ? "" : "-" + index.superset)))
+                cell = tableView.dequeueReusableCell(withIdentifier: EditSupersetCell.identifier, for: indexPath) as! EditSupersetCell
+                (cell as! EditSupersetCell).configure(caption: "Сет-суперсет", detail: (index.set + (index.superset == "" ? "" : "-" + index.superset)), isOpen: isPickerShown)
+                cell.selectionStyle = .blue
+                
             case 3:
                 cell = tableView.dequeueReusableCell(withIdentifier: SetSupersetCell.identifier, for: indexPath) as! SetSupersetCell
                 (cell as! SetSupersetCell).configure(index: index){ [unowned self] set, superset in
                     self.index = (set: set, superset: superset == "_" ? "" : superset)
                     self.tableView.reloadRows(at: [IndexPath(row: 2, section: 0)], with: .automatic)
                 }
-            default: cell = UITableViewCell()
+                cell.selectionStyle = .none
+            default:
+                cell = UITableViewCell()
+                cell.selectionStyle = .none
             }
         }else{
             if indexPath.row == 0 {
                 cell = tableView.dequeueReusableCell(withIdentifier: AddHeaderCell.identifier, for: indexPath) as! AddHeaderCell
                 (cell as! AddHeaderCell).captionLabel.text = "Подходы"
                 (cell as! AddHeaderCell).rotateArrow()
+                cell.selectionStyle = .none
+                
             }else{
                 cell = tableView.dequeueReusableCell(withIdentifier: EditSetCell.identifier, for: indexPath) as! EditSetCell
                 let repeatsGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapOnRepeatsLabel(sender:)))
                 let loadGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapOnLoadLabel(sender:)))
-                (cell as! EditSetCell).configure(set: sets[indexPath.row - 1], repeatsGestureRecognizer: repeatsGestureRecognizer, loadGestureRecognizer: loadGestureRecognizer)
+                (cell as! EditSetCell).configure(set: sets[indexPath.row - 1], exercise: selectedExercise, repeatsGestureRecognizer: repeatsGestureRecognizer, loadGestureRecognizer: loadGestureRecognizer)
+                cell.selectionStyle = .none
+
             }
             
         }
+        
         return cell
         
     }
@@ -169,7 +182,20 @@ class SetsListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath == IndexPath(row: 2, section: 0) {
+            isPickerShown = !isPickerShown
+            (tableView.cellForRow(at: indexPath) as! EditSupersetCell).rotateArrow(isOpen: isPickerShown)
+            if isPickerShown == true {
+//                let cell = self.tableView.cellForRow(at: indexPath)
+//                var customView = UIView(frame: CGRect(x: 0, y: 0, width: (cell?.frame.width)!, height: 43))
+//                customView.backgroundColor = .red
+//                customView.alpha=0.3
+//                cell!.addSubview(customView)
+                tableView.insertRows(at: [IndexPath(row: 3, section: 0)], with: .automatic)
+            }else{
+                tableView.deleteRows(at: [IndexPath(row: 3, section: 0)], with: .automatic)
+            }
             
+            tableView.reloadRows(at: [IndexPath(row: 2, section: 0)], with: .none)
         }
     }
  
@@ -183,6 +209,13 @@ class SetsListTableViewController: UITableViewController {
         if editingStyle == .delete {
             sets.remove(at: indexPath.row - 1)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            calculateIndexesOfSets()
+            
+            let dispatchTime = DispatchTime.now() + 0.5
+            DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+                self.tableView.reloadSections([1], with: .none)
+            }
         } else if editingStyle == .insert {
             let number = sets.count + 1
             sets.append(ExerciseSet(number: number))
@@ -194,7 +227,8 @@ class SetsListTableViewController: UITableViewController {
     
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
-        selectedExercise.index = (index.set + "-" + index.superset)
+        let seporator = index.superset == "" ? "" : "-"
+        selectedExercise.index = (index.set + seporator + index.superset)
         selectedExercise.subEvents = sets
         complitionHandler(selectedExercise)
         dismiss(animated: true, completion: nil)
@@ -208,17 +242,20 @@ class SetsListTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    func calculateIndexesOfSets() {
+        var number = 1
+        for s in sets {
+            s.number = number
+            number += 1
+        }
+    }
 
     
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         sets.insert(sets.remove(at: sourceIndexPath.row - 1), at: destinationIndexPath.row - 1)
         
-        var number = 1
-        for s in sets {
-            s.number = number
-            number += 1
-        }
+        calculateIndexesOfSets()
         
         let dispatchTime = DispatchTime.now() + 0.2
         DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
@@ -258,6 +295,14 @@ class SetsListTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if(velocity.y>0){
+            NSLog("dragging Up");
+        }else{
+            NSLog("dragging Down");
+        }
+    }
     
     func callSmartAlert(caption: String, row: Int, updateAction: @escaping (Double)->()){
         let ac = SmartAlertController(title: caption, message: "в подходе №\(row)", preferredStyle: .alert)

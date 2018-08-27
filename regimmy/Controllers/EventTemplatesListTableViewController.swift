@@ -195,5 +195,25 @@ class EventTemplatesListTableViewController: UITableViewController {
         }
     }
     
+    func createNewEvent() { // delete!!!
+        let selectedEventType: EventType = .train
+        
+        let newEvent: RootEvent!
+        switch selectedEventType {
+        case .eating:
+            newEvent = Eating()
+        case .train:
+            newEvent = Train()
+        case .measure:
+            newEvent = Measuring()
+        case .drugs:
+            newEvent = Drugging()
+        }
+        
+        newEvent.type = selectedEventType
+        let selectedPoso = newEvent
+        print("log: tested AddEvent")
+    }
+    
 
 }

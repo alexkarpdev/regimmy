@@ -39,7 +39,7 @@ class CalendarExerciseCell: UITableViewCell {
         }
         
         let durationUnit = exercise.durationType.unit
-        let loadUnit = exercise.loadUnit.unit
+        let loadUnit = exercise.loadUnitType.unit
         
         var setIndex = ""
         var repeatsValue = ""

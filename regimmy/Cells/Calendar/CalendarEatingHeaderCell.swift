@@ -38,6 +38,8 @@ class CalendarEatingHeaderCell: UITableViewCell {
         calLabel.text = event.cal.formatToHumanReadableForm()
         massLabel.text = event.mass.formatToHumanReadableForm()
         
+        self.contentView.backgroundColor = event.type?.sectionColor
+        
     }
     
     override func awakeFromNib() {

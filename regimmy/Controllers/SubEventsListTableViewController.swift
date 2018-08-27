@@ -147,9 +147,20 @@ class SubEventsListTableViewController: UITableViewController {
                 rightButtonItem.title = "Изменить"
             }
         }else{
-            navigationItem.leftBarButtonItem?.action = #selector(dismissAction(_:))
-            navigationItem.leftBarButtonItem?.target = self
-            navigationItem.leftBarButtonItem?.title = "Готово"
+            
+            rightButtonItem.action = #selector(dismissAction(_:))
+            rightButtonItem.target = self
+            rightButtonItem.title = "Готово"
+            navigationItem.rightBarButtonItem = rightButtonItem
+            
+            leftButtonItem.action = nil
+            leftButtonItem.target = nil
+            leftButtonItem.title = "Готово2"
+            navigationItem.leftBarButtonItem = nil
+            
+            //navigationItem.leftBarButtonItem?.action = #selector(dismissAction(_:))
+            //navigationItem.leftBarButtonItem?.target = self
+            //navigationItem.leftBarButtonItem?.title = "Готово"
             
         }
     }
@@ -236,26 +247,35 @@ class SubEventsListTableViewController: UITableViewController {
             selectedPosoSubevent = posObjects[indexPath.row]
             performSegue(withIdentifier: "ShowSubEventDetailSegue", sender: self)
         }else{
-            if selectedPosObjects.contains(posObjects[indexPath.row]) {
-                selectedPosObjects.remove(at: selectedPosObjects.index(of: posObjects[indexPath.row])!)
-                tableView.reloadRows(at: [indexPath], with: .automatic)
-            }else{
-                switch selectedEventType! {
-                case .eating:
-                    callSmartAlert(caption: "Сколько в граммах?", row: indexPath.row){mass in
-                        self.selectedPosObjects.append((self.posObjects[indexPath.row] as! Ingredient).convertToIngredientE(mass: mass))
-                    }
-                case .drugs:
-                    callSmartAlert(caption: "Сколько порций?", row: indexPath.row){servs in
-                        self.selectedPosObjects.append((self.posObjects[indexPath.row] as! Drug).convertToDrugE(servs: servs))
-                    }
-                case .measure: // never be used because measure perform at measureViewController
-                    break
-                case .train:
-                    selectedPosoSubevent = posObjects[indexPath.row]
-                    performSegue(withIdentifier: "SetsListSegue", sender: self)
-                }
+            if selectedEventType == .train {
                 
+                selectedPosoSubevent = posObjects[indexPath.row]
+                performSegue(withIdentifier: "SetsListSegue", sender: self)
+                
+            } else {
+                
+                if selectedPosObjects.contains(posObjects[indexPath.row]) {
+                    
+                    selectedPosObjects.remove(at: selectedPosObjects.index(of: posObjects[indexPath.row])!)
+                    tableView.reloadRows(at: [indexPath], with: .automatic)
+                    
+                } else {
+                    switch selectedEventType! {
+                    case .eating:
+                        callSmartAlert(caption: "Сколько в граммах?", row: indexPath.row){mass in
+                            self.selectedPosObjects.append((self.posObjects[indexPath.row] as! Ingredient).convertToIngredientE(mass: mass))
+                        }
+                    case .drugs:
+                        callSmartAlert(caption: "Сколько порций?", row: indexPath.row){servs in
+                            self.selectedPosObjects.append((self.posObjects[indexPath.row] as! Drug).convertToDrugE(servs: servs))
+                        }
+                    case .measure: // never be used because measure perform at measureViewController
+                        break
+                    case .train: // never be used because see top ^^^^
+                        break
+                    }
+                    
+                }
             }
         }
         

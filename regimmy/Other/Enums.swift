@@ -28,8 +28,8 @@ enum EventType: String {
                 imageName = "measure"
             case .drugs:
                 imageName = "drugs"
-//            default:
-//                imageName = ""
+                //            default:
+                //                imageName = ""
             }
             
             return UIImage(named: imageName)!
@@ -56,6 +56,20 @@ enum EventType: String {
         }
     }
     
+    var sectionColor: UIColor {
+        let a: CGFloat = 0.2
+        switch self {
+        case .train:
+            return #colorLiteral(red: 0.1647059023, green: 0.231372565, blue: 0.4627450705, alpha: 1).withAlphaComponent(a)
+        case .eating:
+            return #colorLiteral(red: 0.3450980783, green: 0.6431373358, blue: 0.2588234842, alpha: 1).withAlphaComponent(a)
+        case .measure:
+            return #colorLiteral(red: 0.9764706492, green: 0.8823530078, blue: 0.5764706731, alpha: 1).withAlphaComponent(a)
+        case .drugs:
+            return #colorLiteral(red: 0.2470588684, green: 0.5725491047, blue: 0.7686274648, alpha: 1).withAlphaComponent(a)
+        }
+    }
+    
     var subEventType: SubEventType? {
         switch self {
         case .train:
@@ -68,7 +82,20 @@ enum EventType: String {
             return .drug
         }
     }
-
+    
+    var order: Int {
+        switch self {
+        case .train:
+            return 1
+        case .eating:
+            return 0
+        case .measure:
+            return 2
+        case .drugs:
+            return 3
+        }
+    }
+    
 }
 
 enum SubEventType: String {
@@ -217,7 +244,7 @@ enum MuscleType: String {
     var typeImageName: String {
         return self.rawValue + "-type"
     }
-
+    
 }
 
 enum PropertyType: String {
@@ -253,6 +280,19 @@ enum DurationType: String{
             return "м"
         }
     }
+    
+    var caption: String {
+        switch self {
+        case .repeats:
+            return "Повторов"
+        case .time:
+            return "Прод-ть"
+        case .laps:
+            return "Кругов"
+        case .distance:
+            return "Дистанция"
+        }
+    }
     //case other
 }
 
@@ -272,6 +312,19 @@ enum LoadUnitType: String{
             return ""
         case .selfmass:
             return ""
+        }
+    }
+    
+    var caption: String {
+        switch self {
+        case .mass:
+            return "Нагрузка"
+        case .time:
+            return "Прод-ть"
+        case .laps:
+            return "Кругов"
+        case .selfmass:
+            return "Нагрузка"
         }
     }
 }

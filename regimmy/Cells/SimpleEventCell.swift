@@ -25,6 +25,8 @@ class SimpleEventCell: UITableViewCell {
         nameLabel.text = event.name
         infoLabel.text = event.info
         
+        self.contentView.backgroundColor = event.type?.sectionColor
+        
     }
     
     override func awakeFromNib() {
