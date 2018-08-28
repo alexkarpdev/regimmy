@@ -11,6 +11,8 @@ import RealmSwift
 
 class SubEventsListTableViewController: UITableViewController {
     
+    
+    
     var selectedEventType: EventType!
     var selectedSubEventType: SubEventType!
     //var selectedSubEvent: RBaseSubEvent!
@@ -21,6 +23,9 @@ class SubEventsListTableViewController: UITableViewController {
     
     //var selectedObjects = [RBaseSubEvent]()
     //var objects = [RBaseSubEvent]()
+    
+    var filteredPosObjects = [RootEvent]()
+    let searchController = UISearchController(searchResultsController: nil)
     
     var selectedPosObjects = [RootEvent]() // будущие евенты
     var posObjects = [RootEvent]()
@@ -66,6 +71,15 @@ class SubEventsListTableViewController: UITableViewController {
         let ar: [RootEvent] = [RootEvent]()
         ar.index(of: Ingredient())
         
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Поиск"
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "Отмена"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        searchController.searchBar.delegate = self
+        
     }
     
     //    override func viewWillAppear(_ animated: Bool) {
@@ -73,8 +87,7 @@ class SubEventsListTableViewController: UITableViewController {
     //        reloadObjects(.insert)
     //    }
     
-    func reloadObjects(_ reloadType: ReloadDataType) {
-        
+    func loadFromDB() {
         switch selectedSubEventType! {
         case .exercise:
             selectedEventType = .train
@@ -86,19 +99,34 @@ class SubEventsListTableViewController: UITableViewController {
             selectedEventType = .drugs
             posObjects = (RealmDBController.shared.load() as [RDrug]).map(){Drug.init(from: ($0))}
         }
+    }
+    
+    func reloadObjects(_ reloadType: ReloadDataType) {
         
         
-        
-        tableView.reloadData()
-        return
+        //tableView.reloadData()
+        //return
         
         switch reloadType{
+        case .delete:
+            selectedPosoSubevent.removeFromDB()
+            loadFromDB()
+            if isFiltering() {
+                updateSearchResults(for: searchController)
+            }
+            
         case .initial:
+            loadFromDB()
             tableView.reloadData()
             
         case .insert, .modify:
+            loadFromDB()
+            if isFiltering() {
+                updateSearchResults(for: searchController)
+            }
             var index: Int? = nil
-            
+            index = getIndexOf(of: selectedPosoSubevent)
+            /*
             switch selectedSubEventType! {
             case .exercise:
                 index = (posObjects as! [Ingredient]).index(of: selectedPosoSubevent as! Ingredient)
@@ -110,7 +138,7 @@ class SubEventsListTableViewController: UITableViewController {
                 index = (posObjects as! [Ingredient]).index(of: selectedPosoSubevent as! Ingredient)
                 //index = RealmDBController.shared.index(of: selectedSubEvent as! RDrug)
             }
-            
+            */
             if let index = index{
                 
                 if reloadType == .insert{
@@ -120,12 +148,23 @@ class SubEventsListTableViewController: UITableViewController {
                 }
                 
                 tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: true)
+                
+ //               let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))!
+ //x               let oldColor = cell.contentView.backgroundColor
+//                cell.contentView.backgroundColor = selectedEventType.sectionColor.withAlphaComponent(0.1)
+//                UIView.animate(withDuration: 0.2, delay: 0.2, options: .curveEaseIn, animations: {
+//                    cell.contentView.backgroundColor = self.selectedEventType.sectionColor.withAlphaComponent(0.8)
+//                    }, completion: { (true) in
+//                        UIView.animate(withDuration: 0.3) {
+//                            cell.contentView.backgroundColor = oldColor
+//                        }
+//                        })
             }
             
         default:
             break
         }
- 
+        
     }
     
     //func setButtonsFor
@@ -180,7 +219,14 @@ class SubEventsListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posObjects.count
+        return isFiltering() ? filteredPosObjects.count : posObjects.count
+    }
+    
+    func returnPosObject(row: Int) -> RootEvent {
+        return isFiltering() ? filteredPosObjects[row] : posObjects[row]
+    }
+    func getIndexOf(of object: RootEvent) -> Int? {
+        return isFiltering() ? filteredPosObjects.index(of: object) : posObjects.index(of: object)
     }
     
     
@@ -193,13 +239,13 @@ class SubEventsListTableViewController: UITableViewController {
         switch selectedEventType! {
         case .eating:
             cell = tableView.dequeueReusableCell(withIdentifier: EditorIngredientCell.identifier, for: indexPath) as! EditorIngredientCell
-            let posObject = posObjects[indexPath.row] as! Ingredient
+            let posObject = returnPosObject(row: indexPath.row) as! Ingredient
             var mass: Double? = nil
             if isEditorMode {
                 cell.accessoryType = .disclosureIndicator
             }else{
-                if selectedPosObjects.contains(posObjects[indexPath.row]) {
-                    mass = (selectedPosObjects[selectedPosObjects.index(of: posObjects[indexPath.row])!] as! IngredientE).mass
+                if selectedPosObjects.contains(posObject) {
+                    mass = (selectedPosObjects[selectedPosObjects.index(of: posObject)!] as! IngredientE).mass
                     cell.accessoryType = .checkmark
                 }else{
                     cell.accessoryType = .none
@@ -209,17 +255,17 @@ class SubEventsListTableViewController: UITableViewController {
             
         case .train:
             cell = tableView.dequeueReusableCell(withIdentifier: EditorExerciseCell.identifier, for: indexPath) as! EditorExerciseCell
-            let posObject = posObjects[indexPath.row] as! Exercise
+            let posObject = returnPosObject(row: indexPath.row) as! Exercise
             (cell as! EditorExerciseCell).configure(posObject: posObject)
         case .drugs:
             cell = tableView.dequeueReusableCell(withIdentifier: EditorDrugCell.identifier, for: indexPath) as! EditorDrugCell
-            let posObject = posObjects[indexPath.row] as! Drug
+            let posObject = returnPosObject(row: indexPath.row) as! Drug
             var servs: Double? = nil
             if isEditorMode {
                 cell.accessoryType = .disclosureIndicator
             }else{
-                if selectedPosObjects.contains(posObjects[indexPath.row]) {
-                    servs = (selectedPosObjects[selectedPosObjects.index(of: posObjects[indexPath.row])!] as! DrugE).servs
+                if selectedPosObjects.contains(posObject) {
+                    servs = (selectedPosObjects[selectedPosObjects.index(of: posObject)!] as! DrugE).servs
                     cell.accessoryType = .checkmark
                 }else{
                     cell.accessoryType = .none
@@ -244,12 +290,12 @@ class SubEventsListTableViewController: UITableViewController {
         
         if isEditorMode {
             //selectedSubEvent = objects[indexPath.row]
-            selectedPosoSubevent = posObjects[indexPath.row]
+            selectedPosoSubevent = returnPosObject(row: indexPath.row)
             performSegue(withIdentifier: "ShowSubEventDetailSegue", sender: self)
         }else{
             if selectedEventType == .train {
                 
-                selectedPosoSubevent = posObjects[indexPath.row]
+                selectedPosoSubevent = returnPosObject(row: indexPath.row)
                 performSegue(withIdentifier: "SetsListSegue", sender: self)
                 
             } else {
@@ -293,7 +339,7 @@ class SubEventsListTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            posObjects[indexPath.row].removeFromDB()
+            selectedPosoSubevent = returnPosObject(row: indexPath.row)
             reloadObjects(.delete)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -327,20 +373,21 @@ class SubEventsListTableViewController: UITableViewController {
             let vc = (segue.destination as! UINavigationController).viewControllers.first as! SubEventDetailTableViewController
             vc.selectedSubEventType = selectedSubEventType
             
-            let newSubEvent: RBaseSubEvent! // delete
+           // let newSubEvent: RBaseSubEvent! // delete
             
-            let newPosoEvent: RootEvent!
+            let newPosoSubevent: RootEvent!
             
             switch selectedSubEventType! {
             case .ingredient:
-                newPosoEvent = Ingredient()
+                newPosoSubevent = Ingredient()
             case .exercise:
-                newPosoEvent = Exercise()
+                newPosoSubevent = Exercise()
             case .drug:
-                newPosoEvent = Drug()
+                newPosoSubevent = Drug()
             }
             
-            vc.selectedPoso = newPosoEvent
+            selectedPosoSubevent = newPosoSubevent
+            vc.selectedPoso = selectedPosoSubevent
             
             vc.complitionHandler = ({[unowned self] in
                 self.reloadObjects(.insert)
@@ -427,7 +474,36 @@ class SubEventsListTableViewController: UITableViewController {
     }
     
     
+    // MARK: - Search helping methods
     
+    func filterContentForSearchText(_ searchText: String) {
+        filteredPosObjects = posObjects.filter({ $0.name.lowercased().contains(searchText.lowercased()) })
+        tableView.reloadData()
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func isFiltering() -> Bool {
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+    }
+}
+
+extension SubEventsListTableViewController: UISearchBarDelegate {
+    // MARK: - UISearchBar Delegate
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        //filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+    }
+}
+
+extension SubEventsListTableViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
 }
 
 

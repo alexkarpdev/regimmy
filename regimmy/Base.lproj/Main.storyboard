@@ -1333,12 +1333,21 @@
                     <connections>
                         <outlet property="leftButtonItem" destination="jSM-vx-r2s" id="dOG-Vp-e8c"/>
                         <outlet property="rightButtonItem" destination="W21-gY-4wO" id="jds-rC-wcK"/>
+                        <outlet property="searchDisplayController" destination="l75-Ib-2r6" id="n2r-hQ-Oht"/>
                         <segue destination="k4s-wk-4Te" kind="presentation" identifier="SetsListSegue" id="4qV-bT-Ttz"/>
                         <segue destination="HBA-7N-wfa" kind="presentation" identifier="AddSubEventSegue" id="1UP-9z-1qJ"/>
                         <segue destination="LN7-Ud-zu6" kind="show" identifier="ShowSubEventDetailSegue" id="Qq6-5D-HZv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6eC-xz-fqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="l75-Ib-2r6">
+                    <connections>
+                        <outlet property="delegate" destination="vMY-k3-wTD" id="P7g-6X-vwl"/>
+                        <outlet property="searchContentsController" destination="vMY-k3-wTD" id="ial-gc-aAK"/>
+                        <outlet property="searchResultsDataSource" destination="vMY-k3-wTD" id="dq6-WT-UgW"/>
+                        <outlet property="searchResultsDelegate" destination="vMY-k3-wTD" id="ljH-NX-yjq"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="6782" y="641"/>
         </scene>

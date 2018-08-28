@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class SubEventDetailTableViewController: UITableViewController {
+class SubEventDetailTableViewController: UITableViewController, UINavigationControllerDelegate {
     
     let nameCellRow = 0
     let infoCellRow = 1
@@ -40,6 +40,8 @@ class SubEventDetailTableViewController: UITableViewController {
     
     var isEditingMode = false
     var showInfoCell = true
+    
+    //var isEdited = false
     
     @IBOutlet var leftButtonItem: UIBarButtonItem!
     @IBOutlet var rightButtonItem: UIBarButtonItem!
@@ -74,6 +76,8 @@ class SubEventDetailTableViewController: UITableViewController {
         }else{
             setEditingMode(isEdit: false)
         }
+        
+        self.navigationController?.delegate = self
         
     }
     
@@ -112,6 +116,13 @@ class SubEventDetailTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) { //!!!!!!
+        //print("did show")
+        //if isEdited {
+            //complitionHandler()
+        //}
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -370,12 +381,14 @@ class SubEventDetailTableViewController: UITableViewController {
 
     
     // MARK: - Navigation
-    @IBAction func dismissAction(_ sender: Any) { // cancel from adding
+    @IBAction func dismissAction(_ sender: Any) { // cancel from adding 1
         dismiss(animated: true, completion: nil)
+        //isEdited = false
     }
     
-    @objc func openForEditAction() {
+    @objc func openForEditAction() { // edit button
         setEditingMode(isEdit: true)
+        //isEdited = false
         //performSegue(withIdentifier: "IngredientsEditSegue", sender: self)
     }
     
@@ -385,6 +398,7 @@ class SubEventDetailTableViewController: UITableViewController {
         if navigationController?.viewControllers.first === self {
             dismiss(animated: true, completion: complitionHandler)
         }else{
+            //isEdited = true
             complitionHandler()
         }
     }
